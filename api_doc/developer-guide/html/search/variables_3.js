@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['data_0',['data',['../structsdio__data__config__t.html#a0b694c9f323471c4b8226ddda3b624cc',1,'sdio_data_config_t::data'],['../structsdio__write__read__config__t.html#a8c032b56f2a6c4ceac33ba6a7edcf9fe',1,'sdio_write_read_config_t::data']]],
+  ['data_5fready_1',['data_ready',['../structuart__usr__lsr__status__bits__t.html#ab6393d6877fc0e457375a61a9bb6f53c',1,'uart_usr_lsr_status_bits_t']]],
+  ['datapresent_2',['dataPresent',['../structsdio__cmd__config__t.html#a2d63d66d971cac1e38073c3cb20a5fb8',1,'sdio_cmd_config_t']]],
+  ['datatimeout_3',['dataTimeout',['../structsdio__data__config__t.html#a2973f3e9ff5d05b81b63891de90ba186',1,'sdio_data_config_t::dataTimeout'],['../structsdio__write__read__config__t.html#ab1e6c60f56dfecd45cef9d8b324a60b1',1,'sdio_write_read_config_t::dataTimeout']]],
+  ['debounce_4',['debounce',['../structgpio__pin__config__t.html#a0fd76b5e78464848f719b1c005fc8158',1,'gpio_pin_config_t']]],
+  ['dest_5faddr_5',['dest_addr',['../structdma__1d__config__t.html#a06a16286f68ef89be4a31193b34b6783',1,'dma_1d_config_t::dest_addr'],['../structdma__2d__config__t.html#acfbea167fac877766164aaed0a9f5e62',1,'dma_2d_config_t::dest_addr']]],
+  ['dest_5fburst_5fsize_6',['dest_burst_size',['../structdma__1d__config__t.html#ab6425831e957b2143c54214002c2d208',1,'dma_1d_config_t::dest_burst_size'],['../structdma__2d__config__t.html#abd06922f995a7767e7f66f53f62a5da5',1,'dma_2d_config_t::dest_burst_size']]],
+  ['dest_5fprivilege_7',['dest_privilege',['../structdma__channel__config__t.html#a69af98d089d864e3222435bfc2f8f876',1,'dma_channel_config_t']]],
+  ['dest_5fsecurity_8',['dest_security',['../structdma__channel__config__t.html#a65f096cd566ae2dd9c6869d061e0c604',1,'dma_channel_config_t']]],
+  ['dest_5ftemplate_9',['dest_template',['../structdma__template__config__t.html#a0fe32445b34c4fdbd3f5e9451a530d0c',1,'dma_template_config_t']]],
+  ['dest_5ftemplate_5fsize_10',['dest_template_size',['../structdma__template__config__t.html#a907c5df5f37181c56ab9269e4a8e9fe3',1,'dma_template_config_t']]],
+  ['dest_5ftrigger_11',['dest_trigger',['../structdma__channel__config__t.html#ab346212b48c8743b0c88fcd733092bf3',1,'dma_channel_config_t']]],
+  ['dest_5fx_5fincrement_12',['dest_x_increment',['../structdma__1d__config__t.html#a90a512dd3b88c1b08a194237729642ee',1,'dma_1d_config_t::dest_x_increment'],['../structdma__2d__config__t.html#af6971e2493d27c633c671748530d72ec',1,'dma_2d_config_t::dest_x_increment']]],
+  ['dest_5fx_5fsize_13',['dest_x_size',['../structdma__2d__config__t.html#a86c6e94c15d35cb93e9c68e979a6d254',1,'dma_2d_config_t']]],
+  ['dest_5fy_5fsize_14',['dest_y_size',['../structdma__2d__config__t.html#af298c028e7f80c3e09900a1e1045e6d7',1,'dma_2d_config_t']]],
+  ['dest_5fy_5fstride_15',['dest_y_stride',['../structdma__2d__config__t.html#a9b0b91274eca54c32144d795041516b8',1,'dma_2d_config_t']]],
+  ['disable_5fperipheral_5fout_16',['disable_peripheral_out',['../structspi__config.html#a2fdcbcf8a25f14dd7eb1a86e136e5b00',1,'spi_config']]],
+  ['dma_5fconfig_5f2d_5fimage_5fcopy_17',['DMA_CONFIG_2D_IMAGE_COPY',['../group__group__dma__template__configs.html#gac05d2e60fbaaaaade284ee1c0976712a',1,'dma.h']]],
+  ['dma_5fconfig_5fmemory_5fcopy_18',['DMA_CONFIG_MEMORY_COPY',['../group__group__dma__template__configs.html#ga8a955e567bb440e6e5ef590b7278d56b',1,'dma.h']]],
+  ['dma_5fconfig_5fmemory_5fto_5fperipheral_19',['DMA_CONFIG_MEMORY_TO_PERIPHERAL',['../group__group__dma__template__configs.html#gab7c87fe78a8f3e55d55c4180d3d59a3d',1,'dma.h']]],
+  ['dma_5fconfig_5fperipheral_5fto_5fmemory_20',['DMA_CONFIG_PERIPHERAL_TO_MEMORY',['../group__group__dma__template__configs.html#ga97e6fa1fdc68362361347639ac183667',1,'dma.h']]],
+  ['dmatype_21',['dmaType',['../structsdio__config__t.html#a37bcaaf20de46092944773fa7ad11185',1,'sdio_config_t']]],
+  ['drive_5fstr_22',['drive_str',['../structpinmux__elec__config__t.html#ab90f9b43fd58b50707bb81cd77abe0d0',1,'pinmux_elec_config_t']]]
+];

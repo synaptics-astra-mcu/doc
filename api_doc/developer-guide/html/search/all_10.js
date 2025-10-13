@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['rca_0',['rca',['../structsdio__sd__card__config__t.html#a00ce161a5d7485109d36e9e46baa640c',1,'sdio_sd_card_config_t']]],
+  ['read_1',['Read',['../group__group__i2c__driver.html#i2c_block',1,'Blocking Controller Write and Read'],['../group__group__i2c__driver.html#i2c_non_block',1,'Non-Blocking Controller Write and Read'],['../group__group__i2c__driver.html#i2c_target_non_block',1,'Non-Blocking Target Read']]],
+  ['read_2',['read',['../structsdio__data__config__t.html#a78cc53018f2281d2757c5ef316bba3b8',1,'sdio_data_config_t']]],
+  ['read_20operation_3',['SDIO SD Card Read Operation.',['../group__group__sdio__driver.html#SDIO_READ_OPERATION',1,'']]],
+  ['reference_4',['Driver API Reference',['../group__api__ref.html',1,'']]],
+  ['reg_5freload_5ftype_5',['reg_reload_type',['../structdma__channel__config__t.html#a312546ea9c88d283c28a94dddba311c2',1,'dma_channel_config_t']]],
+  ['required_5ffifo_5fdepth_6',['required_fifo_depth',['../structdma__channel__attr__t.html#a2de8e355af872673b01dae9def5d90b8',1,'dma_channel_attr_t']]],
+  ['reserved_5f5_7',['reserved_5',['../structuart__usr__lsr__status__bits__t.html#a09f9a659f7d74085830b1366266a7607',1,'uart_usr_lsr_status_bits_t']]],
+  ['reserved_5f6_8',['reserved_6',['../structuart__usr__lsr__status__bits__t.html#a10384c9c0f1ca8fdcda26da0d372d81d',1,'uart_usr_lsr_status_bits_t']]],
+  ['reserved_5f7_9',['reserved_7',['../structuart__usr__lsr__status__bits__t.html#ab618c21294f9df973e74847d8a8d3345',1,'uart_usr_lsr_status_bits_t']]],
+  ['reset_5fn_10',['RESET_N',['../group___p_i_n_m_u_x___e_n_u_m_s.html#gga1e3f37e2bba6bf228285a8fe7c404040ab75621f5762d869b6b12ef74e10d0bf8',1,'sr110.h']]],
+  ['resptype_11',['respType',['../structsdio__cmd__config__t.html#a5ec83684b2590897a9ad44655dc60a56',1,'sdio_cmd_config_t']]],
+  ['restart_5fcount_12',['restart_count',['../structdma__auto__restart__config__t.html#a2b119c392d3c0c0ee3b1f5d7ce98608e',1,'dma_auto_restart_config_t']]],
+  ['rx_5fbuff_13',['rx_buff',['../structspi__xfer__config.html#a5aa94d083fc806eba8a5743cc0b82e47',1,'spi_xfer_config']]],
+  ['rx_5fbusy_14',['rx_busy',['../structuart__hw__status__t.html#a7fc44b1a619c4860f19adcbdc6b5685c',1,'uart_hw_status_t']]],
+  ['rx_5fcomplete_15',['RX_COMPLETE',['../group__group__uart__enums.html#gga89362dd8bcbf0b7ffa72eb8a56ec578ba057e7983ad3df9cd7da912bf6cd91d04',1,'uart.h']]],
+  ['rx_5ferror_16',['RX_ERROR',['../group__group__uart__enums.html#gga89362dd8bcbf0b7ffa72eb8a56ec578baed85ceecfcfd61d8985632dcd99ea4d9',1,'uart.h']]],
+  ['rx_5ffifo_5ferror_17',['rx_fifo_error',['../structuart__usr__lsr__status__bits__t.html#a2e64c9a5c5db8d4c9afe560da0889255',1,'uart_usr_lsr_status_bits_t']]],
+  ['rx_5ffifo_5ffull_18',['rx_fifo_full',['../structuart__usr__lsr__status__bits__t.html#a64670ced9ceaaf8d9bd1500c1a2cd73f',1,'uart_usr_lsr_status_bits_t']]],
+  ['rx_5ffifo_5fnot_5fempty_19',['rx_fifo_not_empty',['../structuart__usr__lsr__status__bits__t.html#ac0e6f45cd87606f913ebb694b35f35ea',1,'uart_usr_lsr_status_bits_t']]],
+  ['rx_5fin_5fprogress_20',['RX_IN_PROGRESS',['../group__group__uart__enums.html#gga89362dd8bcbf0b7ffa72eb8a56ec578ba9214f1cce242bb9ba2b5df6847161779',1,'uart.h']]],
+  ['rx_5fsample_5fdelay_21',['rx_sample_delay',['../structspi__config.html#a3a79bfd8d33ab86a95c4d06680ed8dc2',1,'spi_config']]]
+];

@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['dma_5fburst_5fsize_5fen_0',['dma_burst_size_en',['../group__group__dma__enums.html#ga585e672a158b4a8812ee036254319b9e',1,'dma.h']]],
+  ['dma_5fdonetype_5fen_1',['dma_donetype_en',['../group__group__dma__enums.html#gab7bb93c3cb3922ad26032c8333878aee',1,'dma.h']]],
+  ['dma_5ffifo_5fdepth_5fen_2',['dma_fifo_depth_en',['../group__group__dma__enums.html#ga70dfebd111d0e9c92a8d39663dbd04e2',1,'dma.h']]],
+  ['dma_5finterrupt_5fflags_5fen_3',['dma_interrupt_flags_en',['../group__group__dma__enums.html#ga0de0bbb1d26b2d6991a2e92dcc10411f',1,'dma.h']]],
+  ['dma_5foperation_5ftype_5fen_4',['dma_operation_type_en',['../group__group__dma__enums.html#gab57623918c5958b9657676c285a26ad0',1,'dma.h']]],
+  ['dma_5fprivilege_5fen_5',['dma_privilege_en',['../group__group__dma__enums.html#ga6d143b3692e49575390076fd9bdd9dfd',1,'dma.h']]],
+  ['dma_5freg_5freload_5ftype_5fen_6',['dma_reg_reload_type_en',['../group__group__dma__enums.html#ga58bdb24368b325301a27d3ca04011008',1,'dma.h']]],
+  ['dma_5fsecurity_5fen_7',['dma_security_en',['../group__group__dma__enums.html#ga2567136893da4131f6c679d778878ee8',1,'dma.h']]],
+  ['dma_5fstate_5fen_8',['dma_state_en',['../group__group__dma__enums.html#ga0855090ca351d0086d12b9b56fcc41c1',1,'dma.h']]],
+  ['dma_5fstatus_5fen_9',['dma_status_en',['../group__group__dma__enums.html#ga323e1df531b3cfa23619670724514eb4',1,'dma.h']]],
+  ['dma_5fstatus_5fflags_5fen_10',['dma_status_flags_en',['../group__group__dma__enums.html#gac2ddf4705d0825e6e67c9f3eb82c0c40',1,'dma.h']]],
+  ['dma_5fsw_5ftrigger_5ftype_5fen_11',['dma_sw_trigger_type_en',['../group__group__dma__enums.html#ga80e83753bc2b7318e2f0b822d482e354',1,'dma.h']]],
+  ['dma_5ftransfer_5fmode_5fen_12',['dma_transfer_mode_en',['../group__group__dma__enums.html#ga0597fe1d6883ad25f47c10cacb90fe53',1,'dma.h']]],
+  ['dma_5ftransfer_5foptions_5fen_13',['dma_transfer_options_en',['../group__group__dma__enums.html#ga69df1c8536d8380054e8836a7ebd9733',1,'dma.h']]],
+  ['dma_5ftransfer_5ftype_5fen_14',['dma_transfer_type_en',['../group__group__dma__enums.html#ga9a3b2278cf460468edbda777c90db6cd',1,'dma.h']]],
+  ['dma_5ftrigger_5fmode_5fen_15',['dma_trigger_mode_en',['../group__group__dma__enums.html#ga3982c2281ccb2acc3ee78463ecb0161f',1,'dma.h']]],
+  ['dma_5ftrigger_5ftarget_5fen_16',['dma_trigger_target_en',['../group__group__dma__enums.html#ga14a7c9f55db3d06c7db4d021d6bd76d2',1,'dma.h']]],
+  ['dma_5ftrigger_5ftype_5fen_17',['dma_trigger_type_en',['../group__group__dma__enums.html#gacd7a27c22a38e096d1f46fe11f4bcb35',1,'dma.h']]],
+  ['dma_5funit_5fsize_5fen_18',['dma_unit_size_en',['../group__group__dma__enums.html#gacb71933896161321885b02e1f1094915',1,'dma.h']]]
+];
