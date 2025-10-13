@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['scl_5fstuck_5ftimeout_5fms_0',['scl_stuck_timeout_ms',['../structi2c__controller__config__t.html#aee4a9920f25ec0240ff9d795850d7ca7',1,'i2c_controller_config_t::scl_stuck_timeout_ms'],['../structi2c__target__config__t.html#a85f9ecbc27b8c30239424e3ef7a68c3d',1,'i2c_target_config_t::scl_stuck_timeout_ms']]],
+  ['sda_5fstuck_5ftimeout_5fms_1',['sda_stuck_timeout_ms',['../structi2c__controller__config__t.html#a5946a1fd1e25f8e64292f1709155bc68',1,'i2c_controller_config_t::sda_stuck_timeout_ms'],['../structi2c__target__config__t.html#af03e0fd10553a51625f8b08968e4a180',1,'i2c_target_config_t::sda_stuck_timeout_ms']]],
+  ['security_2',['security',['../structdma__channel__attr__t.html#a525eaa4d4d960017a64f520fdb05c19a',1,'dma_channel_attr_t']]],
+  ['send_5fstop_3',['send_stop',['../structi2c__blocking__config__t.html#afe2500a727f9df74e275ab08d4e9a888',1,'i2c_blocking_config_t::send_stop'],['../structi2c__nonblocking__config__t.html#acd359319f44a2927e8568fb09132945b',1,'i2c_nonblocking_config_t::send_stop']]],
+  ['size_4',['size',['../structi2c__blocking__config__t.html#a72d55637f6977237dc759ec107793fab',1,'i2c_blocking_config_t::size'],['../structi2c__nonblocking__config__t.html#a418d954ebde2db51dadde5d3b5ccdf42',1,'i2c_nonblocking_config_t::size']]],
+  ['speed_5',['speed',['../structi2c__controller__config__t.html#a32deef8ac1b3a053220453d0ac291208',1,'i2c_controller_config_t::speed'],['../structi2c__target__config__t.html#a1f38da866a83d1d5c2599503d19ed2dc',1,'i2c_target_config_t::speed']]],
+  ['spi_5fclk_5ffreq_5fkhz_6',['spi_clk_freq_khz',['../structspi__config.html#ad144c8f4a08c40c35631db83e582c894',1,'spi_config']]],
+  ['spi_5fcontroller_7',['spi_controller',['../structspi__config.html#a88359fc1545eaef783006f815235b1bb',1,'spi_config']]],
+  ['src_5faddr_8',['src_addr',['../structdma__1d__config__t.html#a52253e00738f5239a014b7d4e0b6fe4a',1,'dma_1d_config_t::src_addr'],['../structdma__2d__config__t.html#aa1aa271e5830008d037a0dabfe17f328',1,'dma_2d_config_t::src_addr']]],
+  ['src_5fburst_5fsize_9',['src_burst_size',['../structdma__1d__config__t.html#a63a1d5c685f7f92e6ef29eebc7b60d56',1,'dma_1d_config_t::src_burst_size'],['../structdma__2d__config__t.html#a16319e9b480bab13c3040d569b379e05',1,'dma_2d_config_t::src_burst_size']]],
+  ['src_5fprivilege_10',['src_privilege',['../structdma__channel__config__t.html#a9841593c154c369d683d2562a71b0308',1,'dma_channel_config_t']]],
+  ['src_5fsecurity_11',['src_security',['../structdma__channel__config__t.html#af0c16ea6bc2073c4f803f88315941c69',1,'dma_channel_config_t']]],
+  ['src_5ftemplate_12',['src_template',['../structdma__template__config__t.html#a7ed20e399253887aab61bb3c42a628d7',1,'dma_template_config_t']]],
+  ['src_5ftemplate_5fsize_13',['src_template_size',['../structdma__template__config__t.html#ae8067dbcd057a255dc67085fdb0b46b9',1,'dma_template_config_t']]],
+  ['src_5ftrigger_14',['src_trigger',['../structdma__channel__config__t.html#a10cdcf8aab8c7db641ab1cbdbdde59d8',1,'dma_channel_config_t']]],
+  ['src_5fx_5fincrement_15',['src_x_increment',['../structdma__1d__config__t.html#a35c8883d0cb8d2dae21181aa3acf55b0',1,'dma_1d_config_t::src_x_increment'],['../structdma__2d__config__t.html#a9fff60ccc0b577eb3fc20c809e12aaa9',1,'dma_2d_config_t::src_x_increment']]],
+  ['src_5fx_5fsize_16',['src_x_size',['../structdma__2d__config__t.html#ae9a0365ad0837719611d3c6d4d9972da',1,'dma_2d_config_t']]],
+  ['src_5fy_5fsize_17',['src_y_size',['../structdma__2d__config__t.html#a07669b50e20db27c2f98198cf98178a0',1,'dma_2d_config_t']]],
+  ['src_5fy_5fstride_18',['src_y_stride',['../structdma__2d__config__t.html#a676390ecfd94a96d3ada6eb22a250b90',1,'dma_2d_config_t']]],
+  ['stop_5fbits_19',['stop_bits',['../structuart__config__t.html#a8ac7006e17594389c5ad3a74d893ba63',1,'uart_config_t']]],
+  ['support_5f2d_20',['support_2d',['../structdma__channel__attr__t.html#a0f18c1adbc50b980e0f33e7165e5eb15',1,'dma_channel_attr_t']]],
+  ['sw_5ftrig_5ftype_21',['sw_trig_type',['../structdma__sw__trigger__config__t.html#a1df2eded2deddbbdd7ad45f5a3f9de78',1,'dma_sw_trigger_config_t']]]
+];

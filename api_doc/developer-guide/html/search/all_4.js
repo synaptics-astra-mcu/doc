@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['edge_5fint_0',['edge_int',['../structgpio__pin__config__t.html#acc508f5bb4ad957826923cc07b4be1b8',1,'gpio_pin_config_t']]],
+  ['elec_5fconfig_1',['elec_config',['../structpinmux__config__all__t.html#a075142af87c15079fc25173073753c37',1,'pinmux_config_all_t']]],
+  ['electrical_20configuration_20structure_2',['Electrical Configuration Structure',['../group__group__pinmux__driver.html#snippet_elec_cfg',1,'']]],
+  ['electrical_20parameter_3',['Getting a Single Electrical Parameter',['../group__group__pinmux__driver.html#snippet_get_elec_param',1,'']]],
+  ['electrical_20parameters_4',['Setting All Electrical Parameters',['../group__group__pinmux__driver.html#snippet_set_elec_config',1,'']]],
+  ['enable_5',['I2C Enable',['../group__group__i2c__driver.html#i2c_enable',1,'']]],
+  ['enable_6',['enable',['../structdma__hw__trigger__config__t.html#a46eb2001ed772985855c22185248890b',1,'dma_hw_trigger_config_t']]],
+  ['enable_5fauto_5frestart_7',['enable_auto_restart',['../structdma__auto__restart__config__t.html#ad135728d6765c45e4f47f3f40f0a1f7a',1,'dma_auto_restart_config_t']]],
+  ['enable_5fbus_5fclear_8',['enable_bus_clear',['../structi2c__controller__config__t.html#a19c8cc153dc68ba1b58c2e4ea9d918ea',1,'i2c_controller_config_t']]],
+  ['enable_5fhold_9',['enable_hold',['../structpinmux__elec__config__t.html#a5ccdd3072d8fd63f11f8005b61707fa7',1,'pinmux_elec_config_t']]],
+  ['enable_5finput_10',['enable_input',['../structpinmux__elec__config__t.html#a40bd9b6006e7fc1f6c1b3d393950f3b4',1,'pinmux_elec_config_t']]],
+  ['enable_5fschmitt_5ftrig_11',['enable_schmitt_trig',['../structpinmux__elec__config__t.html#a2f2d7ad46551b984b240369fceb459e3',1,'pinmux_elec_config_t']]],
+  ['enable_5fslew_5frate_12',['enable_slew_rate',['../structpinmux__elec__config__t.html#a1f0c817f0c353c6b9b035f8157ff2f21',1,'pinmux_elec_config_t']]],
+  ['enable_5ftemplate_13',['enable_template',['../structdma__template__config__t.html#a342fc887d8e9d329bdb730ae6f50da47',1,'dma_template_config_t']]],
+  ['enableautoresponseerrorcheck_14',['enableAutoResponseErrorCheck',['../structsdio__cmd__config__t.html#a3adafff199cec7dbb65565ce21d69104',1,'sdio_cmd_config_t']]],
+  ['enablecrccheck_15',['enableCrcCheck',['../structsdio__cmd__config__t.html#a155704a6932b8db735055bba8016c77f',1,'sdio_cmd_config_t']]],
+  ['enabledma_16',['enableDma',['../structsdio__data__config__t.html#a70d5246832afc2f1c25a11c3f260a458',1,'sdio_data_config_t::enableDma'],['../structsdio__write__read__config__t.html#a82b5ace1181baae68003bc74d2e739e8',1,'sdio_write_read_config_t::enableDma']]],
+  ['enableidxcheck_17',['enableIdxCheck',['../structsdio__cmd__config__t.html#a94407a421715b1fc7f8d3ca8c58b9da8',1,'sdio_cmd_config_t']]],
+  ['enableintatblockgap_18',['enableIntAtBlockGap',['../structsdio__data__config__t.html#aab5eebdfa2f6be85d9875d899982d0ba',1,'sdio_data_config_t']]],
+  ['enreliablewrite_19',['enReliableWrite',['../structsdio__data__config__t.html#af23a13d246130b23691bb153a7d82f52',1,'sdio_data_config_t::enReliableWrite'],['../structsdio__write__read__config__t.html#a65c9372212614b65e40954a186c2de1d',1,'sdio_write_read_config_t::enReliableWrite']]],
+  ['enumerated_20types_20',['Enumerated Types',['../group__group__clk__enums.html',1,'Enumerated Types'],['../group__group__dma__enums.html',1,'Enumerated Types'],['../group__group__gpio__enums.html',1,'Enumerated Types'],['../group__group__i2c__enums.html',1,'Enumerated Types'],['../group__group__pinmux__enums.html',1,'Enumerated Types'],['../group__group__sdio__enums.html',1,'Enumerated Types'],['../group__group__spi__enums.html',1,'Enumerated Types'],['../group__group__uart__enums.html',1,'Enumerated Types']]],
+  ['enums_21',['Enums',['../group___c_l_k___e_n_u_m_s.html',1,'Clock Enums'],['../group___g_p_i_o___e_n_u_m_s.html',1,'GPIO Enums'],['../group___i2_c___e_n_u_m_s.html',1,'I2C Enums'],['../group___p_i_n_m_u_x___e_n_u_m_s.html',1,'Pinmux Enums'],['../group___s_d_i_o___e_n_u_m_s.html',1,'SDIO Enums'],['../group___s_p_i___e_n_u_m_s.html',1,'SPI Enums'],['../group___u_a_r_t___e_n_u_m_s.html',1,'UART Enums']]],
+  ['example_20of_20configuring_20a_20gpio_20pin_20for_20interrupt_3a_22',['Example of configuring a GPIO pin for interrupt:',['../group__group__gpio__driver.html#GPIO_INPUT_CONFIG',1,'']]],
+  ['example_20of_20port_20level_20operations_23',['Example of port-level operations',['../group__group__gpio__driver.html#sub_section',1,'']]],
+  ['extended_20i_20o_20transfer_20operation_20cmd53_24',['SDIO Extended I/O Transfer Operation (CMD53)',['../group__group__sdio__driver.html#SDIO_CMD53_OPERATION',1,'']]]
+];
