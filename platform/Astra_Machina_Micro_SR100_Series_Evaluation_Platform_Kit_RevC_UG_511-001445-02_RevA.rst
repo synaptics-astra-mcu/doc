@@ -4,7 +4,7 @@
   later -
 | User Guide
 
-Astra Machina Micro SR110 Series Evaluation Platform Kit RevC
+Astra Machina Micro SR100 Series Evaluation Platform Kit RevC
 =============================================================
 
 

@@ -7,8 +7,8 @@ This section provides comprehensive hardware documentation for the SR110 evaluat
    :hidden:
    :glob:
 
-   Astra_Machina_Micro_SR110_Series_Evaluation_Platform_Kit_RevC_UG_511-001445-02_RevA
+   Astra_Machina_Micro_SR100_Series_Evaluation_Platform_Kit_RevC_UG_511-001445-02_RevA
 
 **Platform Documentation:**
 
-- :doc:`Astra_Machina_Micro_SR110_Series_Evaluation_Platform_Kit_RevC_UG_511-001445-02_RevA` - **SR100 Series Rev C Technical Guide** - Detailed technical documentation for Rev C hardware, including pinout diagrams, electrical specifications, and advanced configuration options.
+- :doc:`Astra_Machina_Micro_SR100_Series_Evaluation_Platform_Kit_RevC_UG_511-001445-02_RevA` - **SR100 Series Rev C Technical Guide** - Detailed technical documentation for Rev C hardware, including pinout diagrams, electrical specifications, and advanced configuration options.
