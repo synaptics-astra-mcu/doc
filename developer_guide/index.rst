@@ -12,3 +12,4 @@ This section provides comprehensive development resources for building custom ap
 **Development Resources by Platform:**
 
 - :doc:`sr110_index` - **SR110 Developer Guide** - Complete development documentation for the SR110 platform, including VSCode extension, debugging tools, and advanced development workflows.
+- `GitHub Source Code <https://github.com/synaptics-astra-mcu/srsdk>`_ - The SRSDK source code is available on GitHub. Developers can clone the repository to access the complete SDK codebase, examples, and build configurations.
