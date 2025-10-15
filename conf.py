@@ -25,6 +25,9 @@ extensions = [
     "synaptics_sphinx_theme",
 ]
 
+# Disable "Edit on GitHub" link by setting github_repository to None
+github_repository = None
+
 #extensions = [ "synaptics_sphinx_theme", ]
 
 exclude_patterns = [
@@ -64,9 +67,10 @@ html_theme_options = {
 
 html_context = {
   'display_github': False,
-  'github_repo': 'syna-astra-mcu-dev.github.io',
-  'github_version': 'main',
-  'conf_py_path': '/',
+  'github_user': None,
+  'github_repo': None,
+  'github_version': None,
+  'conf_py_path': None,
   'version': release
 }
 
