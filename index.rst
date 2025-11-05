@@ -45,7 +45,7 @@ Explore our comprehensive documentation organized by your specific needs and exp
 
 :doc:`subject/index`
 
-  **Subject-Specific Guides** - Detailed documentation covering specific topics, modules, and advanced features of the Astra SRSDK platform.
+  **Subject-Specific Guides** - Detailed documentation covering specific topics, modules, and advanced features of the Astra SRSDK platforms.
 
 :doc:`platform/index`
 
