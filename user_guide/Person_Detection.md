@@ -8,21 +8,21 @@ The UC Person Detection application is designed to identify and locate persons w
 
 ### Prerequisites
 - [GCC/AC6 build environment setup](../developer_guide/build_env.rst)
-- [Astra SRSDK VS Code Extension](../developer_guide/SRSDK_VSCode_Extension_Userguide.rst)
-- [SynaToolkit](../subject/toolkit/toolkit.rst)
-
+- [Astra SRSDK VS Code Extension installed and configured](../developer_guide/SRSDK_VSCode_Extension_Userguide.rst)
+- [SynaToolkit installed and configured](../subject/toolkit/toolkit.rst)
 
 ### Configuration and Build Steps
 
-1. **Select Default Configuration**
+1. **Select Default Configuration and build sdk + example**
+   This will apply the defconfig, then build and install the SDK package, generating the required `.elf` or `.axf` files for deployment using the installed package.
    ```bash
-   make cm55_person_detection_defconfig
+   make cm55_person_detection_defconfig BOARD=SR110_RDK BUILD=SRSDK
    ```
    This configuration uses WQVGA resolution by default.
 
-2. **Optional Configuration:**
+2. **Edit default configs and build sdk + example**
 
-   >💡Tip: Run `make menuconfig` to modify the configuration via a GUI.
+   >💡Tip: Run `make cm55_person_detection_defconfig BOARD=SR110_RDK BUILD=SRSDK EDIT=1` to modify the configuration via a GUI and proceed with build.
 
    | Configuration | Menu Navigation | Action |
    |---------------|-----------------|---------|
@@ -30,18 +30,19 @@ The UC Person Detection application is designed to identify and locate persons w
    | **WQVGA in LP Sense** | `COMPONENTS CONFIGURATION → Drivers` | Enable `MODULE_LP_SENSE_ENABLED` |
    | **Static Image** | `COMPONENTS CONFIGURATION → Off Chip Components` | Disable `MODULE_IMAGE_SENSOR_ENABLED` |
 
-3. **Build the Application**
-   The build process will generate the required `.elf` or `.axf` files for deployment.
+3. **Rebuild the Application using pre-built package**
+   The build process will produce the necessary .elf or .axf files for deployment with the installed package.
    ```bash
-   make build or make
+   make cm55_person_detection_defconfig BOARD=SR110_RDK or make
    ```
+   **Note:** We need to have the pre-built SRSDK package before triggering the example alone build.
 
 ## Deployment and Execution
 
 ### Setup and Flashing
 
 1. **Open the VSCode SRSDK Extension and connect to the Debug IC USB port on the Astra Machina Micro Kit.**
-   For detailed steps refer to the [Quick Start Kit](../quickstart/Astra_SRSDK_Quick_Start_Guide.rst).
+   For detailed steps refer to the [Astra Machina Micro Eval Kit](../quickstart/Astra_SRSDK_Quick_Start_Guide.rst) .
 
 2. **Generate Binary Files**
    - FW Binary generation
@@ -64,13 +65,24 @@ The UC Person Detection application is designed to identify and locate persons w
    - Flash the generated `B0_flash_full_image_GD25LE128_67Mhz_secured.bin` file directly to the device. Note: Model weights is placed in SRAM.
    
    **For VGA resolution:**
-   - Flash the pre-generated model binary: `person_detection_flash(448x640).bin`. Due to memory constraints, need to burn the Model weights to Flash. 
-     - Location: `examples/vision_examples/uc_person_detection/models/`
-     - Flash address: `0x629000`
-     - **Calculation Note:** Flash address is determined by the sum of the `host_image` size and the `image_offset_SDK_image_B_offset` (parameter, which is defined within `NVM_data.json`). It's crucial that the resulting address is aligned to a sector boundary (a multiple of 4096 bytes).This calculated resulting address should then be assigned to the `image_offset_Model_A_offset` macro in your `NVM_data.json` file.
-   - Flash the generated `B0_flash_full_image_GD25LE128_67Mhz_secured.bin` file
 
-   Refer to the [Astra SRSDK VSCode Extension User Guide](../developer_guide/SRSDK_VSCode_Extension_Userguide.rst) for detailed instructions on flashing. 
+   - For VGA resolution, flash the **model binary first**, and then proceed to flash the **generated use case binary**.
+
+   - **Steps:**
+   1. Flash the pre-generated model binary: `person_detection_flash(448x640).bin`.
+      Due to memory constraints, the model weights need to be stored in Flash.
+      Browse and select this binary from the following location and use **"Burn file to flash"**.
+      Enter the specified flash address in the **"Flash Offset"** field and start flashing.
+      - **Location:** `examples/vision_examples/uc_person_detection/models/`
+      - **Flash address:** `0x629000`
+      - **Calculation Note:**
+         The flash address is determined by adding the `host_image` size and the `image_offset_SDK_image_B_offset` parameter (defined in `NVM_data.json`).
+         Ensure the resulting address is aligned to a sector boundary (a multiple of 4096 bytes).
+         This calculated address should then be assigned to the `image_offset_Model_A_offset` macro in your `NVM_data.json` file.
+
+   2. Flash the generated `B0_flash_full_image_GD25LE128_67Mhz_secured.bin` file.
+
+   Refer to the [Astra SRSDK VSCode Extension User Guide](../developer_guide/SRSDK_VSCode_Extension_Userguide.rst) for detailed instructions on flashing.
 
 4. **Device Reset**
    Reset the target device after flashing is complete.
@@ -81,7 +93,7 @@ The placement of the model (in **SRAM** or **FLASH**) is determined by its memor
 
 ### Running the Application
 
-1. **Open SynaToolkit_2.5.0**
+1. **Open SynaToolkit_2.6.0**
 
 2. **Before running the application, make sure to connect a USB cable to the Application SR110 USB port on the Astra Machina Micro board and then press the reset button**
 

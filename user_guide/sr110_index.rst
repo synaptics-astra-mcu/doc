@@ -12,6 +12,7 @@ This section provides comprehensive user guides and demo applications for the SR
    Person_Detection
    Person_Segmentation
    Person_Pose_Detection
+   Hand_Gesture_Detection
    Jpeg_Preroll
    spi_preroll_protocol
    door_bell_readme
@@ -30,6 +31,9 @@ This section provides comprehensive user guides and demo applications for the SR
 
 :doc:`Person_Pose_Detection`
    **Person Pose Detection Demo** - Comprehensive guide for pose detection applications, including keypoint detection and pose analysis features.
+
+:doc:`Hand_Gesture_Detection`
+   **Hand Guesture Detection Demo** - A complete guide for hand guesture detection applications, perform real-time gesture recognition with hand detection, single hand tracking and hand-key point estimation.
 
 **Data Transfer & Communication:**
 

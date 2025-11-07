@@ -10,6 +10,7 @@ This section provides comprehensive development resources for building custom ap
    SRSDK_Build_System
    SRSDK_VSCode_Extension_Userguide
    build_env
+   Docker_Userguide
 
 **Development Environment Setup:**
 
@@ -31,3 +32,7 @@ This section provides comprehensive development resources for building custom ap
 
 :doc:`build_env`
    **Build Environment Setup** - Comprehensive guides for setting up your development environment across different operating systems and compiler toolchains (GCC/ARM Compiler).
+
+:doc:`Docker_Userguide`
+   **Docker Setup Guide** - A complete guide to setting up Docker, build images, and generating binaries on Windows, Linux, and macOS.
+

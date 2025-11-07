@@ -1,10 +1,10 @@
 # Doorbell ML Application
 
-## Overview
+## 1. Overview
 
 The **Doorbell sample application** integrates the `UC_JPEG_PREROLL` and `IMAGE_STITCHING` use cases to detect a person within the camera’s field of view and capture high-resolution Full HD (FHD) images upon detection.
 
-### Image Delivery Options
+### 1.1 Image Delivery Options
 
 Captured images can be delivered in two ways:
 
@@ -15,50 +15,51 @@ Captured images can be delivered in two ways:
 
 ---
 
-## Build Instructions
+## 2. Build Instructions
 
-### Prerequisites
+### 2.1 Prerequisites
 
 - [Astra SRSDK VS Code Extension](../developer_guide/SRSDK_VSCode_Extension_Userguide.rst)
 - [SynaToolkit](../subject/toolkit/toolkit.rst)
 
-### Build Options
+### 2.2 Build Options
 
 | Method           | Steps                                                                                           | Notes                                           |
 |------------------|-------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | VS Code Extension| Import SDK → Build or Clean SDK in “Imported Repos” → select configs (Application, Board, Compiler) → Build | GUI workflow; logs appear in VS Code terminal. |
 | Native CLI       | Run `make cm55_doorbell_defconfig` → `make menuconfig` (optional) → `make`                     | Suitable for native builds                     |
 
-### Native Configuration and Build Steps
+### 2.2.1 Native Configuration and Build Steps
 
-1. **Select Default Configuration**
+1. **Configure WAKEUP_TRIGGER**
+   Navigate to: `uc_jpeg_preroll.c` change to CONFIG_WAKEUP_TRIGGER set to 2 for (GPIO-based wakeup)
+
+2. **Select Default Configuration and Build SDK + Example**
+   This will apply the defconfig, then build and install the SDK package, generating the required `.elf` or `.axf` files for deployment.
    ```bash
-   make cm55_doorbell_defconfig
+   make cm55_doorbell_defconfig BOARD=SR110_RDK BUILD=SRSDK
    ```
    This configuration uses CONFIG_WAKEUP_TRIGGER set to 1 (Timer-based wakeup).
 
-2. **Configure WAKEUP_TRIGGER**
-   Navigate to: `uc_jpeg_preroll.c` change to CONFIG_WAKEUP_TRIGGER set to 2 for (GPIO-based wakeup)
-
-3. **Build the Application**
-   The build process will generate the required `.elf` or `.axf` files for deployment.
+3. **Rebuild the Application using pre-built package**
+   The build process will produce the necessary `.elf` or `.axf` files for deployment with the installed package.
    ```bash
-   make build or make
+   make cm55_doorbell_defconfig BOARD=SR110_RDK or make
    ```
 
-## Deployment and Execution
+## 3. Deployment and Execution
 
-### Setup and Flashing
+### 3.1 Setup and Flashing
 
 1. **Open the Astra SRSDK VSCode Extension and connect to the Debug IC USB port on the Astra Machina Micro Kit.**
-   For detailed steps refer to the [Quick Start Kit](../quickstart/Astra_SRSDK_Quick_Start_Guide.rst).
+   For detailed steps refer to the [Astra Machina Micro Eval Kit](../quickstart/Astra_SRSDK_Quick_Start_Guide.rst) .
 
 2. **Generate Binary Files**
    - FW Binary generation
       - Navigate to **AXF/ELF TO BIN** → **Bin Conversion** in Astra SRSDK VSCode Extension
       - Load the generated `sr110_cm55_fw.elf` or `sr110_cm55_fw.axf` file
       - Click **Run Image Generator** to create the binary files
-      - Refer to [Astra SRSDK VSCode Extension User Guide](../developer_guide/Astra_MCU_SDK_VSCode_Extension_Userguide.rst).
+      - Refer to [Astra SRSDK VSCode Extension User Guide](../developer_guide/SRSDK_VSCode_Extension_Userguide.rst).
    - Model Binary generation (to place the Model in Flash)
       - To generate `.bin` file for TFLite models, please refer to the [Vela compilation guide](Astra_SRSDK_vela_compilation_tflite_model.md).
 
@@ -75,15 +76,15 @@ Captured images can be delivered in two ways:
      - **Calculation Note:** Flash address is determined by the sum of the `host_image` size and the `image_offset_SDK_image_B_offset` (parameter, which is defined within `NVM_data.json`). It's crucial that the resulting address is aligned to a sector boundary (a multiple of 4096 bytes).This calculated resulting address should then be assigned to the `image_offset_Model_A_offset` macro in your `NVM_data.json` file.
    - Flash the generated `B0_flash_full_image_GD25LE128_67Mhz_secured.bin` file.
 
-   Refer to the [Astra SRSDK VSCode Extension User Guide](../developer_guide/Astra_MCU_SDK_VSCode_Extension_Userguide.rst) for detailed instructions on flashing.
+   Refer to the [Astra SRSDK VSCode Extension User Guide](../developer_guide/SRSDK_VSCode_Extension_Userguide.rst) for detailed instructions on flashing.
 
 ### Note:
 
 The placement of the model (in **SRAM** or **FLASH**) is determined by its memory requirements. Models that exceed the available **SRAM** capacity, considering factors like their weights and the necessary **tensor arena** for inference, will be stored in **FLASH**.
 
-## Running the Application
+## 4. Running the Application
 
-### Options
+### 4.1 Options
 
 | Method           | Steps                                                                 |
 |------------------|-----------------------------------------------------------------------|
@@ -102,16 +103,16 @@ The placement of the model (in **SRAM** or **FLASH**) is determined by its memor
 
 ---
 
-### Wakeup Triggers
+### 4.2 Wakeup Triggers
 
 | Trigger | Config                     | Behavior                                           |
 |---------|----------------------------|----------------------------------------------------|
 | Timer   | `CONFIG_WAKEUP_TRIGGER=1`  | Device wakes every 10 seconds.                    |
 | GPIO    | `CONFIG_WAKEUP_TRIGGER=2`  | Jumper from GND → UART0 RX after 10s of hibernation. |
 
-## SPI Pre-roll Use Case
+## 5. SPI Pre-roll Use Case
 
-### Overview
+### 5.1 Overview
 The SPI Pre-roll feature enables UC_JPEG_PREROLL to capture JPEG pre-roll frames and stream
 them to a **controller (receiver)** over **SPI**.
 
@@ -122,50 +123,50 @@ This mechanism ensures that when detection is triggered, the system can send pre
 
 The SPI Pre-roll transfer follows a protocol as described in [SPI Pre-roll Protocol](spi_preroll_protocol.md)
 
-## Configurations
+## 5.2 Configurations
 
-### Peripheral (Sender) Configurations
+### 5.2.1 Peripheral (Sender) Configurations
 
 Run the Doorbell defconfig to apply the default settings for the doorbell use case. Enable SPI module by enabling **MODULE_SPI_ENABLED** and build the image. With the settings, the device will operate as the SPI pre-roll Peripheral (Sender).
 
-```bash
+```makefile
 make cm55_doorbell_defconfig
 make menuconfig #Enable SPI and LOGGER_IF_UART_0
 make
 ```
 **Remember** enable LOGGER_IF_UART_0 before building the peripheral image with **LOGGER_IF_UART_0** in the menuconfig.
 
-### Controller (Receiver) Configurations
+### 5.2.2 Controller (Receiver) Configurations
 
 Run the SPI Sample App defconfig to apply the default settings for the SPI Sample application.
 Enable **SPI_PREROLL_TRANSFER** in `spi_sample_app.c` and **SPI_DOUBLE_BOARD_MODE**
 in `spi_sample_app.h` and build the image.
 With these settings, the device will operate as the SPI pre-roll Controller (Receiver).
 
-```bash
+```makefile
 make cm55_spi_sample_app_defconfig
 make
 ```
 
-## Hardware Setup
+## 5.3 Hardware Setup
 
 The following are the pins that are used for SPI Communication,
 
-### Controller Pins
+### 5.3.1 Controller Pins
 
 1. Pin 11 - SPI_MSTR_CLK (GPIO_22)
 2. Pin 12 - SPI_MSTR_CS (GPIO_21)
 3. Pin 13 - SPI_MSTR_MISO (GPIO_24)
 4. Pin 14 - SPI_MSTR_MOSI (GPIO_23)
 
-### Peripheral Pins
+### 5.3.2 Peripheral Pins
 
 1. Pin 7 - SPI_SLV_CLK (GPIO_6)
 2. pin 8 - SPI_SLC_CS (GPIO_8)
 3. pin 9 - SPI_SLV_MISO (GPIO_7)
 4. pin 10 - SPI_SLV_MOSI (GPIO_9)
 
-### Connections
+### 5.3.3 Connections
 
 1. Pin 11 (SPI_MSTR_CLK) →  Pin 7 (SPI_SLV_CLK)
 2. Pin 12 (SPI_MSTR_CS) →  Pin 8 (SPI_SLV_CS)
@@ -174,16 +175,16 @@ The following are the pins that are used for SPI Communication,
 
 **Remember**, The logs will be seen via UART 0. Enable UART 0 log via menuconfig. It is recommended to have the DAP SR110 not powered up because of SPI pin conflict in RDK.
 
-## Connection Images
+## 5.3.4 Connection Images
 
    ![SPI Pre-roll Connections 1](../_static/Assets/Images/user_guide/jpeg_preroll/spi_preroll_connections_1.png)
    ![SPI Pre-roll Connections  2](../_static/Assets/Images/user_guide/jpeg_preroll/spi_preroll_connections_2.png)
 
-## Test Procedure
+## 5.4 Test Procedure
 
 The test can begin once the images are built, flashed onto the respective devices, and the hardware setup is completed. The pins described above represent the required SPI connections. In addition, the Ground lines of both boards must be connected to ensure a stable link. Failure to do so may result in corrupted or invalid data.
 
-### Peripheral (Sender) Steps
+### 5.4.1 Peripheral (Sender) Steps
 
 Before flashing the Peripheral image, the model binary must first be loaded at address **0x629000**.
 Once the model is loaded, flash the Peripheral image and reset the device.
@@ -192,7 +193,7 @@ On reset, the device enters hibernation and capture pre-roll images. Once the de
 ![Peripheral Device Logs](../_static/Assets/Images/user_guide/jpeg_preroll/peripheral_transmit_1.png)
 ![Peripheral Device Logs](../_static/Assets/Images/user_guide/jpeg_preroll/peripheral_transmit_2.png)
 
-### Controller (Receiver) Steps
+### 5.4.2 Controller (Receiver) Steps
 
 Flash the Controller image, but reset the controller device only after the peripheral wakes up
 from hibernation and begins the peripheral transfer.
@@ -202,7 +203,7 @@ from the controller.
    ![Controller Device Logs 1](../_static/Assets/Images/user_guide/jpeg_preroll/controller_receive_1.png)
    ![Controller Device Logs 2](../_static/Assets/Images/user_guide/jpeg_preroll/controller_receive_2.png)
 
-## Expected Results
+## 5.6 Expected Results
 
 Controller initiates the transfer by sending a pre-roll request header. Peripheral responds with the stream header, all pre-roll JPEG frames, and the stream end marker over SPI.
 Controller successfully receives and validates each frame, including headers, CRC, and footers. We can confirm successful reception of pre-roll frames with logs.

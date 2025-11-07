@@ -8,27 +8,25 @@ The Serial Camera Doorbell sample application uses the K351 serial camera sensor
 
 ### Prerequisites
 - [GCC/AC6 build environment setup](../developer_guide/build_env.rst)
-- [Astra SRSDK VS Code Extension](../developer_guide/SRSDK_VSCode_Extension_Userguide.rst)
-- [SynaToolkit](../subject/toolkit/toolkit.rst)
-
-
-### Configuration and Build Steps
+- [Astra SRSDK VS Code Extension installed and configured](../developer_guide/SRSDK_VSCode_Extension_Userguide.rst)
+- [SynaToolkit installed and configured](../subject/toolkit/toolkit.rst)
 
 ### Configuration and Build Steps
 
-1. **Select Default Configuration**
+1. **Configure WAKEUP_TRIGGER**
+   Navigate to: `uc_jpeg_preroll.c` change to CONFIG_WAKEUP_TRIGGER set to 2 for (GPIO-based wakeup)
+
+2. **Select Default Configuration and Build SDK + Example**
+   This will apply the defconfig, then build and install the SDK package, generating the required `.elf` or `.axf` files for deployment.
    ```bash
-   make cm55_serial_camera_door_bell_defconfig
+   make cm55_serial_camera_door_bell_defconfig BOARD=SR110_RDK BUILD=SRSDK
    ```
    This configuration uses CONFIG_WAKEUP_TRIGGER set to 1 (Timer-based wakeup).
 
-2. **Configure WAKEUP_TRIGGER**
-   Navigate to: `uc_jpeg_preroll.c` change to CONFIG_WAKEUP_TRIGGER set to 2 for (GPIO-based wakeup)
- 
-3. **Build the Application**
-   The build process will generate the required `.elf` or `.axf` files for deployment.
+3. **Rebuild the Application using pre-built package**
+   The build process will produce the necessary `.elf` or `.axf` files for deployment with the installed package.
    ```bash
-   make build or make
+   make cm55_serial_camera_door_bell_defconfig BOARD=SR110_RDK or make
    ```
 
 ## Deployment and Execution
@@ -36,7 +34,7 @@ The Serial Camera Doorbell sample application uses the K351 serial camera sensor
 ### Setup and Flashing
 
 1. **Open the Astra SRSDK VSCode Extension and connect to the Debug IC USB port on the Astra Machina Micro Kit.**
-   For detailed steps refer to the [Quick Start Kit](../quickstart/Astra_SRSDK_Quick_Start_Guide.rst).
+   For detailed steps refer to the [Astra Machina Micro Eval Kit](../quickstart/Astra_SRSDK_Quick_Start_Guide.rst) .
 
 2. **Generate Binary Files**
    - FW Binary generation
@@ -68,7 +66,7 @@ The placement of the model (in **SRAM** or **FLASH**) is determined by its memor
 
 ### Running the Application 
  
-1. **Open SynaToolkit_2.5.0**
+1. **Open SynaToolkit_2.6.0**
 
 2. **Before running the application, make sure to connect a USB cable to the Application SR110 USB port on the Astra Machina Micro board and then press the reset button**
    - For logging output, connect to DAP logger port 

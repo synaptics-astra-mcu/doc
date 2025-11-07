@@ -3,8 +3,9 @@ Extension Installation
 
 **Pre-requisites:**
 
-1. Before using the extension, ensure the latest version of vscode is
-   installed and code command is available in your terminal:
+1. Before using the extension, ensure the latest version of Visual
+   Studio Code is installed and code command is available in your
+   terminal:
 
 2. Windows/Linux: Add the path to VS Code’s bin folder to your system’s
    PATH environment variable.
@@ -29,8 +30,9 @@ Extension Installation
 Steps to install the extension package
 --------------------------------------
 
-1. Use Astra_MCU_SDK_vscode_extension-1.1 extension VSIX file from the
-   Release package: *<parent directory>/tools/*
+1. Use Astra_MCU_SDK_vscode_extension-1.2 extension VSIX file from the
+   Release package: *<parent directory>/tools/
+   *
 
 ..
 
@@ -89,8 +91,8 @@ Figure Uninstall button
 Install Tools
 =============
 
-**Purpose:** To check and install the necessary tools for docker setup,
-image flashing and debugging.
+**Purpose:** To check and install the necessary tools for build, image
+flashing and debugging.
 
 |image5|
 
@@ -159,224 +161,22 @@ Tools installation
 **Note:**
 
 -  The AC6 compiler is not available on macOS, so native AC6 builds are
-   not supported. However, the extension enables AC6 builds on macOS by
-   using the Linux archives. Detailed instructions are provided in the
-   AC6 Compiler Installation Steps (see Figure 9).
+   not supported for macOS.
 
 -  On Linux and macOS, you’ll be prompted to enter your password in the
    ‘Install Script Terminal’ to proceed with the installation.
 
--  Docker Daemon installation is also included in the list of tools to
-   be installed.
-
-..
-
-   |image9|
+|image9|
 
 Figure Steps to install AC6 compiler
-
-Docker Installation
--------------------
-
-   The Astra SRSDK vscode Extension 1.1.0 is upgraded to use Docker
-   for Build and image generation process. The following steps provides
-   a comprehensive guide to install docker and start docker desktop. The
-   tool installation feature of the Astra SRSDK vscode extension
-   includes installation for docker.
-
-   You may install Latest version of Docker in either of the following
-   ways:
-
--  Using the built-in tool installer provided with the Astra SRSDK
-   vscode extension, or
-
--  Directly from the official Docker documentation:
-   https://docs.docker.com/
-
-..
-
-   Platform Requirements:
-
-+-----------------+------------------------+------------------------+
-|    **Platform** |    **Installation      |    **Notes**           |
-|                 |    Requirement**       |                        |
-+=================+========================+========================+
-|    Windows      |    Docker Desktop      |    Shows Subscription  |
-|                 |    (GUI)               |    Service Agreement   |
-|                 |                        |    on first launch.    |
-|                 |                        |    Requires elevated   |
-|                 |                        |    privileges if       |
-|                 |                        |    auto-install fails. |
-+-----------------+------------------------+------------------------+
-|    macOS        |    Docker Desktop      |    Same as Windows –   |
-|                 |    (GUI)               |    accept terms and    |
-|                 |                        |    optionally sign in. |
-+-----------------+------------------------+------------------------+
-|    Linux        |    Docker Engine (CLI  |    Runs as a           |
-|                 |    only)               |    background service  |
-|                 |                        |    automatically after |
-|                 |                        |    install.            |
-+-----------------+------------------------+------------------------+
-
-..
-
-   **General Notes:**
-
--  After installation, ensure the Docker engine is running before
-   building with the SDK extension.
-
--  On Windows/macOS, Docker Desktop may prompt for sign-in (optional).
-
--  On Linux, no GUI is needed; the service runs automatically.
-
-..
-
-   **Installation via vscode Extension**
-
-1. Open the Astra_MCU_SDK_vscode_extension.
-
-2. | Go to the Install Tools tab → Select Docker Daemon Tool.
-   | |image10|
-
-Figure Select Docker Daemon tool
-
-3. If Docker is not installed, the extension will prompt you. Click
-   Install.
-
-..
-
-   |image11|
-
-Figure Click Install button
-
-4. Once complete, Docker Desktop (Windows/macOS) or Docker Engine
-   (Linux) will start.
-
-..
-
-   |image12|
-
-Figure Docker Subscription Service Agreement
-
-|image13|
-
-Figure Login into docker account
-
-   |image14|
-
-Figure Starting Docker Engine
-
-   |image15|
-
-Figure Docker Desktop Dashboard
-
-Troubleshooting (Docker + Astra SRSDK VSCode Extension)
----------------------------------------------------------
-
-   While installing and running Docker via the Astra SRSDK VSCode
-   Extension, some issues may occur depending on system permissions and
-   platform restrictions. The following points cover known issues and
-   their resolutions.
-
-   Windows
-
--  Installer blocked by admin policies
-
-   -  Symptom: Selecting *Docker Daemon Tool → Install* downloads Docker
-      Desktop, but the installer does not launch.
-
-   -  Cause: Organization policies block direct execution of installers.
-
-   -  Resolution:
-
-      -  Navigate to the download folder and locate Docker Desktop
-         Installer.exe.
-
-      -  Right-click → Show more options → Run with elevated privileges.
-
-      -  Accept the terms and conditions, skip login if prompted.
-
-      -  Once Docker Desktop starts, the extension will detect it and
-         mark the tool status as Installed.
-
--  Extension shows “Please start Docker engine” even after manual
-   install
-
-   -  Symptom: Docker Desktop is installed and running, but the
-      extension does not detect it.
-
-   -  Resolution: Close and reopen VSCode. The extension will refresh
-      its tool detection and start the image build.
-
-..
-
-   Linux
-
--  Docker installed, but extension shows “Please start Docker engine”
-
-   -  Symptom: Running docker info gives a permission denied error on
-      /var/run/docker.sock.
-
-   -  Cause: The current user is not yet recognized as part of the
-      docker group.
-
-   -  Resolution:
-
-      -  Verify group membership: groups $USER.
-
-      -  If docker is listed but still failing, reboot the system so
-         group changes take effect.
-
-      -  After reboot, rerun docker info to confirm.
-
-..
-
-   macOS
-
--  Full Disk Access required
-
-   -  Symptom: Docker Desktop or VSCode fails to start containers or
-      access mounted paths.
-
-   -  Resolution:
-
-      -  Open System Settings → Privacy & Security → Full Disk Access.
-
-      -  Enable Full Disk Access for both Visual Studio Code and Docker
-         Desktop.
-
-      -  Restart both apps and retry the operation.
-
-**General Notes:**
-
-   In environments with strict IT restrictions (admin blocks,
-   policy-enforced executables), the automated installation may fail. In
-   such cases, use the manual installation method and then restart
-   VSCode for the extension to detect Docker correctly.
-
-**Result:**
-
-1. The selected tools will be installed into the specified folder and
-   the toolpaths will be stored in temporary settings.json file. This
-   will be used to configure the workspace environment when an Astra MCU
-   SDK is imported.
-
-2. After installation, the tools checking will automatically run to
-   update the status of tools.
-
-..
-
-   |image16|
-
-Figure Tools Installation
 
 Source Code Checkout
 ====================
 
-**Purpose:** This option is to enable users to check out the Astra MCU
-SDK from either local or remote (from GitLab).
+**Purpose:** This option is to enable users to check out the Astra SRSDK
+from either local or remote (from GitLab).
 
-|image17|
+|image10|
 
 Figure Import SDK
 
@@ -390,7 +190,7 @@ Figure Import SDK
 3. | **Local Import:** Under “LOCAL” tab, click on the “BROWSE” button
      and select the Astra SRSDK to import. This action will import the
      Astra SRSDK and add it to the workspace.
-   | |image18|
+   | |image11|
 
 Figure Import SDK from local
 
@@ -400,7 +200,7 @@ Figure Import SDK from local
      Cloning large repositories will take time. After cloning, the
      repository will be imported and added to the workspace in the
      “Imported Repos”.
-   | |image19|
+   | |image12|
 
 Figure Import SDK from remote
 
@@ -417,9 +217,9 @@ Imported Repos
 ==============
 
 **Purpose:** Provides a quick interface for managing the imported Astra
-MCU SDK and offers essential actions.
+SRSDK and offers essential actions.
 
-|image20|
+|image13|
 
 Figure Imported Repos
 
@@ -427,183 +227,262 @@ Figure Imported Repos
 
 1. **Refresh:** Will reload the current workspace.
 
-2. **Build or Clean SDK:** Provides an interface to select necessary
-   options and trigger a build or clean of the Astra SRSDK, with the
-   build process executed inside Docker container.
+2. **Build and Deploy:** Provides a combined interface for building and
+   flashing the image onto the device and for debugging.
 
 3. **View in Explorer:** To open the current Astra SRSDK in explorer.
 
-4. **Remove from Workspace:** To remove the currently imported Astra MCU
-   SDK from the workspace.
+4. **Remove from Workspace:** To remove the currently imported Astra
+   SRSDK from the workspace.
 
 **Note:** Currently, only one Astra SRSDK can be imported at a time.
-Importing multiple SDKs in same workspace is not supported yet.
+Importing multiple SDKs in same workspace is not supported yet. In
+Windows, the suggested path length of the imported SDK folder should not
+exceed 100 characters.
 
-Docker Setup
-------------
+Build and Deploy
+----------------
 
-**Purpose:** To setup docker and run container.
+**Purpose:** Provides a unified environment to build, image generation,
+flashing and debugging.
 
-1. Install Docker Desktop and ensure the Docker engine is running.
+|image14|
 
-2. After installation, click Refresh in the VS Code extension to start
-   the Docker setup (this step is required only once).
-
-3. The extension will check for an existing Docker image.
-
-4. If none is found, it will build one using the provided Dockerfile
-   (image build is a one-time process).
-
-|image21|
-
-Figure Docker Image Build
-
-5. On subsequent uses, only the container will run — the image will not
-   be rebuilt unless required.
-
-6. Once the container starts, the SDK’s root directory will be mounted
-   into it.
-
-7. When the container is running, you’ll see a notification: "Docker
-   setup is ready".
-
-..
-
-   **Note:**
-
--  By default, Docker Desktop installs WSL 2 and a Linux distribution
-      (like Ubuntu) during setup if it’s missing.
-
-Build Functionality
--------------------
-
-| **Purpose:** To build the project with selected application and
-  configurations.
-| **Prerequisite:** Ensure the Docker engine is running, and the
-  container is up (status: **"Docker setup is ready"**).
-
-|image22|
-
-Figure Build Webview
+Figure Build and Deploy Webview
 
 **Steps:**
 
 1. Once the required Astra SRSDK is imported, within Imported Repos
-   column, click on “Build or Clean SDK”. This will open the build
-   Webview. Make sure the imported folder is correct, typically the one
-   containing the Makefile.
+   column, click on “Build and Deploy”. This will open the Build and
+   Deploy Webview. Make sure you have imported the “examples” directory
+   for building the custom applications.
 
-2. Select appropriate build configurations. The currently supported
+2. Once you import the examples directory and open the Build and Deploy
+   webview, a pop up will be displayed to select the SRSDK_DIR path. Use
+   the Browse button to select the root directory or paste the path and
+   click OK. This will set the SRSDK_DIR environment variable in the
+   settings.json which will connect the examples directory with the
+   parent srsdk directory.
+
+|image15|
+
+Figure SRSDK root directory dialog box
+
+**Workflow Description:** The Build and Deploy webview is a unified
+interface for multiple operations. Users can perform either one
+operation at a time or combination of operations.
+
+**Integrated workflow:** This unified webview is used to manage SDK
+build, binary conversion, image flashing and debugging from a single
+interface. This provides users with two modes of operation:
+
+a. **Unified workflow –** Users can configure all required options and
+      execute the full workflow in one step. This will build the SDK,
+      generate the binary, and flash it onto the device.
+
+   i.   For release build (SDK build → Image generation → Flashing),
+           users have to select the Build Configurations, Image
+           Conversion and Image Flashing checkboxes and the required
+           options in each section and then click 'Run'.
+
+   ii.  For debug build (SDK build → Debugging), users can select the
+           Build Configurations and Debug Options checkboxes and the
+           required options and then click ‘Run’.
+
+   iii. For flashing via SWD/JTAG, users can perform a full flash erase
+           and then flash the generated binary.
+
+   iv.  Model flashing remains unaltered - users can first flash the
+           model bin and then flash the generated usecase binary.
+
+   v.   After each process, the output path is automatically passed to
+           the next step for a smoother workflow.
+
+   vi.  Video streaming remains independent and is not part of this
+           workflow.
+
+b. **Isolated workflow –** Users can perform individual steps
+      independently, such as building only the .axf/.elf, generating a
+      binary, flashing an existing binary or debugging.
+
+Build Configurations
+--------------------
+
+**Purpose:** To build the project with selected application and
+configurations.
+
+**Working Modes:**
+
+-  **Unified working:** For release build type, you can select Build
+   Configurations along with Image Conversion and Image Flashing for
+   integrated workflow. For debug build type you can select Build
+   Configurations along with Debug Options.
+
+-  **Isolated working:** You can select the Build Configurations option
+   alone to just build the selected application.
+
+**Build Options:**
+
+The SDK currently includes core libraries, drivers, and build tools for
+SR110 SoC development. This architecture enables applications to be
+managed independently from the SRSDK core, with each example being built
+separately.
+
+1. **Build (SDK + App):** This checkbox is intended to build and install
+   the SDK with configurations specific to selected Application and
+   compiles the example application.
+
+2. **Build App:** This checkbox is intended for recurrent builds using
+   pre-built packages.
+
+**Steps:**
+
+1. Select appropriate build configurations. The currently supported
    configurations are as follows:
 
-   a. **Project Type:** sr110_cm55_fw, sr110_b0_bootloader, tflite_micro
+   a. **Device:** SR110
 
-   b. **Build Type:** Release, Debug, UnitestDebug
+   b. **Project Type:** sr110_cm55_fw, sr110_b0_bootloader, tflite_micro
 
-   c. **Board:** sr110_rdk
+   c. **Build Type:** Release, Debug, UnitestDebug
 
-   d. **Board Revision:** Rev A, Rev B, Rev C
+   d. **Board:** Astra Machina Micro
 
-   e. **Compiler:** AC6 and GCC
+   e. **Board Revision:** Rev A, Rev B, Rev C
 
-3. Use a Release build when the binary is intended to be flashed onto
+   f. **Compiler:** AC6 and GCC
+
+2. Use a Release build when the binary is intended to be flashed onto
    the device. A Debug build generates an .axf/.elf file with debug
    symbols, making it suitable for debugging purposes. Choose the
    UnitestDebug build option to generate an .axf/.elf file that can be
    used for running Unity tests.
 
-4. According to the selected “Project Type”, the specific applications
-   will be populated in the “Applications” dropdown. Initially the “Edit
-   configs” and “Build” buttons will be disabled. Once a proper
-   Application is selected and applied from the dropdown, these buttons
-   will be enabled.
+3. According to the selected “Project Type”, the specific applications
+   will be populated in the “Applications” dropdown. 
 
-5. When AC6 is selected as the compiler, a prompt will appear requesting
-   the AC6 License query value. Enter the value and click OK to set the
-   license and begin the AC6 build.
+4. **Application:** Select the application to be loaded from the
+   dropdown.
 
 ..
 
-   | License Query Format:
-   | ARMLM_ONDEMAND_ACTIVATION=<LICENSE_KEY>@http://<SERVER_ADDRESS>:<PORT>
+   **Note:** Select “unity_test” application only when the Build Type is
+   set to “UnitestDebug”.
 
-|image23|
-
-Figure AC6 compiler dialog box
-
-6. | **Application:** Select the application to be loaded from the
-     dropdown.
-   | |image24|
+|image16|
 
 Figure Application dropdown
 
-7. | **Edit Configs:** The edit configs button will open the menuconfig
-     layout in the terminal. Users can set the appropriate
-     configurations using this menu.
-   | |image25|
+5. The edit configs button will open the menuconfig layout in the
+   terminal. Users can set the appropriate configurations using this
+   menu.
+
+..
+
+   |image17|
 
 Figure Edit Config view
 
 a. | Once the configs are edited and saved to .config, users have the
      option to save their custom defconfig. A prompt for saving the
      custom defconfig will appear like shown in below figure.
-   | |image26|
+   | |image18|
 
 Figure Prompt to save custom defconfig
 
 b. Then users need to enter a filename under which the defconfig should
-   be saved. Once given, the custom defconfig will be saved to *<parent
-   directory>/examples/configs* folder.
+   be saved. Once given, the custom defconfig will be saved to
+   */configs* folder.
 
-|image27|
+|image19|
 
 Figure Save defconfig dialog box
 
 c. To change board revisions, after selecting the necessary application,
    click “Edit Configs” > select “SRSDK BUILD CONFIGURATION” > select
-   “Board” > select “RDK Revisions” and choose appropriate revision and
-   save the configuration.
+   “Board” > select “sr110_rdk” > select “RDK Revisions” and choose
+   appropriate revision and save the configuration.
 
-|image28|
+|image20|
 
 Figure Board revision selection
 
-8. Once the necessary configs are set, click the **Build** button. The
-   build will run inside the Docker container, with all output logs
-   displayed in the terminal in real time.
+6. Once the necessary configs are set, select the build option. You can
+   choose either of the below combinations:
+
+   a. Build (SDK + App) – to install and build the application along
+      with the SDK.
+
+   b. Build App – this is for recurrent build.
+
+   c. Clean (SDK + App) – this will clean the build directory along with
+      installed SDK package.
+
+   d. Clean App – this will clean the build directory.
+
+   e. Build (SDK + App) and Clean (SDK + App) – this will first clean
+      the SDK and then proceeds with building the SDK and application.
+
+   f. Build App and Clean App – this will first clean the SDK and then
+      do a recurrent build.
+
+7. **Note:**
+
+   a. | Once the Application is selected and configs are changed, these
+        changes will be written to .config file. Users can confirm this
+        with the notification “.config updated successfully”.
+      | |image21|
+
+Figure Config update notification
+
+b. After building unity test application, do a clean before building
+   other applications to avoid linker errors.
 
 ..
 
-   |image29|
+   |image22|
 
 Figure Build log in terminal
 
 **Result:**
 
-1. The generated axf/elf files can be found at */Astra_MCU_SDK/out/*
-   directory. Upon a successful Release build, the AXF/ELF file path is
-   automatically populated in the **IMAGE GENERATOR** tab. Similarly,
-   after a successful Debug build, the file path is automatically
-   populated in the **DEBUG PROBES** tab.
+1. The generated axf/elf files can be found at
+   */Astra_MCU_SDK/examples/out/* directory. Upon a successful Release
+   build, the AXF/ELF file path is automatically populated in the
+   **Image Conversion** panel. Similarly, after a successful Debug
+   build, the file path is automatically populated in the **Debug
+   Options** panel.
 
 ..
 
    **Clean the SDK:** Similarly, the Astra SRSDK can be cleaned by
-   clicking the “Clean” button. The logs will be displayed in the
-   terminal.
+   selecting the “Clean” checkbox and clicking “Run” button. The logs
+   will be displayed in the terminal.
 
-   |image30|
+   |image23|
 
 Figure Clean SDK logs
 
 Image Generation
 ================
 
-**Purpose:** This window will enable users to convert the axf/elf file
+**Purpose:** This option will enable users to convert the axf/elf file
 generated after the build process to be converted into binary files and
 will aid in model bin conversion.
 
-|image31|
+**
+Working Modes:**
+
+-  **Unified working:** You can select Build Configurations and Image
+   Conversion which will build the application and then convert the
+   .elf/.axf into .bin. After build, the release .axf/.elf file path
+   will be populated to the Image Conversion panel automatically.
+
+-  **Isolated working:** You can select Image Conversion panel alone,
+   choose a custom .elf/.axf file and select the necessary options. This
+   will just convert the selected file into binary file.
+
+|image24|
 
 Figure Image Generator
 
@@ -612,10 +491,9 @@ Image Conversion – Basic Configurations
 
 **Steps:**
 
-1. Click on the “Image Generator” button. It will open a web view for
-   Image Generation.
+1. Click on the “Image Conversion” panel.
 
-2. In the web view, already the Release build file path will be
+2. In the file path, already the Release build file path will be
    pre-populated (if already built for Release option). Also, the user
    can select a custom axf/elf file for converting using the “Browse”
    button.
@@ -642,7 +520,7 @@ Image Conversion – Basic Configurations
 6. For generating both Host and Flash images, select both Host and Flash
    Image checkboxes.
 
-|image32|
+|image25|
 
 Figure Image Conversion options
 
@@ -661,13 +539,13 @@ Image Conversion – Advanced Configurations
 
 3. **Edit JSON file:** Enables users to open and edit the JSON files.
 
-4. Once the options are selected, click on the ‘Run Image Generator’
-   button. This will start the conversion process, and the conversion
-   logs will be shown in the Output window.
+4. Once the options are selected, click on the ‘Run’ button. This will
+   start the conversion process, and the conversion logs will be shown
+   in the Output window.
 
 ..
 
-   |image33|
+   |image26|
 
 Figure Image Conversion - Advanced Configurations
 
@@ -677,9 +555,7 @@ Figure Image Conversion - Advanced Configurations
       Webview.
 
 2. Once the conversion is completed, the conversion logs and binary
-      files will be present in the following location
-      *C:\Users\<username>\Bin_Location* for Windows and in
-      *home/<username>/Bin_Location* for Linux and macOS.
+      files will be present in the */out/bin_files* directory.
 
 ..
 
@@ -690,19 +566,19 @@ Figure Image Conversion - Advanced Configurations
    steps beyond this (Image flashing, debugging and Video Streamer) are
    not supported in remote setup.
 
--  After selecting the required options, click the **Run Image
-   Generator** button to start the image generation process inside the
-   Docker container. Live logs will be displayed in the terminal.
+-  After selecting the required options, click the **Run** button to
+   start the image generation process. Live logs will be displayed in
+   the terminal.
 
 Image Flashing
 ==============
 
-**Purpose:** The image flashing web view can be used to load the image
-onto the device either in ROM mode or FW mode
+**Purpose:** The image flashing option is used to load the image onto
+the device either in ROM mode or FW mode
 
-|image34|
+|image27|
 
-Figure Image Flashing
+Figure Image Flashing Panel
 
 **Pre-requisites:**
 
@@ -712,12 +588,34 @@ Figure Image Flashing
 -  Ensure that the UART and the target device are properly connected to
    the system prior to starting flashing.
 
+**Working Modes:**
+
+-  **Unified working:** You can select Build Configurations, Image
+   Conversion along with Image Flashing. This will build the
+   application, convert the .elf/.axf into .bin and load the binary onto
+   the device.
+
+-  **Isolated working:** You can select Image Flashing panel alone,
+   choose a custom binary file and select the necessary options. This
+   will just flash the selected bin file onto the device.
+
+-  **Selecting the flash mode:**
+
+   -  If the CDC port is already available, you can flash the device
+      using FW Update (Application Chip).
+
+   -  If the CDC port is not detected, use the SWD/JTAG mode for
+      flashing.
+
+   -  For USB sample applications, flashing should be done using
+      SWD/JTAG mode.
+
 Flashing the image in ROM/FW mode
 ---------------------------------
 
-|image35|
+|image28|
 
-Figure Image Flashing - Service Type
+Figure Image Flashing – Interface selection
 
 **Steps:**
 
@@ -739,7 +637,7 @@ Figure Image Flashing - Service Type
    Proceed in the confirmation dialog to flash the DAP-built binary to
    the Debug IC.
 
-|image36|
+|image29|
 
 Figure FW Update (Debug IC) - Warning pop up
 
@@ -776,15 +674,25 @@ Figure FW Update (Debug IC) - Warning pop up
     select a custom file for flashing, they can choose the binary file
     path using the “Browse” button.
 
-9.  While flashing the model binary file, please enter the sector offset
-    address from which the model should start flashing at.
+9.  **Model binary flashing:**
 
-10. Click on “Execute”, the image loading will start, and the logs will
-    be redirected in the output console.
+    -  For VGA usecases, first flash the pre-generated model binary
+       (e.g., person_detection_flash(448x640).bin) and then proceed to
+       flash the generated usecase binary.
+
+    -  For VGA usecases, the model bin file will be located at
+       */examples/SR110_RDK/vision_examples/<usecase_folder>/models*
+
+    -  While flashing the model binary file, please enter the sector
+       offset address from which the model should start flashing at.
+       Default flash sector address to flash the model bin is 0x629000.
+
+10. Click on “Run”, the image loading will start, and the logs will be
+    redirected in the output console.
 
 ..
 
-   |image37|
+   |image30|
 
 Figure Image Flashing logs redirected to Output
 
@@ -796,16 +704,16 @@ using the Serial Monitor tab. Select the appropriate COM port and click
 Flashing image using SWD/JTAG
 -----------------------------
 
-**Purpose:** This window allows users to flash the binary on to the
+**Purpose:** This option allows users to flash the binary on to the
 device using JLink/DAP.
 
-|image38|
+|image31|
 
 Figure Image Flashing using SWD/JTAG
 
 **Steps:**
 
-1. Select Service Type as “SWD/JTAG” in the Image Flashing Webview.
+1. Select the Interface as “SWD/JTAG” in the Image Flashing panel.
 
 2. Select the Adapter Driver.
 
@@ -813,27 +721,27 @@ Figure Image Flashing using SWD/JTAG
    binary is converted) or users can select the custom binary file using
    the “Browse” button.
 
-4. When updating the use case, choose “Full Flash Erase” and click
-   “Flash Execute” to erase the entire flash, ensuring a clean binary
-   update.
+4. When updating the use case, choose “Full Flash Erase” and click “Run”
+   to erase the entire flash, ensuring a clean binary update.
 
 5. After performing a full flash erase, deselect the checkbox and click
-   “Flash Execute”. This will launch OpenOCD and GDB in separate
-   terminals, establish a connection, erase the necessary memory, and
-   flash the binary. Progress and script logs will appear in the Output
-   window, while flashing logs will be shown in the OpenOCD terminal.
+   “Run”. This will launch OpenOCD and GDB in separate terminals,
+   establish a connection, erase the necessary memory, and flash the
+   binary. Progress and script logs will appear in the Output window,
+   while flashing logs will be shown in the OpenOCD terminal.
 
 **Result:** Once flashing is completed, the telnet connection will be
 dropped. Press reset on the device.
 
-**Steps to flash model binary using SWD/JTAG:**
+**Steps to flash model binary using SWD/JTAG:
+**
 
-|image39|
+|image32|
 
 Figure Model binary flashing using DAP
 
 1. Do full flash erase - select the “Full flash erase” checkbox and
-   click Flash execute to perform a complete flash erase.
+   click “Run” to perform a complete flash erase.
 
 2. Load the usecase vga binary file.
 
@@ -866,10 +774,6 @@ Debugging using GDB in Extension
 using OpenOCD and GDB at the backend, aided by C/C++ extension to start
 the debug session.
 
-|image40|
-
-Figure Debug Probe Interface
-
 Download and Reset Program
 --------------------------
 
@@ -894,28 +798,34 @@ Download and Reset Program
 
 **Steps:**
 
-1. Click on the “Debug Probe Interface” button in DEBUG PROBES view.
-   This will open the debugger Webview. 
+1. In the Build and Deploy webview, select “Debug Options” panel. This
+   will reveal the debug configurations.
+
+2. To execute the build and debugging processes in a single workflow,
+   open **Build Configurations**, choose **Debug** or **UnitTestDebug**
+   under **BuildType**, and enable **Debug Options**. This setup will
+   first build the application using the selected build type and
+   automatically start the debugger once the build is complete.
 
 ..
 
-   |image41|
+   |image33|
 
-Figure Debug Probe Interface Webview
+Figure Debug Options Panel
 
-2. After the Debug Probe Interface opens, use the browse button to
-   select the path to the axf/elf file. Ensure that the file chosen is
-   built with the ‘debug’ build type. If debug axf/elf was already built
-   successfully using the extension, the file path will be automatically
-   populated to the AXF/ELF Filepath.
+3. In the Dubug Options, use the browse button to select the path to the
+   axf/elf file. Ensure that the file chosen is built with the ‘debug’
+   build type. If debug axf/elf was already built successfully using the
+   extension, the file path will be automatically populated to the
+   AXF/ELF Filepath.
 
-3. | Select the necessary configurations (use the default configs:
+4. | Select the necessary configurations (use the default configs:
      Transport select – SWD, Adapter Driver – JLink/CMSIS DAP, Adapter
      speed – 1000 KHz). 
    | **Note:** Adapter speed adjustment is supported with J-Link during
      debugging, but not yet fully functional with DAP.
 
-4. | Users can either opt to use the default config file or can use
+5. | Users can either opt to use the default config file or can use
      custom config file for debugging. Select the appropriate options in
      the dropdown.
    | **Note:** The default config files are available at *<parent
@@ -923,30 +833,40 @@ Figure Debug Probe Interface Webview
 
 ..
 
-   |image42|
+   |image34|
 
 Figure Config File Selection
 
-5. | After selecting the configs, hit “Download & Reset Program” button,
-     you can see the status in the terminal window. This will start
-     running OpenOCD in one terminal and start GDB debug session in
-     another terminal.
+6. After configuring the settings, choose the desired **debug mode**
+   from the **Mode** dropdown. You can select **Download and Reset
+   Program**, **Attach to Running Program**, or **Attach and Halt
+   Program**. For standard debugging, choose **Download and Reset
+   Program**.
+
+|image35|
+
+Figure Debug Mode selection
+
+7. | After selecting the necessary configs, click **Run**. This will
+     start debugger, and you can see the status in the terminal
+     window. This will start running OpenOCD in one terminal and start
+     GDB debug session in another terminal.
    | **Note:** If debugging fails to start and you see messages like
      “Unable to start debugging,” try resetting the DAP chip and attempt
      again.
 
-6. Once connection is established, the debugger will stop at main.
+8. Once connection is established, the debugger will stop at main.
 
 ..
 
-   |image43|
+   |image36|
 
 Figure Debugger paused at main
 
-7. | Once the debugger is paused, users can view the variables, call
+9. | Once the debugger is paused, users can view the variables, call
      stack, registers and the breakpoints in the side panel as shown in
      the below picture.
-   | |image44|
+   | |image37|
 
 Figure Debugger - Side panel options
 
@@ -965,7 +885,7 @@ values using this feature.
 
 ..
 
-   |image45|
+   |image38|
 
 Figure Show Global Variables button
 
@@ -976,7 +896,7 @@ Figure Show Global Variables button
 
 ..
 
-   |image46|
+   |image39|
 
 Figure Global Variables Panel
 
@@ -987,7 +907,7 @@ Once a debug session is started, the debug toolbar will appear at the
 top of the window and will contain the buttons for basic debug
 operations.
 
-|image47|
+|image40|
 
 Figure Debug Toolbar
 
@@ -1015,7 +935,10 @@ Figure Debug Toolbar
 
 ..
 
-|image48|
+   **
+   **
+
+|image41|
 
 Figure Symbol to Break at option
 
@@ -1026,7 +949,7 @@ Figure Symbol to Break at option
       working, users can click on custom pause button added to this
       panel to pause the execution.
 
-|image49|
+|image42|
 
 Figure Custom pause button for Linux and MAC
 
@@ -1060,11 +983,11 @@ Memory Inspection and Manipulation
       contents in hexadecimal bytes, ASCII-decoded text and address
       offsets.
 
-|image50|
+|image43|
 
 Figure View Binary Data button
 
-   |image51|
+   |image44|
 
 Figure Memory View
 
@@ -1074,11 +997,11 @@ Figure Memory View
 
 ..
 
-   |image52|
+   |image45|
 
 Figure Open Memory Viewer button
 
-   |image53|
+   |image46|
 
 Figure Memory Edit and Fill panel
 
@@ -1095,7 +1018,7 @@ Figure Memory Edit and Fill panel
 
 ..
 
-   |image54|
+   |image47|
 
 Figure Memory display in multiple formats
 
@@ -1152,7 +1075,7 @@ operations.
 
 ..
 
-   |image55|
+   |image48|
 
 Figure Open Advanced Disassembly Viewer button
 
@@ -1171,7 +1094,7 @@ Figure Open Advanced Disassembly Viewer button
 
 -  Go Forward: Returns to the next address in the history.
 
-|image56|
+|image49|
 
 Figure Advanced Disassembly Panel
 
@@ -1187,7 +1110,7 @@ Logging
 
    -  Save this config and then build for Debug build type.
 
-|image57|
+|image50|
 
 Figure Viewing logs in OpenOCD terminal
 
@@ -1198,7 +1121,7 @@ Figure Viewing logs in OpenOCD terminal
    -  Once the debug session has started, in Serial Monitor tab, select
       the DAP logger port and click “Start Monitoring”.
 
-|image58|
+|image51|
 
 Figure Viewing logs in Serial Monitor
 
@@ -1207,15 +1130,15 @@ Attach to Running Program
 
 -  Follow the steps illustrated in `Download and Reset
    Program <#download-and-reset-program>`__ for selecting the
-   configurations and then you can click on “Attach to Running Program”.
-   This option will attach to the already loaded and running binary in
-   the device, enabling you to pause and inspect the memory and program
-   flow.
+   configurations and then you can select “Attach to Running Program” as
+   debug mode. This option will attach to the already loaded and running
+   binary in the device, enabling you to pause and inspect the memory
+   and program flow.
 
 -  If you pause the debugger, you can view the variables, call stack,
    disassembly view and registers by selecting the appropriate options.
 
-|image59|
+|image52|
 
 Figure Attach to Running Program
 
@@ -1232,7 +1155,7 @@ Attach and Halt Program
 -  If you pause the debugger, you can view the variables, call stack,
    disassembly view and registers by selecting the appropriate options.
 
-|image60|
+|image53|
 
 Figure Attach and Halt Program
 
@@ -1242,7 +1165,7 @@ Video Streamer
 **Purpose:** The Video Streamer option is used to stream the video
 output of frames while the usecase is being executed.
 
-|image61|
+|image54|
 
 Figure Video Streamer
 
@@ -1255,7 +1178,7 @@ Figure Video Streamer
    device and the target device is properly connected to the system
    prior to starting video streamer.
 
-|image62|
+|image55|
 
 Figure Video Streamer Webview
 
@@ -1305,7 +1228,13 @@ Figure Video Streamer Webview
 6. Click on “Stop Use Case” button to stop the video stream and click on
    “Resume Use Case” button to resume the video stream.
 
-|image63|
+..
+
+   **Note:** Selecting “Create Use Case” and then “Start Use Case” is
+   sufficient for running non-auto run usecases, “Connect Image Source”
+   is meant for auto-run usecases only.
+
+|image56|
 
 Figure Video Streamer for Person Detection
 
@@ -1316,7 +1245,7 @@ create or start use case commands. It integrates the UC_JPEG_PREROLL and
 IMAGE_STITCHING use cases to detect a person and capture, then display,
 raw and high-resolution images upon detection. For detailed information,
 refer to `Doorbell User
-Guide <../examples/vision_examples/uc_jpeg_preroll/README.md>`__.
+Guide <file:///C:\Users\pnataraj\examples\vision_examples\uc_jpeg_preroll\README.md>`__.
 
 **Steps for Doorbell Usecase:**
 
@@ -1327,7 +1256,7 @@ Guide <../examples/vision_examples/uc_jpeg_preroll/README.md>`__.
 
 ..
 
-   |image64|
+   |image57|
 
 Figure Logger tab
 
@@ -1361,7 +1290,7 @@ Figure Logger tab
 
 ..
 
-   |image65|
+   |image58|
 
 Figure Doorbell usecase video stream
 
@@ -1373,19 +1302,19 @@ Figure Doorbell usecase video stream
 2. This will display the video stream of the usecase which started
    running.
 
-|image66|
+|image59|
 
 Figure Connect Image Source button
 
 .. |image0| image:: ./media/image1.png
    :width: 6.26806in
-   :height: 2.01389in
+   :height: 2.24097in
 .. |image1| image:: ./media/image2.png
-   :width: 2.09167in
-   :height: 2.42986in
+   :width: 3.25521in
+   :height: 1.96875in
 .. |image2| image:: ./media/image3.png
-   :width: 5.75658in
-   :height: 3.28056in
+   :width: 6.26806in
+   :height: 2.99097in
 .. |image3| image:: ./media/image4.png
    :width: 3.06081in
    :height: 1.91707in
@@ -1396,185 +1325,164 @@ Figure Connect Image Source button
    :width: 3in
    :height: 1.17391in
 .. |image6| image:: ./media/image7.png
-   :width: 6.26806in
+   :width: 5.12743in
    :height: 3.52569in
 .. |image7| image:: ./media/image8.png
    :width: 0.15368in
    :height: 0.15367in
 .. |image8| image:: ./media/image9.png
    :width: 6.26806in
-   :height: 4.25625in
+   :height: 3.34653in
 .. |image9| image:: ./media/image10.png
-   :width: 6.26806in
-   :height: 3.53889in
+   :width: 5.43304in
+   :height: 3.10417in
 .. |image10| image:: ./media/image11.png
-   :width: 6.26806in
-   :height: 4.4375in
-.. |image11| image:: ./media/image12.png
-   :width: 6.26806in
-   :height: 1.38264in
-.. |image12| image:: ./media/image13.png
-   :width: 5.625in
-   :height: 3.50363in
-.. |image13| image:: ./media/image14.png
-   :width: 5.67708in
-   :height: 3.18636in
-.. |image14| image:: ./media/image15.png
-   :width: 5.39062in
-   :height: 2.88583in
-.. |image15| image:: ./media/image16.png
-   :width: 5.36458in
-   :height: 3.1863in
-.. |image16| image:: ./media/image17.png
-   :width: 6.26806in
-   :height: 4.69931in
-.. |image17| image:: ./media/image18.png
    :width: 3.89514in
    :height: 1.13313in
-.. |image18| image:: ./media/image19.png
-   :width: 6.26806in
-   :height: 2.20833in
-.. |image19| image:: ./media/image20.png
+.. |image11| image:: ./media/image12.png
+   :width: 5.99479in
+   :height: 2.11206in
+.. |image12| image:: ./media/image13.png
    :width: 6.26806in
    :height: 1.89444in
-.. |image20| image:: ./media/image4.png
-   :width: 3.06081in
-   :height: 1.91707in
-.. |image21| image:: ./media/image21.png
+.. |image13| image:: ./media/image14.png
+   :width: 2.70833in
+   :height: 1.82139in
+.. |image14| image:: ./media/image15.png
    :width: 6.26806in
-   :height: 3.68264in
-.. |image22| image:: ./media/image22.png
-   :width: 6.31042in
-   :height: 3.44583in
-.. |image23| image:: ./media/image23.png
-   :width: 3.15625in
-   :height: 1.78199in
-.. |image24| image:: ./media/image24.png
+   :height: 4.925in
+.. |image15| image:: ./media/image16.png
+   :width: 6.26806in
+   :height: 2.7125in
+.. |image16| image:: ./media/image17.png
    :width: 6.26806in
    :height: 1.38403in
-.. |image25| image:: ./media/image25.png
-   :width: 6.16475in
-   :height: 3.27703in
-.. |image26| image:: ./media/image26.png
-   :width: 5.48631in
-   :height: 2.62037in
-.. |image27| image:: ./media/image27.png
+.. |image17| image:: ./media/image18.png
+   :width: 6.26806in
+   :height: 3.66319in
+.. |image18| image:: ./media/image19.png
+   :width: 6.26806in
+   :height: 2.25625in
+.. |image19| image:: ./media/image20.png
    :width: 3.28889in
    :height: 1.69936in
-.. |image28| image:: ./media/image28.png
-   :width: 6.16232in
-   :height: 3.10778in
-.. |image29| image:: ./media/image29.png
+.. |image20| image:: ./media/image21.png
    :width: 6.26806in
-   :height: 4.47708in
-.. |image30| image:: ./media/image30.png
-   :width: 6.59221in
-   :height: 2.92727in
-.. |image31| image:: ./media/image31.png
-   :width: 3.11502in
-   :height: 1.19808in
-.. |image32| image:: ./media/image32.png
-   :width: 4.07273in
-   :height: 2.99611in
-.. |image33| image:: ./media/image33.png
+   :height: 3.15764in
+.. |image21| image:: ./media/image22.png
    :width: 6.26806in
-   :height: 4.42639in
-.. |image34| image:: ./media/image34.png
-   :width: 3.61509in
-   :height: 1.26059in
-.. |image35| image:: ./media/image35.png
-   :width: 4.16949in
-   :height: 1.91521in
-.. |image36| image:: ./media/image36.png
+   :height: 4.12569in
+.. |image22| image:: ./media/image23.png
+   :width: 6.26806in
+   :height: 3.51528in
+.. |image23| image:: ./media/image24.png
+   :width: 6.26806in
+   :height: 2.83611in
+.. |image24| image:: ./media/image25.png
+   :width: 6.26806in
+   :height: 2.43889in
+.. |image25| image:: ./media/image26.png
+   :width: 6.25005in
+   :height: 4.64587in
+.. |image26| image:: ./media/image27.png
+   :width: 6.26806in
+   :height: 2.32986in
+.. |image27| image:: ./media/image28.png
+   :width: 6.26806in
+   :height: 1.04375in
+.. |image28| image:: ./media/image29.png
+   :width: 6.26806in
+   :height: 2.04236in
+.. |image29| image:: ./media/image30.png
    :width: 5.22917in
    :height: 3.78428in
-.. |image37| image:: ./media/image37.png
-   :width: 5.81212in
-   :height: 3.79469in
-.. |image38| image:: ./media/image38.png
-   :width: 5.47305in
-   :height: 4.0772in
-.. |image39| image:: ./media/image39.png
-   :width: 6.23952in
-   :height: 4.6634in
-.. |image40| image:: ./media/image40.png
-   :width: 2.275in
-   :height: 1.25153in
-.. |image41| image:: ./media/image41.jpeg
-   :width: 6.11779in
-   :height: 3.22021in
-.. |image42| image:: ./media/image42.png
+.. |image30| image:: ./media/image31.png
+   :width: 6.26806in
+   :height: 2.68611in
+.. |image31| image:: ./media/image32.png
+   :width: 6.26806in
+   :height: 2.13819in
+.. |image32| image:: ./media/image33.png
+   :width: 6.26806in
+   :height: 2.21736in
+.. |image33| image:: ./media/image34.png
+   :width: 6.26806in
+   :height: 3.09583in
+.. |image34| image:: ./media/image35.png
    :width: 6.26806in
    :height: 0.85556in
-.. |image43| image:: ./media/image43.png
+.. |image35| image:: ./media/image36.png
+   :width: 3.69271in
+   :height: 2.17421in
+.. |image36| image:: ./media/image37.png
    :width: 6.20411in
    :height: 3.87117in
-.. |image44| image:: ./media/image44.png
+.. |image37| image:: ./media/image38.png
    :width: 2.29028in
    :height: 7.38958in
-.. |image45| image:: ./media/image45.png
+.. |image38| image:: ./media/image39.png
    :width: 3.83333in
    :height: 2.92236in
-.. |image46| image:: ./media/image46.png
+.. |image39| image:: ./media/image40.png
    :width: 6.25044in
    :height: 3.45in
-.. |image47| image:: ./media/image47.png
+.. |image40| image:: ./media/image41.png
    :width: 2.53939in
    :height: 2.95549in
-.. |image48| image:: ./media/image48.png
+.. |image41| image:: ./media/image42.png
    :width: 6.26806in
-   :height: 2.77986in
-.. |image49| image:: ./media/image49.png
+   :height: 2.10833in
+.. |image42| image:: ./media/image43.png
    :width: 5.32194in
    :height: 1.20667in
-.. |image50| image:: ./media/image50.png
+.. |image43| image:: ./media/image44.png
    :width: 3.20833in
    :height: 2.82847in
-.. |image51| image:: ./media/image51.png
+.. |image44| image:: ./media/image45.png
    :width: 6.26806in
    :height: 3.66871in
-.. |image52| image:: ./media/image52.png
+.. |image45| image:: ./media/image46.png
    :width: 4.4908in
    :height: 3.2773in
-.. |image53| image:: ./media/image53.png
+.. |image46| image:: ./media/image47.png
    :width: 6.26806in
    :height: 3.64375in
-.. |image54| image:: ./media/image54.png
+.. |image47| image:: ./media/image48.png
    :width: 3.23121in
    :height: 2.33481in
-.. |image55| image:: ./media/image55.png
+.. |image48| image:: ./media/image49.png
    :width: 4.47239in
    :height: 3.22323in
-.. |image56| image:: ./media/image56.png
+.. |image49| image:: ./media/image50.png
    :width: 6.26806in
    :height: 3.61944in
-.. |image57| image:: ./media/image57.png
+.. |image50| image:: ./media/image51.png
    :width: 5.55072in
    :height: 3.12933in
-.. |image58| image:: ./media/image58.png
+.. |image51| image:: ./media/image52.png
    :width: 6.25972in
    :height: 3.67708in
-.. |image59| image:: ./media/image59.png
-   :width: 6.26806in
-   :height: 2.75625in
-.. |image60| image:: ./media/image60.png
-   :width: 6.26806in
-   :height: 2.80694in
-.. |image61| image:: ./media/image61.png
+.. |image52| image:: ./media/image53.png
+   :width: 4.45778in
+   :height: 2.62467in
+.. |image53| image:: ./media/image53.png
+   :width: 4.45778in
+   :height: 2.62467in
+.. |image54| image:: ./media/image54.png
    :width: 3.01274in
    :height: 1.10417in
-.. |image62| image:: ./media/image62.png
+.. |image55| image:: ./media/image55.png
    :width: 6.26806in
    :height: 2.48889in
-.. |image63| image:: ./media/image63.png
+.. |image56| image:: ./media/image56.png
    :width: 6.26806in
    :height: 4.03958in
-.. |image64| image:: ./media/image64.png
+.. |image57| image:: ./media/image57.png
    :width: 6.26806in
    :height: 2.5375in
-.. |image65| image:: ./media/image65.png
+.. |image58| image:: ./media/image58.png
    :width: 3.49102in
    :height: 4.02776in
-.. |image66| image:: ./media/image66.png
+.. |image59| image:: ./media/image59.png
    :width: 6.26806in
    :height: 1.38in
