@@ -1,14 +1,17 @@
-SRSDK Release Notes
-*************************
+Astra MCU SDK Release Notes
+***************************
 
 .. toctree::
    :hidden:
    :glob:
 
    SDK_Release_1.1.0
+   SDK_Release_1.2.0
    
-This section contains detailed release notes for all versions of the Synaptics SRSDK, including new features, improvements, bug fixes, known issues, and upgrade instructions.
+This section contains detailed release notes for all versions of the Synaptics Asta MCU SDK, including new features, improvements, bug fixes, known issues, and upgrade instructions.
 
 **Available Release Notes:**
 
-- :doc:`SDK_Release_1.1.0` - **SDK Release 1.1.0** - Latest release notes featuring new capabilities, enhancements, and important updates for the SRSDK platform.
+- :doc:`SDK_Release_1.1.0` - **SDK Release 1.1.0** - Latest release notes featuring new capabilities, enhancements, and important updates for the Astra MCU SDK platform.
+
+- :doc:`SDK_Release_1.2.0` - **SDK Release 1.2.0** - Latest release notes featuring new capabilities, enhancements, and important updates for the Astra MCU SDK platform.

@@ -6,9 +6,9 @@ This section provides comprehensive development resources for building custom ap
 .. toctree::
    :maxdepth: 1
 
-   SRSDK_Tree_Structure
-   SRSDK_Build_System
-   SRSDK_VSCode_Extension_Userguide
+   Astra_MCU_SDK_Tree_Structure
+   Astra_MCU_SDK_Build_System
+   Astra_MCU_SDK_VSCode_Extension_Userguide
    build_env
    Docker_Userguide
 
@@ -17,18 +17,18 @@ This section provides comprehensive development resources for building custom ap
 
 **SDK Architecture & Structure:**
 
-**SRSDK Project Structure**
+**Astra MCU SDK Project Structure**
 
-:doc:`SRSDK_Tree_Structure`
-   **SDK Directory Structure** - Comprehensive overview of the SRSDK organization, including libraries, examples, tools, and documentation layout.
+:doc:`Astra_MCU_SDK_Tree_Structure`
+   **SDK Directory Structure** - Comprehensive overview of the Astra MCU SDK organization, including libraries, examples, tools, and documentation layout.
 
-:doc:`SRSDK_Build_System`
+:doc:`Astra_MCU_SDK_Build_System`
    **Build System Guide** - Detailed guide on the build system, compilation process, build configurations, and optimization settings for different deployment scenarios.
 
 **Development Tools:**
 
-:doc:`SRSDK_VSCode_Extension_Userguide`
-   **VSCode Extension Guide** - Complete setup and usage guide for the SRSDK VSCode extension, including debugging tools, code completion, and integrated development environment features.
+:doc:`Astra_MCU_SDK_VSCode_Extension_Userguide`
+   **VSCode Extension Guide** - Complete setup and usage guide for the Astra MCU SDK VSCode extension, including debugging tools, code completion, and integrated development environment features.
 
 :doc:`build_env`
    **Build Environment Setup** - Comprehensive guides for setting up your development environment across different operating systems and compiler toolchains (GCC/ARM Compiler).

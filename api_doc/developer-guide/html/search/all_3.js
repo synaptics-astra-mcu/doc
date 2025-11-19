@@ -179,6 +179,6 @@ var searchData=
   ['dmatype_176',['dmaType',['../structsdio__config__t.html#a37bcaaf20de46092944773fa7ad11185',1,'sdio_config_t']]],
   ['drive_5fstr_177',['drive_str',['../structpinmux__elec__config__t.html#ab90f9b43fd58b50707bb81cd77abe0d0',1,'pinmux_elec_config_t']]],
   ['driver_20api_20reference_178',['Driver API Reference',['../group__api__ref.html',1,'']]],
-  ['driver_20library_179',['Astra SRSDK Peripheral Driver Library',['../index.html',1,'']]],
+  ['driver_20library_179',['Astra MCU SDK Peripheral Driver Library',['../index.html',1,'']]],
   ['drivers_180',['Supported Drivers',['../index.html#drivers_sec',1,'']]]
 ];

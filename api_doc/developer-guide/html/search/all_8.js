@@ -122,7 +122,7 @@ var searchData=
   ['i3c1_5fcore_5fclk_119',['I3C1_CORE_CLK',['../group___c_l_k___e_n_u_m_s.html#ggadf58d5869a776847e03e148a76403455aad6aaadf842126346a6511176f9857cd',1,'sr110.h']]],
   ['i3c_5fslv_5fscl_120',['I3C_SLV_SCL',['../group___p_i_n_m_u_x___e_n_u_m_s.html#gga1e3f37e2bba6bf228285a8fe7c404040a54f4f9ff692b48d788169450709c6462',1,'sr110.h']]],
   ['i3c_5fslv_5fsda_121',['I3C_SLV_SDA',['../group___p_i_n_m_u_x___e_n_u_m_s.html#gga1e3f37e2bba6bf228285a8fe7c404040a5889262dca1a183ad966ea8816b6a790',1,'sr110.h']]],
-  ['identifiers_122',['Astra SRSDK Hardware Identifiers',['../group__soc__docs.html',1,'']]],
+  ['identifiers_122',['Astra MCU SDK Hardware Identifiers',['../group__soc__docs.html',1,'']]],
   ['iir_5fiid_5fbusy_5fdetect_123',['IIR_IID_BUSY_DETECT',['../group__group__uart__enums.html#ggada592572a7d1e628c096778cd16e2122a8068382182251124a5a5c5a036d54bb1',1,'uart.h']]],
   ['iir_5fiid_5fcharacter_5ftimeout_124',['IIR_IID_CHARACTER_TIMEOUT',['../group__group__uart__enums.html#ggada592572a7d1e628c096778cd16e2122afcf0e6c1f6df3418562528fa00504c21',1,'uart.h']]],
   ['iir_5fiid_5fno_5finterrupt_5fpending_125',['IIR_IID_NO_INTERRUPT_PENDING',['../group__group__uart__enums.html#ggada592572a7d1e628c096778cd16e2122a0a458f9692e2ec6f8ac4ac39a2891326',1,'uart.h']]],

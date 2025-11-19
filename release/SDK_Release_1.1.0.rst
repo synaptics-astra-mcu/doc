@@ -6,4 +6,4 @@ SDK Release Notes for SDK 1.1.0
    :hidden:
    :glob:
 
-.. include:: SRSDK_IOT_Release_Notes.rst
+.. include:: Astra_MCU_SDK_Release_Notes_1.1.0.rst

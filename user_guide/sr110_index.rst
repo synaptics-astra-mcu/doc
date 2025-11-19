@@ -15,8 +15,6 @@ This section provides comprehensive user guides and demo applications for the SR
    Hand_Gesture_Detection
    Jpeg_Preroll
    spi_preroll_protocol
-   door_bell_readme
-   serial_camera_door_bell_readme
 
 **AI Vision Demos:**
 
@@ -44,9 +42,3 @@ This section provides comprehensive user guides and demo applications for the SR
    **SPI Preroll Protocol** - Technical guide for SPI-based data transfer protocols, including configuration and communication setup with external devices.
 
 **Application Examples:**
-
-:doc:`door_bell_readme`
-   **Door Bell Application** - Complete application example demonstrating smart doorbell functionality with person detection and notification features.
-
-:doc:`serial_camera_door_bell_readme`
-   **Serial Camera Door Bell** - Advanced doorbell application using serial camera interface with enhanced features and connectivity options.

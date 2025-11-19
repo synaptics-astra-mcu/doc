@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "Astra SRSDK Peripheral Driver Library", "index.html", [
+  [ "Astra MCU SDK Peripheral Driver Library", "index.html", [
     [ "Peripherals", "topics.html", "topics" ]
   ] ]
 ];

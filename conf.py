@@ -9,13 +9,13 @@
 import sphinx_rtd_theme
 
 # setup documentation metadata
-project = 'Synaptics ASTRA SRSDK'
+project = 'Synaptics ASTRA MCU SDK'
 copyright = '2023 - 2025, Synaptics'
 author = 'Synaptics'
-release = 'SRSDK_v1.1.0'
+release = 'Astra_MCU_SDK_v1.2.0'
 
 # Custom project title for HTML
-#html_title = f"{project} — Synaptics Astra SRSDK User Guide {release} documentation"
+#html_title = f"{project} — Synaptics Astra MCU SDK User Guide {release} documentation"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
