@@ -1,12 +1,12 @@
-SRSDK API Guide
-****************
+Astra MCU SDK API Guide
+***********************
 
 .. toctree::
    :hidden:
 
    api-reference
 
-Welcome to the Synaptics Astra SRSDK API Documentation! This section provides complete API reference documentation for the SRSDK Peripheral Driver Library.
+Welcome to the Synaptics Astra MCU SDK API Documentation! This section provides complete API reference documentation for the SRSDK Peripheral Driver Library.
 
 **API Documentation:**
 

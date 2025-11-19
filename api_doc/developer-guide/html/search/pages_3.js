@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mcu_20sdk_20peripheral_20driver_20library_0',['Astra SRSDK Peripheral Driver Library',['../index.html',1,'']]]
+  ['mcu_20sdk_20peripheral_20driver_20library_0',['Astra MCU SDK Peripheral Driver Library',['../index.html',1,'']]]
 ];

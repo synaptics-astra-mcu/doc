@@ -4,7 +4,7 @@ var searchData=
   ['level_1',['level',['../structgpio__pin__config__t.html#a5f79e4633a021424ee484131212bfb64',1,'gpio_pin_config_t']]],
   ['level_20functions_2',['level Functions',['../group__group__uart__driver.html#snippet_high_level',1,'High-level Functions.'],['../group__group__uart__driver.html#snippet_low_level',1,'Low-level Functions.']]],
   ['level_20operations_3',['Example of port-level operations',['../group__group__gpio__driver.html#sub_section',1,'']]],
-  ['library_4',['Astra SRSDK Peripheral Driver Library',['../index.html',1,'']]],
+  ['library_4',['Astra MCU SDK Peripheral Driver Library',['../index.html',1,'']]],
   ['link_5faddr_5',['link_addr',['../structdma__1d__config__t.html#a40a82aea75ee2319754c52586c658ccf',1,'dma_1d_config_t::link_addr'],['../structdma__2d__config__t.html#ad96348d1c2f1d85a5ea4f625b818f725',1,'dma_2d_config_t::link_addr']]],
   ['linking_20support_6',['Command Linking Support',['../group__group__dma__cmd__linking.html',1,'']]],
   ['low_20level_7',['Low Level',['../group__group__spi__low__level__functions.html',1,'Low Level'],['../group__group__uart__low__level__functions.html',1,'Low Level']]],

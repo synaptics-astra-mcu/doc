@@ -13,7 +13,7 @@ var searchData=
   ['perif_5ftest_5fclk480m_5fgrp1_10',['PERIF_TEST_CLK480M_GRP1',['../group___c_l_k___e_n_u_m_s.html#ggadf58d5869a776847e03e148a76403455a9e2309fce1cf141b9b6ca4f543af85f1',1,'sr110.h']]],
   ['perif_5ftest_5fclk480m_5fgrp2_11',['PERIF_TEST_CLK480M_GRP2',['../group___c_l_k___e_n_u_m_s.html#ggadf58d5869a776847e03e148a76403455a81c2cac02ba4acb03fe29ed70ee881a3',1,'sr110.h']]],
   ['peripheral_12',['PERIPHERAL',['../group___s_p_i___e_n_u_m_s.html#gga986cc0d2e0991eb6a878e0cfdadb71bfadbbbffeb5f045383f0965f7a9adf74c0',1,'sr110.h']]],
-  ['peripheral_20driver_20library_13',['Astra SRSDK Peripheral Driver Library',['../index.html',1,'']]],
+  ['peripheral_20driver_20library_13',['Astra MCU SDK Peripheral Driver Library',['../index.html',1,'']]],
   ['peripheral_20pinmux_20configuration_20for_20spi_14',['Peripheral PINMUX Configuration for SPI',['../group__group__spi__driver.html#snippet_spi_peripheral_pinmux_config',1,'']]],
   ['pin_20for_20interrupt_3a_15',['Example of configuring a GPIO pin for interrupt:',['../group__group__gpio__driver.html#GPIO_INPUT_CONFIG',1,'']]],
   ['pin_20function_16',['Setting Pin Function',['../group__group__pinmux__driver.html#snippet_set_function',1,'']]],

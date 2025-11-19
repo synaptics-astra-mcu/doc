@@ -18,4 +18,4 @@ The toolkit supports various hardware platforms and provides both GUI and comman
    :hidden:
    :glob:
 
-   SRSDKIOT+Syna+Tool+Kit+Guide
+   Astra_MCU_SDK_Syna_Tool_Kit_Guide 

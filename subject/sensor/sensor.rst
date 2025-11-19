@@ -7,4 +7,4 @@ For detailed integration steps and technical specifications, refer to the comple
 .. toctree::
    :hidden:
 
-   SRSDK_MIPI_Sensor_Integration
+   Astra_MCU_SDK_MIPI_Sensor_Integration

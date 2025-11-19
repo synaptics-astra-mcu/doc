@@ -10,7 +10,7 @@ Captured images can be delivered in two ways:
 
 | Delivery Mode         | Description                                                                                   | Tools for Visualization                     |
 |-----------------------|-----------------------------------------------------------------------------------------------|---------------------------------------------|
-| USB CDC (to Host PC)  | Sends images via USB CDC to a host PC.                                                        | SynaToolkit, VS Code Extension              |
+| USB CDC (to Host PC)  | Sends images via USB CDC to a host PC.                                                        |  VS Code Extension              |
 | SPI to Controller     | Sends images over SPI to another Astra Machina Eval Kit acting as a controller; receives frames for logging. | Logger |
 
 ---
@@ -19,20 +19,32 @@ Captured images can be delivered in two ways:
 
 ### 2.1 Prerequisites
 
-- [Astra SRSDK VS Code Extension](../developer_guide/SRSDK_VSCode_Extension_Userguide.rst)
-- [SynaToolkit](../subject/toolkit/toolkit.rst)
+- [Astra MCU SDK VS Code Extension](../developer_guide/Astra_MCU_SDK_VSCode_Extension_Userguide.rst)
 
 ### 2.2 Build Options
 
 | Method           | Steps                                                                                           | Notes                                           |
 |------------------|-------------------------------------------------------------------------------------------------|-------------------------------------------------|
 | VS Code Extension| Import SDK → Build or Clean SDK in “Imported Repos” → select configs (Application, Board, Compiler) → Build | GUI workflow; logs appear in VS Code terminal. |
-| Native CLI       | Run `make cm55_doorbell_defconfig` → `make menuconfig` (optional) → `make`                     | Suitable for native builds                     |
+| Native CLI       | Run `make cm55_doorbell_defconfig BOARD=SR110_RDK BUILD=SRSDK`                                        | Suitable for native builds                     |
 
-### 2.2.1 Native Configuration and Build Steps
+### Configuration and Build Steps
 
-1. **Configure WAKEUP_TRIGGER**
+**Note:** **Configure WAKEUP_TRIGGER**
    Navigate to: `uc_jpeg_preroll.c` change to CONFIG_WAKEUP_TRIGGER set to 2 for (GPIO-based wakeup)
+
+### 1. Using Astra MCU SDK VS Code extension
+
+   - Navigate to **IMPORTED REPOS** → **Build and Deploy** in the Astra MCU SDK VS Code Extension.
+   - Select the **Build Configurations** checkbox, then select the necessary options.
+   - Select **doorbell** in the **Application** dropdown. This will apply the defconfig.
+   - Select the appropriate build and clean options from the checkboxes. Then click **Run**. This will build the SDK generating the required `.elf` or `.axf` files for deployment using the installed package.
+
+   For detailed steps refer to the [Astra MCU SDK VS Code Extension Userguide](../developer_guide/Astra_MCU_SDK_VSCode_Extension_Userguide.rst).
+
+   ![Build Configurations](../_static/Assets/Images/user_guide/jpeg_preroll/doorbell_defconfig.png)
+
+### 2. Native build in the terminal
 
 2. **Select Default Configuration and Build SDK + Example**
    This will apply the defconfig, then build and install the SDK package, generating the required `.elf` or `.axf` files for deployment.
@@ -51,32 +63,40 @@ Captured images can be delivered in two ways:
 
 ### 3.1 Setup and Flashing
 
-1. **Open the Astra SRSDK VSCode Extension and connect to the Debug IC USB port on the Astra Machina Micro Kit.**
-   For detailed steps refer to the [Astra Machina Micro Eval Kit](../quickstart/Astra_SRSDK_Quick_Start_Guide.rst) .
+1. **Open the Astra MCU SDK VSCode Extension and connect to the Debug IC USB port on the Astra Machina Micro Kit.**
+   For detailed steps refer to the [Astra Machina Micro Eval Kit](../quickstart/Astra_MCU_SDK_Quick_Start_Guide.md).
 
 2. **Generate Binary Files**
    - FW Binary generation
-      - Navigate to **AXF/ELF TO BIN** → **Bin Conversion** in Astra SRSDK VSCode Extension
-      - Load the generated `sr110_cm55_fw.elf` or `sr110_cm55_fw.axf` file
-      - Click **Run Image Generator** to create the binary files
-      - Refer to [Astra SRSDK VSCode Extension User Guide](../developer_guide/SRSDK_VSCode_Extension_Userguide.rst).
+      - Navigate to **IMPORTED REPOS** → **Build and Deploy** in Astra MCU SDK VSCode Extension.
+      - Select the **Image Conversion** option, browse and select the required .axf or .elf file. If the usecase is built using the VS Code extension, the file path will be automatically populated.
+
+      ![Binary Conversion](../_static/Assets/Images/user_guide/jpeg_preroll/binary_conversion.png)
+      - Click **Run** to create the binary files.
+      - Refer to [Astra MCU SDK VSCode Extension User Guide](../developer_guide/Astra_MCU_SDK_VSCode_Extension_Userguide.rst) for more detailed instructions.
    - Model Binary generation (to place the Model in Flash)
-      - To generate `.bin` file for TFLite models, please refer to the [Vela compilation guide](Astra_SRSDK_vela_compilation_tflite_model.md).
+      - To generate `.bin` file for TFLite models, please refer to the [Vela compilation guide](Astra_MCU_SDK_vela_compilation_tflite_model.md).
 
 3. **Flash the Application**
 
-   To flash the application:
+   - To flash the application:
+      * Select the **Image Flashing** option in the **Build and Deploy** view in the Astra MCU SDK VSCode Extension.
+      * Select **SWD/JTAG** as the Interface.
+      * Choose the respective image bins and click **Run**.
 
-   * Navigate to **IMAGE LOADING** in the Astra SRSDK VSCode Extension.
-   * Select **SWD/JTAG** as the service type.
-   * Choose the respective image bins and click **Flash Execute**.
    * Flash the pre-generated model binary: `door_bell_flash(384x512).bin`. Due to memory constraints, need to burn the Model weights to Flash.
-     - Location: `examples/vision_examples/uc_jpeg_preroll/models/`
+     - Location: `examples/SR110_RDK/vision_examples/uc_jpeg_preroll/models/`
      - Flash address: `0x629000`
-     - **Calculation Note:** Flash address is determined by the sum of the `host_image` size and the `image_offset_SDK_image_B_offset` (parameter, which is defined within `NVM_data.json`). It's crucial that the resulting address is aligned to a sector boundary (a multiple of 4096 bytes).This calculated resulting address should then be assigned to the `image_offset_Model_A_offset` macro in your `NVM_data.json` file.
-   - Flash the generated `B0_flash_full_image_GD25LE128_67Mhz_secured.bin` file.
+     - **Calculation Note:**
+         The flash address is determined by adding the `host_image` size and the `image_offset_SDK_image_B_offset` parameter (defined in `NVM_data.json`).
+         Ensure the resulting address is aligned to a sector boundary (a multiple of 4096 bytes).
+         This calculated address should then be assigned to the `image_offset_Model_A_offset` macro in your `NVM_data.json` file.
 
-   Refer to the [Astra SRSDK VSCode Extension User Guide](../developer_guide/SRSDK_VSCode_Extension_Userguide.rst) for detailed instructions on flashing.
+     ![Model Flashing](../_static/Assets/Images/user_guide/jpeg_preroll/image_model_flashing.png)
+
+      > Note: By default, flashing a binary performs a sector erase based on the binary size. To erase the entire flash memory, enable the **Full Flash Erase** checkbox. When this option is selected along with a binary file, the tool first performs a full flash erase before flashing the binary. If the checkbox is selected without specifying a binary, only a full flash erase operation will be executed.
+
+   Refer to the [Astra MCU SDK VSCode Extension User Guide](../developer_guide/Astra_MCU_SDK_VSCode_Extension_Userguide.rst) for detailed instructions on flashing. 
 
 ### Note:
 
@@ -88,10 +108,9 @@ The placement of the model (in **SRAM** or **FLASH**) is determined by its memor
 
 | Method           | Steps                                                                 |
 |------------------|-----------------------------------------------------------------------|
-| **SynaToolkit**      | Open Toolkit → Connect USB (SR110 App port) → Press Reset → View logs on DAP port |
 | **VS Code Extension**| Open `LOGGER` tab → Select port & baud → Connect                 |
 
-💡 You can find detailed setup and usage instructions in the **Astra SRSDK VSCode Extension User Guide**.
+💡 You can find detailed setup and usage instructions in the **Astra MCU SDK VSCode Extension User Guide**.
 
 #### Initial Setup
 
@@ -130,9 +149,7 @@ The SPI Pre-roll transfer follows a protocol as described in [SPI Pre-roll Proto
 Run the Doorbell defconfig to apply the default settings for the doorbell use case. Enable SPI module by enabling **MODULE_SPI_ENABLED** and build the image. With the settings, the device will operate as the SPI pre-roll Peripheral (Sender).
 
 ```makefile
-make cm55_doorbell_defconfig
-make menuconfig #Enable SPI and LOGGER_IF_UART_0
-make
+make cm55_doorbell_defconfig BOARD=SR110_RDK BUILD=SRSDK EDIT=1 #Enable SPI and LOGGER_IF_UART_0
 ```
 **Remember** enable LOGGER_IF_UART_0 before building the peripheral image with **LOGGER_IF_UART_0** in the menuconfig.
 
@@ -144,7 +161,7 @@ in `spi_sample_app.h` and build the image.
 With these settings, the device will operate as the SPI pre-roll Controller (Receiver).
 
 ```makefile
-make cm55_spi_sample_app_defconfig
+make cm55_spi_sample_app_defconfig BOARD=SR110_RDK BUILD=SRSDK
 make
 ```
 

@@ -1,5 +1,5 @@
-SRSDK User Guide
-****************
+Astra MCU SDK User Guide
+************************
 
 .. toctree::
    :hidden:
