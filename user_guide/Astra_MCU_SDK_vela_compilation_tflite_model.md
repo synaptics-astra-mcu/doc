@@ -123,7 +123,17 @@ Rename the output `Model.tflite` model to:
 
 ---
 
-### Step 11: Generate Model.bin Using Synatoolkit
+### Step 11: Model.bin can be generated from both VS code and Synatoolkit.
+
+
+### Step 11.1: Generate Model.bin Using VS Code
+
+Use this `.bin` file with the **VS Code Image Converter** to produce the final model.bin
+
+Refer to: [Astra MCU SDK VSCode Extension User Guide](../developer_guide/Astra_MCU_SDK_VSCode_Extension_Userguide.rst#image-conversion-advanced-configurations) .
+
+
+### Step 11.2: Generate Model.bin Using Synatoolkit
 
 Use this `.bin` file with the **Synatoolkit Image Generator** to produce the final model.bin
 

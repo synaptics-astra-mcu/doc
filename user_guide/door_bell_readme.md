@@ -1,4 +1,4 @@
-# Doorbell ML Application
+# MIPI Doorbell ML Application
 
 ## 1. Overview
 
@@ -110,8 +110,11 @@ The placement of the model (in **SRAM** or **FLASH**) is determined by its memor
 |------------------|-----------------------------------------------------------------------|
 | **VS Code Extension**| Open `LOGGER` tab → Select port & baud → Connect                 |
 
-💡 You can find detailed setup and usage instructions in the **Astra MCU SDK VSCode Extension User Guide**.
+The video stream automatically appears whenever a person is detected.
 
+![Doorbell Person Detected](../_static/Assets/Images/user_guide/jpeg_preroll/doorbell_image_1.png)
+
+💡 You can find detailed setup and usage instructions in the **Astra MCU SDK VSCode Extension User Guide**.
 #### Initial Setup
 
 - Press `RSTN` button on `SR110_RDK`.
@@ -128,6 +131,10 @@ The placement of the model (in **SRAM** or **FLASH**) is determined by its memor
 |---------|----------------------------|----------------------------------------------------|
 | Timer   | `CONFIG_WAKEUP_TRIGGER=1`  | Device wakes every 10 seconds.                    |
 | GPIO    | `CONFIG_WAKEUP_TRIGGER=2`  | Jumper from GND → UART0 RX after 10s of hibernation. |
+
+### 4.3 Result
+
+The JPEG preroll images and high-resolution Full HD (FHD) images upon detection are saved in the overlayed_frames subfolder within the video_stream_output directory.`Example: "C:\Users\<username>\video_stream_output" or "/home/User/video_stream_output"`
 
 ## 5. SPI Pre-roll Use Case
 

@@ -42,7 +42,7 @@ General
 =======
 
 ====================== ==================================
-   **Date**               14\ :sup:`th` November 2025
+   **Date**               24\ :sup:`th` November 2025
 ====================== ==================================
    Version number         1.2.0
    Based on version       3.6.0
@@ -186,6 +186,7 @@ CLK Sample Application                          √
 SPI Sample Application                          √
 SDIO Sample Application (SDCARD & SDIO devices) √
 FATFS Sample Application                        √
+BT Sample Application                           √
 DMA Memory to Memory Sample Application         √
 =============================================== ========================
 

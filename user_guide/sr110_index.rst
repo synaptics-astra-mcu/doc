@@ -15,6 +15,7 @@ This section provides comprehensive user guides and demo applications for the SR
    Hand_Gesture_Detection
    Jpeg_Preroll
    spi_preroll_protocol
+   bt_sample_readme
 
 **AI Vision Demos:**
 
@@ -40,5 +41,8 @@ This section provides comprehensive user guides and demo applications for the SR
 
 :doc:`spi_preroll_protocol`
    **SPI Preroll Protocol** - Technical guide for SPI-based data transfer protocols, including configuration and communication setup with external devices.
+
+:doc:`bt_sample_readme`
+   **Bletooth Demo** - The BT sample application showcases BLE capabilities, including stack initialization, GATT server functionality, advertising, device discovery and connection, and GATT read/write operations.
 
 **Application Examples:**
