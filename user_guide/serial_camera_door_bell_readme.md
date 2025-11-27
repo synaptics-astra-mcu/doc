@@ -2,7 +2,7 @@
 
 ## Description
 
-The Serial Camera Doorbell sample application uses the K351 serial camera sensor to capture a 500x500 RAW Bayer image along with a sequence of JPEG preroll images. It is capable of detecting a person within its field of view and, upon detection, automatically sends 9 JPEG preroll images to provide context before the event. To use this application, follow the instructions in the build, run, and results sections. The JPEG preroll images are saved in the overlayed_frames subfolder within the video_stream_output directory of the SynaToolkit folder.
+The Serial Camera Doorbell sample application uses the K351 serial camera sensor to capture a 500x500 RAW Bayer image along with a sequence of JPEG preroll images. It is capable of detecting a person within its field of view and, upon detection, automatically sends 9 JPEG preroll images to provide context before the event. To use this application, follow the instructions in the build, run, and results sections. The JPEG preroll images are saved in the overlayed_frames subfolder within the video_stream_output directory.`Example: "C:\Users\<username>\video_stream_output" or "/home/User/video_stream_output"`
 
 ## Build Instructions
 
@@ -86,12 +86,28 @@ The placement of the model (in **SRAM** or **FLASH**) is determined by its memor
 
 ### Running the Application using VS Code extension
 
-1. After successfully flashing the usecase and model binaries, click on **Video Streamer** option in the side panel. This will open the Video Streamer webview.
+1. **Before running the application, make sure to connect a USB cable to the Application SR110 USB port on the Astra Machina Micro board and then press the reset button**
+   - For logging output, click on **LOGGER** and connect to the DAP logger port.
 
-   ![Video Streamer](../_static/Assets/Images/user_guide/jpeg_preroll/video_stream.png)
+   ![video stream output](../_static/Assets/Images/user_guide/jpeg_preroll/doorbell_camera_init.PNG)
+
+   ![Door bell logs](../_static/Assets/Images/user_guide/jpeg_preroll/serial_doorbell_webview.PNG)
+2. **Initial Setup**
+   - After completing the setup, press the RSTN button on the SR110 RDK
+
+> **Note:**
+> The JPEG preroll images are saved in the **`overlayed_frames`** subfolder located inside the **`video_stream_output`** directory.
+>
+> **Example paths:**
+> `C:\Users\<username>\video_stream_output`
+> **or**
+> `/home/User/video_stream_output`
+### Running the Application using SynaToolkit
+
+1. **Open SynaToolkit_2.6.0**
 
 2. **Before running the application, make sure to connect a USB cable to the Application SR110 USB port on the Astra Machina Micro board and then press the reset button**
-   - For logging output, click on **LOGGER** and connect to the DAP logger port.
+   - For logging output, connect to DAP logger port
 
    ![Door bell logs](../_static/Assets/Images/user_guide/jpeg_preroll/image_3.jpg)
    ![video stream output](../_static/Assets/Images/user_guide/jpeg_preroll/image_4.jpg)
@@ -100,9 +116,13 @@ The placement of the model (in **SRAM** or **FLASH**) is determined by its memor
 3. **Initial Setup**
    - After completing the setup, press the RSTN button on the SR110 RDK
 
+> **Note:**
+> The JPEG preroll images are saved in the **`overlayed_frames`** subfolder within the **`video_stream_output`** directory of the **SynaToolkit** folder.
+> **Example paths:**
+> `C:\Synaptics\Apps\SynaToolkit_2.6.0\video_stream_output`
+
 4. **Operation Flow**
    - On person detection, the video streamer opens with the captured frame, then the device enters hibernation if one of the following conditions is met:
-
 ### Wakeup Triggers
 
 **Timer (CONFIG_WAKEUP_TRIGGER = 1):**

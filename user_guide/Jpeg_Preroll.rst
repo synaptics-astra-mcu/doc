@@ -10,7 +10,7 @@ These applications are designed for doorbell systems, leveraging on-device machi
    serial_camera_door_bell_readme
 
 :doc:`door_bell_readme`
-   **Door Bell Application** - Complete application example demonstrating smart doorbell functionality with person detection and notification features.
+   **MIPI Door Bell Application** - Complete application example demonstrating smart doorbell functionality with person detection and notification features.
 
 :doc:`serial_camera_door_bell_readme`
    **Serial Camera Door Bell** - Advanced doorbell application using serial camera interface with enhanced features and connectivity options.
