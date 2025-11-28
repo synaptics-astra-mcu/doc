@@ -16,7 +16,7 @@ Repository Link
 
 If you already have authorized access, you can proceed to the repository:
 
-`Astra MCU SDK GitHub Repository <https://github.com/synaptics-astra-mcu/srsdk>`_
+`Astra MCU SDK GitHub Repository <https://github.com/synaptics-astra-mcu/srsdk/tree/v1.2.0>`_
 
 ----
 
