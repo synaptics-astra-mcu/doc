@@ -4,7 +4,9 @@ SR110 User Guide
 This section provides comprehensive user guides and demo applications for the SR110 evaluation platform. Learn how to run AI vision applications, configure sensors, and explore the full capabilities of the SR110 board through hands-on examples.
 
 **Download Binaries (Path)**: All demo binaries can be downloaded from the GitHub repository under `GitHub Releases <https://github.com/synaptics-astra-mcu/srsdk_demos/tree/v1.2.0>`_
+
 **Download Binaries (.zip)**: The pre-compiled demo binaries (ZIP package) are available at `GitHub Releases <https://github.com/synaptics-astra-mcu/srsdk_demos/releases/tag/v1.2.0>`_
+
 
 .. toctree::
    :maxdepth: 1
@@ -15,7 +17,6 @@ This section provides comprehensive user guides and demo applications for the SR
    Person_Pose_Detection
    Hand_Gesture_Detection
    Jpeg_Preroll
-   spi_preroll_protocol
    bt_sample_readme
 
 **AI Vision Demos:**
@@ -40,10 +41,6 @@ This section provides comprehensive user guides and demo applications for the SR
 :doc:`Jpeg_Preroll`
    **JPEG Preroll Demo** - Guide for JPEG image capture and preroll functionality, including USB transfer and image processing workflows.
 
-:doc:`spi_preroll_protocol`
-   **SPI Preroll Protocol** - Technical guide for SPI-based data transfer protocols, including configuration and communication setup with external devices.
-
 :doc:`bt_sample_readme`
    **Bletooth Demo** - The BT sample application showcases BLE capabilities, including stack initialization, GATT server functionality, advertising, device discovery and connection, and GATT read/write operations.
 
-**Application Examples:**
