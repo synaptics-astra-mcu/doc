@@ -3,8 +3,8 @@ SR110 User Guide
 
 This section provides comprehensive user guides and demo applications for the SR110 evaluation platform. Learn how to run AI vision applications, configure sensors, and explore the full capabilities of the SR110 board through hands-on examples.
 
-**Download Binaries (Path)**: All demo binaries can be downloaded from the GitHub repository under  `GitHub Releases <https://github.com/synaptics-astra-mcu/srsdk_demos/tree/v1.2.0>`
-**Download Binaries (.zip)**: The pre-compiled demo binaries (ZIP package) are available at `GitHub Releases <https://github.com/synaptics-astra-mcu/srsdk_demos/releases/tag/v1.2.0>`
+**Download Binaries (Path)**: All demo binaries can be downloaded from the GitHub repository under  `GitHub Releases <https://github.com/synaptics-astra-mcu/srsdk_demos/tree/v1.2.0>`_
+**Download Binaries (.zip)**: The pre-compiled demo binaries (ZIP package) are available at `GitHub Releases <https://github.com/synaptics-astra-mcu/srsdk_demos/releases/tag/v1.2.0>`_
 
 .. toctree::
    :maxdepth: 1
