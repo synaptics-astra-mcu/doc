@@ -1,12 +1,14 @@
 # Setup Guide for Development Environment on MAC Arm64 for GCC
 
 Content:
-  - [Install Basic Tools and Dependencies](#mac-arm64-install-basic-tools-and-dependencies)
-  - [Install CMake](#mac-arm64-install-cmake)
-  - [Install Ninja Build System](#mac-arm64-install-ninja-build-system)
-  - [Install the ARM GNU GCC Compiler](#mac-arm64-install-the-arm-gnu-gcc-compiler)
 
-(mac-arm64-install-basic-tools-and-dependencies)=
+- [Setup Guide for Development Environment on Mac Arm64 for GCC](#setup-guide-for-development-environment-on-mac-arm64-for-gcc)
+  - [Install Basic Tools and Dependencies](#install-basic-tools-and-dependencies)
+  - [Install CMake](#install-cmake)
+  - [Install Ninja Build System](#install-ninja-build-system)
+  - [Install Python](#install-python)
+  - [Install the ARM GNU GCC Compiler](#install-the-arm-gnu-gcc-compiler)
+
 ## Install Basic Tools and Dependencies
 
 First, install [Homebrew](https://brew.sh/) if it's not already installed
@@ -19,49 +21,47 @@ Then install essential tools:
 
 ```
 brew update
-brew install git wget make python3
+brew install git wget make zip unzip python
 ```
 
-(mac-arm64-install-cmake)=
 ## Install CMake
 
-Download CMake 3.26.0 Binary for macOS
+Download CMake 4.1.2 Binary for macOS
 
 ```
-curl -LO https://github.com/Kitware/CMake/releases/download/v3.26.0/cmake-3.26.0-macos-universal.tar.gz
+curl -LO https://github.com/Kitware/CMake/releases/download/v4.1.2/cmake-4.1.2-macos-universal.tar.gz
 ```
 Extract the Archive
 
 ```
-tar -xzf cmake-3.26.0-macos-universal.tar.gz
+tar -xzf cmake-4.1.2-macos-universal.tar.gz
 ```
 
 Move CMake to a System Directory
 
 ```
-sudo mv cmake-3.26.0-macos-universal /opt/cmake-3.26
+sudo mv cmake-4.1.2-macos-universal /opt/cmake-4.1
 ```
 
 Add CMake to PATH
 
 ```
-echo 'export PATH="/opt/cmake-3.26/CMake.app/Contents/bin:$PATH"' >> ~/.zshrc
+echo 'export PATH="/opt/cmake-4.1/CMake.app/Contents/bin:$PATH"' >> ~/.zshrc
 source ~/.zshrc
 ```
-verify installation
+Verify installation
 
 ```
 cmake --version
 ```
 
-(mac-arm64-install-ninja-build-system)=
 ## Install Ninja Build System
 
 Ninja is a small build system with a focus on speed, which CMake can utilize to manage builds
 
-Download the latest macOS Ninja binary (v1.11.1)
+Download the latest macOS Ninja binary (v1.13.1)
 ```
-curl -LO https://github.com/ninja-build/ninja/releases/download/v1.11.1/ninja-mac.zip
+curl -LO https://github.com/ninja-build/ninja/releases/download/v1.13.1/ninja-mac.zip
 ```
 
 Unzip the archive
@@ -91,7 +91,21 @@ Verify Installation:
 ninja  --version
 ```
 
-(mac-arm64-install-the-arm-gnu-gcc-compiler)=
+## Install Python
+
+Python is required to run configuration tools (menuconfig, kconfig) and to execute scripts used during SDK build and setup.
+
+Download the latest Python version (3.13.7)
+```
+brew install pyenv
+pyenv install 3.13.7
+pyenv global 3.13.7
+```
+Verify Installation:
+```
+python3 --version
+```
+
 ## Install the ARM GNU GCC Compiler
 
 Download the macOS (Apple Silicon) version of the ARM GNU Toolchain

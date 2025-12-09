@@ -2,6 +2,9 @@
 
 This repository contains example applications for the Synaptics SDK (Astra MCU SDK), demonstrating various features and capabilities of the SR110 SoC.
 
+Scope
+- This README explains examples organization and out‑of‑tree application builds. For full setup, SDK package builds, image generation, flashing, and debugging, see the [Astra_MCU_SDK_User_Guide](../../quickstart/Astra_MCU_SDK_User_Guide.md).
+
 ---
 
 ## 📋 Table of Contents
@@ -156,6 +159,8 @@ examples/
 
 ## Build System Architecture
 
+For examples-specific build details and commands, see the [Examples Build Reference](./docs/build.md).
+
 ---
 
 ### Two-Stage Build Process
@@ -196,28 +201,16 @@ examples/
 
 ## Building Examples
 
-To build examples, refer to the comprehensive build guide:
+For step‑by‑step workflows, use the [Examples Build Reference](./docs/build.md). Common example commands:
 
-### 📖 **[build.md](build.md)** - Complete Build Instructions
-
-The build guide covers:
-- **Prerequisites** - Environment setup and toolchain configuration
-- **Build Workflows** - Step-by-step instructions for all scenarios
-- **Build Modes** - Understanding SDK vs application builds
-- **Configuration** - Using defconfigs and menuconfig
-- **Troubleshooting** - Common errors and solutions
-- **Advanced Topics** - Custom configurations, multiple apps, compiler switching
-- **Makefile Reference** - Complete target documentation
-
-**Quick Commands:**
+Quick commands
 ```bash
-# Build SDK + application
+# One-time per shell: point examples to your SDK root (required for combined builds and installing SDK into examples)
+export SRSDK_DIR=/path/to/Astra_MCU_SDK
+
+# Build SDK + application (combined; requires SRSDK_DIR)
 make cm55_demo_sample_app_defconfig BOARD=SR110_RDK BUILD=SRSDK
 
-# Build SDK only
-make astrasdk BOARD=SR110_RDK
-
-# Rebuild application
+# Rebuild application only (uses installed SDK)
 make build BOARD=SR110_RDK
 ```
-

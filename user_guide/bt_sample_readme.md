@@ -81,7 +81,7 @@ Before building the application, you **must** increase the heap size to accommod
 ### Setup and Flashing
 
 1. **Open the Astra MCU SDK VSCode Extension and connect to the Debug IC USB port on the Astra Machina Micro Kit.**
-   For detailed steps refer to the [Astra Machina Micro Eval Kit](../quickstart/Astra_MCU_SDK_Quick_Start_Guide.md) .
+   For detailed steps refer to the [Astra MCU SDK User Guide](../quickstart/Astra_MCU_SDK_User_Guide.md) .
  
 2. **Generate Binary Files**
    - FW Binary generation
