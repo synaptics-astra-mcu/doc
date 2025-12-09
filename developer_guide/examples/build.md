@@ -55,12 +55,14 @@ examples/
 ### Required tools
 
 Please ensure that your system was set up according to one of the installations listed below
-- Astra MCU SDK setup for Windows with ARM Compiler : [Setup_for_Astra_MCU SDK_in_Windows_for_ARM_Compiler](../build_env/Astra_MCU_SDK_Windows_env_with_ARM_Compiler.md)
-- Astra MCU SDK setup for Windows with GCC : [Setup_for_Astra_MCU SDK_in_Windows_for_GCC](../build_env/Astra_MCU_SDK_Windows_env_with_gcc.md)
-- Astra MCU SDK setup for linux with ARM Compiler : [Setup_for_Astra_MCU SDK_in_Linux_for_ARM_Compiler](../build_env/Astra_MCU_SDK_Linux_env_with_ARM_Compiler.md)
-- Astra MCU SDK setup for linux with GCC : [Setup_for_Astra_MCU SDK_in_Linux_for_GCC](../build_env/Astra_MCU_SDK_Linux_env_with_gcc.md)
-- Astra MCU SDK setup for macOS ARM64 with GCC Compiler: [Setup_for_Astra_MCU_SDK_in_macOS_ARM64_for_GCC_Compiler](../build_env/Astra_MCU_SDK_Mac_Arm64_env_with_gcc.md)
-- Astra MCU SDK setup for macOS x86_64 with GCC Compiler: [Setup_for_Astra_MCU_SDK_in_macOS_x86_64_for_GCC](../build_env/Astra_MCU_SDK_Mac_x86_64_env_with_gcc.md)
+- Astra MCU SDK setup for Windows with ARM Compiler : [Setup_for_Astra_MCU_SDK_in_Windows_for_ARM_Compiler](../build_env/Astra_MCU_SDK_Windows_env_with_ARM_Compiler.md)
+- Astra MCU SDK setup for Windows with GCC : [Setup_for_Astra_MCU_SDK_in_Windows_for_GCC](../build_env/Astra_MCU_SDK_Windows_env_with_gcc.md)
+- Astra MCU SDK setup for linux with ARM Compiler : [Setup_for_Astra_MCU_SDK_in_Linux_for_ARM_Compiler](../build_env/Astra_MCU_SDK_Linux_env_with_ARM_Compiler.md)
+- Astra MCU SDK setup for linux with GCC : [Setup_for_Astra_MCU_SDK_in_Linux_for_GCC](../build_env/Astra_MCU_SDK_Linux_env_with_gcc.md)
+- Astra MCU SDK setup for macOS Arm64 with GCC : [Setup_for_Astra_MCU_SDK_in_macOS_ARM64_for_GCC_Compiler](../build_env/Astra_MCU_SDK_Mac_Arm64_env_with_gcc.md)
+- Astra MCU SDK setup for macOS x86_64 with GCC : [Setup_for_Astra_MCU_SDK_in_macOS_x86_64_for_GCC](../build_env/Astra_MCU_SDK_Mac_x86_64_env_with_gcc.md)
+- Astra MCU SDK Install and Setup Python: [Astra MCU SDK Install and Setup Python](../Astra_MCU_SDK_Install_and_Setup.md)
+
 
 ---
 
@@ -95,9 +97,9 @@ export AC6_TOOLCHAIN_6_19_0=/path/to/armclang
 
 ---
 
-##  1. Building Standalone Astra MCU SDK
-
-To build the base **Astra MCU SDK libraries** using the default configurations:
+##  1. Building Standalone Astra MCU SDK (from examples)
+ 
+To build the base **Astra MCU SDK libraries** using the default configurations from the examples folder:
 
 ```bash
 # Step 1: Apply default SDK configuration
@@ -107,42 +109,46 @@ make default_config BOARD=<BOARD>
 make astrasdk BOARD=<BOARD>
 ```
 
-**Example:**
+Example:
 ```bash
 make default_config BOARD=SR110_RDK
 make astrasdk BOARD=SR110_RDK
 ```
 
-- This target:
-  - Builds the Astra MCU SDK in **standalone mode**
-  - Installs the compiled libraries(libdriver.a, libos.a etc) and packages to the `./install/` directory inside the example project
-  - Does **not** compile any example application code
+Notes:
+- Installs the SDK package to `./install/<BOARD>/` inside the examples project.
+- Does not compile example application code.
 
 ---
 
-## 2. Building Application-Based Astra MCU SDK and Example Application
+## 2. Building Application + SDK (combined) and Example Application
 
 To build an **example application** along with its required SDK configuration:
+
+Set the SDK root (required for combined builds):
+```bash
+export SRSDK_DIR=/path/to/Astra_MCU_SDK
+```
 
 ```bash
 make <application_defconfig> BOARD=<BOARD> BUILD=SRSDK
 ```
 
-**Example:**
+Example:
 ```bash
 make cm55_demo_sample_app_defconfig BOARD=SR110_RDK BUILD=SRSDK
 ```
 
-This target performs the following steps:
+This performs:
+1. Apply the app defconfig (e.g., `cm55_demo_sample_app_defconfig`)
+2. Generate configuration headers
+3. Build the SDK with app‑specific configuration (BUILD=SRSDK)
+4. Install the SDK package to `./install/<BOARD>/`
+5. Build the example application
+6. Place the final binary in `./out/<target>/<build_type>/`
 
-1. Applies the specified defconfig (e.g., `cm55_demo_sample_app_defconfig`)
-2. Generates configuration headers from Kconfig
-3. **If BUILD=SRSDK:** Builds the Astra MCU SDK with application-specific configuration
-4. Installs the resulting SDK libraries into `./install/${BOARD}/`
-5. Builds the example application source
-6. Places the final binary (`.elf` or `.axf`) inside the `./out/<target>/<build_type>/` directory
-
-**Note:** By default, the SDK is built during this step. To skip SDK build and use existing prebuilts, the system automatically switches to `BUILD=EXAMPLE` for the application build phase.
+Note:
+- To reuse an existing SDK package, rebuild only the app via `make build BOARD=<BOARD>`.
 
 To edit the configuration before building:
 
@@ -165,32 +171,22 @@ This target performs the following steps:
 
 ## 3. Rebuilding Only the Example Application
 
-If you’ve already built and installed the Astra MCU SDK (from step 1 or 2), and only want to rebuild the **example application**:
+If the SDK package is already installed, rebuild only the **example application**:
 
 ```bash
-make <application_defconfig> BOARD=<BOARD>
-```
-or
-```bash
 make build BOARD=<BOARD>
-```
-or
-```bash
+# or simply (default target is build)
 make BOARD=<BOARD>
 ```
 
-**Example:**
-```bash
-make build BOARD=SR110_RDK
-```
-or
+Example:
 ```bash
 make build BOARD=SR110_RDK
 ```
 
-- This target uses the pre-installed SDK from `./install/`
-- Only compiles the application directory using the previously loaded configs (e.g., recompiles `main.c`)
-- Useful for **faster rebuilds** when the SDK itself hasn't changed
+Notes
+- Requires an installed SDK under `./install/<BOARD>/`. If missing, set `SRSDK_DIR` and run a combined build first.
+- Rebuilds only the application sources using the previously loaded configs; faster than rebuilding the SDK.
 
 ---
 ## 4. Cleaning Build Outputs
@@ -214,19 +210,18 @@ make clean all BOARD=<BOARD>
 Complete cleanup of all build outputs
 ---
 
-##  Summary of Useful Targets
+##  Summary of Useful Targets (examples)
 
 | Target                         | Description                                                 |
 |--------------------------------|------------------------------------------------------------ |
 | `<app>_defconfig`              | Apply app-specific config and build SDK + example           |
 | `list_defconfigs`              | Show available defconfig options                            |
-| `menuconfig`                   | Run interactive configuration editor                        |
-| `genconfig`                    | Generate `config.h` from `.config`                          |
+| `menuconfig`                   | Run examples-local configuration editor                     |
+| `advanced_menuconfig`          | Run advanced SDK+example config editor (requires SRSDK_DIR) |
+| `genconfig`                    | Generate `build/example_config.h` from `.config`            |
 | `build`                        | Build application using pre-built SDK                       |
-| `build_advanced`               | Build application with SDK source integration               |
-| `savedefconfig`                | Save current `.config` as a minimal defconfig               |
-| `srsdk`                        | Build standalone Astra MCU SDK with default configuration   |
-| `custom_srsdk`                 | Build Astra MCU SDK with current configuration              |
+| `astrasdk`                     | Build standalone Astra MCU SDK with default configuration   |
+| `custom_astrasdk`              | Build Astra MCU SDK with current configuration              |
 | `clean`                        | Remove build directory (intermediate build outputs)         |
 | `clean_package`                | Remove installed SDK package (install directory)            |
 | `clean all`                    | Remove both build directory and installed package           |
@@ -351,7 +346,7 @@ make <app>_defconfig BOARD=<BOARD>
 3. Unset `CONFIG_COMPILER_GCC`
 4. Rebuild SDK and application
 
-### Creating Custom Defconfigs
+### Creating Custom Defconfigs (examples)
 
 ```bash
 # Step 1: Start with existing defconfig
@@ -360,8 +355,7 @@ make <application_defconfig> BOARD=<BOARD>
 # Step 2: Customize via menuconfig
 make advanced_menuconfig
 
-# Step 3: Save as new defconfig
-make savedefconfig OUT=my_custom_app
+# Step 3: Save as new defconfig "my_custom_app_defconfig" from .config under "<BOARD>/configs/" path
 
 # Result: <BOARD>/configs/my_custom_app_defconfig
 ```
@@ -370,8 +364,8 @@ make savedefconfig OUT=my_custom_app
 ```bash
 make cm55_demo_sample_app_defconfig BOARD=SR110_RDK
 make advanced_menuconfig
-make savedefconfig OUT=my_custom_app
-# Result: SR110_RDK/configs/my_custom_app_defconfig
+save a new defconfig from .config under "<BOARD>/configs/" path
+# Result: <BOARD>/configs/my_custom_app_defconfig
 ```
 
 ### Building Multiple Applications
