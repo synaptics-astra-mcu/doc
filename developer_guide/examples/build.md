@@ -61,7 +61,7 @@ Please ensure that your system was set up according to one of the installations 
 - Astra MCU SDK setup for linux with GCC : [Setup_for_Astra_MCU_SDK_in_Linux_for_GCC](../build_env/Astra_MCU_SDK_Linux_env_with_gcc.md)
 - Astra MCU SDK setup for macOS Arm64 with GCC : [Setup_for_Astra_MCU_SDK_in_macOS_ARM64_for_GCC_Compiler](../build_env/Astra_MCU_SDK_Mac_Arm64_env_with_gcc.md)
 - Astra MCU SDK setup for macOS x86_64 with GCC : [Setup_for_Astra_MCU_SDK_in_macOS_x86_64_for_GCC](../build_env/Astra_MCU_SDK_Mac_x86_64_env_with_gcc.md)
-- Astra MCU SDK Install and Setup Python: [Astra MCU SDK Install and Setup Python](./Astra_MCU_SDK_Install_and_Setup.md)
+- Astra MCU SDK Install and Setup Python: [Astra MCU SDK Install and Setup Python](../Astra_MCU_SDK_Install_and_Setup.md)
 
 
 ---
