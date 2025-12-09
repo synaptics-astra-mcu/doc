@@ -159,7 +159,7 @@ examples/
 
 ## Build System Architecture
 
-For examples-specific build details and commands, see the [Examples Build Reference](./docs/build.md).
+For examples-specific build details and commands, see the [Examples Build Reference](./build.md).
 
 ---
 
@@ -201,7 +201,7 @@ For examples-specific build details and commands, see the [Examples Build Refere
 
 ## Building Examples
 
-For step‑by‑step workflows, use the [Examples Build Reference](./docs/build.md). Common example commands:
+For step‑by‑step workflows, use the [Examples Build Reference](./build.md). Common example commands:
 
 Quick commands
 ```bash
