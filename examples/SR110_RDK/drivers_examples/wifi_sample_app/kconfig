@@ -1,0 +1,4 @@
+config WIFI_SAMPLE_APP 
+    bool "WIFI_SAMPLE_APP"
+    help
+        This option selects Wifi Sample App. 

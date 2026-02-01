@@ -1,0 +1,23 @@
+
+choice
+    prompt "Examples application"
+    optional
+    help
+        Select the example application
+
+        Available usecases
+            1. SAMPLE_DEMO_APP
+            2. SYSTEM_MANAGER
+
+rsource "./*/kconfig"
+
+endchoice
+
+config UC_AUTO_RUN
+    bool "UC_AUTO_RUN"
+    default n
+    help
+        This config automatically create and start the usecase
+
+config INCLUDE_EXAMPLES_DIR
+    bool

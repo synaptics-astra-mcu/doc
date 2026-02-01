@@ -1,5 +1,5 @@
-Astra MCU SDK User Guide
-************************
+Astra MCU SDK Application User Guide
+************************************
 
 .. toctree::
    :hidden:

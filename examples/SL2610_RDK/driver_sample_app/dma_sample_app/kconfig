@@ -1,0 +1,4 @@
+config DMA_SAMPLE_APP_ENABLED
+    bool "DMA_SAMPLE_APP"
+    help
+        This option selects DMA_SAMPLE_APP

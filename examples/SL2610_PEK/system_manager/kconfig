@@ -1,0 +1,4 @@
+config MODULE_SYSTEM_MANAGER_ENABLED
+    bool "System manager"
+    help
+        This config enables the system manager module
