@@ -74,11 +74,11 @@
 
 ### 1.  Use SynaTool Kit from Release package: `<Astra MCU SDK>/tools/`
 
-![](./assets/image_synatool4.png)
+![](../Assets/Images/media/image_synatool4.png)
 
 ### 2.  Run SynaToolkit installer and follow the instructions:
 
-![](./assets/image_synatool5.png)
+![](../Assets/Images/media/image_synatool5.png)
 
  The default installation folder for SynaToolkit is:
  `C:\Synaptics\Apps\SynaToolkit_2.6.0`
@@ -87,14 +87,14 @@
 
 ## 2.1 Main
 
-![](./assets/image_synatool6.png)
+![](../Assets/Images/media/image_synatool6.png)
 
 ### 2.1.1 Load Log Records
 
 **Purpose**: Users can load previously saved log files for analysis or
 review.
 
-![](./assets/image_synatool7.jpg)
+![](../Assets/Images/media/image_synatool7.jpg)
 
 **Steps**:
 - **Navigate to Load Option:**
@@ -123,7 +123,7 @@ problems persist, contact support.
 **Purpose**: Allows users to save the current state of log records
 from the active tab to a file on their computer.
 
-![](./assets/image_synatool8.jpg)
+![](../Assets/Images/media/image_synatool8.jpg)
 
 **Steps**:
 
@@ -195,7 +195,7 @@ tab, without creating new tabs.
 **Purpose**: Customize the visual elements of the application,
 including fonts, table row height, and other display features.
 
-![](./assets/image_synatool9.jpg)
+![](../Assets/Images/media/image_synatool9.jpg)
 
 **Steps**:
 
@@ -203,19 +203,19 @@ including fonts, table row height, and other display features.
 
 2.  Modify the settings as needed:
 
-    ![](./assets/image_synatool10.png) **Font in Logger Tables**: Choose a
+    ![](../Assets/Images/media/image_synatool10.png) **Font in Logger Tables**: Choose a
     font and size.
     <br>
-    ![](./assets/image_synatool11.png) **Font in Text Edit Windows**:
+    ![](../Assets/Images/media/image_synatool11.png) **Font in Text Edit Windows**:
     Select preferred font and size.
     <br>
-    ![](./assets/image_synatool12.png) **Table Row Line Height**: Adjust to
+    ![](../Assets/Images/media/image_synatool12.png) **Table Row Line Height**: Adjust to
     desired thickness.
     <br>
-    ![](./assets/image_synatool13.png)  **Word Wrap**: Enable or disable
+    ![](../Assets/Images/media/image_synatool13.png)  **Word Wrap**: Enable or disable
     word wrap.
     <br>
-    ![](./assets/image_synatool14.png) **Time Formatting**: Set the format
+    ![](../Assets/Images/media/image_synatool14.png) **Time Formatting**: Set the format
     for time display.
 
 3.  Apply changes by clicking Apply.
@@ -229,7 +229,7 @@ including fonts, table row height, and other display features.
 **Purpose**: Configure default search options to enhance finding
 specific logs or entries.
 
-![](./assets/image_synatool15.jpg)
+![](../Assets/Images/media/image_synatool15.jpg)
 
 **Steps**:
 
@@ -237,16 +237,16 @@ specific logs or entries.
 
 2.  Set default behaviours for:
 
-      ![](./assets/image_synatool14.png) **Open by Default**: Automatically
+      ![](../Assets/Images/media/image_synatool14.png) **Open by Default**: Automatically
       expand search results.
       <br>
-      ![](./assets/image_synatool11.png) **Regex by Default**: Enable regular
+      ![](../Assets/Images/media/image_synatool11.png) **Regex by Default**: Enable regular
       expression in searches.
       <br>
-      ![](./assets/image_synatool16.png) **Case Sensitive**: Make searches
+      ![](../Assets/Images/media/image_synatool16.png) **Case Sensitive**: Make searches
       sensitive to case.
       <br>
-      ![](./assets/image_synatool17.png) **Wildcard by Default**: Allow
+      ![](../Assets/Images/media/image_synatool17.png) **Wildcard by Default**: Allow
       wildcard characters in searches.
 
 3.  Save the settings with Apply, revert with Restore Defaults, or
@@ -260,7 +260,7 @@ specific logs or entries.
 **Purpose**: Fine-tune advanced operational parameters like logging
 levels and performance benchmarks.
 
-![](./assets/image_synatool18.jpg)
+![](../Assets/Images/media/image_synatool18.jpg)
 
 **Steps**:
 
@@ -279,9 +279,9 @@ Close the GUI application
 
 ## 2.2 Logger Tabs
 
-![](./assets/image_synatool19.jpg)
+![](../Assets/Images/media/image_synatool19.jpg)
 
-![](./assets/image_synatool20.png)
+![](../Assets/Images/media/image_synatool20.png)
 
 ### 2.2.1 Close Logger Tab
 
@@ -306,7 +306,7 @@ Logger Tab within the application.
  independent dialog window. This can be useful for comparing logs
  side-by-side or on different monitors.
 
- ![](./assets/image_synatool21.png)
+ ![](../Assets/Images/media/image_synatool21.png)
 
 **Steps**:
 
@@ -325,13 +325,13 @@ preferences.
 > **Note**: To reintegrate the Logger Tab back into the main application
 > window, use "Pop In".
 
-![](./assets/image_synatool22.png)
+![](../Assets/Images/media/image_synatool22.png)
 
 ### 2.2.3 Pop In Tabs
 
 **Purpose**: This operation allows users to reintegrate detached Logger Tabs back into the main application window.
 
-![](./assets/image_synatool23.jpg)
+![](../Assets/Images/media/image_synatool23.jpg)
 
 **Steps**:
 
@@ -353,7 +353,7 @@ preferences.
 
 **Purpose**: This function allows users to rename an existing Logger Tab to better reflect its content or purpose.
 
-![](./assets/image_synatool24.jpg)
+![](../Assets/Images/media/image_synatool24.jpg)
 
  **Steps**:
 
@@ -377,7 +377,7 @@ preferences.
 **Purpose**: This feature ensures that text in a cell is wrapped to
 fit within the column width, improving readability and keeping the
 interface tidy.
-![](./assets/image_synatool25.png)
+![](../Assets/Images/media/image_synatool25.png)
 
 **Steps**:
 
@@ -398,14 +398,14 @@ interface tidy.
 
 ## 2.3 Records
 
-![](./assets/image_synatool26.jpg)
+![](../Assets/Images/media/image_synatool26.jpg)
 
 ### 2.3.1 Trim Log Records
 
 **Purpose**: This feature allows users to trim the log to maintain
 only the most recent entries, which can help in managing space and
 improving log readability.
-![](./assets/image_synatool27.jpg)
+![](../Assets/Images/media/image_synatool27.jpg)
 
 **Steps**:
 
@@ -428,7 +428,7 @@ improving log readability.
  records. When the set number is exceeded, older entries will be
  automatically deleted to make room for new ones.
 
- ![](./assets/image_synatool28.jpg)
+ ![](../Assets/Images/media/image_synatool28.jpg)
 
  **Steps**:
 
@@ -457,7 +457,7 @@ improving log readability.
 **Purpose**: The Script Editor facilitates the creation, editing, and
 management of scripts composed of supported commands for testing or
 operational purposes.
- ![](./assets/image_synatool31.jpg)
+ ![](../Assets/Images/media/image_synatool31.jpg)
 
 **Features**:
 
@@ -548,7 +548,7 @@ operational purposes.
 
 5.  **Executing Scripts:**
 
-     ![](./assets/image_synatool32.png)
+     ![](../Assets/Images/media/image_synatool32.png)
 
     - To run a script, select it from the list and click Execute Script.
       Ensure you are connected to the appropriate hardware or software
@@ -575,7 +575,7 @@ To be supported in future release.
  of the usecase being executed. There are various options that can be
  configured in the video streamer.
 
- ![](./assets/image_synatool33.png)
+ ![](../Assets/Images/media/image_synatool33.png)
 
 - **Source Options**: Facilitates the selection of **Image Source**, and
   **Demosaic**, option to **Connect Image Source**, and **Disconnect**
@@ -605,15 +605,14 @@ To be supported in future release.
 
 **Prerequisite:**
 
-1.  Install
-    <https://developer.arm.com/-/media/Files/downloads/gnu/13.2.rel1/binrel/arm-gnu-toolchain-13.2.rel1-x86_64-arm-none-eabi.tar.xz>
+1.  Install the [Arm GNU Toolchain 13.2.rel1 (x86_64)](https://developer.arm.com/-/media/Files/downloads/gnu/13.2.rel1/binrel/arm-gnu-toolchain-13.2.rel1-x86_64-arm-none-eabi.tar.xz).
 
 2.  Add \"Arm GNU Toolchain arm-none-eabi\\13.2 Rel1\\bin\" to path.
     - These are steps for creating a B0 image and burning the flash using- the SynaToolKit GUI.
 
 #### **2.4.6.1 Creating the image**
 
-![](./assets/image_synatool34.jpg)
+![](../Assets/Images/media/image_synatool34.jpg)
 
 1.  By clicking the "..." in the FW 55 file option, browse the .elf/.axf
     file to be converted to .bin.
@@ -629,9 +628,9 @@ To be supported in future release.
     binary will be generated for dual slot and will be larger in size
     compared to single slot bin.
 
-![](./assets/image_synatool35.png)
+![](../Assets/Images/media/image_synatool35.png)
 
-![](./assets/image_synatool36.png)
+![](../Assets/Images/media/image_synatool36.png)
 
 4.  Under "Model Configurations", check the "Select Model File". By
     clicking the "...", browse the .bin file. For eg: the .bin file can
@@ -641,11 +640,11 @@ To be supported in future release.
     [Refer this](./Astra_MCU_SDK_vela_compilation_tflite_model.md) to
  convert TFlite model to .bin using vela compiler.
 
- ![](./assets/image_synatool37.jpg)
+ ![](../Assets/Images/media/image_synatool37.jpg)
 
 5.  Click on "Run Image Generator"
 
- ![](./assets/image_synatool38.jpg)
+ ![](../Assets/Images/media/image_synatool38.jpg)
 
 6.  The model binary will be created in <br>
 `<path to Synatoolkit>\bin\Output\B0_Flash\Components`.
@@ -656,7 +655,7 @@ To be supported in future release.
 #### **2.4.6.2 Flashing the image**
 
 1.  Ensure that the SR110 is properly connected to the system per the
-    SR110 [User guide.]( ./Astra_MCU_SDK_Quick_Start_Guide.md) provides instructions
+    [SR110 Platform Guide](./SR110_platform_Guide.md), which provides instructions
     on how to setup the SR110 to flash firmware.
 
 2.  Under SynaTool CMD, select "FW" and the COM port corresponding USB
@@ -664,11 +663,11 @@ To be supported in future release.
 
 3.  Click on "Connect".
 
- ![](./assets/image_synatool39.jpg)
+ ![](../Assets/Images/media/image_synatool39.jpg)
 
 4.  In the "Select Command" dropdown, click on "Burn file to flash".
 
- ![](./assets/image_synatool40.jpg)
+ ![](../Assets/Images/media/image_synatool40.jpg)
 
 5.  Follow the below steps to run inference from model burned in flash.
 
@@ -678,7 +677,7 @@ To be supported in future release.
     b.  Once the file is selected, click on the filename and append the
         address 0x629000 as shown below.
 
-    ![](./assets/image_synatool41.png)
+    ![](../Assets/Images/media/image_synatool41.png)
 
     c.  Click on "Execute"
 
@@ -691,9 +690,9 @@ To be supported in future release.
     `<path to Synatoolkit>\bin\Output\B0_Flash` and click on "Execute". Wait till
  the flashing is complete.
 
- ![](./assets/image_synatool42.jpg)
+ ![](../Assets/Images/media/image_synatool42.jpg)
 
- ![](./assets/image_synatool43.jpg)
+ ![](../Assets/Images/media/image_synatool43.jpg)
 
 7.  Reset the platform.
 
@@ -712,10 +711,10 @@ included on how to burn the image to flash.
 | | **Script Location** | `<path to Synatoolkit>\srsdk_image_generator` (using python script) |
 | | **Windows Executable** | `srsdk_image_generator.exe` |
 | | **Executable Location** | `<path to Synatoolkit>\bin` (using executable) |
-| **Input** | **Configuration File** | `fw_Update_Parameters.json` – FW update config file (Data for FW Update / Multi Image Data) <br> ![Input File Structure](./assets/image_synatool44.jpg) |
+| **Input** | **Configuration File** | `fw_Update_Parameters.json` – FW update config file (Data for FW Update / Multi Image Data) <br> ![Input File Structure](../Assets/Images/media/image_synatool44.jpg) |
 | **Output** | **Output Folders** | In Output folder there are two Folders: "**Flash**" and "**Host**" |
-| | **"Flash" Folder** | Contains file with full image. The folder 'Components' contains all the sub images that are combined to make the full image. <br> ![Flash Folder Structure](./assets/image_synatool45.jpg) <br> ![Flash Image Example](./assets/image_synatool46.jpg)|
-| | **"Host" Folder** | Contains file with full image. The folder 'Components' contains all the sub images that are combined to make the full image. <br> ![Host Folder Structure](./assets/image_synatool47.jpg) <br> ![Host Image Example](./assets/image_synatool48.jpg) |
+| | **"Flash" Folder** | Contains file with full image. The folder 'Components' contains all the sub images that are combined to make the full image. <br> ![Flash Folder Structure](../Assets/Images/media/image_synatool45.jpg) <br> ![Flash Image Example](../Assets/Images/media/image_synatool46.jpg)|
+| | **"Host" Folder** | Contains file with full image. The folder 'Components' contains all the sub images that are combined to make the full image. <br> ![Host Folder Structure](../Assets/Images/media/image_synatool47.jpg) <br> ![Host Image Example](../Assets/Images/media/image_synatool48.jpg) |
 | **Dependencies** | **For .axf Files** | **ARM Compiler** is required. Environment Variable: **`AC6_TOOLCHAIN_6_19_0`** - `C:\Program Files\Arm\Development Studio 2022.2\sw\ARMCompiler6.19\bin` |
 | | **For .elf Files** | **GCC Toolchain** is required. Environment Variable: **`GCC_TOOLCHAIN_13_2_1`** - `C:\Program Files (x86)\Arm GNU Toolchain arm-none-eabi\13.2 Rel1\bin` |
 | | **Python Packages** | Need to install python packages by command: **`pip install -r requirements.txt`** |
@@ -752,7 +751,7 @@ included on how to burn the image to flash.
 - **Refresh Plugin List**: Update the list of available and installed
   plugins to reflect any changes or new additions.
 
-![](./assets/image_synatool50.jpg)
+![](../Assets/Images/media/image_synatool50.jpg)
 
 **Steps**:
 
@@ -801,7 +800,7 @@ supported platforms.
 About SynaToolkit. This will open a window displaying detailed
 information about the toolkit.
 
-![](./assets/image_synatool53.png)
+![](../Assets/Images/media/image_synatool53.png)
 
  **Content Includes**:
 
@@ -865,7 +864,7 @@ information about the toolkit.
  **Requirements**: Ensure the correct COM port and baud rate are
  selected to establish a successful connection.
 
-![](./assets/image_synatool54.png)
+![](../Assets/Images/media/image_synatool54.png)
 
 ### 3.1.2 Disconnect
 
@@ -873,7 +872,7 @@ information about the toolkit.
 connection with the logger.
 **Tab Persistence**: The Logger tab will remain open and accessible
 even after disconnection, allowing you to review the logged data.
-![](./assets/image_synatool55.jpg)
+![](../Assets/Images/media/image_synatool55.jpg)
 
 ### 3.1.3 Clear Log
 
@@ -915,7 +914,7 @@ Currently, the tool supports logging for the SR110 chip with core M55,
 M4, with the potential to expand to other chips and cores in the
 future.
 
-![](./assets/image_synatool56.jpg)
+![](../Assets/Images/media/image_synatool56.jpg)
 
 ## 3.3 Levels
 
@@ -931,7 +930,7 @@ future.
 - **Customize Appearance**: Modify the appearance of log messages by
   level for better readability or personal preference.
 
-![](./assets/image_synatool57.jpg)
+![](../Assets/Images/media/image_synatool57.jpg)
 
  If you focus on one of the levels with mouse and press right button
  the new windows will be popup where you can select one of options:
@@ -950,7 +949,7 @@ future.
   - **Edit Selected Level**: Open the level editor to change properties
     such as color and font style.
 
-![](./assets/image_synatool58.jpg)
+![](../Assets/Images/media/image_synatool58.jpg)
 
 ### 3.3.2 Level Editor
 
@@ -968,7 +967,7 @@ future.
  **Preview**: View changes in real-time within the preview pane at the
  bottom of the level editor window.
 
-![](./assets/image_synatool59.jpg)
+![](../Assets/Images/media/image_synatool59.jpg)
 
 ### 3.3.3 Presets
 
@@ -988,7 +987,7 @@ levels.
 Utilize the log namespace feature to manage logs according to specific hardware components or software modules.
 Adjust log levels to streamline the debugging process, focusing only on the necessary data.Customize log appearance to differentiate between log types easily or match user preferences for an enhanced visual experience.
 
-![](./assets/image_synatool60.jpg)
+![](../Assets/Images/media/image_synatool60.jpg)
 
 ## 3.4 Main Log Window
 
@@ -1005,7 +1004,7 @@ Adjust log levels to streamline the debugging process, focusing only on the nece
  **Navigation**: Logs are shown in a tabulated format allowing for easy
  review and management.
 
-![](./assets/image_synatool61.png)
+![](../Assets/Images/media/image_synatool61.png)
 
 ### 3.4.2 Message Details
 
@@ -1015,7 +1014,7 @@ Adjust log levels to streamline the debugging process, focusing only on the nece
  **Usage**: This feature is useful for examining complete log entries
  in depth.
 
-![](./assets/image_synatool62.png)
+![](../Assets/Images/media/image_synatool62.png)
 
 ### 3.4.3 View Message Window
 
@@ -1024,7 +1023,7 @@ Adjust log levels to streamline the debugging process, focusing only on the nece
 - **Options**: Users can copy the message to the clipboard or close the
   window.
 
-![](./assets/image_synatool63.png)
+![](../Assets/Images/media/image_synatool63.png)
 
 ### 3.4.4 Parsed Message Display
 
@@ -1035,7 +1034,7 @@ Adjust log levels to streamline the debugging process, focusing only on the nece
 - **Interactivity**: This detailed view helps in understanding the
   structured components of each log message.
 
-![](./assets/image_synatool64.jpg)
+![](../Assets/Images/media/image_synatool64.jpg)
 
 ### 3.4.5 Filtering Logs
 
@@ -1045,9 +1044,9 @@ Adjust log levels to streamline the debugging process, focusing only on the nece
  **Resetting Filter**: Clear the filter by pressing the `Clear
  Filter` button to return to viewing all logs.
 
- ![](./assets/image_synatool65.jpg)
+ ![](../Assets/Images/media/image_synatool65.jpg)
 
- ![](./assets/image_synatool66.jpg)
+ ![](../Assets/Images/media/image_synatool66.jpg)
 
 ### 3.4.6 Search Functionality
 
@@ -1062,7 +1061,7 @@ Adjust log levels to streamline the debugging process, focusing only on the nece
 - **Wildcard**: Use wildcard characters to search for variations of a
   string.
 
-  ![](./assets/image_synatool67.jpg)
+  ![](../Assets/Images/media/image_synatool67.jpg)
 
 ### 3.4.7 Customize Header
 
@@ -1077,9 +1076,9 @@ Adjust log levels to streamline the debugging process, focusing only on the nece
   - **Save/Reset**: Save the custom settings as the default or reset to
     the stock configuration.
 
-  ![](./assets/image_synatool68.jpg)
+  ![](../Assets/Images/media/image_synatool68.jpg)
 
-  ![](./assets/image_synatool69.jpg)
+  ![](../Assets/Images/media/image_synatool69.jpg)
 
  **Tips for Effective Use**:
 
@@ -1191,7 +1190,7 @@ CLI full command: flashChipErase
 Choose the command, choose the file and press the "Execute" button.
 The burn process should start.
 
-![](./assets/image_synatool74.jpg)
+![](../Assets/Images/media/image_synatool74.jpg)
 
 ### 4.2.4 Read Flash ID
 

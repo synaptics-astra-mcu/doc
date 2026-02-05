@@ -2,73 +2,79 @@
 
 This document provides concise, CLI-only steps to build and flash SL2610 applications.
 
+Throughout this guide, `<sdk-root>` refers to the folder where you extracted or cloned the SDK.
+
+## Table of Contents
+- [Prerequisites](#prerequisites)
+- [CLI Flow (Build + Image Generation + Flash)](#cli-flow-build--image-generation--flash)
+- [Notes](#notes)
+
 ## Prerequisites
 
-- SL2610 RDK (Astra Machina Micro) connected and powered with both USB ports.
+- SL2610 RDK connected with 5V USB-C power (PWR_IN) and USB 2.0 OTG to the host.
+- Ensure hardware connections are set up per the [SL2610 Platform Guide](./SL2610_Platform_Guide.md).
 - CLI environment, toolchains, and Python tools installed. See [Setup and Install SDK using CLI](../Setup_and_Install_SDK_using_CLI.md).
+- Python virtual environment activated. See [Setup and Install SDK using CLI](../Setup_and_Install_SDK_using_CLI.md).
 
-## CLI Flow (Build + Flash)
+## CLI Flow (Build + Image Generation + Flash)
 
-1. Build the application:
-    ```
-    cd <sdk-root>/examples
-    export SRSDK_DIR=<sdk-root>
-    make cm52_sl2610_system_manager_defconfig BOARD=SL2610_RDK BUILD=SRSDK
-    ```
+1. Build the System Manager and bootloader (SDK build + image assets):
 
-2. Generate the flash image:
+   ```bash
+   cd <sdk-root>/examples
+   export SRSDK_DIR=<sdk-root>
+   make sl2610_system_manager_rdk_defconfig BOARD=SL2610_RDK BUILD=SRSDK
+   make build BOARD=SL2610_RDK
 
-    ```
-    #Build Bootloader for SL2610_RDK
-    cd <sdk_root>
-    make cm55_sr110_bootloader_defconfig BOARD=SL2610_RDK
-    make build
+   cd <sdk-root>
+   make sl2610_bootloader_rdk_defconfig BOARD=SL2610_RDK
+   make build
+   ```
 
-    #Generate MCU Binaries
-    cd examples
-    make imagegen
-    ```
-    **Step 1: Copy MCU Binary into Yocto Build Tree**
+   - The first pair of commands builds the System Manager using the SDK build system.
+   - The second pair builds the bootloader needed for USB boot and image packaging.
 
-    copy the generated binary to Yocto build repository: 
+2. Generate MCU sub-images using the SDK image generator (run from `<sdk-root>/examples`):
 
-    ```
-    build-sl261<X>/tmp/work/sl261<X>-poky-linux/synasdk-preboot/<GIT>/release/boot/mcu/cm52/image/chip/klamath/klamath_rdk/
-    ```
-    Example:
+   ```bash
+   cd <sdk-root>/examples
+   make imagegen
+   ```
 
-    ```
-    build-sl2619/tmp/work/sl2619-poky-linux/synasdk-preboot/0.9.0+git/release/boot/mcu/cm52/image/chip/klamath/klamath_rdk/
-    ```
+   Expected outputs:
+   - System Manager sub-image (for `run-sm`): `<sdk-root>/examples/out/image/intermediate/sysmgr.subimg`
+   - Compressed sub-images (for eMMC packaging): `<sdk-root>/examples/out/image/eMMCimg/`
+   - USB boot inputs (SPK/keys/bootloader): `<sdk-root>/examples/out/image/usb_boot/`
 
-    **Step 2: Build Astra Image via Yocto**
+   If you see permission errors on Linux/macOS, run:
+   ```bash
+   cd <sdk-root>/examples
+   chmod +x tools/scripts/image/bin/gen*
+   ```
 
-    Build an Image using Yocto - https://synaptics-astra.github.io/doc/v/latest/yocto.html
+3. Flash with the USB boot tool (SDK USB boot utility):
 
-    ---
+   If you are running WSL, please consult the [Astra MCU SDK - WSL User Guide](../Astra_MCU_SDK_WSL_User_Guide.md) to ensure USB ports are properly handled.
 
-3. Flash the image:
+   **Enter USB boot mode first:**
+   - Press and hold **USB_BOOT**, then press **RESET**.
+   - Release **RESET**, then release **USB_BOOT**.
 
-    Flashing can be performed via Native CLI with the following commands using USB Boot Tool.
-    **Tool path:** - `tools/usb_boot_python_tool/USB_BOOT_TOOL/usb_boot_tool.py`
+   ```bash
+   cd <sdk-root>/tools/usb_boot_python_tool/USB_BOOT_TOOL
+   python usb_boot_tool.py --op run-sm \
+     --sm <sdk-root>/examples/out/image/intermediate/sysmgr.subimg \
+     --spk <sdk-root>/examples/out/image/usb_boot/spk.bin \
+     --keys <sdk-root>/examples/out/image/usb_boot/key.bin \
+     --m52bl <sdk-root>/examples/out/image/usb_boot/m52bl.bin
 
-    ```
-    python usb_boot_tool.py --op run-sm --sm sysmgr.subimg
-    python usb_boot_tool.py --op emmc --img-dir eMMCimg
-    ```
-
-    #### **Arguments Description**
-
-    | Argument    | Description                                                            |
-    | ----------- | ---------------------------------------------------------------------- |
-    | `--op`      | Operation to perform. Supported values: `run-acore`, `run-sm`, `emmc`. |
-    | `--sm`      | Path to the System Manager image (`sysmgr.subimg`).                    |
-    | `--img-dir` | Path to the directory containing eMMC images (`eMMCimg`).              |
-
-4. Reset the board:
-   - Press the reset button.
-   - The application should start and print logs on the serial console.
+   # For full eMMC flashing, use a Yocto-generated eMMCimg folder (see Notes).
+   python usb_boot_tool.py --op emmc --img-dir <path-to-eMMCimg>
+   ```
 
 ## Notes
 
-- For more details refer: [SL2610 Platform Guide](./SL2610_platform_Guide.md)
+- Use `--op run-sm` to program only the System Manager sub-image.
+- `--op emmc` requires an `eMMCimg` folder that includes `emmc_part_list` and `emmc_image_list`. These are generated by Yocto when you build the full Astra image.
+- Yocto is only required if you need a full Linux/eMMC image; MCU image generation is handled entirely by the SDK tools above.
+- If `run-sm` fails because SM CDC is already running, power-cycle the board and try again.

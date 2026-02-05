@@ -1,228 +1,161 @@
-# Compiling Your TFLite Model to C++
+# Compiling a TFLite Model with Vela (SR110)
 
-This guide outlines the steps required to compile a new TFLite model into your project using the **Vela compiler**.
+This guide explains how to compile a quantized TFLite model using the **Vela** compiler and generate the C++ sources used by SR110 inference examples. It uses the SDK inference tool under `tools/Inference`.
 
----
+Throughout this guide, `<sdk-root>` refers to the folder where you extracted or cloned the SDK.
+
+## Table of Contents
+
+- [Prerequisites](#prerequisites)
+- [Set up a Virtual Environment](#set-up-a-virtual-environment)
+- [Install Vela](#install-vela)
+- [Run the Inference Tool](#run-the-inference-tool)
+- [Outputs](#outputs)
+- [Prepare a Flashable Model Binary (VS Code)](#prepare-a-flashable-model-binary-vs-code)
+- [Common Usage Examples](#common-usage-examples)
+- [Notes](#notes)
 
 ## Prerequisites
 
-Ensure the following are installed on your system:
+- A quantized **INT8** `.tflite` model.
+- Python **3.7–3.10** 
+- Visual Studio C++ Build Tools (Windows only, required for some Python packages).
 
-1. Python 3.10 or later
-2. Visual Studio C++ Build Tools 14 or later (Windows only)
-3. A quantized TFLite model (INT8)
+**Recommendation:** Use a separate venv for inference tools. The SDK build uses Python 3.13, which is not compatible with the inference tool dependencies.
 
----
+## Set up a Virtual Environment
 
-## Instructions
-
-### Step 1: Install Vela Compiler
-
-**a. Install via pip:**
+Create and activate a venv. Make sure the `python` you use is **3.7–3.10**:
 
 ```bash
-pip install ethos-u-vela
+python --version
 ```
 
-This installs the latest version of the Vela compiler from PyPI.
-
-**b. Verify Installation:**
-
+**Windows:**
 ```bash
-vela-version
+python -m venv my_venv
+my_venv\\Scripts\\activate.bat
 ```
 
-Expected version: `4.2.0`
-
----
-
-### Step 2: Create a Virtual Environment
-
-Navigate to the desired location and run:
-
-- **Windows:**
-  ```bash
-  python -m venv <V_ENV_NAME>
-  ```
-- **Linux:**
-  ```bash
-  python -m venv /<V_ENV_NAME>
-  ```
-
----
-
-### Step 3: Activate the Virtual Environment
-
-- **Windows:**
-  ```bash
-  <V_ENV_NAME>\Scripts\activate.bat
-  ```
-- **Linux:**
-  ```bash
-  source <V_ENV_NAME>/bin/activate
-  ```
-
----
-
-### Step 4: Navigate to the Astra MCU SDK Inference Directory
-
-Go to:
+**Linux/macOS:**
 ```bash
-<Astra MCU SDK>/tools/Inference
+python -m venv ~/my_venv
+source ~/my_venv/bin/activate
 ```
 
----
+Keep the venv active for the rest of this guide.
 
-### Step 5: Install Additional Dependencies
+## Install Vela
 
-Run:
+The inference tool expects the `vela` command on PATH.
+
+Install Vela from the repository and checkout the validated version:
+
 ```bash
+git clone https://review.mlplatform.org/ml/ethos-u/ethos-u-vela.git
+cd ethos-u-vela
+git checkout 4.2
+pip install .
+```
+
+Verify:
+```bash
+vela --version
+```
+
+Install requirements from the SDK inference folder:
+```bash
+cd <sdk-root>/tools/Inference
 pip install -r requirements.txt
 ```
 
----
+## Run the Inference Tool
 
-### Step 6: Prepare Your TFLite Model
-
-Copy the `.tflite` file into `<Astra MCU SDK>/tools/Inference`  
-OR  
-Use the full path to the model in the next steps.
-
----
-
-### Step 7: Rename Your TFLite Model
-
-Ensure the filename contains no special characters or spaces.
-
----
-
-### Step 8: Compile the TFLite File
-
-Use the script:
+From `<sdk-root>/tools/Inference`:
 ```bash
-python infer_code_gen.py -t <path_to_tflite_model> [-o <output_directory>] [-n <namespace>] [-s <scripts>] [-i <input_files>] [-c <compiler>] [-tl <tflite_location>] [-p <optimization_strategy>]
+python infer_code_gen.py -t <path_to_tflite_model> \
+  [-o <output_directory>] \
+  [-n <namespace>] \
+  [-s <scripts>] \
+  [-i <input_files>] \
+  [-c <compiler>] \
+  [-tl <tflite_location>] \
+  [-p <optimization_strategy>]
 ```
 
----
-###  Step 9: Verify Output Files
+Key options (from the script):
+- `-c` / `--compiler`: `vela` (default) or `none`
+- `-p` / `--optimize`: `Performance` (default) or `Size`
+- `-tl` / `--tflite_loc`: `1` = SRAM, `2` = FLASH
+- `-s` / `--script`: `model` and/or `inout` (default runs both)
+- `-i` / `--input`: optional `.npy`/`.bin` inputs for expected output generation
 
-After successful compilation, these files will appear in the output directory:
+**About `-tl`:** This switch affects both Vela’s memory planning and the generated C++ attribute.  
+`-tl 1` uses SRAM (`--memory-mode=Sram_Only` and `MODEL_TFLITE_ATTRIBUTE`).  
+`-tl 2` targets flash/QSPI (`--memory-mode=Shared_Sram` and `MODEL_TFLITE_ATTRIBUTE_FLASH`).  
+You still need the VS Code Image Conversion step to produce a flashable model binary.
 
-- `model.cc` – model weights
-- `model_io.cc` – randomized input & expected output
+**Tuning Vela memory planning:** Vela supports `--arena-cache-size <bytes>` to cap the arena it assumes during compilation.  
+`infer_code_gen.py` does **not** expose this flag. To use it, either:
 
----
+1. Run Vela manually with `--arena-cache-size`, then generate code/IO without re-compiling:
+   ```bash
+   vela --arena-cache-size <bytes> --output-dir <OUT_DIR> <MODEL_NAME>.tflite
+   python infer_code_gen.py -t <OUT_DIR>/<MODEL_NAME>_vela.tflite -c none -o <OUT_DIR>
+   ```
+2. Or, add `--arena-cache-size` to the `vela_params` list inside `tools/Inference/infer_code_gen.py`:
+   ```bash
+   vela_params = ['vela', '--output-dir', args.output_dir, '--accelerator-config=ethos-u55-128', \
+   '--optimise=' + args.optimize, '--config=Arm\\vela.ini', memory_mode, \
+   '--system-config=Ethos_U55_High_End_Embedded', args.tflite_path, '--arena-cache-size=1500000']
+   ```
 
-### Step 10: Rename the Compiled Model
+## Outputs
 
-Rename the output `Model.tflite` model to:
+In the output directory you will see:
+- `<namespace>.cc` (model C++ source + resolver content)
+- `<namespace>_io.cc` (input/expected output data)
+- `<model>_vela.tflite` (when `-c vela`)
+- `output_*.bin` and `output_*.npy` (expected outputs)
+- `<namespace>_micro_mutable_op_resolver.hpp` (intermediate header, appended into `<namespace>.cc`)
 
+## Prepare a Flashable Model Binary (VS Code)
+
+If you plan to place model weights in flash, you must convert the Vela output into a flashable model binary using the **Astra MCU SDK VS Code Extension**:
+
+1. **Rename** the Vela output `<model>_vela.tflite` from `.tflite` to `.bin` (the contents are unchanged).
+2. In VS Code, open **Build and Deploy** → **Image Conversion**.
+3. Use the **Advanced Configurations** options to generate a **Model Binary** from the renamed `.bin`.
+
+For details on the Image Conversion workflow, see [Astra MCU SDK VS Code Extension User Guide](../Astra_MCU_SDK_VSCode_Extension_User_Guide.md).
+
+## Common Usage Examples
+
+**Size-optimized (SRAM)**:
 ```bash
-<MODULE_NAME>.bin
+python infer_code_gen.py -t <MODEL_NAME>.tflite -o <OUT_DIR> -p Size -tl 1
 ```
 
----
-
-### Step 11: Generate Model.bin Using Synatoolkit
-
-Use this `.bin` file with the **Synatoolkit Image Generator** to produce the final model.bin
-
-Refer to: [SynaToolkit User Guide](../../../docs/SR110/Synatoolkit_User_Guide.md).
-
----
-
-# Commands for Inference Code Generation
-
-## For SRAM Optimization
-
-**Windows:**
-```bash
-python infer_code_gen.py -t .<MODEL_NAME>.tflite -o <OUT_DIR> -p Size -t1 1
-```
-
-**Linux:**
-```bash
-python infer_code_gen.py -t /<MODEL_NAME>.tflite -o <OUT_DIR> -p Size -t1 1
-```
-
----
-
-## For Flash Optimization
-
-**Windows:**
+**Performance-optimized (FLASH)**:
 ```bash
 python infer_code_gen.py -t <MODEL_NAME>.tflite -o <OUT_DIR> -p Performance -tl 2
 ```
 
-**Linux:**
-```bash
-python infer_code_gen.py -t <MODEL_NAME>.tflite -o <OUT_DIR> -p Performance -tl 2
-```
+## Notes
 
-### Note:
-
-The `infer_code_gen.py` script allows for performance tuning via the `--arena-cache-size`(1MB, 1.25MB, 1.5MB etc) parameter within its `vela_params` (see lines ~98-99). Experimenting with this value can help optimize memory footprint (e.g., `Total SRAM used`, `Total On-chip Flash used`) and inference speed.
-```bash
-vela_params = ['vela', '--output-dir', os.path.dirname(args.tflite_path), '--accelerator-config=ethos-u55-128' , '--optimise=' + args.optimize, '--config=Arm\\vela.ini', memory_mode, '--system-config=Ethos_U55_High_End_Embedded', args.tflite_path,'--arena-cache-size=1500000']
-```
-
----
-
-## Vela output
-
-This section provides a summary of the model compilation results generated by Arm Vela, detailing the network's characteristics and estimated performance on the Ethos-U55 NPU.
-
-```text
-Network summary for hl
-Accelerator configuration          Ethos_U55_128
-System configuration               Ethos_U55_High_End_Embedded
-Memory mode                        Sram_Only
-Accelerator clock                  500 MHz
-Design peak SRAM bandwidth         3.73 GB/s
-Design peak On-chip Flash bandwidth  3.73 GB/s
-
-Total SRAM used                    350.00 KiB
-Total On-chip Flash used           1322.48 KiB
-
-CPU operators = 4 (6.0%)
-NPU operators = 63 (94.0%)
-
-Average SRAM bandwidth             1.68 GB/s
-Input   SRAM bandwidth             18.34 MB/batch
-Weight  SRAM bandwidth             0.00 MB/batch
-Output  SRAM bandwidth             6.93 MB/batch
-Total   SRAM bandwidth             25.27 MB/batch
-Total   SRAM bandwidth             per input     25.27 MB/inference (batch size 1)
-
-Average On-chip Flash bandwidth    0.23 GB/s
-Input   On-chip Flash bandwidth    0.00 MB/batch
-Weight  On-chip Flash bandwidth    3.24 MB/batch
-Output  On-chip Flash bandwidth    0.00 MB/batch
-Total   On-chip Flash bandwidth    3.44 MB/batch
-Total   On-chip Flash bandwidth    per input      3.44 MB/inference (batch size 1)
-
-Original Weights Size              2688.16 KiB
-NPU Encoded Weights Size           819.64 KiB
-
-Neural network macs                331175776 MACs/batch
-
-Info: The numbers below are internal compiler estimates.
-For performance numbers the compiled network should be run on an FVP Model or FPGA.
-
-Network Tops/s                     0.04 Tops/s
-
-NPU cycles                         7447496 cycles/batch
-SRAM Access cycles                 3378876 cycles/batch
-DRAM Access cycles                       0 cycles/batch
-On-chip Flash Access cycles        450977 cycles/batch
-Off-chip Flash Access cycles             0 cycles/batch
-Total cycles                       7542742 cycles/batch
-```
+- Filenames should avoid spaces or special characters.
+- The inference tool is maintained under `tools/Inference`. If behavior changes, check the [inference tool README](../../tools/Inference/README.md) and the script help output:
+  ```bash
+  python infer_code_gen.py -h
+  ```
 
 ---
 ## Memory Allocation Notes
 
 When configuring memory for your project, keep the following in mind:
 
-* **Tensor Arena Size:** This should be set to at least the `Total SRAM used` value provided in the Vela output. We strongly recommend adding a **minimum of 10KB extra** to this as a buffer to ensure smooth operation and account for any runtime overheads.
-* **Model Weights:** The model's weights will reside in the space indicated by `Total On-chip Flash used`.
+* **Tensor Arena Size:** Set this to at least the `Total SRAM used` value printed by Vela. Add a **minimum of 10KB extra** as a buffer for runtime overhead.
+  - The tensor arena size is **not** set by `infer_code_gen.py`. The `-p Size` option only changes Vela’s optimization strategy, not your arena allocation.
+  - Set the arena size in your application code (for example, `TENSOR_ARENA_SIZE` in `examples/SR110_RDK/vision_examples/<usecase>/infer.cc` or the arena buffer in `examples/SR110_RDK/inference_examples/<app>/<app>.cc`).
+  - Use `get_used_tensor_arena_size()` at runtime to size it properly, then keep a small safety margin.
+* **Model Weights:** Weights reside in the space indicated by `Total On-chip Flash used` in the Vela output.

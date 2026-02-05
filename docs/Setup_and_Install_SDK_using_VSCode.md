@@ -1,86 +1,96 @@
-# Setup and Install SDK using VSCode
+# Setup and Install SDK using VS Code
 
 This guide provides a concise, end-to-end setup for the Astra MCU SDK in VS Code. For more detailed
-information see [VS Code Extension User Guide](./Astra_MCU_SDK_VSCode_Extension_User_Guide.md)
+information, see [VS Code Extension User Guide](./Astra_MCU_SDK_VSCode_Extension_User_Guide.md).
+
+Throughout this guide, `<sdk-root>` refers to the folder where you extracted or cloned the SDK.
+
+## Table of Contents
+- [Prerequisites](#prerequisites)
+- [Install the Synaptics VS Code Extension](#install-the-synaptics-vs-code-extension)
+- [Install Tools](#install-tools)
+- [Linux USB/serial permissions (recommended)](#linux-usbserial-permissions-recommended)
+- [Import Examples and Set SRSDK_DIR](#import-examples-and-set-srsdk_dir)
+- [Build and Flash (VS Code)](#build-and-flash-vs-code)
+- [Troubleshooting Tips](#troubleshooting-tips)
 
 ## Prerequisites
 
-- Supported host OS: Windows x64, Linux x86_64 or aarch64 (Ubuntu 22.04+), macOS x86_64 or ARM64.
-- Visual Studio Code installed ([download](https://code.visualstudio.com/download)) and the `code` command available on your PATH.
+- Supported host OS: Windows x64, Linux x86_64 or aarch64 (Ubuntu 22.04), macOS x86_64 or ARM64.
+    - **Note:** For SL2610 development, only Linux hosts are supported (WSL with Ubuntu 22.04 is supported).
+    - Windows users: it is highly recommended to run VS Code and the Synaptics extension within WSL2. See the [VS Code WSL guide](https://code.visualstudio.com/docs/remote/wsl) for details.
+        - For WSL setup guidance, see [Astra MCU SDK - WSL User Guide](./Astra_MCU_SDK_WSL_User_Guide.md).
+- Visual Studio Code installed ([download](https://code.visualstudio.com/download)). 
+- If you plan to use the inference/Vela tools, set up a **separate** Python 3.7–3.10 virtual environment (do not reuse the SDK image-generation venv).
 
-Verify VS Code is available:
+## Get the SDK
 
-```bash
-code --version
-```
-
-If `code` is not found, enable it using the platform steps below:
-
-- macOS: In VS Code, open Command Palette and run `Shell Command: Install 'code' command in PATH`.
-- Windows: Re-run the VS Code installer and select "Add to PATH", or add the VS Code install directory (for example `C:\Users\<username>\AppData\Local\Programs\Microsoft VS Code\bin`) to your PATH.
-- Linux: Ensure the `code` binary is on PATH (for example `/usr/bin/code` from the package install), then restart your terminal.
-
-Official references:
-- macOS: https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line
-- Windows: https://code.visualstudio.com/docs/setup/windows#_command-line-usage
-- Linux: https://code.visualstudio.com/docs/setup/linux#_launching-from-the-command-line
+- Extract or clone the SDK to a local directory (for example, `<sdk-root>`).
+- Keep the SDK path short on Windows to avoid path length issues.
 
 ## Install the Synaptics VS Code Extension
 
-1. Locate the VSIX package in `tools/` (for example, `Astra_MCU_SDK_vscode_extension-<version>.vsix`).
-2. Install it from a terminal:
+1. Click the Extensions icon on the side bar, click the three dots at the top right of the extensions window, and select **Install from VSIX...**
+![Extension Toolbar](./Assets/Images/media/Extension_Toolbar.png)
+2. Locate the VSIX package in `tools/` (for example, `Astra_MCU_SDK_vscode_extension-<version>.vsix`), and click **Install**.
 
-```bash
-code --install-extension path/to/Astra_MCU_SDK_vscode_extension-<version>.vsix
-```
-
-3. Confirm the Synaptics extension appears in the VS Code activity bar.
+3. Confirm the Synaptics extension appears in the VS Code activity bar, usually on the left pane.
 
     ![Synaptics VS Code Extension](./Assets/Images/media/vs_syna_logo.png)
-4. Fully close and then reopen VS Code. 
+4. **Close and then reopen VS Code.**
 
 ## Install Tools
 
 1. Open the Synaptics extension sidebar and select **Install Tools**.
 
     ![Install Tools Dialog](./Assets/Images/media/image_vs6.png)
-2. The tool check runs automatically when the panel opens; you can also click "Check tool status" to re-run it.
-3. Install any missing tools. Missing tools are flagged with a warning icon and are pre-selected for installation.
+2. The tool check runs automatically when the panel opens; you can also click **Check tool status** to re-run it.
+    - **Note:** On Linux and macOS, check the VS Code terminal; it may ask you to enter your password to install tools required for the tool check.
+3. Review any missing tools. Missing tools are flagged with a warning icon and are pre-selected for installation.
 
-    ![Tools Check Status](./Assets/Images/media/image_vs9.png)
-4. Use the default install location or select a custom directory:
+    ![Tools Check Status](./Assets/Images/media/VS_Tool_Install.png) 
+4. Click **Install** and monitor progress in the Install Script Terminal. During installation your OS may prompt for confirmation/approval on some installation steps.
+
+    ![Install Tools - Install Button](./Assets/Images/media/VS_Tool_Install_button.png)
+    Default Install locations:
    - Windows: `C:/Users/<username>/SRSDK_Build_tools`
-   - Linux/macOS: `/home/<username>/SRSDK_Build_tools`
-5. Click **Install** and monitor progress in the Install Script Terminal.
+   - Linux: `/home/<username>/SRSDK_Build_tools`
+   - macOS: `/Users/<username>/SRSDK_Build_tools`
+5. **When installation finishes, close VS Code and reopen.**
 
-    ![Install Tools - Install Button](./Assets/Images/media/vs_1.3_install_tools.png)
-4. During installation your OS my prompt for confirmation/approval on some installation steps
-5. When installation finishes fully close VSCode and reopen. 
+Note:
+- Arm Compiler 6 (AC6) requires manual installation due to licensing constraints. Follow the steps provided in the tool.
 
-Notes:
-- On Linux and macOS, the extension may prompt to install `jq` to update `settings.json`.
-- Arm Compiler 6 (AC6) requires manual installation due to licensing constraints.
+## Linux USB/serial permissions (recommended)
 
-## Import Examples and Set SDK_DIR
+On Linux, add your user to the `dialout` group so the flashing tools can access USB CDC/UART devices:
 
-1. In the Synaptics sidebar, choose **Import Application/Examples**.
+```bash
+sudo usermod -aG dialout $USER
+```
 
-    ![Synaptics Sidebar - Import Examples and Import SDK](./Assets/Images/media/image_vs100_k.png)
-2. Import from local (select the SDK `examples/` folder) or remote (clone from repo).
-3. After importing, open **Import SDK** and set `SRSDK_DIR` to the SDK root.
+Log out and log back in (or reboot) for the group change to take effect.
+
+## Import Examples and Set SRSDK_DIR
+
+1. In the Synaptics sidebar, choose **Import Application/Example**.
+
+    ![Synaptics Sidebar - Import Examples and Import SDK](./Assets/Images/media/VS_Quick_Start.png)
+2. Import from local (select the SDK `examples/` folder).
+3. After importing examples, open **Import SDK** and set `SRSDK_DIR` to the SDK root (not the `examples/` folder).
+    - **Note:** The **Import SDK** button appears after you import the examples. 
 
 This updates the workspace `settings.json` so build, image conversion, and flashing can locate the SDK.
 
 ## Build and Flash (VS Code)
 
 SoC-specific build and flash flows:
-- SR110 quick guide: [SR110 Build and Flash with VS Code](./SR110/SR110_Build_and_Flash_with_VSCode.md)
-- SR110: [VS Code Extension User Guide for SR110](./SR110/Astra_MCU_SDK_VSCode_Extension_User_Guide_SR110.md)
-- SL2610: [VS Code Extension User Guide for SL2610](./SL2610/Astra_MCU_SDK_VSCode_Extension_User_Guide_SL2610.md)
+- SR110 Build and Flash with VS Code: [SR110 Build and Flash with VS Code](./SR110/SR110_Build_and_Flash_with_VSCode.md)
+- SL2610 Build and Flash with VS Code: [SL2610 Build and Flash with VS Code](./SL2610/SL2610_Build_and_Flash_with_VSCode.md)
 
 ## Troubleshooting Tips
 
 - Only one SDK can be imported per VS Code workspace.
 - On Windows, keep the SDK path length under 100 characters.
 - If Build and Deploy is disabled, re-check `SRSDK_DIR` in **Import SDK**.
-- Examples can only be built from the SDK `examples/` directory; import it via **Import Application/Examples**.
+- Examples can only be built from the SDK `examples/` directory; import it via **Import Application/Example**.

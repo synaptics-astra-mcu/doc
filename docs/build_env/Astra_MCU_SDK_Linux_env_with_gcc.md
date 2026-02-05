@@ -1,14 +1,13 @@
-# Setup Guide for Development Environment on Linux for GCC 
+# Setup Guide for Development Environment on Linux for GCC
 
-Content:
-
-- [Setup Guide for Development Environment on Linux for GCC](#setup-guide-for-development-environment-on-linux-for-gcc)
-  - [Install Basic Tools and Dependencies](#install-basic-tools-and-dependencies)
-  - [Install CMake](#install-cmake)
-  - [Install Ninja Build System](#install-ninja-build-system)
-  - [Install Python](#install-python)
-  - [Install the ARM GNU GCC Compiler](#install-the-arm-gnu-gcc-compiler)
-  - [Debug Steps](#debug-steps)
+## Table of Contents
+- [Install Basic Tools and Dependencies](#install-basic-tools-and-dependencies)
+- [Install CMake](#install-cmake)
+- [Install Ninja Build System](#install-ninja-build-system)
+- [Install Python](#install-python)
+- [Install OpenOCD](#install-openocd)
+- [Install the Arm GNU GCC Compiler](#install-the-arm-gnu-gcc-compiler)
+- [Debug Steps](#debug-steps)
 
 ## Install Basic Tools and Dependencies
 First, update your package manager and install essential tools required for building and managing software projects:
@@ -18,7 +17,7 @@ sudo apt-get update -y && sudo apt-get -y install git wget make python3 zip unzi
 ```
 
 ## Install CMake
-Download and install CMake version 4.1.2. CMake is vital for configuring, generating, and managing build processes in a platform-independent manner:
+Download CMake 4.1.2 for Linux. CMake is vital for configuring, generating, and managing build processes in a platform-independent manner:
 
 ```bash
 wget https://github.com/Kitware/CMake/releases/download/v4.1.2/cmake-4.1.2-linux-x86_64.sh
@@ -36,10 +35,26 @@ mkdir /opt/ninja/bin
 sudo cp ninja /opt/ninja/bin/
 sudo chmod a+x /opt/ninja/bin/*
 ```
+Add Ninja to PATH:
+```bash
+export PATH=/opt/ninja/bin:$PATH
+```
+Make it permanent:
+```bash
+echo 'export PATH=/opt/ninja/bin:$PATH' >> ~/.bashrc
+```
 
-### Install Python
-Python is required to run configuration tools (menuconfig, kconfig) and to execute scripts used during SDK build and setup.
+## Install Python
+Python 3.13.x or newer is required to run configuration tools (menuconfig, kconfig) and to execute scripts used during SDK build and setup.
 
+Choose **one** of the options below:
+
+### Option A: System Python (if already 3.13.x+)
+```bash
+python3 --version
+```
+
+### Option B: pyenv (recommended if you need to install Python 3.13.x)
 ```bash
 sudo apt update
 sudo apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev \
@@ -51,11 +66,29 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 pyenv install 3.13.7
-pyenv global 3.13.7
+pyenv local 3.13.7
 python3 --version
 ```
 
-## Install the ARM GNU GCC Compiler
+Optional: make pyenv available in future shells (skip this if you prefer to enable pyenv manually per shell):
+
+```bash
+echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+```
+
+If you chose the optional lines above, restart your shell or run `source ~/.bashrc` to apply them.
+
+## Install OpenOCD
+
+```bash
+sudo apt-get update
+sudo apt-get install -y openocd
+openocd --version
+```
+
+## Install the Arm GNU GCC Compiler
 ```bash
 wget -O gcc-arm-none-eabi.tar.xz https://developer.arm.com/-/media/Files/downloads/gnu/13.2.rel1/binrel/arm-gnu-toolchain-13.2.rel1-x86_64-arm-none-eabi.tar.xz
 mkdir -p /opt/gcc-arm-none-eabi
@@ -63,6 +96,11 @@ sudo apt-get -y install xz-utils tar
 tar -xf gcc-arm-none-eabi.tar.xz --strip-components=1 -C /opt/gcc-arm-none-eabi
 export PATH=$PATH:/opt/gcc-arm-none-eabi/bin
 export GCC_TOOLCHAIN_13_2_1=/opt/gcc-arm-none-eabi/bin
+```
+Make it permanent:
+```bash
+echo 'export PATH=$PATH:/opt/gcc-arm-none-eabi/bin' >> ~/.bashrc
+echo 'export GCC_TOOLCHAIN_13_2_1=/opt/gcc-arm-none-eabi/bin' >> ~/.bashrc
 ```
 
 ## Debug Steps

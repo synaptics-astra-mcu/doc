@@ -2,18 +2,20 @@
 
 ## Introduction
 
-The document provides an overview of sensor integration to Astra MCU SDK software. For choosing appropriate sensor settings, understanding of Image Proc and Image Sense path is necessary. Figure 1-1 depicts the high-level block diagram of Sabre CSI controllers connected to Image Proc / Image Sense path. The top block depicts different blocks within Image Proc, second block depicts CSI host controller feeding Image Sense pipeline. The capabilities of Image proc / Image Sense block play a key role in choosing the sensor.
+This document provides an overview of Image sensor integration to the Astra MCU SDK. 
 
-> Note: This document applies only to the Astra SR110 device. The capabilities, configurations, and integration steps described here are specific to the SR110 platform.
+Figure 1-1 depicts the high-level block diagram of SR100 CSI controllers connected to Image Proc / Image Sense path. The top block depicts different blocks within Image Proc, second block depicts CSI host controller feeding Image Sense pipeline. The capabilities of Image proc / Image Sense block play a key role in choosing the sensor. For more details on these blocks consult the device Technical Reference Manual (TRM).
+
+> Note: This document applies only to the Astra SR100 device. The capabilities, configurations, and integration steps described here are specific to the SR100 platform.
 
 <figure style="text-align: center;">
-  <img src="./assets/sensor_pic_1.png"
+  <img src="../Assets/Images/media/sensor_pic_1.png"
        style="width:5.0in;height:auto"
        alt="ImageProc-high level block diagram" />
   <figcaption><b>Figure 1-1 </b> ImageProc-high level block diagram</figcaption>
 </figure>
 
-## Sabre Capability
+## SR100 Capability
 
 ### CSI Host controller
 
@@ -32,8 +34,7 @@ The document provides an overview of sensor integration to Astra MCU SDK softwar
 
 ### Sensor Clock
 
-- Sabre Clock Out = 24 or 19.2 MHz 
-> Note: Other clock configuration possible and depends on Sabre PLL configuration.
+- SR100 Clock Out = 24 or 19.2 MHz 
 
 ## Sensor Capability
 
@@ -43,10 +44,10 @@ To port the camera sensor, the following parameters must be checked and compared
 2. Num of lanes.
 3. Pixel Depth.
 4. Frame Rate.
-5. Frame width and Height (include blanks).
+5. Frame width and height (include blanks).
    Or
    Width and Height (without blanks).
-6. Sensor Clock frequency.
+6. Sensor clock frequency.
 7. MIPI clock rate.
 
 **MIPI Clock Calculation**
@@ -85,7 +86,7 @@ Datarate per lane = 172.8*10/2 = 864Mhz
 
 Based on the comparison below, pick up the appropriate settings from sensor vendor.
 
-1. Compare Sensor’s MIPI Lane clock, lane, and bit depth capability against Sabre CSI host controller capability.
+1. Compare Sensor’s MIPI Lane clock, lane, and bit depth capability against SR100 CSI host controller capability.
 2. Check Sensor input clock’s requirement.
 3. Sensor’s pixel rate must be lower than LP Sense clock (25Mhz) when CSI Host controller connected to LP sense path
 4. Sensor’s MIPI Clock (MIPI Clock *2) must be less than or equal to 1500 Mbps per lane when CSI host controller connected to Image Proc path.
@@ -94,11 +95,11 @@ Based on the comparison below, pick up the appropriate settings from sensor vend
 
 Follow the below steps to add a new sensor to Astra MCU SDK.
 1. Add sensor register settings folder to off_chip_components/img_sensors
-    a. Add sensor register file with different sensor resolution/MIPI clock-based settings array provided by sensor vendor.
-    b. Expose sensor specific array or function prototype.
+    - Add sensor register file with different sensor resolution/MIPI clock-based settings array provided by sensor vendor.
+    - Expose sensor specific array or function prototype.
 2. Enter Sensor index.
-    a. Add sensor index (one for passthrough and another for sensing) to sensors_types_e enumeration in `off_chip_components/img_sensors common/img_Sensor_common.h`
-    b. Add sensor related array and functions to “entry_table_setting” array.
+    - Add sensor index (one for passthrough and another for sensing) to sensors_types_e enumeration in `off_chip_components/img_sensors common/img_Sensor_common.h`
+    - Add sensor related array and functions to “entry_table_setting” array.
 3. Create a “CMakeLists.txt”, add the new sensor files for compilation. Include the new sensor directory in off_chip_components/img_sensors/`CMakeLists.txt` using “add_subdirectory(<sensor>)”.
 
 ### Sample Application

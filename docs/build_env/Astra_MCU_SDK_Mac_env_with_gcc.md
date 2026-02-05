@@ -1,4 +1,4 @@
-# Setup Guide for Development Environment on macOS (Apple Silicon + Intel) for LLVM/Clang
+# Setup Guide for Development Environment on macOS (Apple Silicon + Intel) for GCC
 
 ## Table of Contents
 - [Install Basic Tools and Dependencies](#install-basic-tools-and-dependencies)
@@ -6,14 +6,11 @@
 - [Install Ninja Build System](#install-ninja-build-system)
 - [Install Python](#install-python)
 - [Install OpenOCD](#install-openocd)
-- [Install the Arm GNU Toolchain](#install-the-arm-gnu-toolchain)
-- [Install the LLVM Clang Compiler](#install-the-llvm-clang-compiler)
-
-This guide applies to both Apple Silicon and Intel macOS; Homebrew prefix is detected automatically.
+- [Install the Arm GNU GCC Compiler](#install-the-arm-gnu-gcc-compiler)
 
 ## Install Basic Tools and Dependencies
 
-First, install [Homebrew](https://brew.sh/) if it's not already installed
+First, install [Homebrew](https://brew.sh/) if it's not already installed.
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -21,76 +18,84 @@ First, install [Homebrew](https://brew.sh/) if it's not already installed
 
 Then install essential tools:
 
-```
+```bash
 brew update
 brew install git wget make zip unzip python
 ```
 
 ## Install CMake
 
-Download CMake 4.1.2 for macOS
+Download CMake 4.1.2 for macOS.
 
-```
+```bash
 curl -LO https://github.com/Kitware/CMake/releases/download/v4.1.2/cmake-4.1.2-macos-universal.tar.gz
 ```
-Extract the archive
 
-```
+Extract the archive:
+
+```bash
 tar -xzf cmake-4.1.2-macos-universal.tar.gz
 ```
 
-Move CMake to a system directory
+Move CMake to a system directory:
 
-```
+```bash
 sudo mv cmake-4.1.2-macos-universal /opt/cmake-4.1
 ```
 
-Add CMake to PATH
+Add CMake to PATH:
 
-```
+```bash
 echo 'export PATH="/opt/cmake-4.1/CMake.app/Contents/bin:$PATH"' >> ~/.zshrc
 source ~/.zshrc
 ```
+
 Verify installation:
 
-```
+```bash
 cmake --version
 ```
 
 ## Install Ninja Build System
 
-Ninja is a small build system with a focus on speed, which CMake can utilize to manage builds
+Ninja is a small build system with a focus on speed, which CMake can utilize to manage builds.
 
-Download Ninja v1.13.1 for macOS
-```
+Download Ninja v1.13.1 for macOS:
+
+```bash
 curl -LO https://github.com/ninja-build/ninja/releases/download/v1.13.1/ninja-mac.zip
 ```
 
-Unzip the archive
-```
+Unzip the archive:
+
+```bash
 unzip ninja-mac.zip
 ```
 
-Create target directory and copy the binary
-```
+Create the target directory and copy the binary:
+
+```bash
 sudo mkdir -p /opt/ninja/
 sudo cp ninja /opt/ninja/
 ```
 
-Make the binary executable
-```
+Make the binary executable:
+
+```bash
 sudo chmod a+x /opt/ninja/*
 ```
 
-Add to PATH
-```
+Add to PATH:
+
+```bash
 echo 'export PATH=$PATH:/opt/ninja' >> ~/.zshrc
 source ~/.zshrc
 ```
 
 Verify installation:
-```
-ninja  --version
+
+```bash
+ninja --version
 ```
 
 ## Install Python
@@ -133,17 +138,17 @@ brew install openocd
 openocd --version
 ```
 
-## Install the Arm GNU Toolchain
+## Install the Arm GNU GCC Compiler
 
 Check your architecture:
 
-```
+```bash
 uname -m
 ```
 
 Download Arm GNU Toolchain 13.2.rel1 for macOS:
 
-```
+```bash
 # Apple Silicon (arm64)
 curl -Lo gcc-arm-none-eabi.tar.xz https://developer.arm.com/-/media/Files/downloads/gnu/13.2.rel1/binrel/arm-gnu-toolchain-13.2.rel1-darwin-arm64-arm-none-eabi.tar.xz
 
@@ -151,57 +156,22 @@ curl -Lo gcc-arm-none-eabi.tar.xz https://developer.arm.com/-/media/Files/downlo
 curl -Lo gcc-arm-none-eabi.tar.xz https://developer.arm.com/-/media/Files/downloads/gnu/13.2.rel1/binrel/arm-gnu-toolchain-13.2.rel1-darwin-x86_64-arm-none-eabi.tar.xz
 ```
 
-Create target directory for installation
-```
+Create a target directory for installation:
+
+```bash
 sudo mkdir -p /opt/gcc-arm-none-eabi
 ```
 
-Extract the archive into the target directory
-```
+Extract the archive into the target directory:
+
+```bash
 sudo tar -xf gcc-arm-none-eabi.tar.xz --strip-components=1 -C /opt/gcc-arm-none-eabi
 ```
 
-Environment Variables for Arm GNU Toolchain
+Environment variables for the Arm GNU Toolchain:
 
-```
+```bash
 echo 'export PATH=$PATH:/opt/gcc-arm-none-eabi/bin' >> ~/.zshrc
-echo 'export GCC_TOOLCHAIN_ROOT=/opt/gcc-arm-none-eabi' >> ~/.zshrc
+echo 'export GCC_TOOLCHAIN_13_2_1=/opt/gcc-arm-none-eabi/bin' >> ~/.zshrc
 source ~/.zshrc
 ```
-
-Note: LLVM builds require `GCC_TOOLCHAIN_ROOT` for the GCC sysroot and libstdc++.
-
-## Install the LLVM Clang Compiler
-
-Install LLVM/Clang 21.1.8
-```
-brew install llvm lld
-```
-
-Create target directory for installation
-```
-sudo mkdir -p /opt/llvm
-```
-
-Detect Homebrew prefix dynamically
-```
-BREW_PREFIX=$(brew --prefix)
-```
-
-Symlink Homebrew LLVM into /opt/llvm
-```
-ln -sfn ${BREW_PREFIX}/opt/llvm/bin /opt/llvm/bin
-ln -sfn ${BREW_PREFIX}/opt/llvm/lib /opt/llvm/lib
-ln -sfn ${BREW_PREFIX}/opt/llvm/include /opt/llvm/include
-ln -sfn ${BREW_PREFIX}/opt/llvm/share /opt/llvm/share
-```
-
-Environment Variables for LLVM Clang
-
-```
-echo 'export PATH=$PATH:/opt/llvm/bin' >> ~/.zshrc
-echo 'export LLVM_TOOLCHAIN_ROOT=/opt/llvm/bin' >> ~/.zshrc
-source ~/.zshrc
-```
-
-> Note: LLVM compiler support is currently available only for SR110.

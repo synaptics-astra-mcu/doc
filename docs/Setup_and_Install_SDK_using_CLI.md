@@ -2,12 +2,28 @@
 
 This guide walks through the required steps to set up the Astra MCU SDK for command-line builds on Windows, Linux, or macOS.
 
-## 1) Get the SDK
+Throughout this guide, `<sdk-root>` refers to the folder where you extracted or cloned the SDK.
 
-- Extract the SDK package to a local directory (for example, `<sdk-root>`).
+## Table of Contents
+- [Prerequisites](#prerequisites)
+- [Get the SDK](#get-the-sdk)
+- [Install the toolchain (choose one)](#install-the-toolchain-choose-one)
+- [Install Python tools (for image generation and tooling)](#install-python-tools-for-image-generation-and-tooling)
+- [Linux USB/serial permissions (recommended)](#linux-usbserial-permissions-recommended)
+- [Set required environment variables](#set-required-environment-variables)
+- [Verify the environment](#verify-the-environment)
+- [Next: Build an example](#next-build-an-example)
+
+## Prerequisites
+
+- Windows users are strongly encouraged to use WSL2 with Ubuntu 22.04. See [Astra MCU SDK - WSL User Guide](./Astra_MCU_SDK_WSL_User_Guide.md).
+
+## Get the SDK
+
+- Extract or clone the SDK to a local directory (for example, `<sdk-root>`).
 - Keep the SDK path short on Windows to avoid path length issues.
 
-## 2) Install the toolchain (choose one)
+## Install the toolchain (choose one)
 
 Select the host OS and toolchain guide that matches your environment:
 
@@ -22,45 +38,75 @@ Select the host OS and toolchain guide that matches your environment:
 - LLVM Clang: [Linux + LLVM Clang](./build_env/Astra_MCU_SDK_Linux_env_with_LLVM_CLANG.md)
 
 **macOS**
-- ARM64 + GCC: [macOS ARM64 + GCC](./build_env/Astra_MCU_SDK_Mac_Arm64_env_with_gcc.md)
-- x86_64 + GCC: [macOS x86_64 + GCC](./build_env/Astra_MCU_SDK_Mac_x86_64_env_with_gcc.md)
-- LLVM Clang: [macOS + LLVM Clang](./build_env/Astra_MCU_SDK_Mac_env_with_LLVM_CLANG.md)
+- GCC (Apple Silicon + Intel): [macOS + GCC](./build_env/Astra_MCU_SDK_Mac_env_with_gcc.md)
+- LLVM Clang (Apple Silicon + Intel): [macOS + LLVM Clang](./build_env/Astra_MCU_SDK_Mac_env_with_LLVM_CLANG.md)
 
-## 3) Install Python tools (for image generation and tooling)
+## Install Python tools (for image generation and tooling)
 
-Use the provided scripts to install Python (if needed), create a virtual environment, and install required packages:
+Create a local virtual environment and install the required packages:
 
-**Windows (PowerShell)**
+If you are using pyenv, activate it **before** creating the virtual environment:
+
+```bash
+cd <sdk-root>
+pyenv local 3.13.7
+python --version
+```
+
+**Linux/macOS** (run these commands from `<sdk-root>`)
+```bash
+cd <sdk-root>
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r tools/srsdk_image_generator/requirements.txt
+pip install pyserial
+```
+
+**Windows (PowerShell)** (run these commands from `<sdk-root>`)
 ```powershell
-powershell.exe -ExecutionPolicy Bypass -File <sdk-root>\tools\vscode_extension\install_scripts\windows\install_tools.ps1 -InstallPath "<Path to Installation Directory>" python
-```
-
-**Linux**
-```bash
-sudo bash <sdk-root>/tools/vscode_extension/install_scripts/linux/install_tools.sh "<Path to Installation Directory>" python
-```
-
-**macOS**
-```bash
-sudo bash <sdk-root>/tools/vscode_extension/install_scripts/mac/install_tools.sh "<Path to Installation Directory>" python
+cd <sdk-root>
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r tools\srsdk_image_generator\requirements.txt
+pip install pyserial
 ```
 
 Activate the virtual environment later if needed:
 
 ```bash
-# Linux
-source /home/<username>/.sdk_venv/bin/activate
-
-# macOS
-source /Users/<username>/.sdk_venv/bin/activate
+# Linux/macOS
+source .venv/bin/activate
 ```
 
 ```powershell
 # Windows PowerShell
-& 'C:\Users\<Username>\.sdk_venv\Scripts\Activate.ps1'
+.\.venv\Scripts\Activate.ps1
 ```
 
-## 4) Set required environment variables
+Note: Keep the virtual environment active when running SDK commands.
+
+If you plan to use the inference/Vela tools, create a **separate** Python 3.7–3.10 virtual environment for those tools. Do not reuse the SDK image-generation venv (Python 3.13).
+
+Verify you are using the virtual environment Python:
+
+```bash
+which python
+python --version
+```
+
+Expected: `which python` points to `<sdk-root>/.venv/...` and `python --version` shows 3.13.x.
+
+## Linux USB/serial permissions (recommended)
+
+On Linux, add your user to the `dialout` group so the flashing tools can access USB CDC/UART devices:
+
+```bash
+sudo usermod -aG dialout $USER
+```
+
+Log out and log back in (or reboot) for the group change to take effect.
+
+## Set required environment variables
 
 Set the SDK root and toolchain paths in your shell.
 
@@ -70,7 +116,7 @@ Set the SDK root and toolchain paths in your shell.
 export SRSDK_DIR=<sdk-root>
 ```
 
-Choose one toolchain variable:
+Choose **one** toolchain variable (do not set multiple toolchains at the same time):
 
 ```bash
 # GCC
@@ -81,7 +127,9 @@ export AC6_TOOLCHAIN_6_19_0=/path/to/armclang/bin
 
 # LLVM Clang
 export LLVM_TOOLCHAIN_ROOT=/path/to/llvm/bin
+export GCC_TOOLCHAIN_ROOT=/path/to/gcc-arm-none-eabi
 ```
+Note: LLVM builds require `GCC_TOOLCHAIN_ROOT` for the GCC sysroot and libstdc++.
 
 **Windows PowerShell**
 
@@ -96,9 +144,13 @@ $env:AC6_TOOLCHAIN_6_19_0 = "C:\path\to\armclang\bin"
 
 # LLVM Clang
 $env:LLVM_TOOLCHAIN_ROOT = "C:\path\to\llvm\bin"
+$env:GCC_TOOLCHAIN_ROOT = "C:\path\to\gcc-arm-none-eabi"
 ```
+Note: LLVM builds require `GCC_TOOLCHAIN_ROOT` for the GCC sysroot and libstdc++.
 
-## 5) Verify the environment
+To persist these variables, add them to your shell profile (Linux/macOS) or your PowerShell profile / System Environment Variables (Windows).
+
+## Verify the environment
 
 Run these to confirm tools are reachable:
 
@@ -107,9 +159,28 @@ cmake --version
 ninja --version
 make --version
 python --version
+openocd --version
+```
+
+Expected versions (or newer):
+- CMake 4.1.2
+- Ninja 1.13.1
+- GNU Make 4.x
+- Python 3.13.x
+- OpenOCD 0.12.x (distribution package versions may vary)
+
+Verify your selected toolchain is on PATH:
+- GCC: `arm-none-eabi-gcc --version`
+- Arm Compiler 6: `armclang --version`
+- LLVM Clang: `clang --version`
+
+Optional checks:
+```bash
+ls tools/srsdk_image_generator/requirements.txt
 ```
 
 ## Next: Build an example
 
 For step-by-step command-line build flows, see:
 - [SR110 Build and Flash with CLI](./SR110/SR110_Build_and_Flash_with_CLI.md)
+- [SL2610 Build and Flash with CLI](./SL2610/SL2610_Build_and_Flash_with_CLI.md)
