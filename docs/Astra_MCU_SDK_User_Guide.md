@@ -324,9 +324,7 @@ Many SDK tools require Python 3.13 and specific packages. Set up a virtual envir
 
 ### Initial Setup
 
-For detailed Python installation instructions, refer:
-- [Setup and Install SDK using CLI](./Setup_and_Install_SDK_using_CLI.md)
-- [Setup and Install SDK using VS Code Extension](./Setup_and_Install_SDK_using_VSCode.md)
+Refer to [Astra_MCU_SDK_Install_and_Setup](./Astra_MCU_SDK_Install_and_Setup.md) for detailed Python installation instructions.
 
 **Create virtual environment (one-time):**
 
@@ -564,8 +562,7 @@ If you encounter issues not covered here:
 ### Documentation
 
 - [Astra MCU SDK Build System](./Astra_MCU_SDK_Build_System.md)
-- [Setup and Install SDK using CLI](./Setup_and_Install_SDK_using_CLI.md)
-- [Setup and Install SDK using VS Code Extension](./Setup_and_Install_SDK_using_VSCode.md)
+- [Python Installation and Setup](./Astra_MCU_SDK_Install_and_Setup.md)
 - [SR110 Platform Guide](./SR110/SR110_platform_Guide.md)
 - [SL2610 Platform Guide](./SL2610/SL2610_Platform_Guide.md)
 

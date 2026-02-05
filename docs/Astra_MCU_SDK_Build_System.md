@@ -58,8 +58,7 @@ Before building, ensure your development environment is properly configured:
 - [macOS + LLVM Clang](./build_env/Astra_MCU_SDK_Mac_env_with_LLVM_CLANG.md)
 
 **Additional Setup:**
-- [Setup and Install SDK using CLI](./Setup_and_Install_SDK_using_CLI.md)
-- [Setup and Install SDK using VS Code Extension](./Setup_and_Install_SDK_using_VSCode.md)
+- [Python Environment Setup](./Astra_MCU_SDK_Install_and_Setup.md)
 - [VS Code Extension User Guide](./Astra_MCU_SDK_VSCode_Extension_User_Guide.md)
 
 ---
@@ -690,9 +689,7 @@ The `requirements.txt` typically includes:
 - `pyserial` - Serial port communication
 - Platform-specific dependencies
 
-For complete installation instructions, see:
-  - [Setup and Install SDK using CLI](./Setup_and_Install_SDK_using_CLI.md)
-  - [Setup and Install SDK using VS Code Extension](./Setup_and_Install_SDK_using_VSCode.md)
+For complete installation instructions, see: [Astra_MCU_SDK_Install_and_Setup](./Astra_MCU_SDK_Install_and_Setup.md)
 
 ---
 
@@ -736,7 +733,7 @@ The Astra MCU SDK provides a VS Code extension for integrated development workfl
 ### Extension Installation
 
 ```bash
-code --install-extension <sdk-root>/tools/Astra_MCU_SDK_vscode_extension-1.3.0.vsix
+code --install-extension <sdk-root>/tools/Astra_MCU_SDK_vscode_extension-1.3.1.vsix
 ```
 
 ### Documentation
