@@ -2,7 +2,7 @@
 
 This document provides concise, CLI-only steps to build and flash SL2610 applications.
 
-Throughout this guide, `<sdk-root>` refers to the folder where you extracted or cloned the SDK.
+Throughout this guide, `<sdk-root>` refers to the directory where you extracted or cloned the SDK.
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
@@ -42,8 +42,8 @@ Throughout this guide, `<sdk-root>` refers to the folder where you extracted or 
    ```
 
    Expected outputs:
-   - System Manager sub-image (for `run-sm`): `<sdk-root>/examples/out/image/intermediate/sysmgr.subimg`
-   - Compressed sub-images (for eMMC packaging): `<sdk-root>/examples/out/image/eMMCimg/`
+   - System Manager sub-image (for `run-sm`, uncompressed): `<sdk-root>/examples/out/image/intermediate/sysmgr.subimg`
+   - Compressed sub-images (for eMMC packaging, includes `sysmgr.subimg.gz`): `<sdk-root>/examples/out/image/eMMCimg/`
    - USB boot inputs (SPK/keys/bootloader): `<sdk-root>/examples/out/image/usb_boot/`
 
    If you see permission errors on Linux/macOS, run:

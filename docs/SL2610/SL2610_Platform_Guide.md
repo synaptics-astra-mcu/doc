@@ -1,6 +1,9 @@
 # SL2610 Platform Guide
 
-This document provides SL2610-specific hardware setup and platform notes. For build, image generation, and flashing workflows, use:
+This document provides SL2610-specific hardware setup and platform notes. For more detailed information on the SL2610 RDK, see the **SL2610 Board User Guide**:  
+https://cp.synaptics.com/cognidox/download/NR-160458-MS-APPROVED.pdf
+
+For build, image generation, and flashing workflows, use:
 
 - [SL2610 Build and Flash with CLI](./SL2610_Build_and_Flash_with_CLI.md)
 - [SL2610 Build and Flash with VS Code](./SL2610_Build_and_Flash_with_VSCode.md)
@@ -84,6 +87,16 @@ Host USB-UART Adapter          SL2610 RDK
    - Open serial monitor (115200 baud, 8N1)
    - Reset board
    - Bootloader or system messages should appear
+
+### Enter USB Boot Mode
+
+Use USB boot mode for flashing via the USB boot tool:
+
+1. Press and hold **USB_BOOT**
+2. Press and release **RESET**
+3. Release **USB_BOOT**
+
+The board will enumerate over USB for flashing operations.
 
 
 ## References

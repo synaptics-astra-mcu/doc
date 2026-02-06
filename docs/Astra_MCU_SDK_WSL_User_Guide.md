@@ -34,6 +34,12 @@ WSL2 with Ubuntu 22.04 is the recommended environment for SL2610 development and
 6. Place the SDK in the WSL filesystem (recommended):
    - Use a path under `/home/<username>/` for better performance and file permissions.
 
+7. Inside the WSL environment, continue with one of the setup guides:
+   - [Setup and Install SDK using CLI](./Setup_and_Install_SDK_using_CLI.md)
+   - [Setup and Install SDK using VS Code](./Setup_and_Install_SDK_using_VSCode.md)
+
+
+
 ## USB/Serial Device Access (WSL)
 
 Flashing and serial access require USB device passthrough to WSL.
@@ -52,10 +58,15 @@ Use USBIPD on Windows:
    usbipd attach --wsl --busid <BUSID> --auto-attach
    ```
 
-**SL2610 note:** SL2610 re-enumerates three times. The first time you run the flashing tool, you must re-bind each new enumeration (repeat the bind steps for each new BUSID). To do this you'll need to repeat the **USB_BOOT + RESET** sequence until all three enumerations have been bound. After that initial cycle, flashing will run normally.
+**SL2610 note:** SL2610 re-enumerates three times. The first time you run the flashing tool you must bind each new enumeration (repeat the bind steps for each new enumeration). To do this you'll need to repeat the **USB_BOOT + RESET** sequence until all three enumerations have been bound. After that initial cycle, flashing will run normally.
 
 **SR110 note:** Bind and attach both the Debug IC and the SR110 device. The SR110 will not appear in the USB list unless J13 is plugged in and the device has been reset.
 
+**Unbind when done:** To use the USB device in Windows again, detach it from WSL and unbind it in an Admin PowerShell:
+```powershell
+usbipd detach --busid <BUSID>
+usbipd unbind --busid <BUSID>
+```
 
 ## Next Steps
 

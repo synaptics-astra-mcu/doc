@@ -2,7 +2,7 @@
 
 This guide walks through the required steps to set up the Astra MCU SDK for command-line builds on Windows, Linux, or macOS.
 
-Throughout this guide, `<sdk-root>` refers to the folder where you extracted or cloned the SDK.
+Throughout this guide, `<sdk-root>` refers to the directory where you extracted or cloned the SDK.
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
@@ -85,8 +85,6 @@ source .venv/bin/activate
 
 Note: Keep the virtual environment active when running SDK commands.
 
-If you plan to use the inference/Vela tools, create a **separate** Python 3.7–3.10 virtual environment for those tools. Do not reuse the SDK image-generation venv (Python 3.13).
-
 Verify you are using the virtual environment Python:
 
 ```bash
@@ -116,6 +114,8 @@ Set the SDK root and toolchain paths in your shell.
 export SRSDK_DIR=<sdk-root>
 ```
 
+Note: `SRSDK_DIR` must be set in any shell where you build from `<sdk-root>/examples` (including app-only builds).
+
 Choose **one** toolchain variable (do not set multiple toolchains at the same time):
 
 ```bash
@@ -129,7 +129,7 @@ export AC6_TOOLCHAIN_6_19_0=/path/to/armclang/bin
 export LLVM_TOOLCHAIN_ROOT=/path/to/llvm/bin
 export GCC_TOOLCHAIN_ROOT=/path/to/gcc-arm-none-eabi
 ```
-Note: LLVM builds require `GCC_TOOLCHAIN_ROOT` for the GCC sysroot and libstdc++.
+Note: LLVM builds require `GCC_TOOLCHAIN_ROOT` for the GCC sysroot (ARM system headers) and the C++ standard library (libstdc++).
 
 **Windows PowerShell**
 
@@ -146,7 +146,7 @@ $env:AC6_TOOLCHAIN_6_19_0 = "C:\path\to\armclang\bin"
 $env:LLVM_TOOLCHAIN_ROOT = "C:\path\to\llvm\bin"
 $env:GCC_TOOLCHAIN_ROOT = "C:\path\to\gcc-arm-none-eabi"
 ```
-Note: LLVM builds require `GCC_TOOLCHAIN_ROOT` for the GCC sysroot and libstdc++.
+Note: LLVM builds require `GCC_TOOLCHAIN_ROOT` for the GCC sysroot (ARM system headers) and the C++ standard library (libstdc++).
 
 To persist these variables, add them to your shell profile (Linux/macOS) or your PowerShell profile / System Environment Variables (Windows).
 
@@ -173,11 +173,6 @@ Verify your selected toolchain is on PATH:
 - GCC: `arm-none-eabi-gcc --version`
 - Arm Compiler 6: `armclang --version`
 - LLVM Clang: `clang --version`
-
-Optional checks:
-```bash
-ls tools/srsdk_image_generator/requirements.txt
-```
 
 ## Next: Build an example
 

@@ -2,6 +2,8 @@
 
 This document provides concise, VS Code-only steps to build, convert images, flash, and debug SR110 applications. For common extension features (installation, tools, SDK import, logging, memory analysis), see [Astra MCU SDK VS Code Extension User Guide](../Astra_MCU_SDK_VSCode_Extension_User_Guide.md).
 
+Throughout this guide, `<sdk-root>` refers to the directory where you extracted or cloned the SDK.
+
 ## Table of Contents
 - [Prerequisites](#prerequisites)
 - [Build and Deploy Flow](#build-and-deploy-flow)
@@ -31,8 +33,8 @@ You may also run each step one at a time if desired.
 The steps do not run until the **Run** button at the bottom of the view is pressed.
 
 ## Environment Setup
-1. Ensure the current working directory is the `/examples` folder. Select this via the **Import Application/Example** view.
-2. Set the workspace `SRSDK_DIR` via the **Import SDK** view so the Build UI can detect the SDK.
+1. Ensure the current working directory is the `<sdk-root>/examples` folder. Select this via the **Import Application/Example** view.
+2. Set the workspace `SRSDK_DIR` to `<sdk-root>` via the **Import SDK** view so the Build UI can detect the SDK.
 3. Open the **Build and Deploy** view in the Synaptics extension and set `Device` → `SR110`.
 
 ![Build and Deploy Window](../Assets/Images/media/Build_and_Deploy.png)
@@ -55,7 +57,7 @@ The steps do not run until the **Run** button at the bottom of the view is press
 - **Build App** builds the application only and relies on previously installed SDK.
 
 **Result:**
-- .axf/.bin files are written to `out/<Build_Type>/<Build_Mode>/<Build_Type>.elf/.axf` for example out/sr110_cm55_fw/release/sr110_cm55_fw.elf. 
+- .axf/.bin files are written to `out/sr110_<Build_Type>/<Build_Mode>/sr110_<Build_Type>.elf/.axf` for example out/sr110_cm55_fw/release/sr110_cm55_fw.elf. 
 
 ![SR110 Build UI](../Assets/Images/media/VS_Build_Deploy.png)
 
@@ -75,7 +77,7 @@ The steps do not run until the **Run** button at the bottom of the view is press
 - Convert a model bin when needed by selecting the model file and its security setting.
 
 **Result:**
-- Converted binaries are written under `out/bin_files/`
+- Converted binaries are written under `out/bin_files/Output/B0_Flash/B0_flash_full_image_GD25LE128_67Mhz_secured.bin`
 
 ![SR110 Image Conversion](../Assets/Images/media/VS_Image_Conv.png)
 
@@ -104,16 +106,6 @@ If your application includes a model `.bin`, flash it using the **Model Binary**
 
 ![SR110 Image Flashing](../Assets/Images/media/VS_Flash.png)
 
-#### ROM
-
-The SR110 has a ROM boot mechanism. To enable ROM boot the boot strap must be set properly. 
-1. On the Astra Machina Micro set SW1.2 in the "on" position, closer to the "KE" text on the switch. 
-2. After setting the boot strap reset the SR110. 
-3. Open **Image Flashing** and select **Interface** → `ROM`.
-4. Connect an external USB to UART converter to J28. 
-5. Select the **COM Port:** that matches your external USB to UART converter. 
-6. After flashing is complete put SW1.2 back to off position and reset the SR110 to allow the code to run from external flash. 
-
 #### FW mode (UART/CDC)
 This is the device firmware update (DFU) mechanism. For this method to work an image with the Host API and FW Update enabled must be running on the SR110. By default the communication protocol is USB CDC. This USB CDC enumerates on J13 of the Astra Machina Micro. 
 
@@ -125,8 +117,21 @@ This is the device firmware update (DFU) mechanism. For this method to work an i
 
 **Note:** For FW update, ensure only J13 is plugged in during the update process.
 
+#### ROM
+
+The SR110 has a ROM boot mechanism. To enable ROM boot the boot strap must be set properly. 
+1. On the Astra Machina Micro set SW1.2 in the "on" position, closer to the "KE" text on the switch. 
+2. After setting the boot strap reset the SR110. 
+3. Open **Image Flashing** and select **Interface** → `ROM`.
+4. Connect an external USB to UART converter to J28. 
+5. Select the **COM Port:** that matches your external USB to UART converter. 
+6. After flashing is complete put SW1.2 back to off position and reset the SR110 to allow the code to run from external flash. 
+
+
+
 #### Advanced options
 **FW Update (Debug IC):**
+This only needs to be run the first time you recieve the Astra Machina Micro or if the SDK ships with a new version. 
 - In **Advanced Options**, select **FW Update (Debug IC)**.
 - Choose the Debug IC COM port and select `tools/Debug_IC_FW/Debug_IC_FW.bin`
 - Click **Run**, then unplug/replug the USB cable when finished.
@@ -150,7 +155,7 @@ After flashing, reset the board and follow the example README for runtime instru
 
 ## USB CDC Image Streaming (Windows)
 
-Some vision examples stream image data over USB CDC. On Windows, install the correct driver for the streaming port.
+Some vision examples stream image data over USB CDC. On Windows, install the correct driver for the streaming port. These steps will only work once a Vision example has been flashed onto the SR110. After flashing the vison example into the SR110 ensure both J14 and J13 USB are plugged in and reset the board. 
 
 **Hardware setup:**
 - Connect **J13** for streaming

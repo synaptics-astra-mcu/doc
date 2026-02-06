@@ -7,7 +7,7 @@ The Person Classification application is a machine learning-powered computer vis
 ## Build Instructions
 
 ### Prerequisites
-- [GCC/AC6/LLVM build environment setup](../../../../docs/build_env)
+- [GCC/AC6/LLVM build environment setup](../../../../docs/build_env/)
 - [Astra MCU SDK VS Code Extension installed and configured](../../../../docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md)
 
 ### Configuration and Build Steps

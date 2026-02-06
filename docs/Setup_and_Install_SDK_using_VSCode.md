@@ -3,25 +3,23 @@
 This guide provides a concise, end-to-end setup for the Astra MCU SDK in VS Code. For more detailed
 information, see [VS Code Extension User Guide](./Astra_MCU_SDK_VSCode_Extension_User_Guide.md).
 
-Throughout this guide, `<sdk-root>` refers to the folder where you extracted or cloned the SDK.
+Throughout this guide, `<sdk-root>` refers to the directory where you extracted or cloned the SDK.
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
 - [Install the Synaptics VS Code Extension](#install-the-synaptics-vs-code-extension)
 - [Install Tools](#install-tools)
 - [Linux USB/serial permissions (recommended)](#linux-usbserial-permissions-recommended)
-- [Import Examples and Set SRSDK_DIR](#import-examples-and-set-srsdk_dir)
+- [Import Application/Example and Set SRSDK_DIR](#import-applicationexample-and-set-srsdk_dir)
 - [Build and Flash (VS Code)](#build-and-flash-vs-code)
 - [Troubleshooting Tips](#troubleshooting-tips)
 
 ## Prerequisites
 
 - Supported host OS: Windows x64, Linux x86_64 or aarch64 (Ubuntu 22.04), macOS x86_64 or ARM64.
-    - **Note:** For SL2610 development, only Linux hosts are supported (WSL with Ubuntu 22.04 is supported).
+    - **Note:** For SL2610 development, only Linux hosts are supported (WSL with Ubuntu 22.04 is supported). See [Astra MCU SDK - WSL User Guide](./Astra_MCU_SDK_WSL_User_Guide.md).
     - Windows users: it is highly recommended to run VS Code and the Synaptics extension within WSL2. See the [VS Code WSL guide](https://code.visualstudio.com/docs/remote/wsl) for details.
-        - For WSL setup guidance, see [Astra MCU SDK - WSL User Guide](./Astra_MCU_SDK_WSL_User_Guide.md).
 - Visual Studio Code installed ([download](https://code.visualstudio.com/download)). 
-- If you plan to use the inference/Vela tools, set up a **separate** Python 3.7–3.10 virtual environment (do not reuse the SDK image-generation venv).
 
 ## Get the SDK
 
@@ -32,7 +30,7 @@ Throughout this guide, `<sdk-root>` refers to the folder where you extracted or 
 
 1. Click the Extensions icon on the side bar, click the three dots at the top right of the extensions window, and select **Install from VSIX...**
 ![Extension Toolbar](./Assets/Images/media/Extension_Toolbar.png)
-2. Locate the VSIX package in `tools/` (for example, `Astra_MCU_SDK_vscode_extension-<version>.vsix`), and click **Install**.
+2. Locate the VSIX package in `<sdk-root>/tools/` (for example, `<sdk-root>/tools/Astra_MCU_SDK_vscode_extension-<version>.vsix`), and click **Install**.
 
 3. Confirm the Synaptics extension appears in the VS Code activity bar, usually on the left pane.
 
@@ -71,13 +69,13 @@ sudo usermod -aG dialout $USER
 
 Log out and log back in (or reboot) for the group change to take effect.
 
-## Import Examples and Set SRSDK_DIR
+## Import Application/Example and Set SRSDK_DIR
 
 1. In the Synaptics sidebar, choose **Import Application/Example**.
 
-    ![Synaptics Sidebar - Import Examples and Import SDK](./Assets/Images/media/VS_Quick_Start.png)
-2. Import from local (select the SDK `examples/` folder).
-3. After importing examples, open **Import SDK** and set `SRSDK_DIR` to the SDK root (not the `examples/` folder).
+    ![Synaptics Sidebar - Import Application/Example and Import SDK](./Assets/Images/media/VS_Quick_Start.png)
+2. Import from local (select the SDK `<sdk-root>/examples/` folder).
+3. After importing examples, open **Import SDK** and set `SRSDK_DIR` to `<sdk-root>` (not the `<sdk-root>/examples/` folder).
     - **Note:** The **Import SDK** button appears after you import the examples. 
 
 This updates the workspace `settings.json` so build, image conversion, and flashing can locate the SDK.
@@ -91,6 +89,12 @@ SoC-specific build and flash flows:
 ## Troubleshooting Tips
 
 - Only one SDK can be imported per VS Code workspace.
-- On Windows, keep the SDK path length under 100 characters.
+- On Windows, keep the SDK path short to avoid path length issues.
 - If Build and Deploy is disabled, re-check `SRSDK_DIR` in **Import SDK**.
-- Examples can only be built from the SDK `examples/` directory; import it via **Import Application/Example**.
+- Examples can only be built from the SDK `<sdk-root>/examples/` directory; import it via **Import Application/Example**.
+- **Problem:** Build and Deploy button is disabled or grayed out.  
+  **Cause:** Examples directory not imported or `SRSDK_DIR` not set.  
+  **Solution:**  
+  1. Verify you imported the `<sdk-root>/examples/` folder (not the SDK root).  
+  2. Use **Import SDK** to set `SRSDK_DIR`.  
+  3. Refresh the workspace (close and reopen VS Code).

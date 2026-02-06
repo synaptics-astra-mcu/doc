@@ -1,5 +1,7 @@
 # Astra MCU SDK - VS Code Extension User Guide
 
+Throughout this guide, `<sdk-root>` refers to the directory where you extracted or cloned the SDK.
+
 ## Table of Contents
 
 - [Supported SoCs](#supported-socs)
@@ -10,7 +12,7 @@
   - [Tools checking](#tools-checking)
   - [Tools installation](#tools-installation)
 - [Linux USB/serial permissions (recommended)](#linux-usbserial-permissions-recommended)
-- [Import Examples and Set SRSDK_DIR](#import-examples-and-set-srsdk_dir)
+- [Import Application/Example and Set SRSDK_DIR](#import-applicationexample-and-set-srsdk_dir)
 - [Imported Example](#imported-example)
   - [Build and Deploy](#build-and-deploy)
 - [Logger](#logger)
@@ -33,7 +35,7 @@ Throughout this guide, sections marked with 🔧 indicate SoC-specific functiona
 ## Prerequisites
 
 - Supported host OS: Windows x64, Linux x86_64 or aarch64 (Ubuntu 22.04), macOS x86_64 or ARM64.
-    - **Note:** For SL2610 development only Linux hosts are supported (WSL with Ubuntu 22.04 is supported).
+    - **Note:** For SL2610 development only Linux hosts are supported (WSL with Ubuntu 22.04 is supported). See [Astra MCU SDK - WSL User Guide](./Astra_MCU_SDK_WSL_User_Guide.md).
     - Windows users are strongly encouraged to use WSL2. See the VS Code WSL guide and the [Astra MCU SDK - WSL User Guide](./Astra_MCU_SDK_WSL_User_Guide.md).
 - Visual Studio Code installed.
 
@@ -129,10 +131,10 @@ sudo usermod -aG dialout $USER
 Log out and log back in (or reboot) for the group change to take effect.
 
 
-## Import Examples and Set SRSDK_DIR
+## Import Application/Example and Set SRSDK_DIR
 <a id="import-examples-and-set-srsdk_dir"></a>
 
-**Purpose:** Import the SDK `examples/` directory into the VS Code workspace, either from a local folder or by cloning a repo.
+**Purpose:** Import the SDK `<sdk-root>/examples/` directory into the VS Code workspace, either from a local folder or by cloning a repo.
 
 ![Figure 10 Import SDK](./Assets/Images/media/image_vs11.png)
 
@@ -161,7 +163,7 @@ Log out and log back in (or reboot) for the group change to take effect.
     set in the settings.json. If settings.json doesn\'t exist, it will
     be created; if it does, it will be modified accordingly.
 
-6.  After importing the examples, set `SRSDK_DIR` using **Import SDK** (see below).
+6.  After importing the examples, set `SRSDK_DIR` to `<sdk-root>` using **Import SDK** (see below).
 
 > **Note:** The settings.json, which is updated during tools installation, is used to configure workspace-specific settings such as paths and environment variables needed for proper Astra MCU SDK integration and development.
 
@@ -170,7 +172,7 @@ Log out and log back in (or reboot) for the group change to take effect.
 
 **Purpose:**
 
-The Import SDK action is used to set the workspace `SRSDK_DIR` to the Astra MCU SDK root. It does not perform repository cloning or import example/application source code — those actions are handled by the **Import Application/Example** flow. The `SRSDK_DIR` setting lets the extension locate tools, SDK packages, and the top-level SDK layout for build, image conversion and flashing workflows.
+The Import SDK action is used to set the workspace `SRSDK_DIR` to the Astra MCU SDK root <sdk-root>. It does not perform repository cloning or import example/application source code — those actions are handled by the **Import Application/Example** flow. The `SRSDK_DIR` setting lets the extension locate tools, SDK packages, and the top-level SDK layout for build, image conversion and flashing workflows.
 
 **What it does**
 
@@ -300,7 +302,7 @@ The Memory Analyzer parses linker `.map` files and produces both summary and per
 
 **Pre-requisites:**
 
-- A linker `.map` file from a build (common location: `examples/out/`).
+- A linker `.map` file from a build (common location: `examples/build/<target>/<compiler>/<target>.map`).
 
 **Supported compilers & parsing behaviour:**
 

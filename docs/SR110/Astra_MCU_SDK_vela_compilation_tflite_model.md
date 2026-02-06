@@ -2,7 +2,7 @@
 
 This guide explains how to compile a quantized TFLite model using the **Vela** compiler and generate the C++ sources used by SR110 inference examples. It uses the SDK inference tool under `tools/Inference`.
 
-Throughout this guide, `<sdk-root>` refers to the folder where you extracted or cloned the SDK.
+Throughout this guide, `<sdk-root>` refers to the directory where you extracted or cloned the SDK.
 
 ## Table of Contents
 

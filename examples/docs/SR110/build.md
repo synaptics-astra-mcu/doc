@@ -1,4 +1,4 @@
-# 🔧 Astra MCU SDK Examples - SR110 Build Guide
+# Astra MCU SDK Examples - SR110 Build Guide
 
 Complete step-by-step guide for building Synaptics SDK (Astra MCU SDK) and example applications for SR110 projects.
 

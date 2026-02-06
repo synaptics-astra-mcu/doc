@@ -2,6 +2,8 @@
 
 This document provides concise, VS Code-only steps to build, generate images, and flash SL2610 applications. For common extension features (installation, tools, SDK import, logging, memory analysis), see [Astra MCU SDK VS Code Extension User Guide](../Astra_MCU_SDK_VSCode_Extension_User_Guide.md).
 
+Throughout this guide, `<sdk-root>` refers to the directory where you extracted or cloned the SDK.
+
 ## Table of Contents
 - [Prerequisites](#prerequisites)
 - [Build and Deploy Flow](#build-and-deploy-flow)
@@ -15,7 +17,7 @@ This document provides concise, VS Code-only steps to build, generate images, an
 
 ## Prerequisites
 
-- Development on SL2610 requires Linux. Windows users should run VS Code in Ubuntu 22.04 via WSL; macOS support is planned for a future release.
+- Development on SL2610 requires Linux. Windows users should run VS Code in Ubuntu 22.04 via WSL; see [Astra MCU SDK - WSL User Guide](../Astra_MCU_SDK_WSL_User_Guide.md). macOS support is planned for a future release.
 - SL2610 RDK connected with 5V USB-C power (PWR_IN) and USB 2.0 OTG to the host.
 - Ensure hardware connections are set up per the [SL2610 Platform Guide](./SL2610_Platform_Guide.md).
 - VS Code extension and tools installed. See [Setup and Install SDK using VS Code](../Setup_and_Install_SDK_using_VSCode.md).
@@ -30,8 +32,8 @@ You may also run each step one at a time if desired.
 The steps do not run until the **Run** button at the bottom of the view is pressed.
 
 ## Environment Setup
-1. Ensure the current working directory is the `/examples` folder. Select this via the **Import Application/Example** view.
-2. Set the workspace `SRSDK_DIR` via the **Import SDK** view so the Build UI can detect the SDK.
+1. Ensure the current working directory is the `<sdk-root>/examples` folder. Select this via the **Import Application/Example** view.
+2. Set the workspace `SRSDK_DIR` to `<sdk-root>` via the **Import SDK** view so the Build UI can detect the SDK.
 3. Open the **Build and Deploy** view in the Synaptics extension and set `Device` → `SL2610`.
 
 ## Build Configurations (SL2610)
@@ -87,7 +89,7 @@ Choose the target as **M52 Image** or **Full Image** in the **Flash Target** dro
 
 **M52 Image requirements:**
 - Provide the sysmgr sub-image path in the Image Flashing panel.
-- Use **Browse** to select a custom sysmgr sub-image if needed.
+- Use **Browse** to select a custom sysmgr sub-image which can be found here: `out/sl2610_cm52_fw/release/sysmgr.subimg.gz`
 - **Note** this will be automatically populated after image generation. 
 
 ![SL2610 Image Flashing - M52](../Assets/Images/media/vs_image_flash_sl2610.png)

@@ -2,7 +2,7 @@
 
 This document is a comprehensive reference for the Astra MCU SDK. It describes the SDK structure, build and configuration model, project layout, image generation, flashing tools, and common troubleshooting. It is not a quick start guide and focuses on SDK internals and CLI workflows.
 
-Throughout this guide, `<sdk-root>` refers to the folder where you extracted or cloned the SDK.
+Throughout this guide, `<sdk-root>` refers to the directory where you extracted or cloned the SDK.
 
 ## Table of Contents
 
@@ -82,7 +82,7 @@ Use only **one toolchain per build**. Do not mix toolchains across SDK and appli
 ## Environment Setup 
 Use these for host setup and tool installation:
 - [Setup and Install SDK using CLI](./Setup_and_Install_SDK_using_CLI.md)
-- [Build environment guides](./build_env/index.rst) (OS + toolchain specific guides)
+- [Build environment guides](./build_env/) (OS + toolchain specific guides)
 
 
 ## SDK Repository Layout
@@ -114,9 +114,7 @@ examples/
 `-- Makefile                     # Examples build entry
 ```
 
-Out-of-tree examples are supported. Point `SRSDK_DIR` to the SDK root and keep your example repo separate.
-
-**Example build scope:** `examples/tools/cmake/subdirectories.cmake` lists which example trees are included (for example `add_subdirectory(SR110_RDK)`). Edit this file if you need to limit or expand the example build scope.
+Out-of-tree examples are supported. **Out-of-tree** means your application code lives in a separate directory from the SDK, keeping the SDK read-only and version-controlled independently. Point `SRSDK_DIR` to the SDK root `<sdk-root>` and keep your example repo separate.
 
 ## Project Structure and Module Organization
 
@@ -152,7 +150,7 @@ The SDK supports two primary build entry points:
 - **SDK root (`<sdk-root>`)**: build the SDK package, bootloader, or TFLite Micro libraries.
 - **Examples folder (`<sdk-root>/examples`)**: build applications, either app-only or combined SDK + app.
 
-Out-of-tree builds are supported: keep your examples in a separate folder and set `SRSDK_DIR` to the SDK root.
+Out-of-tree builds are supported: keep your examples in a separate folder and set `SRSDK_DIR` to `<sdk-root>`.
 
 The build system is layered:
 - **Make**: orchestration and entry points (`Makefile` in SDK root and `examples/`).
@@ -265,6 +263,7 @@ make <app_defconfig> BOARD=<BOARD> BUILD=SRSDK
 
 #### App-only build (uses installed SDK package)
 ```
+export SRSDK_DIR=<sdk-root>
 make build BOARD=<BOARD>
 ```
 
@@ -283,9 +282,15 @@ make astrasdk BOARD=<BOARD>
 - `BUILD=SRSDK`: build SDK package and the app in one flow (requires `SRSDK_DIR`).
 - `BUILD=NONE`: apply defconfig only (no build).
 
+**When to use:**
+- Use **BUILD=SRSDK** for the first build, after SDK source changes, or when switching toolchains.
+- Use **BUILD=EXAMPLE** for faster iteration when only app code changes and the SDK package is already installed.
+
 ### Build Multiple Applications with One SDK Package
 If you want to build several applications against the same installed SDK:
 ```
+cd <sdk-root>/examples
+export SRSDK_DIR=<sdk-root>
 make astrasdk BOARD=<BOARD>
 make <app1>_defconfig BOARD=<BOARD>
 make build BOARD=<BOARD>
@@ -303,6 +308,10 @@ make build BOARD=<BOARD>
    make advanced_menuconfig BOARD=<BOARD>
    ```
 3. Save your new defconfig under `<BOARD>/configs/` (for example `my_custom_app_defconfig`).
+   ```
+   make savedefconfig OUT=my_custom_app BOARD=<BOARD>
+   ```
+   This writes `examples/<BOARD>/configs/my_custom_app_defconfig`.
 
 The new defconfig can then be used like any other:
 ```
@@ -327,9 +336,8 @@ make my_custom_app_defconfig BOARD=<BOARD> BUILD=SRSDK
 - `examples/install/<BOARD>/` contains the installed SDK package:
   - `include/` SDK headers
   - `lib/` SDK libraries
-  - `cmake/` toolchain files
   - `config.h`
-  - `tools/cmake/` CMake toolchain module used by the app build
+  - `tools/cmake/` SDK CMake toolchain modules used by the app build
 
 The installed package also provides CMake package files under:
 ```
@@ -354,11 +362,12 @@ Target naming:
 
 **Typical command (from `<sdk-root>/tools/srsdk_image_generator`):**
 ```
+cd <sdk-root>/tools/srsdk_image_generator
 python srsdk_image_generator.py \
   -B0 \
   -flash_image \
   -sdk_secured \
-  -spk "<sdk-root>/tools/srsdk_image_generator/B0_Input_examples/spk_rc3_0_secure_otpk_0605.bin" \
+  -spk "<sdk-root>/tools/srsdk_image_generator/B0_Input_examples/spk_rc4_1_0_secure_otpk.bin" \
   -apbl "<sdk-root>/tools/srsdk_image_generator/B0_Input_examples/sr100_b0_bootloader_ver_0x012F_ASIC.axf" \
   -m55_image "<sdk-root>/examples/out/sr110_cm55_fw/release/sr110_cm55_fw.elf" \
   -flash_type "GD25LE128" \
@@ -367,7 +376,7 @@ python srsdk_image_generator.py \
 
 **Output (example):**
 ```
-<examples>/out/bin_files/Output/B0_Flash/B0_flash_full_image_GD25LE128_67Mhz_secured.bin
+<sdk-root>/tools/srsdk_image_generator/Output/B0_Flash/B0_flash_full_image_GD25LE128_67Mhz_secured.bin
 ```
 
 Key flags:
@@ -422,9 +431,10 @@ OpenOCD config files live under `tools/openocd/configs/`. For SR110, `sr110_m55.
 
 **Example (from `<sdk-root>`):**
 ```
+cd <sdk-root>
 python tools/openocd/scripts/flash_xspi_tcl.py \
   --cfg_path tools/openocd/configs/sr110_m55.cfg \
-  --image examples/out/bin_files/Output/B0_Flash/B0_flash_full_image_GD25LE128_67Mhz_secured.bin \
+  --image tools/srsdk_image_generator/Output/B0_Flash/B0_flash_full_image_GD25LE128_67Mhz_secured.bin \
   --erase-all
 ```
 
@@ -440,8 +450,7 @@ Key options:
 - `--erase-only`: Erase only, no programming
 - `--log-level`: DEBUG/INFO/WARN/ERROR
 - `--tcl_port`, `--tcl_host`: OpenOCD TCL interface settings
-
-You can also pass the probe as an environment variable: `PROBE=jlink`.
+- Use `--probe jlink` (or `--probe cmsis-dap`) to select the adapter driver.
 
 ### SL2610 (USB Boot Tool)
 **Tool:** `tools/usb_boot_python_tool/USB_BOOT_TOOL/usb_boot_tool.py`
@@ -454,6 +463,7 @@ You can also pass the probe as an environment variable: `PROBE=jlink`.
 
 **Run System Manager (from `<sdk-root>/tools/usb_boot_python_tool/USB_BOOT_TOOL`):**
 ```
+cd <sdk-root>/tools/usb_boot_python_tool/USB_BOOT_TOOL
 python usb_boot_tool.py --op run-sm \
   --sm <sdk-root>/examples/out/image/intermediate/sysmgr.subimg \
   --spk <sdk-root>/examples/out/image/usb_boot/spk.bin \
@@ -481,7 +491,7 @@ Use the table below to choose the correct working directory.
 | `make <tflite_defconfig> BOARD=<BOARD>` | `<sdk-root>` | SDK TFLite build (follow with `make build`) |
 | `make astrasdk BOARD=<BOARD>` | `<sdk-root>` or `<sdk-root>/examples` | Builds and installs SDK package |
 | `make <app_defconfig> BOARD=<BOARD> BUILD=SRSDK` | `<sdk-root>/examples` | Combined SDK + app build |
-| `make build BOARD=<BOARD>` | `<sdk-root>/examples` | App-only build |
+| `make build BOARD=<BOARD>` | `<sdk-root>/examples` | App-only build (requires `SRSDK_DIR`) |
 | `make imagegen` | `<sdk-root>/examples` | SL2610 image generation pipeline |
 | `srsdk_image_generator.py` | `<sdk-root>/tools/srsdk_image_generator` | SR110 image generation |
 | `flash_xspi_tcl.py` | `<sdk-root>` | SR110 flashing (OpenOCD) |
@@ -494,6 +504,7 @@ Use the table below to choose the correct working directory.
 - If you change configuration options, re-run the app defconfig and rebuild:
 ```
 cd <sdk-root>/examples
+export SRSDK_DIR=<sdk-root>
 make <app>_defconfig BOARD=<BOARD>
 make build BOARD=<BOARD>
 ```
@@ -627,6 +638,10 @@ Note: Some tools have their own dependency requirements (for example `tools/Infe
 ### Build and Configuration Issues
 - **`SRSDK_DIR` not set (examples + SDK combined build fails)**
   - Fix: `export SRSDK_DIR=<sdk-root>` before `BUILD=SRSDK` or `advanced_menuconfig`.
+
+- **Build and Deploy button disabled in VS Code**
+  - Cause: Examples directory not imported or `SRSDK_DIR` not set.
+  - Fix: import the SDK `examples/` folder, set `SRSDK_DIR` via **Import SDK**, then refresh the workspace (close and reopen VS Code).
 
 - **App-only build fails because SDK package is missing**
   - Fix: build and install the SDK first with `make astrasdk BOARD=<BOARD>` (from SDK root or examples).
