@@ -2,7 +2,11 @@
 
 This document is a comprehensive reference for the Astra MCU SDK. It describes the SDK structure, build and configuration model, project layout, image generation, flashing tools, and common troubleshooting. It is not a quick start guide and focuses on SDK internals and CLI workflows.
 
+<<<<<<< HEAD
 Throughout this guide, `<sdk-root>` refers to the directory where you extracted or cloned the SDK.
+=======
+Throughout this guide, `<sdk-root>` refers to the folder where you extracted or cloned the SDK (for example, `C:\Users\<YourName>\ASTRA_MCU_SDK_x.x.x\`).
+>>>>>>> 7a82c49 (updated user guide)
 
 ## Table of Contents
 
@@ -40,8 +44,8 @@ Before using this reference, complete the setup and installation steps:
 ## Supported Platforms and Boards
 
 ### Boards
-- **Astra Machina Micro (SR110_RDK)** 
-- **SL2610_RDK** 
+- **Astra Machina Micro SR110 (SR110_RDK)** 
+- **Astra Machina SL2610 (SL2610_RDK)** 
 
 ### Platform Differences (at a glance)
 | Feature | SR110 | SL2610 |
@@ -114,7 +118,13 @@ examples/
 `-- Makefile                     # Examples build entry
 ```
 
+<<<<<<< HEAD
 Out-of-tree examples are supported. **Out-of-tree** means your application code lives in a separate directory from the SDK, keeping the SDK read-only and version-controlled independently. Point `SRSDK_DIR` to the SDK root `<sdk-root>` and keep your example repo separate.
+=======
+Out-of-tree custom applications are supported. Point `SRSDK_DIR` to the SDK root and keep your application repo separate.
+
+**Example build scope:** `examples/tools/cmake/subdirectories.cmake` lists which example trees are included (for example `add_subdirectory(SR110_RDK)`). Edit this file if you need to limit or expand the example build scope.
+>>>>>>> 7a82c49 (updated user guide)
 
 ## Project Structure and Module Organization
 
@@ -124,7 +134,7 @@ The SDK is organized as functional modules. Each module typically contains its o
 - `CMakeLists.txt` in the SDK root drives inclusion of core subsystems (bootloader, firmware, tflite, drivers, OS).
 - `tools/cmake/flags.cmake` centralizes compiler flags and warnings.
 - `tools/cmake/` contains SDK CMake modules; 
-- `examples/tools/cmake/` contains example-specific CMake modules.
+- `examples/tools/cmake/` contains application-specific CMake modules.
 
 ### Module-Level Structure
 - Each module uses `target_sources()` to add sources and `target_include_directories()` to expose headers.
@@ -142,7 +152,7 @@ The SDK is organized as functional modules. Each module typically contains its o
 - **Bootloader**: `bootloader/`
 - **TFLite Micro**: `AI/` and `third_party/`
 - **Tools and scripts**: `tools/`
-- **Example inclusion logic**: `examples/<BOARD>/CMakeLists.txt` (uses app `kconfig` symbols)
+- **App/Example inclusion logic**: `examples/<BOARD>/CMakeLists.txt` (uses app `kconfig` symbols)
 
 ## Build System Overview
 
@@ -150,7 +160,11 @@ The SDK supports two primary build entry points:
 - **SDK root (`<sdk-root>`)**: build the SDK package, bootloader, or TFLite Micro libraries.
 - **Examples folder (`<sdk-root>/examples`)**: build applications, either app-only or combined SDK + app.
 
+<<<<<<< HEAD
 Out-of-tree builds are supported: keep your examples in a separate folder and set `SRSDK_DIR` to `<sdk-root>`.
+=======
+Out-of-tree builds are supported: keep your custom application in a separate folder and set `SRSDK_DIR` to the SDK root.
+>>>>>>> 7a82c49 (updated user guide)
 
 The build system is layered:
 - **Make**: orchestration and entry points (`Makefile` in SDK root and `examples/`).
@@ -186,7 +200,7 @@ This section describes the CMake flow at a practical level.
 
 ### Where Configuration Lives
 - **SDK defconfigs**: `configs/<BOARD>/*_defconfig`
-- **Example defconfigs**: `examples/<BOARD>/configs/*_defconfig`
+- **Application defconfigs**: `examples/<BOARD>/configs/*_defconfig`
 
 ### Configuration Flow
 1. Apply a defconfig to generate `.config`.
@@ -219,9 +233,9 @@ Build modes map to output folders: `release/` or `debug/`.
 
 Note: Build types used in defconfigs are `cm55_fw`, `cm52_fw`, `bootloader`, and `tflite_micro`.
 
-### SDK vs Example Menuconfig
+### SDK vs Application Menuconfig
 - **SDK root menuconfig**: changes SDK-level options (drivers, compiler, features).
-- **Examples menuconfig**: example-only options.
+- **Application menuconfig**: app-only options.
 - **Advanced menuconfig**: combines SDK + example options and requires `SRSDK_DIR`.
 
 ## Build Workflows
@@ -248,7 +262,7 @@ make <tflite_defconfig> BOARD=<BOARD>
 make build
 ```
 
-### Example Builds (from `<sdk-root>/examples`)
+### Application Builds (from `<sdk-root>/examples`)
 Use examples to build applications.
 
 Supported boards are defined in the Makefiles: currently `SR110_RDK` and `SL2610_RDK`.
@@ -277,7 +291,7 @@ make default_config BOARD=<BOARD>
 make astrasdk BOARD=<BOARD>
 ```
 
-### BUILD Mode (examples only)
+### BUILD Mode (Application only)
 - `BUILD=EXAMPLE` (default): build the app using the installed SDK package.
 - `BUILD=SRSDK`: build SDK package and the app in one flow (requires `SRSDK_DIR`).
 - `BUILD=NONE`: apply defconfig only (no build).
@@ -298,7 +312,7 @@ make <app2>_defconfig BOARD=<BOARD>
 make build BOARD=<BOARD>
 ```
 
-### Create a Custom Defconfig (examples)
+### Create a Custom Defconfig (Application)
 1. Start from an existing defconfig:
    ```
    make <app>_defconfig BOARD=<BOARD>
@@ -327,7 +341,7 @@ make my_custom_app_defconfig BOARD=<BOARD> BUILD=SRSDK
   - AC6: `<target>.axf` and `<target>.bin`
 - `prebuilt/<PROJECT>/tflite_micro/<mode>/` contains TFLM libs when building `tflite_micro`.
 
-### Example Outputs
+### Application Outputs
 - `examples/out/<target>/<mode>/` contains application binaries.
   - GCC/LLVM: `<target>.elf` and `<target>.bin`
   - AC6: `<target>.axf` and `<target>.bin`
@@ -576,7 +590,7 @@ Common mistakes:
 | `make clean` | Remove build artifacts | `build/` cleaned |
 | `make cpp_check` | Run cppcheck | Console output |
 
-### Examples (`<sdk-root>/examples`)
+### Applications (`<sdk-root>/examples`)
 
 | Command | Purpose | Result |
 | --- | --- | --- |
@@ -693,7 +707,7 @@ Note: Some tools have their own dependency requirements (for example `tools/Infe
 - **App builds but image generation fails**
   - Fix: confirm output `.elf` exists in `examples/out/` and update image generator input paths.
 
-- **Example build does not pick up new SDK headers/libs**
+- **App/Example build does not pick up new SDK headers/libs**
   - Fix: clean the app cache (`rm -rf examples/build/<target>/<compiler>/srsdk_build/.cache`) or disable it by configuring with `USE_APP_CACHE=OFF`.
 
 - **Link errors from mixed toolchains**
@@ -701,7 +715,6 @@ Note: Some tools have their own dependency requirements (for example `tools/Infe
 
 ## Related References
 
-- SDK build and structure reference: [Astra MCU SDK User Guide](./Astra_MCU_SDK_User_Guide.md)
 - CLI setup: [Setup and Install SDK using CLI](./Setup_and_Install_SDK_using_CLI.md)
 - SR110 build and flash: [SR110 Build and Flash with CLI](./SR110/SR110_Build_and_Flash_with_CLI.md)
 - SL2610 build and flash: [SL2610 Build and Flash with CLI](./SL2610/SL2610_Build_and_Flash_with_CLI.md)
