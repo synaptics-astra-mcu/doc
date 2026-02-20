@@ -1,5 +1,0 @@
-config SPWM_SAMPLE_APP_ENABLED
-    bool "SPWM_SAMPLE_APP_ENABLED"
-    depends on MODULE_SPWM_ENABLED
-    help
-        This option selects SPWM_SAMPLE_APP

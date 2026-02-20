@@ -11,36 +11,36 @@ This section provides comprehensive user guides and demo applications for the SR
 .. toctree::
    :maxdepth: 1
 
-   ../examples/SR110_RDK/vision_examples/uc_person_classification/README
-   ../examples/SR110_RDK/vision_examples/uc_person_detection/README
-   ../examples/SR110_RDK/vision_examples/uc_person_segmentation/README
-   ../examples/SR110_RDK/vision_examples/uc_person_pose_detection/README
-   ../examples/SR110_RDK/vision_examples/uc_hand_gesture_detection/README
-   ../examples/SR110_RDK/vision_examples/uc_jpeg_preroll/README
-   ../examples/SR110_RDK/drivers_examples/bt_sample_app/bt_sample_readme
+   ../srsdk/examples/SR110_RDK/vision_examples/uc_person_classification/README
+   ../srsdk/examples/SR110_RDK/vision_examples/uc_person_detection/README
+   ../srsdk/examples/SR110_RDK/vision_examples/uc_person_segmentation/README
+   ../srsdk/examples/SR110_RDK/vision_examples/uc_person_pose_detection/README
+   ../srsdk/examples/SR110_RDK/vision_examples/uc_hand_gesture_detection/README
+   ../srsdk/examples/SR110_RDK/vision_examples/uc_jpeg_preroll/README
+   ../srsdk/examples/SR110_RDK/drivers_examples/bt_sample_app/bt_sample_readme
 
 **AI Vision Demos:**
 
-:doc:`../examples/SR110_RDK/vision_examples/uc_person_classification/README`
+:doc:`../srsdk/examples/SR110_RDK/vision_examples/uc_person_classification/README`
    **Person Classification Demo** - Step-by-step guide to run person classification applications, including setup, configuration, and result interpretation.
 
-:doc:`../examples/SR110_RDK/vision_examples/uc_person_detection/README`
+:doc:`../srsdk/examples/SR110_RDK/vision_examples/uc_person_detection/README`
    **Person Detection Demo** - Complete tutorial for person detection functionality, covering camera setup, detection parameters, and output analysis.
 
-:doc:`../examples/SR110_RDK/vision_examples/uc_person_segmentation/README`
+:doc:`../srsdk/examples/SR110_RDK/vision_examples/uc_person_segmentation/README`
    **Person Segmentation Demo** - Detailed instructions for running person segmentation applications with real-time image processing capabilities.
 
-:doc:`../examples/SR110_RDK/vision_examples/uc_person_pose_detection/README`
+:doc:`../srsdk/examples/SR110_RDK/vision_examples/uc_person_pose_detection/README`
    **Person Pose Detection Demo** - Comprehensive guide for pose detection applications, including keypoint detection and pose analysis features.
 
-:doc:`../examples/SR110_RDK/vision_examples/uc_hand_gesture_detection/README`
+:doc:`../srsdk/examples/SR110_RDK/vision_examples/uc_hand_gesture_detection/README`
    **Hand Guesture Detection Demo** - A complete guide for hand guesture detection applications, perform real-time gesture recognition with hand detection, single hand tracking and hand-key point estimation.
 
 **Data Transfer & Communication:**
 
-:doc:`../examples/SR110_RDK/vision_examples/uc_jpeg_preroll/README`
+:doc:`../srsdk/examples/SR110_RDK/vision_examples/uc_jpeg_preroll/README`
    **JPEG Preroll Demo** - Guide for JPEG image capture and preroll functionality, including USB transfer and image processing workflows.
 
-:doc:`../examples/SR110_RDK/drivers_examples/bt_sample_app/bt_sample_readme`
+:doc:`../srsdk/examples/SR110_RDK/drivers_examples/bt_sample_app/bt_sample_readme`
    **Bletooth Demo** - The BT sample application showcases BLE capabilities, including stack initialization, GATT server functionality, advertising, device discovery and connection, and GATT read/write operations.
 

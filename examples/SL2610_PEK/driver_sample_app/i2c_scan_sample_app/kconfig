@@ -1,6 +1,0 @@
-config I2C_SCAN_SAMPLE_APP
-    bool "I2C BUS SCAN APP"
-    help
-      Enable I2C Bus Scanner sample application.
-      This application scans the I2C bus to detect connected devices
-      across all valid 7-bit addresses (0x08-0x77).

@@ -1,4 +1,0 @@
-config XSPI_SAMPLE_APP
-    bool "XSPI_SAMPLE_APP"
-    help
-        This option selects XSPI_SAMPLE_APP

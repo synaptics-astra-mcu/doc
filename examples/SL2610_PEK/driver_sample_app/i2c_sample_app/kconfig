@@ -1,4 +1,0 @@
-config I2C_SAMPLE_APP
-    bool "I2C_SAMPLE_APP"
-    help
-        This option selects I2C_SAMPLE_APP

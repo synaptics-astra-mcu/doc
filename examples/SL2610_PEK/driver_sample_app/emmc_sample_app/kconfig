@@ -1,4 +1,0 @@
-config EMMC_SAMPLE_APP
-    bool "EMMC_SAMPLE_APP"
-    help
-        This option selects EMMC_SAMPLE_APP

@@ -18,4 +18,4 @@ The toolkit supports various hardware platforms and provides both GUI and comman
    :hidden:
    :glob:
 
-   ../../docs/SR110/Synatoolkit_User_Guide 
+   ../../srsdk/docs/SR110/Synatoolkit_User_Guide.md
