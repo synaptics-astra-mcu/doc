@@ -37,6 +37,9 @@ Extract or clone the SDK to a local directory (for example, `/path/to/Astra_MCU_
 - [VSCode Extension User Guide](./docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md)
 - [Astra MCU SDK - WSL User Guide](./docs/Astra_MCU_SDK_WSL_User_Guide.md)
 
+### Step 5: Explore SDK Applications
+- [Astra MCU SDK Application User Guide](../user_guide/index.rst)
+
 ## Driver User Guide
 - [Astra MCU SDK Driver Guide (HTML)](../api_doc/index.rst)
 

@@ -1,226 +1,282 @@
 # Doorbell ML Application
 
-## 1. Overview
+## Description
 
-The **Doorbell sample application** integrates the `UC_JPEG_PREROLL` and `IMAGE_STITCHING` use cases to detect a person within the camera’s field of view and capture high-resolution Full HD (FHD) images upon detection.
+The Doorbell sample application combines the `UC_JPEG_PREROLL` and `IMAGE_STITCHING` use cases to detect a person in the camera field of view and capture Full HD (FHD) images when detection occurs.
 
-### 1.1 Image Delivery Options
+Captured images can be delivered in two modes:
 
-Captured images can be delivered in two ways:
+| Delivery Mode | Description | Tools for Visualization |
+|---|---|---|
+| USB CDC (to Host PC) | Sends images via USB CDC to a host PC. | VS Code Extension |
+| SPI to Controller | Sends images over SPI to another Astra Machina Micro acting as controller and receives frames for validation/logging. | Logger |
 
-| Delivery Mode         | Description                                                                                   | Tools for Visualization                     |
-|-----------------------|-----------------------------------------------------------------------------------------------|---------------------------------------------|
-| USB CDC (to Host PC)  | Sends images via USB CDC to a host PC.                                                        |  VS Code Extension              |
-| SPI to Controller     | Sends images over SPI to another Astra Machina Eval Kit acting as a controller; receives frames for logging. | Logger |
+## Prerequisites
+
+- Choose **one** setup path:
+  - **CLI**: [Setup and Install SDK using CLI](../../../../docs/Astra_MCU_SDK_Setup_and_Install_CLI.md)
+  - **VS Code**: [Setup and Install SDK using VS Code](../../../../docs/Astra_MCU_SDK_Setup_and_Install_VsCode.md)
+- [Astra MCU SDK VS Code Extension User Guide](../../../../docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md)
+
+## Building and Flashing the Example using VS Code
+
+Use the VS Code flow described in the SR110 guide and the VS Code Extension guide:
+- [SR110 Build and Flash with VS Code](../../../../docs/SR110/SR110_Build_and_Flash_with_VSCode.md)
+- [Astra MCU SDK VS Code Extension User Guide](../../../../docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md)
+
+**Build (VS Code):**
+1. In VS Code Extension, go to **Build and Deploy** -> **Build Configurations**.
+2. Select **doorbell** in the **Application** dropdown.
+3. Configure wakeup mode in `uc_jpeg_preroll.c` using `CONFIG_WAKEUP_TRIGGER`:
+   - `1` for timer-based wakeup
+   - `2` for GPIO-based wakeup
+4. Build with **Build (SDK + App)** for the first build, or **Build App** for rebuilds.
+
+**Flash (VS Code):**
+1. Use **Image Conversion** to generate firmware binary.
+2. Generate model binary from TFLite, if needed:
+   - [Vela compilation guide](../../../../docs/Astra_MCU_SDK_vela_compilation_tflite_model.md)
+3. In **Image Flashing**, flash firmware image.
+4. Flash model binary `door_bell_flash(384x512).bin` at offset `0x629000`.
+   - Model location: `examples/SR110_RDK/vision_examples/uc_jpeg_preroll/models/`
+
+> Note: By default, flashing a binary performs sector erase based on binary size. If **Full Flash Erase** is enabled, tool performs full erase before flashing.
 
 ---
 
-## 2. Build Instructions
+## Building and Flashing the Example using CLI
 
-### 2.1 Prerequisites
+Use the CLI flow described in the SR110 guide:
+- [SR110 Build and Flash with CLI](../../../../docs/SR110/SR110_Build_and_Flash_with_CLI.md)
 
-- [Astra MCU SDK VS Code Extension](../../../../docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md)
-
-### 2.2 Build Options
-
-| Method           | Steps                                                                                           | Notes                                           |
-|------------------|-------------------------------------------------------------------------------------------------|-------------------------------------------------|
-| VS Code Extension| Import SDK → Build or Clean SDK in “Imported Repos” → select configs (Application, Board, Compiler) → Build | GUI workflow; logs appear in VS Code terminal. |
-| Native CLI       | Run `make cm55_doorbell_defconfig BOARD=SR110_RDK BUILD=SRSDK`                                        | Suitable for native builds                     |
-
-### Configuration and Build Steps
-
-**Note:** **Configure WAKEUP_TRIGGER**
-   Navigate to: `uc_jpeg_preroll.c` change to CONFIG_WAKEUP_TRIGGER set to 2 for (GPIO-based wakeup)
-
-### 1. Using Astra MCU SDK VS Code extension
-
-   - Navigate to **IMPORTED REPOS** → **Build and Deploy** in the Astra MCU SDK VS Code Extension.
-   - Select the **Build Configurations** checkbox, then select the necessary options.
-   - Select **doorbell** in the **Application** dropdown. This will apply the defconfig.
-   - Select the appropriate build and clean options from the checkboxes. Then click **Run**. This will build the SDK generating the required `.elf` or `.axf` files for deployment using the installed package.
-
-   For detailed steps refer to the [Astra MCU SDK VS Code Extension Userguide](../../../../docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md).
-
-   ![Build Configurations](assets/doorbell_defconfig.png)
-
-### 2. Native build in the terminal
-
-2. **Select Default Configuration and Build SDK + Example**
-   This will apply the defconfig, then build and install the SDK package, generating the required `.elf` or `.axf` files for deployment.
+**Build (CLI):**
+1. Build default configuration:
    ```bash
+   cd <sdk-root>/examples
+   export SRSDK_DIR=<sdk-root>
    make cm55_doorbell_defconfig BOARD=SR110_RDK BUILD=SRSDK
    ```
-   This configuration uses CONFIG_WAKEUP_TRIGGER set to 1 (Timer-based wakeup).
-
-3. **Rebuild the Application using pre-built package**
-   The build process will produce the necessary `.elf` or `.axf` files for deployment with the installed package.
+   Default configuration uses `CONFIG_WAKEUP_TRIGGER=1` (timer wakeup).
+2. To modify config using menuconfig:
    ```bash
-   make cm55_doorbell_defconfig BOARD=SR110_RDK or make
+   make cm55_doorbell_defconfig BOARD=SR110_RDK BUILD=SRSDK EDIT=1
    ```
 
-## 3. Deployment and Execution
-
-### 3.1 Setup and Flashing
-
-1. **Open the Astra MCU SDK VSCode Extension and connect to the Debug IC USB port on the Astra Machina Micro Kit.**
-   For detailed steps refer to the [Astra MCU SDK User Guide](../../../../docs/Astra_MCU_SDK_User_Guide.md).
-
-2. **Generate Binary Files**
-   - FW Binary generation
-      - Navigate to **IMPORTED REPOS** → **Build and Deploy** in Astra MCU SDK VSCode Extension.
-      - Select the **Image Conversion** option, browse and select the required .axf or .elf file. If the usecase is built using the VS Code extension, the file path will be automatically populated.
-
-      ![Binary Conversion](assets/binary_conversion.png)
-      - Click **Run** to create the binary files.
-      - Refer to [Astra MCU SDK VSCode Extension User Guide](../../../../docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md) for more detailed instructions.
-   - Model Binary generation (to place the Model in Flash)
-      - To generate `.bin` file for TFLite models, please refer to the [Vela compilation guide](../../../../docs/SR110/Astra_MCU_SDK_vela_compilation_tflite_model.md).
-
-3. **Flash the Application**
-
-   - To flash the application:
-      * Select the **Image Flashing** option in the **Build and Deploy** view in the Astra MCU SDK VSCode Extension.
-      * Select **SWD/JTAG** as the Interface.
-      * Choose the respective image bins and click **Run**.
-
-   * Flash the pre-generated model binary: `door_bell_flash(384x512).bin`. Due to memory constraints, need to burn the Model weights to Flash.
-     - Location: `examples/SR110_RDK/vision_examples/uc_jpeg_preroll/models/`
-     - Flash address: `0x629000`
-     - **Calculation Note:**
-         The flash address is determined by adding the `host_image` size and the `image_offset_SDK_image_B_offset` parameter (defined in `NVM_data.json`).
-         Ensure the resulting address is aligned to a sector boundary (a multiple of 4096 bytes).
-         This calculated address should then be assigned to the `image_offset_Model_A_offset` macro in your `NVM_data.json` file.
-
-     ![Model Flashing](assets/image_model_flashing.png)
-
-      > Note: By default, flashing a binary performs a sector erase based on the binary size. To erase the entire flash memory, enable the **Full Flash Erase** checkbox. When this option is selected along with a binary file, the tool first performs a full flash erase before flashing the binary. If the checkbox is selected without specifying a binary, only a full flash erase operation will be executed.
-
-   Refer to the [Astra MCU SDK VSCode Extension User Guide](../../../../docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md) for detailed instructions on flashing. 
-
-### Note:
-
-The placement of the model (in **SRAM** or **FLASH**) is determined by its memory requirements. Models that exceed the available **SRAM** capacity, considering factors like their weights and the necessary **tensor arena** for inference, will be stored in **FLASH**.
-
-## 4. Running the Application
-
-### 4.1 Options
-
-| Method           | Steps                                                                 |
-|------------------|-----------------------------------------------------------------------|
-| **VS Code Extension**| Open `LOGGER` tab → Select port & baud → Connect                 |
-
-💡 You can find detailed setup and usage instructions in the **Astra MCU SDK VSCode Extension User Guide**.
-
-#### Initial Setup
-
-- Press `RSTN` button on `SR110_RDK`.
-
-#### Operation Flow
-
-- On detection → frame is streamed → device enters hibernation.
+**Flash (CLI):**
+1. Activate the SDK virtual environment:
+   ```bash
+   # Linux/macOS
+   source <sdk-root>/.venv/bin/activate
+   # Windows PowerShell
+   .\.venv\Scripts\Activate.ps1
+   ```
+2. Generate flash image:
+   ```bash
+   cd <sdk-root>/tools/srsdk_image_generator
+   python srsdk_image_generator.py \
+     -B0 \
+     -flash_image \
+     -sdk_secured \
+     -spk "<sdk-root>/tools/srsdk_image_generator/B0_Input_examples/spk_rc4_1_0_secure_otpk.bin" \
+     -apbl "<sdk-root>/tools/srsdk_image_generator/B0_Input_examples/sr100_b0_bootloader_ver_0x012F_ASIC.axf" \
+     -m55_image "<sdk-root>/examples/out/sr110_cm55_fw/release/sr110_cm55_fw.elf" \
+     -flash_type "GD25LE128" \
+     -flash_freq "67"
+   ```
+3. Flash firmware image:
+   ```bash
+   cd <sdk-root>
+   python tools/openocd/scripts/flash_xspi_tcl.py \
+     --cfg_path tools/openocd/configs/sr110_m55.cfg \
+     --image tools/srsdk_image_generator/Output/B0_Flash/B0_flash_full_image_GD25LE128_67Mhz_secured.bin \
+     --erase-all
+   ```
+4. Flash model binary at offset `0x629000`:
+   ```bash
+   cd <sdk-root>
+   python tools/openocd/scripts/flash_xspi_tcl.py \
+     --cfg_path tools/openocd/configs/sr110_m55.cfg \
+     --image <path-to-door_bell_flash(384x512).bin> \
+     --flash-offset 0x629000
+   ```
 
 ---
 
-### 4.2 Wakeup Triggers
+## Running the Application using VS Code Extension
 
-| Trigger | Config                     | Behavior                                           |
-|---------|----------------------------|----------------------------------------------------|
-| Timer   | `CONFIG_WAKEUP_TRIGGER=1`  | Device wakes every 10 seconds.                    |
-| GPIO    | `CONFIG_WAKEUP_TRIGGER=2`  | Jumper from GND → UART0 RX after 10s of hibernation. |
+> **Windows note:** Ensure the USB drivers are installed for streaming. See the Zadig steps in  
+> [SR110 Build and Flash with VS Code](../../../../docs/SR110/SR110_Build_and_Flash_with_VSCode.md#usb-cdc-image-streaming-windows).
 
-## 5. SPI Pre-roll Use Case
+1. In VS Code, open **Video Streamer** from the Synaptics sidebar.
 
-### 5.1 Overview
-The SPI Pre-roll feature enables UC_JPEG_PREROLL to capture JPEG pre-roll frames and stream
-them to a **controller (receiver)** over **SPI**.
+   ![Video Streamer](assets/vs_video_streamer_toolbox.png)
+2. For logging output, click **SERIAL MONITOR** and connect to the **DAP logger** port on J14.
+   - To make it easier to identify, ensure **only J14** is plugged in (not J13).
+   - The logger port is not guaranteed to be consistent across OSes. As a starting point:
+     - **Windows:** try the lower-numbered J14 COM port first.
+     - **Linux/macOS:** try the higher-numbered J14 port first.
+   - If you do not see logs after a reset, switch to the other J14 port.
+3. In the Video Streamer dropdown, select the **J13** COM port.
+   - Plug in **J13** and press **RESET** on the board.
+   - **Windows:** select the newly enumerated COM port.
+   - **Linux/macOS:** select the lower-numbered COM port of the two newly enumerated ports.
+4. Use the Video Streamer controls:
 
-- **Peripheral (Sender)**: The device that's flashed with **UC_JPEG_PREROLL** acts as the **SPI Peripheral device**, that captures frames, packages them with headers/footers, and transmits them via SPI.
-- **Controller (Receiver)**: The device that's flashed with **SPI_SAMPLE_APP** acts as the **SPI Controller device**, that requests pre-roll frames, and validates CRC.
+   a. Select the relevant use case from the **UC ID** dropdown.  
+   b. Set **RGB Demosaic** to **BayerRGGB**.  
+   c. Click **Create Use Case**.  
+   d. Click **Start Use Case** (a Python window opens and the video stream appears).
 
-This mechanism ensures that when detection is triggered, the system can send pre-roll images that occurred **before** the detection event.
+   ![streamer](assets/doorbell_streamer.png)
 
-The SPI Pre-roll transfer follows a protocol as described in [SPI Pre-roll Protocol](spi_preroll_protocol.md)
+5. **Autorun use cases:** If autorun is enabled, after step 4 click **Connect Image Source** to open the video stream pop-up.
 
-## 5.2 Configurations
+## Wakeup Triggers
 
-### 5.2.1 Peripheral (Sender) Configurations
+| Trigger | Config | Behavior |
+|---|---|---|
+| Timer | `CONFIG_WAKEUP_TRIGGER=1` | Device wakes every 10 seconds. |
+| GPIO | `CONFIG_WAKEUP_TRIGGER=2` | Jumper from GND to UART0 RX after 10s of hibernation. |
 
-Run the Doorbell defconfig to apply the default settings for the doorbell use case. Enable SPI module by enabling **MODULE_SPI_ENABLED** and build the image. With the settings, the device will operate as the SPI pre-roll Peripheral (Sender).
+## SPI Pre-roll Use Case
 
-```makefile
-make cm55_doorbell_defconfig BOARD=SR110_RDK BUILD=SRSDK EDIT=1 #Enable SPI and LOGGER_IF_UART_0
+### Overview
+
+The SPI Pre-roll feature enables `UC_JPEG_PREROLL` to capture JPEG pre-roll frames and stream them to a controller (receiver) over SPI.
+
+- **Peripheral (Sender):** Device flashed with Doorbell use case. Captures frames, packages headers/footers, and transmits via SPI.
+- **Controller (Receiver):** Device flashed with SPI sample app. Requests pre-roll frames and validates CRC.
+
+Protocol details: [SPI Pre-roll Protocol](spi_preroll_protocol.md)
+
+### Configurations
+
+#### Peripheral (Sender)
+Run doorbell defconfig, enable `MODULE_SPI_ENABLED`, and build.
+
+```bash
+make cm55_doorbell_defconfig BOARD=SR110_RDK BUILD=SRSDK EDIT=1
 ```
-**Remember** enable LOGGER_IF_UART_0 before building the peripheral image with **LOGGER_IF_UART_0** in the menuconfig.
 
-### 5.2.2 Controller (Receiver) Configurations
+Enable `LOGGER_IF_UART_0` in menuconfig before building the peripheral image.
 
-Run the SPI Sample App defconfig to apply the default settings for the SPI Sample application.
-Enable **SPI_PREROLL_TRANSFER** in `spi_sample_app.c` and **SPI_DOUBLE_BOARD_MODE**
-in `spi_sample_app.h` and build the image.
-With these settings, the device will operate as the SPI pre-roll Controller (Receiver).
+#### Controller (Receiver)
+Run SPI sample defconfig. Enable `SPI_PREROLL_TRANSFER` in `spi_sample_app.c` and `SPI_DOUBLE_BOARD_MODE` in `spi_sample_app.h`, then build.
 
-```makefile
+```bash
 make cm55_spi_sample_app_defconfig BOARD=SR110_RDK BUILD=SRSDK
 make
 ```
 
-## 5.3 Hardware Setup
+### Hardware Setup
 
-The following are the pins that are used for SPI Communication,
-
-### 5.3.1 Controller Pins
-
+#### Controller Pins
 1. Pin 11 - SPI_MSTR_CLK (GPIO_22)
 2. Pin 12 - SPI_MSTR_CS (GPIO_21)
 3. Pin 13 - SPI_MSTR_MISO (GPIO_24)
 4. Pin 14 - SPI_MSTR_MOSI (GPIO_23)
 
-### 5.3.2 Peripheral Pins
-
+#### Peripheral Pins
 1. Pin 7 - SPI_SLV_CLK (GPIO_6)
-2. pin 8 - SPI_SLC_CS (GPIO_8)
-3. pin 9 - SPI_SLV_MISO (GPIO_7)
-4. pin 10 - SPI_SLV_MOSI (GPIO_9)
+2. Pin 8 - SPI_SLV_CS (GPIO_8)
+3. Pin 9 - SPI_SLV_MISO (GPIO_7)
+4. Pin 10 - SPI_SLV_MOSI (GPIO_9)
 
-### 5.3.3 Connections
+#### Connections
+1. Pin 11 (SPI_MSTR_CLK) -> Pin 7 (SPI_SLV_CLK)
+2. Pin 12 (SPI_MSTR_CS) -> Pin 8 (SPI_SLV_CS)
+3. Pin 13 (SPI_MSTR_MISO) -> Pin 9 (SPI_SLV_MISO)
+4. Pin 14 (SPI_MSTR_MOSI) -> Pin 10 (SPI_SLV_MOSI)
 
-1. Pin 11 (SPI_MSTR_CLK) →  Pin 7 (SPI_SLV_CLK)
-2. Pin 12 (SPI_MSTR_CS) →  Pin 8 (SPI_SLV_CS)
-3. Pin 13 (SPI_MSTR_MISO) →  Pin 9 (SPI_SLV_MISO)
-4. Pin 14 (SPI_MSTR_MOSI) →  Pin 10 (SPI_SLV_MOSI)
+Connect GND between both boards for stable transfer.
 
-**Remember**, The logs will be seen via UART 0. Enable UART 0 log via menuconfig. It is recommended to have the DAP SR110 not powered up because of SPI pin conflict in RDK.
+**Logger note:** Logs are via UART0. Enable UART0 logger in menuconfig. It is recommended to avoid powering DAP SR110 during SPI transfer due to pin conflict in RDK.
 
-## 5.3.4 Connection Images
+![SPI Pre-roll Connections 1](assets/spi_preroll_connections_1.png)
+![SPI Pre-roll Connections 2](assets/spi_preroll_connections_2.png)
 
-   ![SPI Pre-roll Connections 1](assets/spi_preroll_connections_1.png)
-   ![SPI Pre-roll Connections  2](assets/spi_preroll_connections_2.png)
+### Test Procedure
 
-## 5.4 Test Procedure
+#### Peripheral (Sender) Steps
+Before flashing peripheral image, flash model binary at `0x629000`.
+After reset, device enters hibernation and captures pre-roll images. On wakeup and detection event, it starts SPI peripheral transfer.
 
-The test can begin once the images are built, flashed onto the respective devices, and the hardware setup is completed. The pins described above represent the required SPI connections. In addition, the Ground lines of both boards must be connected to ensure a stable link. Failure to do so may result in corrupted or invalid data.
+![Peripheral Device Logs](assets/spi_preroll_peripheral.png)
 
-### 5.4.1 Peripheral (Sender) Steps
+#### Controller (Receiver) Steps
+Flash controller image, then reset controller only after peripheral wakes and starts transfer.
 
-Before flashing the Peripheral image, the model binary must first be loaded at address **0x629000**.
-Once the model is loaded, flash the Peripheral image and reset the device.
-On reset, the device enters hibernation and capture pre-roll images. Once the device wakes up from hibernation and if detection events are seen, It will initiate the SPI Peripheral Transfer to stream the captured pre-roll images.
+![Controller Device Logs](assets/spi_preroll_controller.png)
 
-![Peripheral Device Logs](assets/peripheral_transmit_1.png)
-![Peripheral Device Logs](assets/peripheral_transmit_2.png)
+### Expected Results
+Controller sends pre-roll request header. Peripheral responds with stream header, all pre-roll JPEG frames, and stream end marker over SPI. Controller validates headers, CRC, and footers; logs confirm successful frame reception.
 
-### 5.4.2 Controller (Receiver) Steps
+## Adapting Pipeline for Custom Object Detection Models
 
-Flash the Controller image, but reset the controller device only after the peripheral wakes up
-from hibernation and begins the peripheral transfer.
-This ensures that the peripheral is ready to accept the pre-roll request and related commands
-from the controller.
+This person detection pipeline can be adapted to work with custom object detection models. However, certain validation steps and potential modifications are required to ensure compatibility.
 
-   ![Controller Device Logs 1](assets/controller_receive_1.png)
-   ![Controller Device Logs 2](assets/controller_receive_2.png)
+### Prerequisites for Model Compatibility
 
-## 5.6 Expected Results
+Before adapting this pipeline for another object detection model, you must verify the following:
 
-Controller initiates the transfer by sending a pre-roll request header. Peripheral responds with the stream header, all pre-roll JPEG frames, and the stream end marker over SPI.
-Controller successfully receives and validates each frame, including headers, CRC, and footers. We can confirm successful reception of pre-roll frames with logs.
+#### 1. Model Format Requirements
+- Your object detection model should be in `.tflite` format
+- The model should produce similar output tensor structure (bounding boxes, confidence scores)
+
+#### 2. Vela Compiler Compatibility Check
+
+**Step 1: Analyze Original Model**
+1. Load your `object_detection_model.tflite` file in [Netron](https://netron.app/)
+2. Document the output tensors:
+   - Tensor names
+   - Tensor identifiers/indexes
+   - Quantization parameters (scale and offset values)
+   - Tensor dimensions
+
+**Step 2: Compile with Vela**
+1. Pass your model through the Vela compiler to generate `model_vela.bin` or `model_vela.tflite`
+2. Analyze the Vela-compiled model in Netron using the same steps as above
+
+**Step 3: Compare Outputs**
+Compare the following between original and Vela-compiled models:
+- **Output tensor indexes/identifiers**: Verify if they remain in the same order
+- **Quantization parameters**: Check if scale and offset values are preserved
+- **Tensor dimensions**: Ensure dimensions match your expected output format
+
+### Pipeline Adaptation Process
+
+#### Case 1: No Changes Required
+If the Vela compilation preserves:
+- ✅ Output tensor indexes in the same order
+- ✅ Same quantization scale and offset values
+
+**Result**: You can proceed with the existing pipeline without modifications.
+
+#### Case 2: Modifications Required
+If the Vela compilation changes:
+- ❌ Output tensor index order
+- ❌ Quantization parameters
+
+**Required Actions**: Modify the pipeline code as described below.
+
+### Code Modifications
+
+If your model's output tensor indexes change after Vela compilation, you need to update the tensor parameter assignments in `uc_person_detection.c`:
+
+#### Location: `detection_post_process` function
+
+**Original Code:**
+```c
+g_box1_params = &g_all_tens_params[0];
+g_box2_params = &g_all_tens_params[1];
+g_cls_params  = &g_all_tens_params[2];
+```
+
+**Modified Code:**
+Update the array indexes according to your Vela-compiled model's output tensor identifiers:
+```c
+// Example: If your model_vela output has different tensor order
+g_box1_params = &g_all_tens_params[X];  // Replace X with actual index from Netron
+g_box2_params = &g_all_tens_params[Y];  // Replace Y with actual index from Netron
+g_cls_params  = &g_all_tens_params[Z];  // Replace Z with actual index from Netron
+```

@@ -2,126 +2,191 @@
 
 ## Description
 
-The Hand Gesture Detection application is a ML-based computer vision solution designed to perform real-time gesture recognition with hand detection, single hand tracking and hand-key point estimation. This demo detects hands in every frame, tracks one hand across frames, identifies 1 key point (at the centre) for each hand location and identifies 10 distinct hand gestures (One, Two, Three, Four, Palm, Thumbs Up, Thumbs Down, Pinch, Fist and Other). Supports only HD resolution.
+The Hand Gesture Detection application is an ML-based computer vision solution designed for real-time gesture recognition with hand detection, single-hand tracking, and hand key-point estimation. The application detects hands in every frame, tracks one hand across frames, identifies one key point (at the center) for each hand location, and classifies the hand pose into one of the supported gesture classes. This use case supports HD resolution.
 
-## Build Instructions
-
-### Prerequisites
-- [GCC/AC6/LLVM build environment setup](../../../../docs/build_env/index.rst)
-- [Astra MCU SDK VS Code Extension installed and configured](../../../../docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md)
+## Prerequisites
+- Choose **one** setup path:
+  - **CLI**: [Setup and Install SDK using CLI](../../../../docs/Astra_MCU_SDK_Setup_and_Install_CLI.md)
+  - **VS Code**: [Setup and Install SDK using VS Code](../../../../docs/Astra_MCU_SDK_Setup_and_Install_VsCode.md)
 - [SynaToolkit installed and configured](../../../../docs/SR110/Synatoolkit_User_Guide.md)
 
-### Hardware Requirements
+## Hardware Requirements
 - Sensor Adapter (included with the Astra Machina Micro kit)
 - OV5647 Camera Sensor
 
-### Configuration and Build Steps
+## Building and Flashing the Example using VS Code
 
-### 1. Using Astra MCU SDK VS Code extension
-   - Navigate to **IMPORTED REPOS** → **Build and Deploy** in the Astra MCU SDK VSCode Extension.
-   - Select the **Build Configurations** checkbox, then select the necessary options.
-   - Select **hand_gesture_detection** in the **Application** dropdown. This will apply the defconfig.
-   - Select the appropriate build and clean options from the checkboxes. Then click **Run**. This will build the SDK generating the required `.elf` or `.axf` files for deployment using the installed package.
+Use the VS Code flow described in the SR110 guide and the VS Code Extension guide:
+- [SR110 Build and Flash with VS Code](../../../../docs/SR110/SR110_Build_and_Flash_with_VSCode.md)
+- [Astra MCU SDK VS Code Extension User Guide](../../../../docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md)
 
-   For detailed steps refer to the [Astra MCU SDK VS Code Extension Userguide](../../../../docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md).
+**Build (VS Code):**
+1. Open **Build and Deploy** -> **Build Configurations**.
+2. Select **hand_gesture_detection** in the **Application** dropdown.
+3. Build with **Build (SDK + App)** for the first build, or **Build App** for rebuilds.
 
-   ![Build Configurations](assets/image_1.png)
+**Flash (VS Code):**
+1. Use **Image Conversion** to generate the flash image.
+2. In **Image Conversion**, open **Advanced Configurations** and edit `NVM_data.json`.
+3. Set model flash offsets in `NVM_data.json`:
+   - `image_offset_Model_A_offset`: `00607000`
+   - `image_offset_Model_B_offset`: `00737000`
+4. In **Image Flashing** (SWD/JTAG), flash the model binaries first:
+   - `hand_gesture_detection_flash(1280x704).bin` at `0x607000`
+   - `hand_gesture_detection_flash(320x320).bin` at `0x737000`
+5. Flash the generated firmware image (`B0_flash_full_image_GD25LE128_67Mhz_secured.bin`).
 
-### 2. Native build in the terminal
-1. **Select Default Configuration and build sdk + example**
-   This will apply the defconfig, then build and install the SDK package, generating the required `.elf` or `.axf` files for deployment using the installed package.
+---
+
+## Building and Flashing the Example using CLI
+
+Use the CLI flow described in the SR110 guide:
+- [SR110 Build and Flash with CLI](../../../../docs/SR110/SR110_Build_and_Flash_with_CLI.md)
+
+**Build (CLI):**
+1. From `<sdk-root>/examples`, build the example:
    ```bash
+   cd <sdk-root>/examples
+   export SRSDK_DIR=<sdk-root>
    make cm55_hand_gesture_detection_defconfig BOARD=SR110_RDK BUILD=SRSDK
    ```
 
-2. **Rebuild the Application using pre-built package**
-   The build process will produce the necessary .elf or .axf files for deployment with the installed package.
+**Flash (CLI):**
+1. Activate the SDK venv (required for image generation tools):
    ```bash
-   make cm55_hand_gesture_detection_defconfig BOARD=SR110_RDK or make
+   # Linux/macOS
+   source <sdk-root>/.venv/bin/activate
+   # Windows PowerShell
+   .\.venv\Scripts\Activate.ps1
    ```
-   **Note:** We need to have the pre-built SRSDK package before triggering the example alone build.
+2. Generate the flash image:
+   ```bash
+   cd <sdk-root>/tools/srsdk_image_generator
+   python srsdk_image_generator.py \
+     -B0 \
+     -flash_image \
+     -sdk_secured \
+     -spk "<sdk-root>/tools/srsdk_image_generator/B0_Input_examples/spk_rc4_1_0_secure_otpk.bin" \
+     -apbl "<sdk-root>/tools/srsdk_image_generator/B0_Input_examples/sr100_b0_bootloader_ver_0x012F_ASIC.axf" \
+     -m55_image "<sdk-root>/examples/out/sr110_cm55_fw/release/sr110_cm55_fw.elf" \
+     -flash_type "GD25LE128" \
+     -flash_freq "67"
+   ```
+3. Flash model binaries first:
+   ```bash
+   cd <sdk-root>
+   python tools/openocd/scripts/flash_xspi_tcl.py \
+     --cfg_path tools/openocd/configs/sr110_m55.cfg \
+     --image examples/SR110_RDK/vision_examples/uc_hand_gesture_detection/models/hand_gesture_detection_flash(1280x704).bin \
+     --flash-offset 0x607000
 
-## Deployment and Execution
+   python tools/openocd/scripts/flash_xspi_tcl.py \
+     --cfg_path tools/openocd/configs/sr110_m55.cfg \
+     --image examples/SR110_RDK/vision_examples/uc_hand_gesture_detection/models/hand_gesture_detection_flash(320x320).bin \
+     --flash-offset 0x737000
+   ```
+4. Flash the firmware image:
+   ```bash
+   cd <sdk-root>
+   python tools/openocd/scripts/flash_xspi_tcl.py \
+     --cfg_path tools/openocd/configs/sr110_m55.cfg \
+     --image tools/srsdk_image_generator/Output/B0_Flash/B0_flash_full_image_GD25LE128_67Mhz_secured.bin \
+     --erase-all
+   ```
 
-### Setup and Flashing
+---
 
-   1. **Open the Astra MCU SDK VSCode Extension and connect to the Debug IC USB port on the Astra Machina Micro Kit.**
-      For detailed steps refer to the [Astra MCU SDK User Guide](../../../../docs/Astra_MCU_SDK_User_Guide.md).
+## Running the Application using VS Code Extension
 
-   2. **Generate Binary Files**
-      - FW Binary generation
-         - Navigate to **IMPORTED REPOS** → **Build and Deploy** in Astra MCU SDK VSCode Extension.
-         - Select the **Image Conversion** option, browse and select the required .axf or .elf file. If the usecase is built using the VS Code extension, the file path will be automatically populated.
-         - Open **Advanced Configurations**, navigate to Edit JSON File, and select NVM_data.json.
-         - Click Edit JSON File to open and modify the contents.
-         ![Binary Conversion](assets/image_2.png)
-         - In NVM_data.json file set **image_offset_Model_A_offset** to **00607000** and set **image_offset_Model_B_offset** to **00737000**.
-         ![NVM JSON](assets/image_3.png)
-         - Click **Run** to create the binary files.
-         - Refer to [Astra MCU SDK VSCode Extension User Guide](../../../../docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md) for more detailed instructions.
-      - Model Binary generation (to place the Model in Flash)
-         - To generate `.bin` file for TFLite models, please refer to the [Vela compilation guide](../../../../docs/SR110/Astra_MCU_SDK_vela_compilation_tflite_model.md).
+> **Windows note:** Ensure the USB drivers are installed for streaming. See the Zadig steps in  
+> [SR110 Build and Flash with VS Code](../../../../docs/SR110/SR110_Build_and_Flash_with_VSCode.md#usb-cdc-image-streaming-windows).
 
-   3. **Flash the Application**
-      - To flash the application:
-         * Select the **Image Flashing** option in the **Build and Deploy** view in the Astra MCU SDK VSCode Extension.
-         * Select **SWD/JTAG** as the Interface.
-         * Choose the respective image bins and click **Run**.
-   
-      - Flash the pre-generated model binary: `hand_gesture_detection_flash(1280x704).bin`. Due to memory constraints, need to burn the Model weights to Flash. 
-         - Location: `examples/SR110_RDK/vision_examples/uc_hand_gesture_detection/models/`
-         - Flash address: `0x607000`
-         ![Model 1](assets/image_4.png)
+1. In VS Code, open **Video Streamer** from the Synaptics sidebar.
 
-      - Flash the pre-generated model binary: `hand_gesture_detection_flash(320x320).bin`. Due to memory constraints, need to burn the Model weights to Flash and during runtime the model weights will be loaded into SRAM. 
-         - Location: `examples/SR110_RDK/vision_examples/uc_hand_gesture_detection/models/`
-         - Flash address: `0x737000`
-         ![Model 2](assets/image_5.png)
+   ![Video Streamer](assets/vs_video_streamer_toolbox.png)
+2. For logging output, click **SERIAL MONITOR** and connect to the **DAP logger** port on J14.
+   - To make it easier to identify, ensure **only J14** is plugged in (not J13).
+   - The logger port is not guaranteed to be consistent across OSes. As a starting point:
+     - **Windows:** try the lower-numbered J14 COM port first.
+     - **Linux/macOS:** try the higher-numbered J14 port first.
+   - If you do not see logs after a reset, switch to the other J14 port.
 
-      - **Calculation Note:** Flash address is determined by the sum of the `host_image` size and the `image_offset_SDK_image_B_offset` (parameter, which is defined within `NVM_data.json`). It's crucial that the resulting address is aligned to a sector boundary (a multiple of 4096 bytes).This calculated resulting address should then be assigned to the `image_offset_Model_A_offset` macro in your `NVM_data.json` file.
-      - Flash the generated `B0_flash_full_image_GD25LE128_67Mhz_secured.bin`
-      ![Application](assets/image_6.png)
-      > Note: By default, flashing a binary performs a sector erase based on the binary size. To erase the entire flash memory, enable the **Full Flash Erase** checkbox. When this option is selected along with a binary file, the tool first performs a full flash erase before flashing the binary. If the checkbox is selected without specifying a binary, only a full flash erase operation will be executed.
+3. In the Video Streamer dropdown, select the **J13** COM port.
+   - Plug in **J13** and press **RESET** on the board.
+   - **Windows:** select the newly enumerated COM port.
+   - **Linux/macOS:** select the lower-numbered COM port of the two newly enumerated ports.
 
-      Refer to the [Astra MCU SDK VSCode Extension User Guide](../../../../docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md) for detailed instructions on flashing.
+4. Use the Video Streamer controls:
 
-   4. **Device Reset**
-      Reset the target device after flashing is complete.
+   a. Select **HAND_GESTURE_DETECTION** from the **UC ID** dropdown.  
+   b. Set **RGB Demosaic** to **BayerGBRG**.  
+   c. Click **Create Use Case**.  
+   d. Click **Start Use Case** (a Python window opens and the video stream appears).
 
-### Note:
+   ![video streamer controls](assets/hgd_video_controls.png)
 
-The placement of the model (in **SRAM** or **FLASH**) is determined by its memory requirements. Models that exceed the available **SRAM** capacity, considering factors like their weights and the necessary **tensor arena** for inference, will be stored in **FLASH**.
+5. For logs, use the **LOGGER** tab when needed.
 
-### Running the Application
+6. Change **Visualization Modes** as needed:
+   - Smart TV Gesture Control
+   - 720p
+   - 320x320
+   - Text only
 
-1. **Open SynaToolkit_2.6.0**
+   ![Detection](assets/vs_hgd_detection.png)
 
-2. **Before running the application, make sure to connect a USB cable to the Application SR110 USB port on the Astra Machina Micro board and then press the reset button**
-   - Connect to the newly enumerated COM port  
-   - For logging output, connect to DAP logger port  
+7. **Autorun use cases:** If autorun is enabled, click **Connect Image Source** to open the video stream pop-up.
 
-   ![Serial Connection](assets/image_7.png)
+## Supported Hand Gestures
 
-3. **The example logs will then appear in the logger window.**  
+The following hand gestures are supported:
 
-   ![Usecase Logs](assets/image_8.png)
+| Gesture | Description |
+|---|---|
+| One | One finger raised (index finger). |
+| Two | Two fingers raised. |
+| Three | Three fingers raised. |
+| Four | Four fingers raised. |
+| Five | Open palm with five fingers raised. |
+| Fist | Closed fist with fingers folded inward. |
+| Thumbs Up | Thumb raised upward with other fingers folded. |
+| Thumbs Down | Thumb pointed downward with other fingers folded. |
+| Pinch | Thumb and index finger brought close together (pinching pose). |
 
-4. **Next, navigate to Tools → Video Streamer in SynaToolkit to run the application.**  
+</br>
 
-   ![Tools - Video Streamer](assets/image_9.png)
+**Gesture one**
 
-5. **Video Streamer**  
-   - Configure the following settings:  
-     - **UC ID**: HAND_GESTURE_DETECTION
-     - **RGB Demosaic**: BayerGBRG
+![one Gesture](assets/hgd_one.png)
 
-   ![Video Streamer Settings](assets/image_10.png)
+**Gesture two**
 
-   - Click **Create Usecase**  
-   - Connect the image source  
-   - Click **Start Usecase** to begin real-time hand gesture detection 
+![two Gesture](assets/hgd_two.png)
 
-   ![Usecase Running](assets/image_11.png)
+**Gesture Three**
 
-6. **After starting the use case, Hand gesture detection will begin streaming video as shown below.**
-   ![Usecase Running](assets/image_12.png)
+![three Gesture](assets/hgd_three.png)
+
+**Gesture four**
+
+![Gesture four](assets/hgd_four.png)
+
+**Gesture five**
+
+![Gesture five](assets/hgd_five.png)
+
+**Gesture fist**
+
+![fist gesture](assets/hgd_fist.png)
+
+**Gesture Thumbs Up**
+
+![Thumbs up gesture](assets/hgd_thumbs_up.png)
+
+**Gesture Thumbs Down**
+
+![Thumbs down gesture](assets/hgd_thumbs_down.png)
+
+**Gesture Pinch**
+
+![Pinch Gesture](assets/hgd_pinch.png)

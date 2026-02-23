@@ -15,6 +15,7 @@ This section provides comprehensive user guides and demo applications for the SR
    ../srsdk/examples/SL2610_RDK/driver_sample_app/i2c_exp_app/README
    ../srsdk/examples/SL2610_RDK/driver_sample_app/spwm_sample_app/README
    ../srsdk/examples/SL2610_RDK/driver_sample_app/xspi_sample_app/README
+   ../srsdk/examples/SL2610_RDK/system_manager/README
 
 **Sample Application Demos:**
 
@@ -29,5 +30,8 @@ This section provides comprehensive user guides and demo applications for the SR
 
 :doc:`../srsdk/examples/SL2610_RDK/driver_sample_app/xspi_sample_app/README`
    **XSPI Sample App Demo** - Demonstrates external SPI-NOR flash operations including initialization, JEDEC ID detection, erase, read/write operations, and throughput measurement.
+
+:doc:`../srsdk/examples/SL2610_RDK/system_manager/README`
+   **System Manager Application** - Guide for SL2610 system manager boot flow handling, supported boot paths, and bring-up/runtime logging.
 
 
