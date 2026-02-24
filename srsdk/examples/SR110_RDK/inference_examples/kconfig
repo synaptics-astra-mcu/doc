@@ -1,0 +1,36 @@
+config NPU_SAMPLE_APP_ENABLED
+    bool "NPU_SAMPLE_APP_ENABLED"
+    select MODULE_NPU_ENABLED
+    help
+        This option selects Inference sample application.
+
+if NPU_SAMPLE_APP_ENABLED
+
+choice
+    prompt "Inference sample Application"
+    default INFERENCE_BASIC_SAMPLE_APP
+    help
+        Select the example application
+
+        Available usecases
+            1. INFERENCE_BASIC_SAMPLE_APP
+            2. INFERENCE_BASIC_FLASH_SAMPLE_APP
+            3. INFERENCE_MULTI_MODEL_SAMPLE_APP
+
+    config INFERENCE_BASIC_SAMPLE_APP
+        bool "INFERENCE_BASIC_SAMPLE_APP"
+        help
+            This config enables the Inference Basic sample application
+
+    config INFERENCE_BASIC_FLASH_SAMPLE_APP
+        bool "INFERENCE_BASIC_FLASH_SAMPLE_APP"
+        help
+            This config enables the Inference Basic Flash sample application
+
+    config INFERENCE_MULTI_MODEL_SAMPLE_APP
+        bool "INFERENCE_MULTI_MODEL_SAMPLE_APP"
+        help
+            This config enables the Multi Model Inference sample application
+
+endchoice
+endif

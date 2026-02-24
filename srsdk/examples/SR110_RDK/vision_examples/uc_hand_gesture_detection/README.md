@@ -8,7 +8,6 @@ The Hand Gesture Detection application is an ML-based computer vision solution d
 - Choose **one** setup path:
   - **CLI**: [Setup and Install SDK using CLI](../../../../docs/Astra_MCU_SDK_Setup_and_Install_CLI.md)
   - **VS Code**: [Setup and Install SDK using VS Code](../../../../docs/Astra_MCU_SDK_Setup_and_Install_VsCode.md)
-- [SynaToolkit installed and configured](../../../../docs/SR110/Synatoolkit_User_Guide.md)
 
 ## Hardware Requirements
 - Sensor Adapter (included with the Astra Machina Micro kit)

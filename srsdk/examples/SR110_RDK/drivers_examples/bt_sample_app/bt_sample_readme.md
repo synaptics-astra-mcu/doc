@@ -1,8 +1,8 @@
-# Bluetooth Sample Application - Testing Guide
+# Bluetooth Driver Sample Application
+
+## Description
 
 This guide provides step-by-step instructions for testing Bluetooth functionality on the Astra MCU SDK platform.
-
-## Overview
 
 The BT sample application demonstrates Bluetooth Low Energy (BLE) functionality including:
 - Bluetooth stack initialization
@@ -11,16 +11,15 @@ The BT sample application demonstrates Bluetooth Low Energy (BLE) functionality 
 - Device discovery and connection
 - GATT read/write operations
 
-## Build Instructions
-
-### Prerequisites
-- [GCC/AC6/LLVM build environment setup](../../../../docs/build_env/index.rst)
-- [Astra MCU SDK VS Code Extension installed and configured](../../../../docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md)
-
-### Hardware Requirements
+## Hardware Requirements
 - Astra MCU SDK development board with BT capability
 - Smartphone or tablet with BLE support
 - USB cable for firmware flashing and console access
+
+## Prerequisites
+
+- [GCC/AC6/LLVM build environment setup](../../../../docs/build_env)
+- [Astra MCU SDK VS Code Extension installed and configured](../../../../docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md)
 
 ### Software Requirements
 - BLE scanner app on smartphone (recommended apps below)
@@ -28,8 +27,6 @@ The BT sample application demonstrates Bluetooth Low Energy (BLE) functionality 
 
 ### Recommended BLE Apps
 - **Android**: nRF Connect for Mobile, BLE Scanner
-
-### Configuration and Build Steps
 
 ### ⚠️ Important: Memory Configuration
 
@@ -49,9 +46,9 @@ Before building the application, you **must** increase the heap size to accommod
 
 > 💡  **Note**: The Bluetooth stack requires additional heap memory for proper operation. Without this configuration change, the application may fail to initialize or experience runtime issues.
 
-### Binary builds can be generated using either of the following methods:
+## Building and Flashing the Example using VS Code and CLI
 
-### 1. Using Astra MCU SDK VS Code extension
+### Build (VS Code)
    - Navigate to **IMPORTED REPOS** → **Build and Deploy** in the Astra MCU SDK VS Code Extension.
    - Select the **Build Configurations** checkbox, then select the necessary options.
    - Select **bt_sample_app** in the **Application** dropdown. This will apply the defconfig.
@@ -61,7 +58,7 @@ Before building the application, you **must** increase the heap size to accommod
 
    ![Build Configurations](assets/defconfig_image.png)
 
-### 2. Native build in the terminal
+### Build (CLI)
 
 1. **Select Default Configuration and build sdk + example**
    This will apply the defconfig, then build and install the SDK package, generating the required `.elf` or `.axf` files for deployment using the installed package.
@@ -76,9 +73,7 @@ Before building the application, you **must** increase the heap size to accommod
    ```
    **Note:** We need to have the pre-built Astra MCU SDK package before triggering the example alone build.
 
-## Deployment and Execution
-
-### Setup and Flashing
+### Flash and Image Generation (VS Code)
 
 1. **Open the Astra MCU SDK VSCode Extension and connect to the Debug IC USB port on the Astra Machina Micro Kit.**
    For detailed steps refer to the [Astra MCU SDK User Guide](../../../../docs/Astra_MCU_SDK_User_Guide.md) .
@@ -92,7 +87,7 @@ Before building the application, you **must** increase the heap size to accommod
       - Click **Run** to create the binary files.
       - Refer to [Astra MCU SDK VSCode Extension User Guide](../../../../docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md) for more detailed instructions.
    - Model Binary generation (to place the Model in Flash)
-      - To generate `.bin` file for TFLite models, please refer to the [Vela compilation guide](../../../../docs/SR110/Astra_MCU_SDK_vela_compilation_tflite_model.md) .
+      - To generate `.bin` file for TFLite models, please refer to the [Vela compilation guide](../../../../docs/Astra_MCU_SDK_vela_compilation_tflite_model.md) .
 
 3. **Flash the Application**
 
@@ -109,7 +104,7 @@ Before building the application, you **must** increase the heap size to accommod
 4. **Device Reset**
    - Reset the target device
 
-### Running the Application
+## Running the Application
 
 1. **Identify the COM Port** Connect an external USB-to-UART adapter/dongle to your PC, then use the Device Manager to locate the assigned COM port.
    
@@ -126,6 +121,7 @@ Before building the application, you **must** increase the heap size to accommod
 4. **The BT sample application logs will then appear in the UART1 logger window.**
 
 ## Testing Procedure
+
 Once the firmware has been built and flashed, you can verify BT functionality using the following steps:
 
 ### Step 1: Enable Bluetooth
@@ -179,7 +175,7 @@ Once connected, you can test GATT read/write operations:
 3. Perform a write operation
 4. Check console for received data confirmation
 
-#### Expected Logs:
+**Expected Logs**
 
 **System Initialization:**
 ```log
