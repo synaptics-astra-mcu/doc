@@ -2,180 +2,158 @@
 
 ## Description
 
-This guide provides step-by-step instructions for testing Bluetooth functionality on the Astra MCU SDK platform.
+The Bluetooth Driver sample application demonstrates BLE bring-up and basic GATT server workflow on SR110.
 
-The BT sample application demonstrates Bluetooth Low Energy (BLE) functionality including:
-- Bluetooth stack initialization
-- GATT server operations
-- BLE advertising
-- Device discovery and connection
-- GATT read/write operations
+What this sample enables:
+- Bluetooth stack initialization from CLI.
+- GATT server start.
+- BLE advertising start.
+- Smartphone discovery/connection and basic GATT read/write testing.
+
+The sample creates a shell task so Bluetooth actions are triggered through CLI commands on the logger console.
 
 ## Hardware Requirements
-- Astra MCU SDK development board with BT capability
-- Smartphone or tablet with BLE support
-- USB cable for firmware flashing and console access
+- Astra Machina Micro Kit (SR110)
+- 1x UART bridge adapter (for UART1 logger/CLI)
+- Smartphone with BLE support
+- USB cable for flashing/debug connection
 
 ## Prerequisites
+- Choose **one** setup path:
+  - **CLI**: [Setup and Install SDK using CLI](../../../../docs/Astra_MCU_SDK_Setup_and_Install_CLI.md)
+  - **VS Code**: [Setup and Install SDK using VS Code](../../../../docs/Astra_MCU_SDK_Setup_and_Install_VsCode.md)
+- Install a BLE scanner app on phone:
+  - Android: nRF Connect for Mobile, BLE Scanner
 
-- [GCC/AC6/LLVM build environment setup](../../../../docs/build_env)
-- [Astra MCU SDK VS Code Extension installed and configured](../../../../docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md)
+## Memory Configuration (Important)
 
-### Software Requirements
-- BLE scanner app on smartphone (recommended apps below)
-- Serial terminal for console commands
+Before building BT sample app, increase heap size for Bluetooth stack.
 
-### Recommended BLE Apps
-- **Android**: nRF Connect for Mobile, BLE Scanner
-
-### ⚠️ Important: Memory Configuration
-
-Before building the application, you **must** increase the heap size to accommodate the Bluetooth stack requirements.
-
-**Required Changes:**
-
-1. **Update Linker Script** - `soc/SR110/cm55/config/sr110_cm55_hw_gcc_arm.ld`:
+1. Update linker script `soc/SR110/cm55/config/sr110_cm55_hw_gcc_arm.ld`:
    ```ld
-   __HEAP_MEM_SIZE = 0x00019000;  /* Increase to 100 KiB */
+   __HEAP_MEM_SIZE = 0x00019000;  /* 100 KiB */
    ```
-
-2. **Update Region Definitions** - `soc/SR110/cm55/include/region_defs.h`:
+2. Update `soc/SR110/cm55/include/region_defs.h`:
    ```c
    #define HEAP_MEM_SIZE             (0x00019000) /* 100 KiB */
    ```
 
-> 💡  **Note**: The Bluetooth stack requires additional heap memory for proper operation. Without this configuration change, the application may fail to initialize or experience runtime issues.
+If heap is not increased, BT stack init may fail or become unstable.
 
-## Building and Flashing the Example using VS Code and CLI
+## Logger Interface Configuration
 
-### Build (VS Code)
-   - Navigate to **IMPORTED REPOS** → **Build and Deploy** in the Astra MCU SDK VS Code Extension.
-   - Select the **Build Configurations** checkbox, then select the necessary options.
-   - Select **bt_sample_app** in the **Application** dropdown. This will apply the defconfig.
-   - Select the appropriate build and clean options from the checkboxes. Then click **Run**. This will build the SDK generating the required `.elf` or `.axf` files for deployment using the installed package.
+BT sample logs and CLI are expected on **UART1**.
 
-   For detailed steps refer to the [Astra MCU SDK VS Code Extension Userguide](../../../../docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md) .
+- Ensure logger interface is UART1 (`CONFIG_LOGGER_IF_UART_1_CONSOLE=y` or UART1-equivalent option).
+- `cm55_bt_sample_app_defconfig` already enables UART1 console logger by default.
 
-   ![Build Configurations](assets/defconfig_image.png)
+## Wiring
 
-### Build (CLI)
+### UART1 logger/CLI bridge
+- Connect UART bridge to UART1 interface pins on SR110 board.
+- Open serial terminal on the UART1 bridge COM port.
 
-1. **Select Default Configuration and build sdk + example**
-   This will apply the defconfig, then build and install the SDK package, generating the required `.elf` or `.axf` files for deployment using the installed package.
+Reference image:
+- ![RDK_REVB_UART1](assets/RDK_REVB_UART1.png)
+
+## Building and Flashing the Example using VS Code
+
+Use the VS Code flow described in the SR110 guide and the VS Code Extension guide:
+- [SR110 Build and Flash with VS Code](../../../../docs/SR110/SR110_Build_and_Flash_with_VSCode.md)
+- [Astra MCU SDK VS Code Extension User Guide](../../../../docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md)
+
+**Build (VS Code):**
+1. Apply heap changes from **Memory Configuration (Important)**.
+2. Open **Build and Deploy** -> **Build Configurations**.
+3. Select **bt_sample_app** in the **Application** dropdown.
+4. Build with **Build (SDK + App)** for the first build, or **Build App** for rebuilds.
+
+**Flash (VS Code):**
+1. Use **Image Conversion** to generate the flash image.
+2. Use **Image Flashing** (SWD/JTAG) to flash the firmware image.
+
+---
+
+## Building and Flashing the Example using CLI
+
+Use the CLI flow described in the SR110 guide:
+- [SR110 Build and Flash with CLI](../../../../docs/SR110/SR110_Build_and_Flash_with_CLI.md)
+
+**Build (CLI):**
+1. Apply heap changes from **Memory Configuration (Important)**.
+2. From `<sdk-root>/examples`, build the example:
    ```bash
+   cd <sdk-root>/examples
+   export SRSDK_DIR=<sdk-root>
    make cm55_bt_sample_app_defconfig BOARD=SR110_RDK BUILD=SRSDK
    ```
-
-2. **Rebuild the Application using pre-built package**
-   The build process will produce the necessary .elf or .axf files for deployment with the installed package.
+3. If you need to verify/update logger option in menuconfig:
    ```bash
-   make cm55_bt_sample_app_defconfig BOARD=SR110_RDK or make
+   make cm55_bt_sample_app_defconfig BOARD=SR110_RDK BUILD=SRSDK EDIT=1
    ```
-   **Note:** We need to have the pre-built Astra MCU SDK package before triggering the example alone build.
 
-### Flash and Image Generation (VS Code)
+**Flash (CLI):**
+1. Activate the SDK venv (required for image generation tools):
+   ```bash
+   # Linux/macOS
+   source <sdk-root>/.venv/bin/activate
+   # Windows PowerShell
+   .\.venv\Scripts\Activate.ps1
+   ```
+2. Generate the flash image:
+   ```bash
+   cd <sdk-root>/tools/srsdk_image_generator
+   python srsdk_image_generator.py \
+     -B0 \
+     -flash_image \
+     -sdk_secured \
+     -spk "<sdk-root>/tools/srsdk_image_generator/B0_Input_examples/spk_rc4_1_0_secure_otpk.bin" \
+     -apbl "<sdk-root>/tools/srsdk_image_generator/B0_Input_examples/sr100_b0_bootloader_ver_0x012F_ASIC.axf" \
+     -m55_image "<sdk-root>/examples/out/sr110_cm55_fw/release/sr110_cm55_fw.elf" \
+     -flash_type "GD25LE128" \
+     -flash_freq "67"
+   ```
+3. Flash the firmware image:
+   ```bash
+   cd <sdk-root>
+   python tools/openocd/scripts/flash_xspi_tcl.py \
+     --cfg_path tools/openocd/configs/sr110_m55.cfg \
+     --image tools/srsdk_image_generator/Output/B0_Flash/B0_flash_full_image_GD25LE128_67Mhz_secured.bin \
+     --erase-all
+   ```
 
-1. **Open the Astra MCU SDK VSCode Extension and connect to the Debug IC USB port on the Astra Machina Micro Kit.**
-   For detailed steps refer to the [Astra MCU SDK User Guide](../../../../docs/Astra_MCU_SDK_User_Guide.md) .
- 
-2. **Generate Binary Files**
-   - FW Binary generation
-      - Navigate to **IMPORTED REPOS** → **Build and Deploy** in Astra MCU SDK VSCode Extension.
-      - Select the **Image Conversion** option, browse and select the required .axf or .elf file. If the usecase is built using the VS Code extension, the file path will be automatically populated.
-
-      ![Binary Conversion](assets/image_generation.png)
-      - Click **Run** to create the binary files.
-      - Refer to [Astra MCU SDK VSCode Extension User Guide](../../../../docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md) for more detailed instructions.
-   - Model Binary generation (to place the Model in Flash)
-      - To generate `.bin` file for TFLite models, please refer to the [Vela compilation guide](../../../../docs/Astra_MCU_SDK_vela_compilation_tflite_model.md) .
-
-3. **Flash the Application**
-
-   To flash the application:
-
-   * Select the **Image Flashing** option in the **Build and Deploy** view in the Astra MCU SDK VSCode Extension.
-   * Select **SWD/JTAG** as the Interface.
-   * Choose the respective image bins and click **Run**.
-
-   ![Image Flashing](assets/image_flashing.png)
-
-   Refer to the [Astra MCU SDK VSCode Extension User Guide](../../../../docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md) for detailed instructions on flashing.
-
-4. **Device Reset**
-   - Reset the target device
+---
 
 ## Running the Application
 
-1. **Identify the COM Port** Connect an external USB-to-UART adapter/dongle to your PC, then use the Device Manager to locate the assigned COM port.
-   
-	![Identify_Comport](assets/Identify_Comport.PNG)
+1. Identify the UART bridge COM port on your PC.
+   - On Windows, check **Device Manager -> Ports (COM & LPT)** after plugging the USB-to-UART bridge.
+   - Use that COM port in your serial terminal.
+   - ![Identify_Comport](assets/Identify_Comport.PNG)
+2. Connect UART bridge to UART1 and open a serial terminal.
+3. Flash BT sample app image and press **RESET**.
+4. Confirm boot logs appear on UART1 terminal.
+5. Run below CLI commands in order:
+   ```bash
+   synabt enable
+   synabt gatt_server_start
+   synabt ble_start_adv
+   ```
+6. On phone BLE app, scan and connect to device **`BTA_Amz`**.
 
-2. **Open UART1 COMPORT in Teraterm** Using the COM port identified in Step 1, open TeraTerm (or any serial terminal) and connect through that port while attaching the USB-to-UART adapter to the UART1 pins as shown.
+BLE app references:
+- ![BTE Scanner App](assets/bte_scanner.png)
+- ![BTE Scanner App Interface](assets/bte_scanner_1.png)
 
-	![RDK_REVB_UART1](assets/RDK_REVB_UART1.png)
+## GATT Read/Write Check
 
-3. **Before running the application, make sure to connect a USB cable to the Application SR110 USB port on the Astra Machina Micro board and then press the reset button**
+After connection from phone app:
+1. Open discovered GATT service/characteristic list.
+2. Perform read on a readable characteristic.
+3. Perform write (for example `Hello BT`) on writable characteristic.
+4. Verify corresponding activity in UART1 logs.
 
-   - Connect to the newly enumerated COM port
-
-4. **The BT sample application logs will then appear in the UART1 logger window.**
-
-## Testing Procedure
-
-Once the firmware has been built and flashed, you can verify BT functionality using the following steps:
-
-### Step 1: Enable Bluetooth
-
-1. Connect to the device console (UART1) via serial terminal using an external USB to UART adapter.
-2. Execute the following command to enable the Bluetooth stack:
-
-```bash
-synabt enable
-```
-### Step 2: Start GATT Server
-
-1. Start the GATT (Generic Attribute Profile) server:
-
-```bash
-synabt gatt_server_start
-```
-
-### Step 3: Start BLE Advertising
-
-1. Begin BLE advertising to make the device discoverable:
-
-```bash
-synabt ble_start_adv
-```
-
-### Step 4: Device Discovery and Connection
-
-1. **On your smartphone:**
-   - Open your BLE scanner app
-   - Start scanning for BLE devices
-   - Look for a device named **"BTA_Amz"**
-   - Tap on the device to connect
-
-   ![BTE Scanner App](assets/bte_scanner.png)
-   ![BTE Scanner App Interface](assets/bte_scanner_1.png)
-
-### Step 5: GATT Operations Testing
-
-Once connected, you can test GATT read/write operations:
-
-#### Read Operations
-1. In your BLE app, navigate to the GATT services
-2. Select a readable characteristic
-3. Perform a read operation
-4. Verify data is received
-
-#### Write Operations
-1. Select a writable characteristic
-2. Enter test data (e.g., "Hello BT")
-3. Perform a write operation
-4. Check console for received data confirmation
-
-**Expected Logs**
+## Expected Logs
 
 **System Initialization:**
 ```log

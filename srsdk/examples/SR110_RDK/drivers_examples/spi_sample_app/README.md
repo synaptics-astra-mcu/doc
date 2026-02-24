@@ -172,3 +172,49 @@ Use the CLI flow described in the SR110 guide:
    - `GND -> any board GND`
 6. Power both boards, then reset both boards (peripheral first, then controller if needed).
 7. Open serial terminal(s) and monitor SPI transfer logs and match-count results.
+
+**Expected Logs**
+
+```
+SR100.Logger	info	1771926848.982818	SYS 	0	M55	00:00:00:003:917	Application drivers initialization complete without errors.
+
+SR100.Logger	info	1771926848.982818	SYS 	0	M55	00:00:00:008:111	------------------------------------------
+
+SR100.Logger	info	1771926848.982818	SYS 	0	M55	00:00:00:011:477	            Hello  ASTRA                  
+
+SR100.Logger	info	1771926848.982818	SYS 	0	M55	00:00:00:014:844	------------------------------------------
+
+SR100.Logger	info	1771926848.982818	SYS 	0	M55	00:00:00:018:206	System initialization done
+
+SR100.Logger	info	1771926848.982818	SYS 	0	M55	00:00:00:020:807	sr110 SDK version 1.3.0
+
+SR100.Logger	info	1771926848.982818	HAPI	0	M55	00:00:00:023:281	SPI PERIPHERAL INIT FOR HOST API
+
+SR100.Logger	info	1771926848.982818	HAPI	0	M55	00:00:00:026:189	SPI Peripheral Initialized Successfully for Host API.
+
+SR100.Logger	debug	1771926848.982818	HAPI	0	M55	00:00:00:030:080	------------------------------------------
+
+SR100.Logger	debug	1771926848.982818	HAPI	0	M55	00:00:00:033:443	       Host API Router task               
+
+SR100.Logger	debug	1771926848.982818	HAPI	0	M55	00:00:00:036:810	------------------------------------------
+
+SR100.Logger	info	1771926848.982818	HAPI	0	M55	00:00:00:040:163	Active interface is USB
+
+SR100.Logger	info	1771926848.998146	SPI 	0	M55	00:00:00:051:582	Controller Transfer Status = 4
+
+SR100.Logger	info	1771926848.998146	SPI 	0	M55	00:00:00:051:609	Peripheral Transfer Status = 4
+
+SR100.Logger	info	1771926848.998146	SPI 	0	M55	00:00:00:052:282	CONTROLLER RX
+
+SR100.Logger	info	1771926848.998146	SPI 	0	M55	00:00:00:052:305	Controller Match Count: 256 / 256
+
+SR100.Logger	info	1771926848.998146	SPI 	0	M55	00:00:00:052:331	Expected match count does match
+
+SR100.Logger	info	1771926848.998146	SPI 	0	M55	00:00:00:052:355	PERIPHERAL RX
+
+SR100.Logger	info	1771926848.998146	SPI 	0	M55	00:00:00:052:378	Peripheral Match Count: 256 / 256
+
+SR100.Logger	info	1771926848.998146	SPI 	0	M55	00:00:00:052:404	Expected match count does match
+
+SR100.Logger	debug	1771926848.998146	SPI 	0	M55	00:00:00:052:428	SPI Sample App Completed
+```

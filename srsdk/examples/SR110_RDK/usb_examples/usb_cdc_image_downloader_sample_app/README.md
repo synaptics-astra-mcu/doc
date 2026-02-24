@@ -6,8 +6,8 @@ This application supports two-way USB CDC communication for raw image frames. It
 
 ## Prerequisites
 - Choose **one** setup path:
-  - **CLI**: [Setup and Install SDK using CLI](../../../../docs/Setup_and_Install_SDK_using_CLI.md)
-  - **VS Code**: [Setup and Install SDK using VS Code](../../../../docs/Setup_and_Install_SDK_using_VSCode.md)
+  - **CLI**: [Setup and Install SDK using CLI](../../../../docs/Astra_MCU_SDK_Setup_and_Install_CLI.md)
+  - **VS Code**: [Setup and Install SDK using VS Code](../../../../docs/Astra_MCU_SDK_Setup_and_Install_VsCode.md)
 - Install required Python packages for `detect_frame.py`:
   - `pyserial`
   - `Pillow`
