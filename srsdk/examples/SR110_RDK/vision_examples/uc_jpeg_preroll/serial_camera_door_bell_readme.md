@@ -95,6 +95,8 @@ Use the CLI flow described in the SR110 guide:
 > [SR110 Build and Flash with VS Code](../../../../docs/SR110/SR110_Build_and_Flash_with_VSCode.md#usb-cdc-image-streaming-windows).
 
 1. In VS Code, open **Video Streamer** from the Synaptics sidebar.
+
+   ![Video Streamer](assets/vs_video_streamer_toolbox.png)
 2. For logging output, click **SERIAL MONITOR** and connect to the **DAP logger** port on J14.
    - To make it easier to identify, ensure **only J14** is plugged in (not J13).
    - The logger port is not guaranteed to be consistent across OSes. As a starting point:
@@ -104,7 +106,7 @@ Use the CLI flow described in the SR110 guide:
 3. Doorbell application automatically connects to Video Streamer upon reset.
 4. On person detection, the video streamer opens with the captured frame and preroll context images.
 
-![streamer](assets/serial_doorbell.png)
+   ![streamer](assets/serial_doorbell.png)
 
 5. **Autorun use cases:** If autorun is enabled, after step 4 click **Connect Image Source** to open the video stream pop-up.
 

@@ -91,3 +91,101 @@ Use the CLI flow described in the SL2610 Platform Guide:
      - **Linux/macOS:** try the higher-numbered J14 port first.
    - If you do not see logs after a reset, switch to the other J14 port.
 3. System manager logs appear in the logger window.
+
+**Expected Logs**
+
+```
+before lock sts: 0x20
+
+ LCS OTP: 0xaead0303
+after lock sts: 0x21
+
+synaprot a0 spk: release id 0xfc9b8b5, commit time Mon Oct 13 19:27:42 2025 -0700
+synaprot a0 hal : release id 0xf24e4cf, commit time Mon Oct 13 01:32:40 2025 -0700
+Cold Boot...
+speed_up clock_freq...
+conf flightcontrol...
+fc: reset0_faultasso0_FAULT: 0xf80000f8
+fc: reset0_faultasso1_FAULT: 0xe0000007
+Waiting command...
+read msg data is 0x5b
+read msg data is 0x5a
+read msg data is 0x33
+read msg data is 0x4
+read msg data is 0xd4
+read msg data is 0x33
+read msg data is 0x1
+read msg data is 0x0
+read msg data is 0x0
+read msg data is 0x0
+read msg data is 0x0
+read msg data is 0x0
+read msg data is 0x0
+read msg data is 0x0
+read msg data is 0x0
+read msg data is 0x0
+read msg data is 0x0
+read msg data is 0x0
+read msg data is 0x0
+read msg data is 0x0
+read msg data is 0x0
+read msg data is 0x0
+read msg data is 0x0
+read msg data is 0x0
+read msg data is 0x0
+read msg data is 0x0
+read msg data is 0x0
+read msg data is 0x0
+read msg data is 0x0
+read msg data is 0x0
+read msg data is 0x0
+read msg data is 0x0
+download bl image
+
+u32_num_bytes is 0x133d4, img_dwnld_addr=0x30002000
+opcode download bl image
+verify bl
+image_buf: 0x30002000
+bl header type: 0x00000011
+image dest addr: 0x30020000, body_size: 0x00013160
+clear BL !
+save m52 entry: 0x30020000
+save magic: 0x574d424c
+
+ send rx msg: 0x5b 0x5a 0x33 0x4 0x0 0x0 0x0 0x0
+relocate vector table...
+Vector table is 128-byte aligned.
+release M52...
+BL: MCU Init...command...
+Init DDR4 @ 3200
+DHL:v0p40 PT:v0p40 ID:0x21010000
+USB MOUNTED
+0000000000:[0][WRN][LOGR]:Changing logger interface to LOGGER_IF_UART_0
+0000000000:[0][INF][SYS ]:------------------------------------------
+0000000000:[0][INF][SYS ]:            Hello  ASTRA
+0000000000:[0][INF][SYS ]:------------------------------------------
+0000000000:[0][INF][SYS ]:System initialization done
+0000000000:[0][INF][SYS ]:M52:: Build Date 19-01-2026 Time 15:57:15 Commit unknown
+0000000000:[0][INF][SYS ]:sl2610 SDK version 1.3.0
+0000000000:[0][INF][USB ]:USB device unmounted
+0000000004:[0][INF][HAPI]:Active interface is USB
+0000000110:[0][INF][SYS ]:VCORE 800 mV
+0000000322:[0][INF][USB ]:USB device mounted
+0000001928:[0][INF][HAPI]:Requested Service ID: 13 and Opcode: 15
+0000002055:[0][INF][HAPI]:Requested Service ID: 13 and Opcode: 15
+0000002158:[0][INF][HAPI]:Requested Service ID: 13 and Opcode: 18
+0000002196:[0][INF][HAPI]:Requested Service ID: 13 and Opcode: 15
+0000002297:[0][INF][HAPI]:Requested Service ID: 13 and Opcode: 15
+0000002407:[0][INF][HAPI]:Requested Service ID: 13 and Opcode: 15
+0000000000:[0][WRN][LOGR]:Changing logger interface to LOGGER_IF_UART_0
+0000000000:[0][INF][SYS ]:M52:: Build Date 22-01-2026 Time 18:02:38 Commit unknown
+0000000000:[0][INF][SYS ]:sl2610 SDK version 1.3.0
+0000000102:[0][INF][SYS ]:VCORE 800 mV
+0000000106:[0][INF][SYS ]:eMMC: Boot A55
+0000000176:[0][INF][SYS ]:Loading bl_a
+0000000269:[0][INF][SYS ]:Loading tzk_a
+NOTICE:  BL31: v2.7(release):v2.7.0-18-g483e9cedcf-dirty
+NOTICE:  BL31: Built : 15:02:46, Jun  1 2022
+```
+
+After the above sequence, the System Manager hands off control and boots the A-core (A55).

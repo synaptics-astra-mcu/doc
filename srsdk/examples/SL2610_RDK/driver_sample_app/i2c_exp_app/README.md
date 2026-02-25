@@ -4,94 +4,107 @@
 
 This I2C expander sample application demonstrates GPIO output control using an external FXL6408 I2C-based GPIO expander. It runs a FreeRTOS task that periodically toggles a selected expander GPIO pin and logs the operation status for validation and debugging.
 
-## Build Instructions
+## Prerequisites
+- Choose **one** setup path:
+  - **CLI**: [Setup and Install SDK using CLI](../../../../docs/Astra_MCU_SDK_Setup_and_Install_CLI.md)
+  - **VS Code**: [Setup and Install SDK using VS Code](../../../../docs/Astra_MCU_SDK_Setup_and_Install_VsCode.md)
 
-### Prerequisites
-- [GCC environment setup](../../../../docs/build_env)
-- [Astra MCU SDK VS Code Extension installed and configured](../../../../docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md)
+## Building and Flashing the Example using VS Code
 
-### Configuration and Build Steps
+Use the VS Code flow described in the SL2610 guides and VS Code Extension guide:
+- [SL2610 Platform Guide](../../../../docs/SL2610/SL2610_Platform_Guide.md)
+- [Astra MCU SDK VS Code Extension User Guide](../../../../docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md)
 
-### 1. Using Astra MCU SDK VS Code extension
-   - Navigate to **IMPORTED REPOS** → **Build and Deploy** in the Astra MCU SDK VS Code Extension.
-   - Select the **Build Configurations** checkbox, then select the necessary options.
-   - Select **cm52_i2c_exp_app_rdk** in the **Application** dropdown. This will apply the defconfig.
-   - Select the appropriate build and clean options from the checkboxes. Then click **Run**. This will build the SDK generating the required `.elf` or `.axf` files for deployment using the installed package.
+**Build (VS Code):**
+1. Open **Build and Deploy** -> **Build Configurations**.
+2. Select `cm52_i2c_exp_app_rdk` in the **Application** dropdown.
+3. Build with **Build (SDK + App)** for the first build, or **Build App** for rebuilds.
 
-   For detailed steps refer to the [Astra MCU SDK VS Code Extension Userguide](../../../../docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md).
+![Build Configurations](assets/vs_i2c_exp_app_sl2610.png)
 
-   ![Build Configurations](assets/vs_i2c_exp_app_sl2610.png)
+**Flash/Image Generation (VS Code):**
+1. Build the SL2610 bootloader image.
+2. Generate output binaries (equivalent of `make imagegen`) and collect:
+   - `sl2610_bootloader_extras.bin`
+   - `sl2610_bootloader_output.bin`
+   - `sl2610_cm52_fw_extras.bin`
+   - `sl2610_cm52_fw_output.bin`
+3. Copy generated binaries to VSSDK.
+4. Generate the system sub-image in VSSDK.
+   - Refer: [SL2610 Platform Guide - Image Generation](../../../../docs/SL2610/SL2610_Platform_Guide.md#image-generation-2)
+5. Flash/download the MCU image to target.
+   - Refer: [SL2610 Platform Guide - Image Flashing](../../../../docs/SL2610/SL2610_Platform_Guide.md#image-flashing)
 
-### 2. Native build in the terminal
-1. **Select the default configuration of the bootloader and build**
-   This will apply the defconfig, generating the required `.elf` or `.axf` files for deployment using the installed package.
-   The bootloader should be built from SRSDK root directory by running the below command.
+---
+
+## Building and Flashing the Example using CLI
+
+Use the CLI flow described in the SL2610 Platform Guide:
+- [SL2610 Platform Guide](../../../../docs/SL2610/SL2610_Platform_Guide.md)
+
+**Build (CLI):**
+1. Build the SL2610 bootloader from SDK root:
    ```bash
-   make sl2610_bootloader_rdk_defconfig BOARD=SR2610_RDK
+   make sl2610_bootloader_rdk_defconfig BOARD=SL2610_RDK
    make
    ```
-
-2. **Select Default Configuration and build sdk + example**
-   This will apply the defconfig, then build and install the SDK package, generating the required `.elf` or `.axf` files for deployment using the installed package.
+2. Build I2C expander sample app from `<sdk-root>/examples`:
    ```bash
-   make cm52_i2c_exp_app_defconfig BOARD=SR2610_RDK BUILD=SRSDK
+   cd <sdk-root>/examples
+   export SRSDK_DIR=<sdk-root>
+   make cm52_i2c_exp_app_rdk_defconfig BOARD=SL2610_RDK BUILD=SRSDK
    ```
 
-3. **Rebuild the Application using pre-built package**
-   The build process will produce the necessary .elf or .axf files for deployment with the installed package.
+**Image Generation and Flash (CLI):**
+1. Generate binaries:
    ```bash
-   make cm52_i2c_exp_app_defconfig BOARD=SR2610_RDK or make
-   ```
-   **Note:** We need to have the pre-built Astra MCU SDK package before triggering the example alone build.
-
-## Deployment and Execution
-
-### Generate Binary Files
-
-- Generate firmware binaries as follows:
-   - Export the SRSDK directory path.
-   ```bash
-   export SRSDK_DIR="path/to/sdk"
-   ```
-   - Navigate to the **examples** directory.
-   ```bash
-   cd /path/to/examples
-   ```
-   - Execute the following command to generate binaries.
-   ```bash
+   cd <sdk-root>/examples
+   export SRSDK_DIR=<sdk-root>
    make imagegen
    ```
-   - Copy the generated binaries
-      - sl2610_bootloader_extras.bin
-      - sl2610_bootloader_output.bin
-      - sl2610_cm52_fw_extras.bin
-      - sl2610_cm52_fw_output.bin
-   to the VSSDK directory.
+2. Copy generated binaries to VSSDK:
+   - `sl2610_bootloader_extras.bin`
+   - `sl2610_bootloader_output.bin`
+   - `sl2610_cm52_fw_extras.bin`
+   - `sl2610_cm52_fw_output.bin`
+3. Generate system sub-image in VSSDK.
+   - Refer: [SL2610 Platform Guide - Image Generation](../../../../docs/SL2610/SL2610_Platform_Guide.md#image-generation-2)
+4. Flash/download image to target.
+   - Refer: [SL2610 Platform Guide - Image Flashing](../../../../docs/SL2610/SL2610_Platform_Guide.md#image-flashing)
 
-### Generate System Sub Image
-   - For build steps of sysmgr sub-image in VSSDK folder refer to the [VSSDK BUILD STEPS](../../../../docs/SL2610/SL2610_Platform_Guide.md#image-generation-2).
+---
 
+## Running the Application using VS Code Extension
 
-### Loading Image to the target
+1. Power the board and press **RESET** after flashing.
+2. For logging output, connect UART to the target and open a serial console (for example, MobaXterm).
+3. I2C expander sample logs appear in the serial window.
 
-#### Flash MCU Binary
+**Expected Logs**
 
-To Flash the MCU Binary to target refer [SL2610 Platform Guide - MCU-Only Image Flashing](../../../../docs/SL2610/SL2610_Platform_Guide.md#image-flashing)
-
-#### Download MCU Binary to RAM
-
-To Download MCU Binary to RAM [SL2610 Platform Guide - Image Download](../../../../docs/SL2610/SL2610_Platform_Guide.md#image-flashing)
-
-### Running the Application
-
-- After successfully flashing the image, make the required hardware connections on the SL2610_RDK.
-   - Hardware Setup
-      - Power the device by connecting a power adapter to the PWR slot on the board.
-
-   - UART connection:
-      - Connect the UART interface card:
-         - TX, RX, and GND pins of the UART adapter
-         - To RX, TX (Pin 28), and GND pins on the device
-      - Open MobaXterm (or equivalent) and select a serial connection to view application logs.
-
-- Click the reset button in the device to make the application run.
+```
+Init DDR4 @ 3200
+DHL:v0p40 PT:v0p40 ID:0x21010000
+USB MOUNTED
+0000000000:[0][WRN][LOGR]:Changing logger interface to LOGGER_IF_UART_0
+0000000000:[0][INF][SYS ]:M52:: Build Date 22-01-2026 Time 10:59:39 Commit unknown
+0000000000:[0][INF][GENR]:I2C Expander GPIO Toggle Task Started
+0000000005:[0][INF][GENR]:Controlling FXL6408 pin 5
+0000000010:[0][INF][GENR]:FXL6408 pin 5 set to 0
+0000001015:[0][INF][GENR]:FXL6408 pin 5 set to 1
+0000002019:[0][INF][GENR]:FXL6408 pin 5 set to 0
+0000003023:[0][INF][GENR]:FXL6408 pin 5 set to 1
+0000004027:[0][INF][GENR]:FXL6408 pin 5 set to 0
+0000005031:[0][INF][GENR]:FXL6408 pin 5 set to 1
+0000006035:[0][INF][GENR]:FXL6408 pin 5 set to 0
+0000007039:[0][INF][GENR]:FXL6408 pin 5 set to 1
+0000008043:[0][INF][GENR]:FXL6408 pin 5 set to 0
+0000009047:[0][INF][GENR]:FXL6408 pin 5 set to 1
+0000010051:[0][INF][GENR]:FXL6408 pin 5 set to 0
+0000011055:[0][INF][GENR]:FXL6408 pin 5 set to 1
+0000012059:[0][INF][GENR]:FXL6408 pin 5 set to 0
+0000013063:[0][INF][GENR]:FXL6408 pin 5 set to 1
+0000014067:[0][INF][GENR]:FXL6408 pin 5 set to 0
+0000015071:[0][INF][GENR]:FXL6408 pin 5 set to 1
+0000016075:[0][INF][GENR]:FXL6408 pin 5 set to 0
+```
