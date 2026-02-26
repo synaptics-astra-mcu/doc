@@ -77,6 +77,12 @@ Use the CLI flow described in the SL2610 Platform Guide:
    ```
 
 **Image Generation and Flash (CLI):**
+> **Note:** SL2610 image generation is not supported on native Windows.
+> Use WSL for image generation.
+> In WSL, ensure required tools are installed: Python, `make`, and Arm GNU toolchain.
+> You can use the VS Code extension's Tools Installer in WSL, or follow
+> [Linux Environment guide](../../../../docs/build_env/Astra_MCU_SDK_Linux_env_with_gcc.md) for CLI setup.
+
 1. Generate binaries:
    ```bash
    cd <sdk-root>/examples

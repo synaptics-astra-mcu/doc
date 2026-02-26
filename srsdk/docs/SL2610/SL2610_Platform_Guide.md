@@ -29,10 +29,7 @@ For build, image generation, and flashing workflows, use:
 
 ### SL2610 RDK
 
-<figure>
-<img src="../Assets/Images/media/SL2610_RDK.png" style="width:6.5in;height:auto" alt="SL2610 RDK Board" />
-<figcaption><b>Figure 1.</b> SL2610 RDK Board</figcaption>
-</figure>
+![SL2610 RDK Board](../Assets/Images/media/SL2610_RDK.png)
 
 ### Connection Steps
 

@@ -34,7 +34,7 @@ Use the VS Code flow described in the SR110 guide and the VS Code Extension guid
 **Flash (VS Code):**
 1. Use **Image Conversion** to generate firmware binary.
 2. Generate model binary from TFLite, if needed:
-   - [Vela compilation guide](../../../../docs/Astra_MCU_SDK_vela_compilation_tflite_model.md)
+   - [Vela compilation guide](../../../../docs/SR110/Astra_MCU_SDK_vela_compilation_tflite_model.md)
 3. In **Image Flashing**, flash firmware image.
 4. Flash model binary `door_bell_flash(384x512).bin` at offset `0x629000`.
    - Model location: `examples/SR110_RDK/vision_examples/uc_jpeg_preroll/models/`
@@ -115,20 +115,11 @@ Use the CLI flow described in the SR110 guide:
      - **Windows:** try the lower-numbered J14 COM port first.
      - **Linux/macOS:** try the higher-numbered J14 port first.
    - If you do not see logs after a reset, switch to the other J14 port.
-3. In the Video Streamer dropdown, select the **J13** COM port.
-   - Plug in **J13** and press **RESET** on the board.
-   - **Windows:** select the newly enumerated COM port.
-   - **Linux/macOS:** select the lower-numbered COM port of the two newly enumerated ports.
-4. Use the Video Streamer controls:
 
-   a. Select the relevant use case from the **UC ID** dropdown.  
-   b. Set **RGB Demosaic** to **BayerRGGB**.  
-   c. Click **Create Use Case**.  
-   d. Click **Start Use Case** (a Python window opens and the video stream appears).
+3. Doorbell application automatically connects to Video Streamer upon reset.
+4. On person detection, the video streamer opens with the captured frame and preroll context images.
 
    ![streamer](assets/doorbell_streamer.png)
-
-5. **Autorun use cases:** If autorun is enabled, after step 4 click **Connect Image Source** to open the video stream pop-up.
 
 ## Wakeup Triggers
 

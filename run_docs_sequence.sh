@@ -5,6 +5,13 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
+echo "Pre-step: stopping any existing python3 -m http.server 9000"
+if command -v pkill >/dev/null 2>&1; then
+	pkill -f "python3 -m http.server 9000" 2>/dev/null || true
+else
+	echo "pkill not available; skipping pre-stop check."
+fi
+
 echo "Step 1: cd _build/html"
 cd "_build/html"
 

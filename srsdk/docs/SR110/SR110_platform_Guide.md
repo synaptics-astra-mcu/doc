@@ -26,10 +26,7 @@ For build, image conversion, flashing, and debugging workflows, use:
 
 ### Astra Machina Micro (SR110 RDK)
 
-<figure>
-<img src="../Assets/Images/media/Astra_Machina_Micro_Annotated.png" style="width:3.39653in;height:2.89792in" alt="SR110 RDK" />
-<figcaption><b>Figure 1.</b> SR110 RDK Board</figcaption>
-</figure>
+![SR110 RDK Board](../Assets/Images/media/Astra_Machina_Micro_Annotated.png)
 
 ### Connection Steps
 

@@ -90,7 +90,7 @@ Use the CLI flow described in the SR110 guide:
 ### Setup and Flashing
 
 1. **Model files**
-   Replace the model_flash_io.cc and model_flash.cc files with vela generated model.cc and model_io.cc, refer to the [Vela compilation guide](../../../../docs/Astra_MCU_SDK_vela_compilation_tflite_model.md).
+   Replace the model_flash_io.cc and model_flash.cc files with vela generated model.cc and model_io.cc, refer to the [Vela compilation guide](../../../../docs/SR110/Astra_MCU_SDK_vela_compilation_tflite_model.md).
 
 2. **Open the VSCode Astra MCU SDK Extension and connect to the Debug IC USB port on the Astra Machina Micro Kit.**
    For detailed steps refer to the [Astra MCU SDK User Guide](../../../../docs/Astra_MCU_SDK_User_Guide.md).
@@ -104,7 +104,7 @@ Use the CLI flow described in the SR110 guide:
       - Click **Run** to create the binary files.
       - Refer to [Astra MCU SDK VSCode Extension User Guide](../../../../docs/Astra_MCU_SDK_VSCode_Extension_User_Guide.md) for more detailed instructions.
    - Model Binary generation (to place the Model in Flash)
-      - To generate `.bin` file for TFLite models, please refer to the [Vela compilation guide](../../../../docs/Astra_MCU_SDK_vela_compilation_tflite_model.md).
+      - To generate `.bin` file for TFLite models, please refer to the [Vela compilation guide](../../../../docs/SR110/Astra_MCU_SDK_vela_compilation_tflite_model.md).
 
 ---
 
