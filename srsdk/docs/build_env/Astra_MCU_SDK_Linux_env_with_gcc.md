@@ -42,6 +42,7 @@ export PATH=/opt/ninja/bin:$PATH
 Make it permanent:
 ```bash
 echo 'export PATH=/opt/ninja/bin:$PATH' >> ~/.bashrc
+source ~/.bashrc
 ```
 
 ## Install Python
@@ -101,6 +102,7 @@ Make it permanent:
 ```bash
 echo 'export PATH=$PATH:/opt/gcc-arm-none-eabi/bin' >> ~/.bashrc
 echo 'export GCC_TOOLCHAIN_13_2_1=/opt/gcc-arm-none-eabi/bin' >> ~/.bashrc
+source ~/.bashrc
 ```
 
 ## Debug Steps

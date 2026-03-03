@@ -43,6 +43,7 @@ export PATH=/opt/ninja/bin:$PATH
 Make it permanent:
 ```bash
 echo 'export PATH=/opt/ninja/bin:$PATH' >> ~/.bashrc
+source ~/.bashrc
 ```
 
 ## Install Python
@@ -94,6 +95,7 @@ Make it permanent:
 ```bash
 echo 'export PATH=/opt/gcc-arm-none-eabi/bin:$PATH' >> ~/.bashrc
 echo 'export GCC_TOOLCHAIN_ROOT=/opt/gcc-arm-none-eabi' >> ~/.bashrc
+source ~/.bashrc
 ```
 
 Note: LLVM builds require `GCC_TOOLCHAIN_ROOT` for the GCC sysroot and libstdc++.
@@ -113,6 +115,7 @@ Make it permanent:
 ```bash
 echo 'export PATH=/opt/llvm/bin:$PATH' >> ~/.bashrc
 echo 'export LLVM_TOOLCHAIN_ROOT=/opt/llvm/bin' >> ~/.bashrc
+source ~/.bashrc
 ```
 
 ## Install OpenOCD

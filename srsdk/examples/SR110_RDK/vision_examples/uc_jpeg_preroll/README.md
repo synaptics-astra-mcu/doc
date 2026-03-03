@@ -84,21 +84,14 @@ g_cls_params  = &g_all_tens_params[Z];  // Replace Z with actual index from Netr
 > [SR110 Build and Flash with VS Code](../../../../docs/SR110/SR110_Build_and_Flash_with_VSCode.md#usb-cdc-image-streaming-windows).
 
 1. In VS Code, open **Video Streamer** from the Synaptics sidebar.
+
+   ![Video Streamer](assets/vs_video_streamer_toolbox.png)
+
 2. For logging output, click **SERIAL MONITOR** and connect to the **DAP logger** port on J14.
    - To make it easier to identify, ensure **only J14** is plugged in (not J13).
    - The logger port is not guaranteed to be consistent across OSes. As a starting point:
      - **Windows:** try the lower-numbered J14 COM port first.
      - **Linux/macOS:** try the higher-numbered J14 port first.
    - If you do not see logs after a reset, switch to the other J14 port.
-3. In the Video Streamer dropdown, select the **J13** COM port.
-   - Plug in **J13** and press **RESET** on the board.
-   - **Windows:** select the newly enumerated COM port.
-   - **Linux/macOS:** select the lower-numbered COM port of the two newly enumerated ports.
-4. Use the Video Streamer controls:
-
-   a. Select the relevant use case from the **UC ID** dropdown.  
-   b. Set **RGB Demosaic** to **BayerRGGB**.  
-   c. Click **Create Use Case**.  
-   d. Click **Start Use Case** (a Python window opens and the video stream appears).
-
-5. **Autorun use cases:** If autorun is enabled, after step 4 click **Connect Image Source** to open the video stream pop-up.
+3. Doorbell application automatically connects to Video Streamer upon reset.
+4. On person detection, the video streamer opens with the captured frame and preroll context images.

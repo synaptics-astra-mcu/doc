@@ -127,6 +127,7 @@ Optional: make pyenv available in future shells (skip this if you prefer to enab
 echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.zshrc
 echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
+source ~/.zshrc
 ```
 
 If you chose the optional lines above, restart your shell or run `source ~/.zshrc` to apply them.

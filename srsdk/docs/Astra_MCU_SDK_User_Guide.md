@@ -397,6 +397,12 @@ Key flags:
 
 **Required:** Python 3.13 venv active.
 
+**Note:** SL2610 image generation is not supported on native Windows.
+Windows users should use WSL for image generation.
+In the WSL environment, install required tools such as Python, `make`, and the Arm GNU toolchain.
+You can use the VS Code extension's Tools Installer from WSL, or follow
+[Linux Environment guide](./build_env/Astra_MCU_SDK_Linux_env_with_gcc.md) for CLI setup.
+
 **Recommended entry:**
 ```
 cd <sdk-root>/examples

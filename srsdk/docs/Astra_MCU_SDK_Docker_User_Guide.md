@@ -1,4 +1,4 @@
-# Astra MCU SDK Docker Guide (Simplified)
+# Astra MCU SDK Docker Guide
 
 Use Docker to build the SDK and examples in a clean Ubuntu 22.04 environment. Flashing/debugging still runs on the host (USB access is not set up in this container by default).
 
