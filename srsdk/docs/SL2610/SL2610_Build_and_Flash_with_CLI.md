@@ -37,6 +37,13 @@ Throughout this guide, `<sdk-root>` refers to the directory where you extracted 
 
 2. Generate MCU sub-images using the SDK image generator (run from `<sdk-root>/examples`):
 
+   Before running `make imagegen`, ensure the bootloader is built:
+   ```bash
+   cd <sdk-root>
+   make sl2610_bootloader_rdk_defconfig BOARD=SL2610_RDK
+   make build
+   ```
+
    ```bash
    cd <sdk-root>/examples
    make imagegen

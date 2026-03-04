@@ -23,16 +23,12 @@ Use the VS Code flow described in the SL2610 guides and VS Code Extension guide:
 ![Build Configurations](assets/dma_sample_app_sl2610.png)
 
 **Flash/Image Generation (VS Code):**
+> **Note:** On Windows, use WSL for SL2610 image generation.
+
 1. Build the SL2610 bootloader image.
-2. Generate output binaries (equivalent of `make imagegen`) and collect:
-   - `sl2610_bootloader_extras.bin`
-   - `sl2610_bootloader_output.bin`
-   - `sl2610_cm52_fw_extras.bin`
-   - `sl2610_cm52_fw_output.bin`
-3. Copy generated binaries to VSSDK.
-4. Generate the system sub-image in VSSDK.
-   - Refer: [SL2610 Platform Guide - Image Generation](../../../../docs/SL2610/SL2610_Platform_Guide.md#image-generation-2)
-5. Flash/download the MCU image to target.
+2. Open **SL2610 Image Generation**, select the generated application ELF, and click **Run**.
+   - This is equivalent to `make imagegen` and directly generates the system sub-image.
+3. Flash/download the MCU image to target.
    - Refer: [SL2610 Platform Guide - Image Flashing](../../../../docs/SL2610/SL2610_Platform_Guide.md#image-flashing)
 
 ---
@@ -56,26 +52,19 @@ Use the CLI flow described in the SL2610 Platform Guide:
    ```
 
 **Image Generation and Flash (CLI):**
-> **Note:** SL2610 image generation is not supported on native Windows.
-> Use WSL for image generation.
+> **Note:** On Windows, use WSL for SL2610 image generation.
 > In WSL, ensure required tools are installed: Python, `make`, and Arm GNU toolchain.
 > You can use the VS Code extension's Tools Installer in WSL, or follow
 > [Linux Environment guide](../../../../docs/build_env/Astra_MCU_SDK_Linux_env_with_gcc.md) for CLI setup.
 
-1. Generate binaries:
+1. Build the SL2610 bootloader image.
+2. Generate the system sub-image:
    ```bash
    cd <sdk-root>/examples
    export SRSDK_DIR=<sdk-root>
    make imagegen
    ```
-2. Copy generated binaries to VSSDK:
-   - `sl2610_bootloader_extras.bin`
-   - `sl2610_bootloader_output.bin`
-   - `sl2610_cm52_fw_extras.bin`
-   - `sl2610_cm52_fw_output.bin`
-3. Generate system sub-image in VSSDK.
-   - Refer: [SL2610 Platform Guide - Image Generation](../../../../docs/SL2610/SL2610_Platform_Guide.md#image-generation-2)
-4. Flash/download image to target.
+3. Flash/download image to target.
    - Refer: [SL2610 Platform Guide - Image Flashing](../../../../docs/SL2610/SL2610_Platform_Guide.md#image-flashing)
 
 ---

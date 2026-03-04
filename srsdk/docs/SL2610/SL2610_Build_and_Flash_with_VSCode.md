@@ -60,8 +60,13 @@ The steps do not run until the **Run** button at the bottom of the view is press
 ![SL2610 Image Generator](../Assets/Images/media/vs_image_gen_sl2610.png)
 
 **Steps:**
-1. Check **Image Generation (SL2610)**.
-2. Confirm the pre-populated Release build path or use **Browse** to select a custom MCU executable.
+1. Build the bootloader from `<sdk-root>`:
+   ```bash
+   make sl2610_bootloader_rdk_defconfig BOARD=SL2610_RDK
+   make build
+   ```
+2. Check **Image Generation (SL2610)**.
+3. Confirm the pre-populated Release build path or use **Browse** to select a custom MCU executable.
    **Note** This will be automatically populated after the build completes.
 
 **Result:**
