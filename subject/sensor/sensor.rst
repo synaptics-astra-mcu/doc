@@ -1,4 +1,4 @@
-MIPI Sensor Integration Guide
+SR110 MIPI Sensor Integration Guide
 ******************************
 
 This guide provides documentation for integrating MIPI camera sensors with the Astra MCU platform.
