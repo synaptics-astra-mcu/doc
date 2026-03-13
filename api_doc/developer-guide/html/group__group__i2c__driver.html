@@ -25,7 +25,6 @@
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="custom.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="back-to-main.js"></script>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -307,7 +306,7 @@ Non-Blocking Target Read</h2>
 <div class="line">    }</div>
 </div><!-- fragment --><h2><a class="anchor" id="i2c_callback"></a>
 Callback Handler</h2>
-<p>This callback function is registered with the I2C driver and gets invoked asynchronously when an I2C event occurs. The function handles events such as transmission completion, reception, or error conditions. </p><div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> i2c_event_cb(<a class="code hl_enumeration" href="group___i2_c___e_n_u_m_s.html#ga9ded102ddb09182140135eab907aac05">i2c_instance_en</a> <span class="keywordtype">id</span>, <a class="code hl_enumeration" href="group__group__i2c__enums.html#ga535fc726ccc82dfbb5fdb851449034f2">i2c_event_en</a> event_mask, <span class="keywordtype">void</span>* user_data)</div>
+<p>This callback function is registered with the I2C driver and gets invoked asynchronously when an I2C event occurs. The function handles events such as transmission completion, reception, or error conditions. </p><div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> i2c_event_cb(<a class="code hl_enumeration" href="group___i2_c___e_n_u_m_s___s_l2610.html#ga9ded102ddb09182140135eab907aac05">i2c_instance_en</a> <span class="keywordtype">id</span>, <a class="code hl_enumeration" href="group__group__i2c__enums.html#ga535fc726ccc82dfbb5fdb851449034f2">i2c_event_en</a> event_mask, <span class="keywordtype">void</span>* user_data)</div>
 <div class="line">{</div>
 <div class="line">    BaseType_t xHigherPriorityTaskWoken = pdFALSE;</div>
 <div class="line">    <span class="keywordflow">if</span> (<span class="keywordtype">id</span> == I2C_INST_M) {</div>

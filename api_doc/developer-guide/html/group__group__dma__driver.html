@@ -25,7 +25,6 @@
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="custom.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="back-to-main.js"></script>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -164,13 +163,13 @@ Configuration Considerations</h1>
 </ol>
 <h3><a class="anchor" id="dma_init"></a>
 dma_init</h3>
-<p>Initialize the DMA hardware and internal driver structures for the specified DMA instance. </p><div class="fragment"><div class="line">    rc = <a class="code hl_function" href="group__group__dma__functions.html#ga79793663d8244cc058d72bfbaea62d13">dma_init</a>(DMA_0);</div>
+<p>Initialize the DMA hardware and internal driver structures for the specified DMA instance. </p><div class="fragment"><div class="line">    rc = <a class="code hl_function" href="group__group__dma__functions.html#ga79793663d8244cc058d72bfbaea62d13">dma_init</a>(<a class="code hl_enumvalue" href="group___d_m_a___e_n_u_m_s___s_l2610.html#gga23ff80e13d8f5a0f5dd4dbe0b8ac9626a7f3eb8b8edaa9e05b46bb7958fb15901">DMA_0</a>);</div>
 <div class="line">    <span class="keywordflow">if</span> (rc != <a class="code hl_enumvalue" href="group__group__dma__enums.html#gga323e1df531b3cfa23619670724514eb4a926135e0bfd578a34e093790f7637415">DMA_OK</a>) {</div>
 <div class="line">        LOG_ERROR(LOG_MOD_DMA, <span class="stringliteral">&quot;Init failed.\n&quot;</span>);</div>
 <div class="line">    }</div>
 </div><!-- fragment --> <h3><a class="anchor" id="dma_deinit"></a>
 dma_deinit</h3>
-<p>Deinitializes the DMA hardware and releases any resources held by the driver for the specified DMA instance. </p><div class="fragment"><div class="line">    rc = <a class="code hl_function" href="group__group__dma__functions.html#ga1b19ea0a249ad6e4fea3270409a5f914">dma_deinit</a>(DMA_0);</div>
+<p>Deinitializes the DMA hardware and releases any resources held by the driver for the specified DMA instance. </p><div class="fragment"><div class="line">    rc = <a class="code hl_function" href="group__group__dma__functions.html#ga1b19ea0a249ad6e4fea3270409a5f914">dma_deinit</a>(<a class="code hl_enumvalue" href="group___d_m_a___e_n_u_m_s___s_l2610.html#gga23ff80e13d8f5a0f5dd4dbe0b8ac9626a7f3eb8b8edaa9e05b46bb7958fb15901">DMA_0</a>);</div>
 <div class="line">    <span class="keywordflow">if</span> (rc != <a class="code hl_enumvalue" href="group__group__dma__enums.html#gga323e1df531b3cfa23619670724514eb4a926135e0bfd578a34e093790f7637415">DMA_OK</a>) {</div>
 <div class="line">        LOG_ERROR(LOG_MOD_DMA, <span class="stringliteral">&quot;De-init failed.\n&quot;</span>);</div>
 <div class="line">    }</div>
@@ -297,7 +296,7 @@ dma_create_descriptor</h3>
 <div class="line">        .user_data          = NULL</div>
 <div class="line">    };</div>
 <div class="line"> </div>
-<div class="line">        <span class="keywordflow">if</span> ((rc = <a class="code hl_function" href="group__group__dma__functions.html#ga005de4c314cdaf0a7e94f3f96720dbc7">dma_create_descriptor</a>(DMA_0, channel, &amp;config_2d, &amp;desc2)) != <a class="code hl_enumvalue" href="group__group__dma__enums.html#gga323e1df531b3cfa23619670724514eb4a926135e0bfd578a34e093790f7637415">DMA_OK</a>) {</div>
+<div class="line">        <span class="keywordflow">if</span> ((rc = <a class="code hl_function" href="group__group__dma__functions.html#ga005de4c314cdaf0a7e94f3f96720dbc7">dma_create_descriptor</a>(<a class="code hl_enumvalue" href="group___d_m_a___e_n_u_m_s___s_l2610.html#gga23ff80e13d8f5a0f5dd4dbe0b8ac9626a7f3eb8b8edaa9e05b46bb7958fb15901">DMA_0</a>, channel, &amp;config_2d, &amp;desc2)) != <a class="code hl_enumvalue" href="group__group__dma__enums.html#gga323e1df531b3cfa23619670724514eb4a926135e0bfd578a34e093790f7637415">DMA_OK</a>) {</div>
 <div class="line">        LOG_ERROR(LOG_MOD_DMA, <span class="stringliteral">&quot;Descriptor 2 creation failed.\n&quot;</span>);</div>
 <div class="line">        <span class="keywordflow">return</span> rc;</div>
 <div class="line">    }</div>
@@ -312,7 +311,7 @@ dma_link_descriptors</h3>
 </div><!-- fragment --><h3><a class="anchor" id="dma_start_descriptor_chain"></a>
 dma_start_descriptor_chain</h3>
 <p>Starts execution of the descriptor chain by starting the first descriptor in the chain. </p><div class="fragment"><div class="line">    <span class="comment">/* Start chain */</span></div>
-<div class="line">    <span class="keywordflow">if</span> ((rc = <a class="code hl_function" href="group__group__dma__functions.html#ga47088e24cd7862f7b0575d818e9b21c0">dma_start_descriptor_chain</a>(DMA_0, channel, &amp;desc1)) != <a class="code hl_enumvalue" href="group__group__dma__enums.html#gga323e1df531b3cfa23619670724514eb4a926135e0bfd578a34e093790f7637415">DMA_OK</a>) {</div>
+<div class="line">    <span class="keywordflow">if</span> ((rc = <a class="code hl_function" href="group__group__dma__functions.html#ga47088e24cd7862f7b0575d818e9b21c0">dma_start_descriptor_chain</a>(<a class="code hl_enumvalue" href="group___d_m_a___e_n_u_m_s___s_l2610.html#gga23ff80e13d8f5a0f5dd4dbe0b8ac9626a7f3eb8b8edaa9e05b46bb7958fb15901">DMA_0</a>, channel, &amp;desc1)) != <a class="code hl_enumvalue" href="group__group__dma__enums.html#gga323e1df531b3cfa23619670724514eb4a926135e0bfd578a34e093790f7637415">DMA_OK</a>) {</div>
 <div class="line">        LOG_ERROR(LOG_MOD_DMA, <span class="stringliteral">&quot;Failed to start descriptor chain.\n&quot;</span>);</div>
 <div class="line">        <span class="keywordflow">return</span> rc;</div>
 <div class="line">    }</div>

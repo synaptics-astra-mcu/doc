@@ -4,8 +4,8 @@ Synaptics ASTRA MCU SDK
 .. toctree::
    :hidden:
    :glob:
-
-   quickstart/index.rst
+   
+   Getting Started <srsdk/README.md>
    user_guide/index.rst
    developer_guide/index.rst
    subject/index.rst
@@ -31,7 +31,7 @@ Documentation Overview
 
 Explore our comprehensive documentation organized by your specific needs and experience level:
 
-:doc:`quickstart/index`
+:doc:`Getting Started <srsdk/README>`
 
   **Getting Started** - Quick setup guide to help you begin working with the Synaptics Astra MCU SDK, including installation and basic configuration steps.
 

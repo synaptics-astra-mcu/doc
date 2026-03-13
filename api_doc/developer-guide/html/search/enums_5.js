@@ -1,25 +1,9 @@
 var searchData=
 [
-  ['sdio_5fadma_5ferror_5fen_0',['sdio_adma_error_en',['../group__group__sdio__enums.html#ga7de2dd5134a089cfb5283046b516b8d3',1,'sdio.h']]],
-  ['sdio_5fauto_5fcmd_5fen_1',['sdio_auto_cmd_en',['../group__group__sdio__enums.html#gae94a0db1aa8e88e34bdb1cb7a38279a1',1,'sdio.h']]],
-  ['sdio_5fauto_5fcmd_5fstatus_5fen_2',['sdio_auto_cmd_status_en',['../group__group__sdio__enums.html#ga034f00ad5bfe78fce6061cbd5d974a22',1,'sdio.h']]],
-  ['sdio_5fbus_5fspeed_5fmode_5fen_3',['sdio_bus_speed_mode_en',['../group__group__sdio__enums.html#gaa43377600d7b34717c015489095ba0b3',1,'sdio.h']]],
-  ['sdio_5fbus_5fwidth_5fen_4',['sdio_bus_width_en',['../group__group__sdio__enums.html#ga7340bd5d6346b8a3d81b2ded89a3db4e',1,'sdio.h']]],
-  ['sdio_5fcard_5fcapacity_5fen_5',['sdio_card_capacity_en',['../group__group__sdio__enums.html#gaa75713fbff28efbdf54dd93704c0f416',1,'sdio.h']]],
-  ['sdio_5fcard_5ftype_5fen_6',['sdio_card_type_en',['../group__group__sdio__enums.html#ga2a2d103f11866ef3bf5887160d5b028e',1,'sdio.h']]],
-  ['sdio_5fcmd_5ftype_5fen_7',['sdio_cmd_type_en',['../group__group__sdio__enums.html#gac3dc8ced602ccaa8756e60a802393451',1,'sdio.h']]],
-  ['sdio_5fdma_5ftype_5fen_8',['sdio_dma_type_en',['../group__group__sdio__enums.html#ga397cd25024e880e951a450dd57fd4e0c',1,'sdio.h']]],
-  ['sdio_5ferase_5ftype_5fen_9',['sdio_erase_type_en',['../group__group__sdio__enums.html#ga4ba35508d09a120a4336cac472166b53',1,'sdio.h']]],
-  ['sdio_5finstance_5fen_10',['sdio_instance_en',['../group___s_d_i_o___e_n_u_m_s.html#gaf3477c969e68259718bf72995d4bb223',1,'sr110.h']]],
-  ['sdio_5fr1_5fresponse_5fen_11',['sdio_r1_response_en',['../group__group__sdio__enums.html#ga68911d68372fc1387314ef24cc124623',1,'sdio.h']]],
-  ['sdio_5freset_5fen_12',['sdio_reset_en',['../group__group__sdio__enums.html#ga0164648a2af0a562fe94b12f88507ea1',1,'sdio.h']]],
-  ['sdio_5fresponse_5ftype_5fen_13',['sdio_response_type_en',['../group__group__sdio__enums.html#ga2fb643b91ab9b4e87120b3dfd782a64d',1,'sdio.h']]],
-  ['sdio_5fstatus_5fen_14',['sdio_status_en',['../group__group__sdio__enums.html#ga5219916e992c3cf6741b897a5aef6f6e',1,'sdio.h']]],
-  ['sdio_5fwrite_5fprotect_5fen_15',['sdio_write_protect_en',['../group__group__sdio__enums.html#ga14f7fd4e81d794ceae2a8fa19a3d3f34',1,'sdio.h']]],
-  ['spi_5finstance_5fen_16',['spi_instance_en',['../group___s_p_i___e_n_u_m_s.html#gafcd5bb1df69a0108576fa2fc705e95a8',1,'sr110.h']]],
-  ['spi_5fmode_5fen_17',['spi_mode_en',['../group___s_p_i___e_n_u_m_s.html#ga986cc0d2e0991eb6a878e0cfdadb71bf',1,'sr110.h']]],
-  ['spi_5fsclk_5fmode_5fen_18',['spi_sclk_mode_en',['../group__group__spi__enums.html#gac5232d810f6c7bea141029d9f5d9e20e',1,'spi.h']]],
-  ['spi_5fstatus_5fen_19',['spi_status_en',['../group__group__spi__enums.html#gaa54900f631bf8fcb2f7d68c353eb537a',1,'spi.h']]],
-  ['spi_5ftransfer_5fstatus_5fen_20',['spi_transfer_status_en',['../group__group__spi__enums.html#ga29285fa13b417d0ef5bbeedbcee7dc38',1,'spi.h']]],
-  ['spi_5fxfer_5fmode_5fen_21',['spi_xfer_mode_en',['../group__group__spi__enums.html#ga4576d7fa17cd481b6b612bd3c3232cc1',1,'spi.h']]]
+  ['pinmux_5fdrive_5fstr_5fen_0',['pinmux_drive_str_en',['../group__group__pinmux__enums.html#ga2ca58abac1b4a1a017b532d6d35ea823',1,'pinmux.h']]],
+  ['pinmux_5felec_5fparams_5fen_1',['pinmux_elec_params_en',['../group__group__pinmux__enums.html#gae56ffc10f306341223a4e3d07ef30053',1,'pinmux.h']]],
+  ['pinmux_5ffunctions_5fen_2',['pinmux_functions_en',['../group___p_i_n_m_u_x___e_n_u_m_s___s_r110.html#ga540c1a3babf496a1b2cd8b7f12d204b2',1,'sr110_cm55.h']]],
+  ['pinmux_5fpin_5fname_5fen_3',['pinmux_pin_name_en',['../group___p_i_n_m_u_x___e_n_u_m_s___s_l2610.html#ga1e3f37e2bba6bf228285a8fe7c404040',1,'pinmux_pin_name_en:&#160;sl2610_cm52.h'],['../group___p_i_n_m_u_x___e_n_u_m_s___s_r110.html#ga1e3f37e2bba6bf228285a8fe7c404040',1,'pinmux_pin_name_en:&#160;sr110_cm55.h']]],
+  ['pinmux_5fpull_5ftype_5fen_4',['pinmux_pull_type_en',['../group__group__pinmux__enums.html#gae4a719bf23f3c5891ab83d79d9d9891f',1,'pinmux.h']]],
+  ['pinmux_5fstatus_5fen_5',['pinmux_status_en',['../group__group__pinmux__enums.html#ga07b906ff707f271393de58bd3bb8e2ec',1,'pinmux.h']]]
 ];

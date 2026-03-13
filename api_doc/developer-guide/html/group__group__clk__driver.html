@@ -25,7 +25,6 @@
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="custom.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="back-to-main.js"></script>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -131,7 +130,7 @@ Topics</h2></td></tr>
 <li>Managing clock trees and dividers</li>
 </ul>
 <dl class="section note"><dt>Note</dt><dd>The following are SoC-specific enums, defined in the header file of the target platform:<ul>
-<li><a class="el" href="group___c_l_k___e_n_u_m_s.html#gadf58d5869a776847e03e148a76403455" title="Enumeration of all supported clock IDs in the system.">clk_ids_en</a>: Clock IDs</li>
+<li><a class="el" href="group___c_l_k___e_n_u_m_s___s_r110.html#gadf58d5869a776847e03e148a76403455" title="Enumeration of all supported clock IDs in the system.">clk_ids_en</a>: Clock IDs</li>
 <li><a class="el" href="group__group__clk__enums.html#ga7b920c436e9b5d5a435d6b16528adcd0" title="PLL Identifiers.">clk_pll_en</a>: Clock PLLs</li>
 <li><a class="el" href="group__group__clk__enums.html#gad0a1de4d8f370bbb6e3b7e69a0de5589" title="PLL configuration modes.">clk_pll_config_en</a>: Clock PLL configs <br  />
  <br  />
@@ -165,7 +164,7 @@ clk_init_tree</h3>
 </div><!-- fragment --><h3><a class="anchor" id="clk_enable"></a>
 clk_enable</h3>
 <p>Enables the specified clock by allowing the clock signal to propagate to the associated peripheral or subsystem. Ensures that the necessary clock gating control is cleared or configured to provide the required clock signal </p><div class="fragment"><div class="line"><a class="code hl_enumeration" href="group__group__clk__enums.html#ga801e7f89c38f4508f4abce04b3a8ae67">clk_status_en</a> ret;</div>
-<div class="line"><a class="code hl_enumeration" href="group___c_l_k___e_n_u_m_s.html#gadf58d5869a776847e03e148a76403455">clk_ids_en</a> clk_id = <a class="code hl_enumvalue" href="group___c_l_k___e_n_u_m_s.html#ggadf58d5869a776847e03e148a76403455a8ff52f4f3dba911b95dbde0e5f08720a">UART0_CORE_CLK</a>;</div>
+<div class="line"><a class="code hl_enumeration" href="group___c_l_k___e_n_u_m_s___s_r110.html#gadf58d5869a776847e03e148a76403455">clk_ids_en</a> clk_id = <a class="code hl_enumvalue" href="group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455a8ff52f4f3dba911b95dbde0e5f08720a">UART0_CORE_CLK</a>;</div>
 <div class="line"> </div>
 <div class="line">ret = <a class="code hl_function" href="group__group__clk__functions.html#gaa013d26c4454d9d93ee73c971e415927">clk_enable</a>(clk_id);</div>
 <div class="line"><span class="keywordflow">if</span> (ret == <a class="code hl_enumvalue" href="group__group__clk__enums.html#gga801e7f89c38f4508f4abce04b3a8ae67ae5151e89d15f5b36bee4e19b15141f58">CLK_OK</a>) </div>
@@ -179,7 +178,7 @@ clk_enable</h3>
 </div><!-- fragment --><h3><a class="anchor" id="clk_disable"></a>
 clk_disable</h3>
 <p>Disables the specified clock by gating off its source. This function is used to reduce power consumption by stopping the clock signal to unused peripherals or subsystems. If any downstream clocks are enabled, this function will not disable the clock. Disable downstream clocks first or use <a class="el" href="group__group__clk__functions.html#gaf8b9051278c4ecb62314e58d0e2826c2">clk_force_disable()</a>. </p><div class="fragment"><div class="line"><a class="code hl_enumeration" href="group__group__clk__enums.html#ga801e7f89c38f4508f4abce04b3a8ae67">clk_status_en</a> ret;</div>
-<div class="line"><a class="code hl_enumeration" href="group___c_l_k___e_n_u_m_s.html#gadf58d5869a776847e03e148a76403455">clk_ids_en</a> clk_id = <a class="code hl_enumvalue" href="group___c_l_k___e_n_u_m_s.html#ggadf58d5869a776847e03e148a76403455a8ff52f4f3dba911b95dbde0e5f08720a">UART0_CORE_CLK</a>;</div>
+<div class="line"><a class="code hl_enumeration" href="group___c_l_k___e_n_u_m_s___s_r110.html#gadf58d5869a776847e03e148a76403455">clk_ids_en</a> clk_id = <a class="code hl_enumvalue" href="group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455a8ff52f4f3dba911b95dbde0e5f08720a">UART0_CORE_CLK</a>;</div>
 <div class="line"> </div>
 <div class="line">ret = <a class="code hl_function" href="group__group__clk__functions.html#ga97ef3b49b61fb4bc035be781b4e03a83">clk_disable</a>(clk_id);</div>
 <div class="line"><span class="keywordflow">if</span> (ret == <a class="code hl_enumvalue" href="group__group__clk__enums.html#gga801e7f89c38f4508f4abce04b3a8ae67ae5151e89d15f5b36bee4e19b15141f58">CLK_OK</a>)</div>
@@ -206,7 +205,7 @@ clk_disable</h3>
 </div><!-- fragment --><h3><a class="anchor" id="clk_force_disable"></a>
 clk_force_disable</h3>
 <p>Forcibly disables the specified clock regardless of downstream dependencies. </p><div class="fragment"><div class="line"><a class="code hl_enumeration" href="group__group__clk__enums.html#ga801e7f89c38f4508f4abce04b3a8ae67">clk_status_en</a> ret;</div>
-<div class="line"><a class="code hl_enumeration" href="group___c_l_k___e_n_u_m_s.html#gadf58d5869a776847e03e148a76403455">clk_ids_en</a> clk_id = <a class="code hl_enumvalue" href="group___c_l_k___e_n_u_m_s.html#ggadf58d5869a776847e03e148a76403455a8ff52f4f3dba911b95dbde0e5f08720a">UART0_CORE_CLK</a>;</div>
+<div class="line"><a class="code hl_enumeration" href="group___c_l_k___e_n_u_m_s___s_r110.html#gadf58d5869a776847e03e148a76403455">clk_ids_en</a> clk_id = <a class="code hl_enumvalue" href="group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455a8ff52f4f3dba911b95dbde0e5f08720a">UART0_CORE_CLK</a>;</div>
 <div class="line"> </div>
 <div class="line">ret = <a class="code hl_function" href="group__group__clk__functions.html#gaf8b9051278c4ecb62314e58d0e2826c2">clk_force_disable</a>(clk_id);</div>
 <div class="line"><span class="keywordflow">if</span> (ret == <a class="code hl_enumvalue" href="group__group__clk__enums.html#gga801e7f89c38f4508f4abce04b3a8ae67a6bbdb91da54a15b49db6a0cd978c86f4">CLK_ERROR_BUSY</a>)</div>
@@ -228,7 +227,7 @@ clk_force_disable</h3>
 </div><!-- fragment --><h3><a class="anchor" id="clk_is_enabled"></a>
 clk_is_enabled</h3>
 <p>Checks whether the specified clock is currently enabled or disabled. The result is returned through the output status pointer. </p><div class="fragment"><div class="line"><a class="code hl_enumeration" href="group__group__clk__enums.html#ga801e7f89c38f4508f4abce04b3a8ae67">clk_status_en</a> ret;</div>
-<div class="line"><a class="code hl_enumeration" href="group___c_l_k___e_n_u_m_s.html#gadf58d5869a776847e03e148a76403455">clk_ids_en</a> clk_id = <a class="code hl_enumvalue" href="group___c_l_k___e_n_u_m_s.html#ggadf58d5869a776847e03e148a76403455a8ff52f4f3dba911b95dbde0e5f08720a">UART0_CORE_CLK</a>;</div>
+<div class="line"><a class="code hl_enumeration" href="group___c_l_k___e_n_u_m_s___s_r110.html#gadf58d5869a776847e03e148a76403455">clk_ids_en</a> clk_id = <a class="code hl_enumvalue" href="group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455a8ff52f4f3dba911b95dbde0e5f08720a">UART0_CORE_CLK</a>;</div>
 <div class="line"> </div>
 <div class="line">ret = <a class="code hl_function" href="group__group__clk__functions.html#ga07379264a822cfbaa4d8ee8b6b83f99a">clk_is_enabled</a>(clk_id, &amp;status);</div>
 <div class="line"><span class="keywordflow">if</span> (ret == <a class="code hl_enumvalue" href="group__group__clk__enums.html#gga801e7f89c38f4508f4abce04b3a8ae67ae5151e89d15f5b36bee4e19b15141f58">CLK_OK</a>) </div>
@@ -243,7 +242,7 @@ clk_is_enabled</h3>
 </div><!-- fragment --><h3><a class="anchor" id="clk_get_rate"></a>
 clk_get_rate</h3>
 <p>Retrieves the current operating frequency of the specified clock. The rate is returned in Hz through the output pointer. </p><div class="fragment"><div class="line"><a class="code hl_enumeration" href="group__group__clk__enums.html#ga801e7f89c38f4508f4abce04b3a8ae67">clk_status_en</a> ret;</div>
-<div class="line"><a class="code hl_enumeration" href="group___c_l_k___e_n_u_m_s.html#gadf58d5869a776847e03e148a76403455">clk_ids_en</a> clk_id = <a class="code hl_enumvalue" href="group___c_l_k___e_n_u_m_s.html#ggadf58d5869a776847e03e148a76403455a8ff52f4f3dba911b95dbde0e5f08720a">UART0_CORE_CLK</a>;</div>
+<div class="line"><a class="code hl_enumeration" href="group___c_l_k___e_n_u_m_s___s_r110.html#gadf58d5869a776847e03e148a76403455">clk_ids_en</a> clk_id = <a class="code hl_enumvalue" href="group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455a8ff52f4f3dba911b95dbde0e5f08720a">UART0_CORE_CLK</a>;</div>
 <div class="line"> </div>
 <div class="line">ret = <a class="code hl_function" href="group__group__clk__functions.html#ga0b11c5291fe340079a0d0e6e9ed7e648">clk_get_rate</a>(clk_id, &amp;out_rate);</div>
 <div class="line"><span class="keywordflow">if</span> (ret == <a class="code hl_enumvalue" href="group__group__clk__enums.html#gga801e7f89c38f4508f4abce04b3a8ae67ae5151e89d15f5b36bee4e19b15141f58">CLK_OK</a>) </div>
@@ -258,7 +257,7 @@ clk_get_rate</h3>
 clk_set_rate</h3>
 <p>Sets the operating frequency of the specified clock. The closest supported frequency not exceeding the requested rate will be set based on divider configuration computed internally. </p><div class="fragment"><div class="line"><a class="code hl_enumeration" href="group__group__clk__enums.html#ga801e7f89c38f4508f4abce04b3a8ae67">clk_status_en</a> ret;</div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_enumeration" href="group___c_l_k___e_n_u_m_s.html#gadf58d5869a776847e03e148a76403455">clk_ids_en</a> clk_id = <a class="code hl_enumvalue" href="group___c_l_k___e_n_u_m_s.html#ggadf58d5869a776847e03e148a76403455a8ff52f4f3dba911b95dbde0e5f08720a">UART0_CORE_CLK</a>;</div>
+<div class="line"><a class="code hl_enumeration" href="group___c_l_k___e_n_u_m_s___s_r110.html#gadf58d5869a776847e03e148a76403455">clk_ids_en</a> clk_id = <a class="code hl_enumvalue" href="group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455a8ff52f4f3dba911b95dbde0e5f08720a">UART0_CORE_CLK</a>;</div>
 <div class="line">uint32_t requested_rate = 100000000; <span class="comment">/* 100 MHz */</span></div>
 <div class="line">uint32_t achieved_rate = 0;</div>
 <div class="line"> </div>
@@ -274,7 +273,7 @@ clk_set_rate</h3>
 </div><!-- fragment --><h3><a class="anchor" id="clk_get_divider"></a>
 clk_get_divider</h3>
 <p>Retrieves the current divider value applied to the specified clock. The divider is returned through the output pointer. </p><div class="fragment"><div class="line"><a class="code hl_enumeration" href="group__group__clk__enums.html#ga801e7f89c38f4508f4abce04b3a8ae67">clk_status_en</a> ret;</div>
-<div class="line"><a class="code hl_enumeration" href="group___c_l_k___e_n_u_m_s.html#gadf58d5869a776847e03e148a76403455">clk_ids_en</a> clk_id = <a class="code hl_enumvalue" href="group___c_l_k___e_n_u_m_s.html#ggadf58d5869a776847e03e148a76403455a8ff52f4f3dba911b95dbde0e5f08720a">UART0_CORE_CLK</a>;</div>
+<div class="line"><a class="code hl_enumeration" href="group___c_l_k___e_n_u_m_s___s_r110.html#gadf58d5869a776847e03e148a76403455">clk_ids_en</a> clk_id = <a class="code hl_enumvalue" href="group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455a8ff52f4f3dba911b95dbde0e5f08720a">UART0_CORE_CLK</a>;</div>
 <div class="line"> </div>
 <div class="line">ret = <a class="code hl_function" href="group__group__clk__functions.html#ga7796b06aec8cb5580c03f7e501c88880">clk_get_divider</a>(clk_id, &amp;out_divider);</div>
 <div class="line"><span class="keywordflow">if</span> (ret == <a class="code hl_enumvalue" href="group__group__clk__enums.html#gga801e7f89c38f4508f4abce04b3a8ae67ae5151e89d15f5b36bee4e19b15141f58">CLK_OK</a>) </div>
@@ -318,7 +317,7 @@ clk_get_pll_config</h3>
 clk_set_mux</h3>
 <p>Sets the mux output configuration for the specified clock. Configures the clock source selection (mux) for a given clock ID. It applies to clocks that support mux switching, such as PLL muxes or CGL clock muxes. </p><div class="fragment"><div class="line"><a class="code hl_enumeration" href="group__group__clk__enums.html#ga801e7f89c38f4508f4abce04b3a8ae67">clk_status_en</a> ret;</div>
 <div class="line"> </div>
-<div class="line">ret = <a class="code hl_function" href="group__group__clk__functions.html#gacd866b8a8bbd51ea95c2c9adc967081e">clk_set_mux</a>(<a class="code hl_enumvalue" href="group___c_l_k___e_n_u_m_s.html#ggadf58d5869a776847e03e148a76403455abfcfef4d0a91eca37a833c48cc847dc2">IPI_CLK</a>, <a class="code hl_enumvalue" href="group__group__clk__enums.html#gga7b920c436e9b5d5a435d6b16528adcd0a8f58555d7e8ece216e6a2877e49ef5c9">CLK_PLL1</a>);</div>
+<div class="line">ret = <a class="code hl_function" href="group__group__clk__functions.html#gacd866b8a8bbd51ea95c2c9adc967081e">clk_set_mux</a>(<a class="code hl_enumvalue" href="group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455abfcfef4d0a91eca37a833c48cc847dc2">IPI_CLK</a>, <a class="code hl_enumvalue" href="group__group__clk__enums.html#gga7b920c436e9b5d5a435d6b16528adcd0a8f58555d7e8ece216e6a2877e49ef5c9">CLK_PLL1</a>);</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordflow">if</span> (ret == <a class="code hl_enumvalue" href="group__group__clk__enums.html#gga801e7f89c38f4508f4abce04b3a8ae67ae5151e89d15f5b36bee4e19b15141f58">CLK_OK</a>)</div>
 <div class="line">{</div>

@@ -31,11 +31,13 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"group___c_l_k.html",
-"group___u_a_r_t___e_n_u_m_s.html",
-"group__group__i2c__data__structures.html",
-"group__group__sdio__functions.html#ga868670a509a6496bfe168ac9aa6c0d3a",
-"group__group__uart__low__level__functions.html#ga134e88ecd3992174859ad93554c7d4de"
+"group___c_l_k___e_n_u_m_s___s_r110.html",
+"group___p_i_n_m_u_x___e_n_u_m_s___s_r110.html#gga1e3f37e2bba6bf228285a8fe7c404040a7397624e31a862639a420553a0e13a22",
+"group__group__dma__functions.html#gae84c95fadcf37de43ede5a81ec618f38",
+"group__group__sdio__enums.html#gga68911d68372fc1387314ef24cc124623a8933ce9c1e8d1255a1f41e9e5b577a9a",
+"group__group__spwm__enums.html#gga06e71f82c0f067d80815eb56c7f0c759abd7615eafc1456b7d69e7b1678246a09",
+"group__group__uart__enums.html#gga43324d0dd5c80817b134aff1b104a0cba6bd09c71cfa2fa2ef6af798f1e0f81e8",
+"structspi__config.html#a55c3ea5e604d521cfd48f2e1fd54261a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

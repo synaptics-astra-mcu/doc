@@ -1,18 +1,13 @@
 var searchData=
 [
-  ['o_20device_0',['I/O Device',['../group__group__sdio__driver.html#group_io_device',1,'']]],
-  ['o_20device_20configuration_20and_20initialization_1',['SDIO I/O Device Configuration and Initialization.',['../group__group__sdio__driver.html#SDIO_DEVICE_INIT_TEST',1,'']]],
-  ['o_20transfer_20operation_20cmd52_2',['SDIO Direct I/O Transfer Operation (CMD52)',['../group__group__sdio__driver.html#SDIO_CMD52_OPERATION',1,'']]],
-  ['o_20transfer_20operation_20cmd53_3',['SDIO Extended I/O Transfer Operation (CMD53)',['../group__group__sdio__driver.html#SDIO_CMD53_OPERATION',1,'']]],
-  ['of_20configuring_20a_20gpio_20pin_20for_20interrupt_3a_4',['Example of configuring a GPIO pin for interrupt:',['../group__group__gpio__driver.html#GPIO_INPUT_CONFIG',1,'']]],
-  ['of_20port_20level_20operations_5',['Example of port-level operations',['../group__group__gpio__driver.html#sub_section',1,'']]],
-  ['operation_6',['Operation',['../group__group__sdio__driver.html#SDIO_INIT',1,'SDIO Init Operation'],['../group__group__sdio__driver.html#SDIO_INIT_IO',1,'SDIO Init Operation'],['../group__group__sdio__driver.html#SDIO_READ_OPERATION',1,'SDIO SD Card Read Operation.'],['../group__group__sdio__driver.html#SDIO_WRITE_OPERATION',1,'SDIO SD Card Write Operation.']]],
-  ['operation_20cmd52_7',['SDIO Direct I/O Transfer Operation (CMD52)',['../group__group__sdio__driver.html#SDIO_CMD52_OPERATION',1,'']]],
-  ['operation_20cmd53_8',['SDIO Extended I/O Transfer Operation (CMD53)',['../group__group__sdio__driver.html#SDIO_CMD53_OPERATION',1,'']]],
-  ['operations_9',['Cache Handling for SDIO Operations',['../group__group__sdio__driver.html#section11',1,'']]],
-  ['operations_10',['Example of port-level operations',['../group__group__gpio__driver.html#sub_section',1,'']]],
-  ['organization_11',['API Organization',['../group__group__i2c__driver.html#group_i2c_api_organization',1,'']]],
-  ['osc_12',['OSC',['../group___c_l_k___e_n_u_m_s.html#gga905d1ed675aa897ecfe00c43567910daab12413a339183f28211fdb79c441539d',1,'sr110.h']]],
-  ['out_5fen_13',['out_en',['../structgpio__pin__config__t.html#ab28ba2a8be82ccb22c8197515fd2a0d3',1,'gpio_pin_config_t']]],
-  ['overrun_5ferror_14',['overrun_error',['../structuart__usr__lsr__status__bits__t.html#a81b1880d59ef10fecee39ed407eb795c',1,'uart_usr_lsr_status_bits_t']]]
+  ['macro_20definitions_0',['Macro Definitions',['../group__group__sdio__macros.html',1,'']]],
+  ['macros_1',['Macros',['../group__group__clk__macros.html',1,'']]],
+  ['main_20group_20definitions_2',['1. &lt;strong&gt;sr110_groups.h&lt;/strong&gt; (Main Group Definitions)',['../md__r_e_a_d_m_e___s_t_r_u_c_t_u_r_e.html#autotoc_md8',1,'']]],
+  ['max_5fclocks_5fclk_3',['MAX_CLOCKS_CLK',['../group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455aa9aa2e2949334f3fcfa41eead450fae5',1,'sr110_cm55.h']]],
+  ['mcu_20sdk_20hardware_20identifiers_4',['Astra MCU SDK Hardware Identifiers',['../group__soc__docs.html',1,'']]],
+  ['mcu_20sdk_20peripheral_20driver_20library_5',['Astra MCU SDK Peripheral Driver Library',['../index.html',1,'']]],
+  ['mode_6',['mode',['../structdma__sw__trigger__config__t.html#a48ef50d62b8659fbc3822b9f8222d07b',1,'dma_sw_trigger_config_t::mode'],['../structdma__channel__config__t.html#a02cb3d6d8e7d0ebe7c629fb0057c6109',1,'dma_channel_config_t::mode'],['../structspwm__config__t.html#a3808fc04dfe9042bbe5fea4dc36ccfe6',1,'spwm_config_t::mode']]],
+  ['modify_20documentation_7',['How to Modify Documentation',['../md__r_e_a_d_m_e.html#autotoc_md3',1,'']]],
+  ['multi_20file_20documentation_20structure_8',['SR110 Multi-File Documentation Structure',['../md__r_e_a_d_m_e___s_t_r_u_c_t_u_r_e.html',1,'']]],
+  ['multiple_20pins_9',['Configuring Multiple Pins',['../group__group__pinmux__driver.html#snippet_config_all_mult',1,'']]]
 ];

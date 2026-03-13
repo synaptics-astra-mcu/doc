@@ -25,7 +25,6 @@
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="custom.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="back-to-main.js"></script>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -153,27 +152,27 @@ PINMUX Configuration for UART</h2>
 <div class="line"><span class="preprocessor">#if CONFIG_MODULE_UART_0_ENABLED</span></div>
 <div class="line">    <span class="comment">/* configure UART0 pins */</span></div>
 <div class="line">    HW_REG_FIELD_WRITE(GLOBAL_BASE_ADDRESS, GLOBAL_PERIF_UART_PORT_CTRL, UART0_RX_SEL, 0);</div>
-<div class="line">    pinmux_set_pin_func(<a class="code hl_enumvalue" href="group___p_i_n_m_u_x___e_n_u_m_s.html#gga1e3f37e2bba6bf228285a8fe7c404040a9d4c2e2fe5efa5ad8e6d3b66e1a78f5d">SPI_SLV_MISO</a>, SPI_SLV_MISO__UART0_TX);</div>
-<div class="line">    pinmux_set_pin_func(<a class="code hl_enumvalue" href="group___p_i_n_m_u_x___e_n_u_m_s.html#gga1e3f37e2bba6bf228285a8fe7c404040a8d8a8a2c8cb22ade56c8d07830064c02">SPI_SLV_MOSI</a>, SPI_SLV_MOSI__UART0_RX);</div>
+<div class="line">    pinmux_set_pin_func(<a class="code hl_enumvalue" href="group___p_i_n_m_u_x___e_n_u_m_s___s_r110.html#gga1e3f37e2bba6bf228285a8fe7c404040a9d4c2e2fe5efa5ad8e6d3b66e1a78f5d">SPI_SLV_MISO</a>, SPI_SLV_MISO__UART0_TX);</div>
+<div class="line">    pinmux_set_pin_func(<a class="code hl_enumvalue" href="group___p_i_n_m_u_x___e_n_u_m_s___s_r110.html#gga1e3f37e2bba6bf228285a8fe7c404040a8d8a8a2c8cb22ade56c8d07830064c02">SPI_SLV_MOSI</a>, SPI_SLV_MOSI__UART0_RX);</div>
 <div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#if CONFIG_MODULE_UART_1_ENABLED</span></div>
 <div class="line">    <span class="comment">/* configure UART1 pins */</span></div>
-<div class="line">    pinmux_set_pin_func(<a class="code hl_enumvalue" href="group___p_i_n_m_u_x___e_n_u_m_s.html#gga1e3f37e2bba6bf228285a8fe7c404040a0555552752feaf5f87eb2bc977f25a79">SPI_MSTR_MOSI</a>, SPI_MSTR_MOSI__UART1_TX);</div>
-<div class="line">    pinmux_set_pin_func(<a class="code hl_enumvalue" href="group___p_i_n_m_u_x___e_n_u_m_s.html#gga1e3f37e2bba6bf228285a8fe7c404040a326d50105ed8c6ade450745e835315e3">SPI_MSTR_MISO</a>, SPI_MSTR_MISO__UART1_RX);</div>
+<div class="line">    pinmux_set_pin_func(<a class="code hl_enumvalue" href="group___p_i_n_m_u_x___e_n_u_m_s___s_r110.html#gga1e3f37e2bba6bf228285a8fe7c404040a0555552752feaf5f87eb2bc977f25a79">SPI_MSTR_MOSI</a>, SPI_MSTR_MOSI__UART1_TX);</div>
+<div class="line">    pinmux_set_pin_func(<a class="code hl_enumvalue" href="group___p_i_n_m_u_x___e_n_u_m_s___s_r110.html#gga1e3f37e2bba6bf228285a8fe7c404040a326d50105ed8c6ade450745e835315e3">SPI_MSTR_MISO</a>, SPI_MSTR_MISO__UART1_RX);</div>
 <div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#if CONFIG_MODULE_UART_LP_ENABLED</span></div>
 <div class="line">    <span class="comment">/* configure LP_UART pins, use SPI_SLV_CLK/CS) as LP_UART_TX/RX */</span></div>
-<div class="line">    pinmux_set_pin_func(<a class="code hl_enumvalue" href="group___p_i_n_m_u_x___e_n_u_m_s.html#gga1e3f37e2bba6bf228285a8fe7c404040ae2f2cb6e7c037d7e7697e18fccb2098e">SPI_SLV_CLK</a>, SPI_SLV_CLK__UART_LP_TX);</div>
-<div class="line">    pinmux_set_pin_func(<a class="code hl_enumvalue" href="group___p_i_n_m_u_x___e_n_u_m_s.html#gga1e3f37e2bba6bf228285a8fe7c404040abba4a0e0507a359a8bcc790b0d2f6a9b">SPI_SLV_CS</a>, SPI_SLV_CS__UART_LP_RX);</div>
+<div class="line">    pinmux_set_pin_func(<a class="code hl_enumvalue" href="group___p_i_n_m_u_x___e_n_u_m_s___s_r110.html#gga1e3f37e2bba6bf228285a8fe7c404040ae2f2cb6e7c037d7e7697e18fccb2098e">SPI_SLV_CLK</a>, SPI_SLV_CLK__UART_LP_TX);</div>
+<div class="line">    pinmux_set_pin_func(<a class="code hl_enumvalue" href="group___p_i_n_m_u_x___e_n_u_m_s___s_r110.html#gga1e3f37e2bba6bf228285a8fe7c404040abba4a0e0507a359a8bcc790b0d2f6a9b">SPI_SLV_CS</a>, SPI_SLV_CS__UART_LP_RX);</div>
 <div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line">}</div>
 </div><!-- fragment --> <h3><a class="anchor" id="snippets_gen_level"></a>
 General Functions.</h3>
 <h3><a class="anchor" id="uart_init"></a>
 uart_init</h3>
-<p>Initializes the UART hardware and internal driver structures for the specified UART instance. </p><div class="fragment"><div class="line"><a class="code hl_enumeration" href="group___u_a_r_t___e_n_u_m_s.html#ga09711ac22550a85bf91ae00820dafe88">uart_instance_en</a> <span class="keywordtype">id</span> = <a class="code hl_enumvalue" href="group___u_a_r_t___e_n_u_m_s.html#gga09711ac22550a85bf91ae00820dafe88a9283de1a2e6eea552574a50ca586df8e">UART0</a>;</div>
+<p>Initializes the UART hardware and internal driver structures for the specified UART instance. </p><div class="fragment"><div class="line"><a class="code hl_enumeration" href="group___u_a_r_t___e_n_u_m_s___s_l2610.html#ga09711ac22550a85bf91ae00820dafe88">uart_instance_en</a> <span class="keywordtype">id</span> = <a class="code hl_enumvalue" href="group___u_a_r_t___e_n_u_m_s___s_l2610.html#gga09711ac22550a85bf91ae00820dafe88a9283de1a2e6eea552574a50ca586df8e">UART0</a>;</div>
 <div class="line">   </div>
 <div class="line"><span class="keywordflow">if</span> (<a class="code hl_function" href="group__group__uart__general__functions.html#ga876000bf6d28054f92c95ebf1021fcc3">uart_init</a>(<span class="keywordtype">id</span>) != <a class="code hl_enumvalue" href="group__group__uart__enums.html#gga43324d0dd5c80817b134aff1b104a0cba525187963c0aaa465f2a35b30b894d07">UART_OK</a>)</div>
 <div class="line">{</div>
@@ -181,7 +180,7 @@ uart_init</h3>
 <div class="line">}</div>
 </div><!-- fragment --><h3><a class="anchor" id="uart_deinit"></a>
 uart_deinit</h3>
-<p>Deinitializes the UART hardware and releases any resources held by the driver for the specified UART instance. </p><div class="fragment"><div class="line"><a class="code hl_enumeration" href="group___u_a_r_t___e_n_u_m_s.html#ga09711ac22550a85bf91ae00820dafe88">uart_instance_en</a> <span class="keywordtype">id</span> = <a class="code hl_enumvalue" href="group___u_a_r_t___e_n_u_m_s.html#gga09711ac22550a85bf91ae00820dafe88a9283de1a2e6eea552574a50ca586df8e">UART0</a>;</div>
+<p>Deinitializes the UART hardware and releases any resources held by the driver for the specified UART instance. </p><div class="fragment"><div class="line"><a class="code hl_enumeration" href="group___u_a_r_t___e_n_u_m_s___s_l2610.html#ga09711ac22550a85bf91ae00820dafe88">uart_instance_en</a> <span class="keywordtype">id</span> = <a class="code hl_enumvalue" href="group___u_a_r_t___e_n_u_m_s___s_l2610.html#gga09711ac22550a85bf91ae00820dafe88a9283de1a2e6eea552574a50ca586df8e">UART0</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordflow">if</span> (<a class="code hl_function" href="group__group__uart__general__functions.html#gac05a8ee93afce4989384444282e11a72">uart_deinit</a>(<span class="keywordtype">id</span>) != <a class="code hl_enumvalue" href="group__group__uart__enums.html#gga43324d0dd5c80817b134aff1b104a0cba525187963c0aaa465f2a35b30b894d07">UART_OK</a>)</div>
 <div class="line">{</div>
@@ -189,7 +188,7 @@ uart_deinit</h3>
 <div class="line">}</div>
 </div><!-- fragment --><h3><a class="anchor" id="uart_set_config"></a>
 uart_set_config</h3>
-<p>Sets the UART hardware configuration for the specified UART instance, including data bits, stop bits, parity, flow control, and baud rate. Programs the UART registers accordingly and returns the actual baud rate achieved. </p><div class="fragment"><div class="line"><a class="code hl_enumeration" href="group___u_a_r_t___e_n_u_m_s.html#ga09711ac22550a85bf91ae00820dafe88">uart_instance_en</a> <span class="keywordtype">id</span> = <a class="code hl_enumvalue" href="group___u_a_r_t___e_n_u_m_s.html#gga09711ac22550a85bf91ae00820dafe88a9283de1a2e6eea552574a50ca586df8e">UART0</a>;</div>
+<p>Sets the UART hardware configuration for the specified UART instance, including data bits, stop bits, parity, flow control, and baud rate. Programs the UART registers accordingly and returns the actual baud rate achieved. </p><div class="fragment"><div class="line"><a class="code hl_enumeration" href="group___u_a_r_t___e_n_u_m_s___s_l2610.html#ga09711ac22550a85bf91ae00820dafe88">uart_instance_en</a> <span class="keywordtype">id</span> = <a class="code hl_enumvalue" href="group___u_a_r_t___e_n_u_m_s___s_l2610.html#gga09711ac22550a85bf91ae00820dafe88a9283de1a2e6eea552574a50ca586df8e">UART0</a>;</div>
 <div class="line">    </div>
 <div class="line"><a class="code hl_struct" href="structuart__config__t.html">uart_config_t</a> config = {</div>
 <div class="line">    .baud_rate    = 230400,</div>

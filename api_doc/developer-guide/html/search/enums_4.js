@@ -1,9 +1,12 @@
 var searchData=
 [
-  ['pinmux_5fdrive_5fstr_5fen_0',['pinmux_drive_str_en',['../group__group__pinmux__enums.html#ga2ca58abac1b4a1a017b532d6d35ea823',1,'pinmux.h']]],
-  ['pinmux_5felec_5fparams_5fen_1',['pinmux_elec_params_en',['../group__group__pinmux__enums.html#gae56ffc10f306341223a4e3d07ef30053',1,'pinmux.h']]],
-  ['pinmux_5ffunctions_5fen_2',['pinmux_functions_en',['../group___p_i_n_m_u_x___e_n_u_m_s.html#ga540c1a3babf496a1b2cd8b7f12d204b2',1,'sr110.h']]],
-  ['pinmux_5fpin_5fname_5fen_3',['pinmux_pin_name_en',['../group___p_i_n_m_u_x___e_n_u_m_s.html#ga1e3f37e2bba6bf228285a8fe7c404040',1,'sr110.h']]],
-  ['pinmux_5fpull_5ftype_5fen_4',['pinmux_pull_type_en',['../group__group__pinmux__enums.html#gae4a719bf23f3c5891ab83d79d9d9891f',1,'pinmux.h']]],
-  ['pinmux_5fstatus_5fen_5',['pinmux_status_en',['../group__group__pinmux__enums.html#ga07b906ff707f271393de58bd3bb8e2ec',1,'pinmux.h']]]
+  ['i2c_5fevent_5fen_0',['i2c_event_en',['../group__group__i2c__enums.html#ga535fc726ccc82dfbb5fdb851449034f2',1,'i2c.h']]],
+  ['i2c_5finstance_5fen_1',['i2c_instance_en',['../group___i2_c___e_n_u_m_s___s_l2610.html#ga9ded102ddb09182140135eab907aac05',1,'i2c_instance_en:&#160;sl2610_cm52.h'],['../group___i2_c___e_n_u_m_s___s_r110.html#ga9ded102ddb09182140135eab907aac05',1,'i2c_instance_en:&#160;sr110_cm55.h']]],
+  ['i2c_5fmode_5fen_2',['i2c_mode_en',['../group__group__i2c__enums.html#ga534c689f2766a1751b4a10e06fcd5a31',1,'i2c.h']]],
+  ['i2c_5fspeed_5fen_3',['i2c_speed_en',['../group__group__i2c__enums.html#gabd2e2f94f77a40346fd9b1fe93a472af',1,'i2c.h']]],
+  ['i2c_5fstatus_5fen_4',['i2c_status_en',['../group__group__i2c__enums.html#ga6e3f0ba22df18c81e1d0962060940979',1,'i2c.h']]],
+  ['i2c_5ftransfer_5fdir_5fen_5',['i2c_transfer_dir_en',['../group__group__i2c__enums.html#ga50d85d1dbdc5fea16904537314484775',1,'i2c.h']]],
+  ['i2c_5ftransfer_5fstatus_5fen_6',['i2c_transfer_status_en',['../group__group__i2c__enums.html#gad206072bba601b1638ede00b17a25845',1,'i2c.h']]],
+  ['ipc_5finstance_5fen_7',['ipc_instance_en',['../group___i_p_c___e_n_u_m_s___s_l2610.html#ga3eeaff3afafb35ee00a137c01aeca169',1,'sl2610_cm52.h']]],
+  ['ipc_5fmailbox_5fen_8',['ipc_mailbox_en',['../group___i_p_c___e_n_u_m_s___s_l2610.html#ga78d6cd2b3ed73764051027c5a7ca4cb2',1,'sl2610_cm52.h']]]
 ];

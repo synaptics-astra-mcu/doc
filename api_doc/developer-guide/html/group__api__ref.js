@@ -7,5 +7,6 @@ var group__api__ref =
     [ "Pinmux", "group__group__pinmux__driver.html", "group__group__pinmux__driver" ],
     [ "SDIO", "group__group__sdio__driver.html", "group__group__sdio__driver" ],
     [ "SPI", "group__group__spi__driver.html", "group__group__spi__driver" ],
+    [ "SPWM", "group__group__spwm__driver.html", "group__group__spwm__driver" ],
     [ "UART", "group__group__uart__driver.html", "group__group__uart__driver" ]
 ];
