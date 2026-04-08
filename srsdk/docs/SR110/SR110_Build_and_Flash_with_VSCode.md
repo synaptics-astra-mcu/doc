@@ -33,9 +33,10 @@ You may also run each step one at a time if desired.
 The steps do not run until the **Run** button at the bottom of the view is pressed.
 
 ## Environment Setup
-1. Ensure the current working directory is the `<sdk-root>/examples` folder. Select this via the **Import Application/Example** view.
-2. Set the workspace `SRSDK_DIR` to `<sdk-root>` via the **Import SDK** view so the Build UI can detect the SDK.
-3. Open the **Build and Deploy** view in the Synaptics extension and set `Device` → `SR110`.
+1. Import the SDK root and set workspace `SRSDK_DIR` to `<sdk-root>` via the **Import SDK** view.
+2. Import the project you want to build via the **Import Project** view.
+3. Open **Build and Deploy** from the **Imported Projects** view and set `Device` -> `SR110`.
+4. If multiple projects are imported, select the correct project in the **Build and Deploy** project dropdown.
 
 ![Build and Deploy Window](../Assets/Images/media/Build_and_Deploy.png)
 
@@ -45,19 +46,30 @@ The steps do not run until the **Run** button at the bottom of the view is press
 **Purpose:** Generate .elf/.axf for SR110 firmware (cm55).
 
 **Steps:**
-1. Check the **Build Configurations** checkbox
-2. Select the desired **Build Mode**:
+1. Check the **Build Configurations** checkbox.
+2. If multiple projects are imported, select the correct project in the **Build and Deploy** project dropdown.
+3. Select the desired **Build Configuration**:
    - **Release** for flashing
    - **Debug** for GDB debugging
-3. Select the application from the **Application** dropdown.
-4. **Board Revision** is printed on the bottom of Astra Machina Micro.
+4. Select the target **Board** and **Board Revision**.
+   - **Board Revision** is printed on the bottom of Astra Machina Micro.
 5. Choose the desired **Compiler** and **Build Toolchain**.
-6. Enable the desired build and clean checkboxes
-- **Build (SDK + App)** builds and installs the SDK and builds the application. 
-- **Build App** builds the application only and relies on previously installed SDK.
+6. Select the application from the **Application** dropdown.
+7. Choose the appropriate build option:
+
+| Option | What it does | When to use it |
+| :--- | :--- | :--- |
+| **SDK Build (default_package)** | Generates the shared SDK foundation in `<sdk-root>/install`. | Use this first to prepare the common SDK package required by project builds. |
+| **Build (Project)** | Builds the active SR110 project using project-local artifacts. | Use this during normal development when you want a fresh build for the selected project. |
+| **Build (Use Pre-built SDK)** | Builds the active SR110 project against the common install root in `<sdk-root>/install`. | Use this to reuse an existing SDK package and avoid rebuilding shared components. |
+
+**Notes:**
+- If **Build Configurations** is disabled, verify that `SRSDK_DIR` is set correctly through the **Import SDK** view.
 
 **Result:**
-- .axf/.bin files are written to `out/sr110_<Build_Type>/<Build_Mode>/sr110_<Build_Type>.elf/.axf` for example out/sr110_cm55_fw/release/sr110_cm55_fw.elf. 
+- Build outputs are generated under the project's `out/sr110_<Build_Type>/<Build_Mode>/` directory.
+- Example output: `out/sr110_cm55_fw/release/sr110_cm55_fw.elf`
+- The executable extension depends on the selected compiler: `.elf` for GCC/LLVM and `.axf` for AC6.
 
 ![SR110 Build UI](../Assets/Images/media/VS_Build_Deploy.png)
 

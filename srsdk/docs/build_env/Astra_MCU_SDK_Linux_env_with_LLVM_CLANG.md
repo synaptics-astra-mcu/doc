@@ -101,16 +101,71 @@ source ~/.bashrc
 Note: LLVM builds require `GCC_TOOLCHAIN_ROOT` for the GCC sysroot and libstdc++.
 
 ## Install the LLVM Toolchain
+
+The SDK expects `LLVM_TOOLCHAIN_ROOT` to point to a directory that contains at least:
+- `clang`
+- `clang++`
+- `ld.lld`
+- `llvm-ar`
+- `llvm-ranlib`
+- `llvm-objcopy`
+
+### x86_64 hosts
 ```bash
 wget https://apt.llvm.org/llvm.sh
 chmod +x llvm.sh
 sudo ./llvm.sh 21
 sudo mkdir -p /opt/llvm/bin
-sudo ln -sf /usr/bin/clang-21 /opt/llvm/bin/clang
-sudo ln -sf /usr/bin/clang++-21 /opt/llvm/bin/clang++
+
+for tool in clang clang++ llvm-ar llvm-nm llvm-objcopy llvm-objdump llvm-ranlib llvm-readelf llvm-size llvm-strip llvm-addr2line lld ld.lld; do
+  sudo ln -sf "/usr/bin/${tool}-21" "/opt/llvm/bin/${tool}"
+done
+
 export PATH=/opt/llvm/bin:$PATH
 export LLVM_TOOLCHAIN_ROOT=/opt/llvm/bin
 ```
+
+### aarch64 / arm64 hosts
+
+On ARM Linux hosts, `apt.llvm.org` may not provide the required binaries. Use distro packages instead:
+
+```bash
+sudo apt-get update -y
+sudo apt-get install -y clang-21 lldb-21 lld-21 llvm-21
+sudo mkdir -p /opt/llvm/bin
+
+for tool in clang clang++ llvm-ar llvm-nm llvm-objcopy llvm-objdump llvm-ranlib llvm-readelf llvm-size llvm-strip llvm-addr2line lld ld.lld; do
+  sudo ln -sf "/usr/bin/${tool}-21" "/opt/llvm/bin/${tool}"
+done
+
+export PATH=/opt/llvm/bin:$PATH
+export LLVM_TOOLCHAIN_ROOT=/opt/llvm/bin
+```
+
+If versioned LLVM 21 packages are not available on your ARM distribution, install the default packages and update the symlinks accordingly:
+
+```bash
+sudo apt-get update -y
+sudo apt-get install -y clang lldb lld llvm
+sudo mkdir -p /opt/llvm/bin
+
+for tool in clang clang++ llvm-ar llvm-nm llvm-objcopy llvm-objdump llvm-ranlib llvm-readelf llvm-size llvm-strip llvm-addr2line lld ld.lld; do
+  sudo ln -sf "/usr/bin/${tool}" "/opt/llvm/bin/${tool}"
+done
+
+export PATH=/opt/llvm/bin:$PATH
+export LLVM_TOOLCHAIN_ROOT=/opt/llvm/bin
+```
+
+Verify the installation:
+
+```bash
+clang --version
+ld.lld --version
+llvm-ar --version
+llvm-objcopy --version
+```
+
 Make it permanent:
 ```bash
 echo 'export PATH=/opt/llvm/bin:$PATH' >> ~/.bashrc

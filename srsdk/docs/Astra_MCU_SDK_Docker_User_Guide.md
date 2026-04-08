@@ -55,9 +55,9 @@ export SRSDK_DIR=/workspace/srsdk
 ### GCC build (default)
 
 ```bash
-cd /workspace/srsdk/examples
-make cm55_demo_sample_app_defconfig BOARD=SR110_RDK BUILD=SRSDK
-make build BOARD=SR110_RDK
+cd /workspace/srsdk/examples/<example_type>/<app>
+export SRSDK_DIR=<sdk-root>
+make sr110_rdk_cm55_demo_sample_app_defconfig BUILD=SRSDK
 ```
 
 ### AC6 build (optional)
@@ -66,16 +66,16 @@ If AC6 was included during the image build, set the toolchain and build:
 
 ```bash
 export AC6_TOOLCHAIN_6_19_0=/opt/arm/ac6/bin
-cd /workspace/srsdk/examples
-make cm55_demo_sample_app_defconfig BOARD=SR110_RDK BUILD=SRSDK
-make build BOARD=SR110_RDK
+cd /workspace/srsdk/examples/<example_type>/<app>
+export SRSDK_DIR=<sdk-root>
+make sr110_rdk_cm55_demo_sample_app_defconfig BUILD=SRSDK
 ```
 
-If your examples are mounted separately, use `/workspace/examples` instead of `/workspace/srsdk/examples`.
+If your examples are mounted separately, use `/workspace/examples/<example_type>/<app>` instead of `/workspace/srsdk/examples/<example_type>/<app>`.
 
 Outputs:
-- GCC/LLVM: `examples/out/sr110_cm55_fw/release/sr110_cm55_fw.elf`
-- AC6: `examples/out/sr110_cm55_fw/release/sr110_cm55_fw.axf`
+- GCC/LLVM: `examples/<example_type>/<app>/out/sr110_cm55_fw/release/sr110_cm55_fw.elf`
+- AC6: `examples/<example_type>/<app>/out/sr110_cm55_fw/release/sr110_cm55_fw.axf`
 
 ## SR110 image generation (inside the container)
 
@@ -85,9 +85,9 @@ python srsdk_image_generator.py \
   -B0 \
   -flash_image \
   -sdk_secured \
-  -spk "/workspace/srsdk/tools/srsdk_image_generator/B0_Input_examples/spk_rc4_1_0_secure_otpk.bin" \
-  -apbl "/workspace/srsdk/tools/srsdk_image_generator/B0_Input_examples/sr100_b0_bootloader_ver_0x012F_ASIC.axf" \
-  -m55_image "/workspace/srsdk/examples/out/sr110_cm55_fw/release/sr110_cm55_fw.elf" \
+  -spk "/workspace/srsdk/tools/srsdk_image_generator/Inputs/spk_rc4_1_0_secure_otpk.bin" \
+  -apbl "/workspace/srsdk/tools/srsdk_image_generator/Inputs/sr100_b0_bootloader_ver_0x012F_ASIC.axf" \
+  -m55_image "/workspace/srsdk/examples/<example_type>/<app>/out/sr110_cm55_fw/release/sr110_cm55_fw.elf" \
   -flash_type "GD25LE128" \
   -flash_freq "67"
 ```
@@ -104,21 +104,27 @@ Output:
 Build the System Manager app, then run the SL2610 image pipeline:
 
 ```bash
-export SRSDK_DIR=/workspace/srsdk
-cd /workspace/srsdk/examples
-make sl2610_system_manager_rdk_defconfig BOARD=SL2610_RDK BUILD=SRSDK
-make build BOARD=SL2610_RDK
+export SRSDK_DIR=<sdk-root>
+cd /workspace/srsdk/examples/system_manager
+make sl2610_rdk_system_manager_defconfig BUILD=SRSDK
+
+# Build Bootloader
+cd <sdk-root>
+make sl2610_bootloader_rdk_defconfig BOARD=SL2610_RDK
+make astrasdk
+
+cd /workspace/srsdk/examples/system_manager
 make imagegen
 ```
 
 Outputs:
-- System Manager sub-image: `examples/out/image/intermediate/sysmgr.subimg`
-- Compressed images: `examples/out/image/eMMCimg/`
-- USB boot inputs: `examples/out/image/usb_boot/`
+- System Manager sub-image: `examples/<example_type>/<app>/out/image/eMMCimg/sysmgr.subimg.gz`
+- Compressed images: `examples/<example_type>/<app>/out/image/eMMCimg/`
+- USB boot inputs: `examples/<example_type>/<app>/out/image/usb_boot/`
 
 ## Copy outputs to the host
 
-Because the SDK is mounted into the container, all build artifacts already appear on the host under `<sdk-root>/examples/out/` and `<sdk-root>/tools/srsdk_image_generator/Output/`.
+Because the SDK is mounted into the container, all build artifacts already appear on the host under `<sdk-root>/examples/<example_type>/<app>/out/` and `<sdk-root>/tools/srsdk_image_generator/Output/`.
 
 ## Flashing and debugging
 
