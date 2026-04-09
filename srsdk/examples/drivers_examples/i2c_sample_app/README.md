@@ -9,18 +9,17 @@ What this sample does:
 - Runs transfer flows implemented for the selected board defconfig.
 - Verifies transferred bytes and prints match/mismatch results in logs.
 
-On `SR110_RDK`, the sample supports controller/target communication in both single-board and double-board setups, with blocking or non-blocking transfer modes and controller-transmit or target-transmit directions. On `SL2610_PEK`, the sample uses the board-specific implementation under `hw/SL2610_PEK/` for I2C controller-side validation.
+On `SR110_RDK`, the sample supports controller/target communication in both single-board and double-board setups, with blocking or non-blocking transfer modes and controller-transmit or target-transmit directions.
 
 The latest example structure uses a **common application source tree** with board-specific hardware setup kept under `hw/<BOARD>/`. For this app:
 - Common application sources such as `main.c`, `i2c_sample_app.c`, and `i2c_sample_app.h` stay in the app root.
 - Application defconfigs are stored under `configs/`.
-- Board and hardware-specific setup is selected from `hw/<BOARD>/`, for example `hw/SR110_RDK/` or `hw/SL2610_PEK/`.
+- Board and hardware-specific setup is selected from `hw/<BOARD>/`, for example `hw/SR110_RDK/`.
 
 The application can also be exported and built as a **standalone app repository**. In that flow, keep this app in its own directory, point `SRSDK_DIR` to the SDK root, and build from the app directory itself. For the full application workflow model, see [Astra MCU SDK User Guide](../../../docs/Astra_MCU_SDK_User_Guide.md).
 
 ## Supported Boards
 - `SR110_RDK`
-- `SL2610_PEK`
 
 Choose the defconfig that matches your target board, and the build system will pick the corresponding board-specific hardware setup from `hw/<BOARD>/`.
 
@@ -29,20 +28,27 @@ Choose the defconfig that matches your target board, and the build system will p
   - **CLI**: [Setup and Install SDK using CLI](../../../docs/Astra_MCU_SDK_Setup_and_Install_CLI.md)
   - **VS Code**: [Setup and Install SDK using VS Code](../../../docs/Astra_MCU_SDK_Setup_and_Install_VsCode.md)
 
-## Mode Configuration (Important)
+## Test Case Selection
 
-For the current example structure, configure the sample through the application defconfig and Kconfig flow. You do not need to edit `i2c_sample_app.h` to change the test mode.
+Before building, choose the testcase defconfig that matches your target board.
 
-For `SR110_RDK`, the main application mode controls are exposed under the application's Kconfig menu. If you need to change the sample behavior, apply the SR110 defconfig and then use `make menuconfig` from the application directory.
+You can:
+- Select the required defconfig directly from the application's `configs/` directory.
+- Run `make list_defconfigs` from the application directory to list all supported defconfigs.
 
-Key SR110 options include:
-- `APP_I2C_SINGLE_BOARD_MODE` / `APP_I2C_DOUBLE_BOARD_MODE`
-- `APP_I2C_CONTROLLER_MODE` / `APP_I2C_TARGET_MODE`
-- `APP_I2C_NON_BLOCKING_XFER` / `APP_I2C_BLOCKING_XFER`
-- `APP_I2C_CONTROLLER_TRANSMIT` / `APP_I2C_TARGET_TRANSMIT`
-- `APP_I2C_TARGET_ADDRESS`
+**Available defconfigs:**
+- `sr110_rdk_cm55_i2c_sample_app_double_board_blocking_controller_transmit_defconfig`
+- `sr110_rdk_cm55_i2c_sample_app_double_board_blocking_target_transmit_defconfig`
+- `sr110_rdk_cm55_i2c_sample_app_double_board_non_blocking_controller_transmit_defconfig`
+- `sr110_rdk_cm55_i2c_sample_app_double_board_non_blocking_target_transmit_defconfig`
+- `sr110_rdk_cm55_i2c_sample_app_single_board_blocking_controller_transmit_defconfig`
+- `sr110_rdk_cm55_i2c_sample_app_single_board_blocking_target_transmit_defconfig`
+- `sr110_rdk_cm55_i2c_sample_app_single_board_non_blocking_controller_transmit_defconfig`
+- `sr110_rdk_cm55_i2c_sample_app_single_board_non_blocking_target_transmit_defconfig`
 
-For `SL2610_PEK`, use the provided board defconfig and board-specific implementation under `hw/SL2610_PEK/`.
+
+For this app, the default defconfig is:
+   - `sr110_rdk_cm55_i2c_sample_app_single_board_non_blocking_controller_transmit_defconfig`
 
 ## Connections
 
@@ -182,8 +188,7 @@ Use the CLI flow described in the respective platform guide:
      - **Windows:** try the lower-numbered J14 COM port first.
      - **Linux/macOS:** try the higher-numbered J14 port first.
    - If you do not see logs after a reset, switch to the other J14 port.
-4. For `SL2610_PEK`, follow the SL2610 platform guide for the board bring-up and console workflow.
-5. Observe I2C configuration logs, transfer completion logs, and match/mismatch results.
+4. Observe I2C configuration logs, transfer completion logs, and match/mismatch results.
 
 ### SR110_RDK double-board run note
 - Build and flash controller-mode image to one board and target-mode image to the other board.

@@ -31,6 +31,18 @@ You can:
 - Select the required defconfig directly from the application's `configs/` directory.
 - Run `make list_defconfigs` from the application directory to list all supported defconfigs.
 
+**Available defconfigs:**
+- `sr110_rdk_cm55_person_segmentation_vga_img_proc_autorun_defconfig`
+- `sr110_rdk_cm55_person_segmentation_vga_img_proc_defconfig`
+- `sr110_rdk_cm55_person_segmentation_wqvga_img_proc_autorun_defconfig`
+- `sr110_rdk_cm55_person_segmentation_wqvga_img_proc_defconfig`
+- `sr110_rdk_cm55_person_segmentation_wqvga_lpsense_autorun_defconfig`
+- `sr110_rdk_cm55_person_segmentation_wqvga_lpsense_defconfig`
+
+
+For this app, the default defconfig is:
+   - `sr110_rdk_cm55_person_segmentation_wqvga_img_proc_defconfig`
+
 ## Building and Flashing the Example using VS Code and CLI
 
 Use the VS Code flow described in the SR110 guide and the VS Code Extension guide:

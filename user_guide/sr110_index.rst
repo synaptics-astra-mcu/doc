@@ -11,13 +11,16 @@ This section provides comprehensive user guides and demo applications for the SR
 .. toctree::
    :maxdepth: 1
 
+   ../srsdk/examples/sample_demo_app/README
    ../srsdk/examples/vision_examples/uc_person_classification/README
    ../srsdk/examples/vision_examples/uc_person_detection/README
    ../srsdk/examples/vision_examples/uc_person_segmentation/README
    ../srsdk/examples/vision_examples/uc_person_pose_detection/README
    ../srsdk/examples/vision_examples/uc_hand_gesture_detection/README
+   ../srsdk/examples/vision_examples/uc_fid_hgd/README
    ../srsdk/examples/vision_examples/uc_jpeg_preroll/README
    ../srsdk/examples/drivers_examples/bt_sample_app/bt_sample_readme
+   ../srsdk/examples/audio_examples/uc_audio_mic/README
    ../srsdk/examples/drivers_examples/clk_sample_app/README
    ../srsdk/examples/drivers_examples/dma_sample_app/README
    ../srsdk/examples/drivers_examples/fatfs_sample_app/README
@@ -39,6 +42,11 @@ This section provides comprehensive user guides and demo applications for the SR
    ../srsdk/examples/usb_examples/usb_cdc_tx_counter_sample_app/README
    ../srsdk/examples/usb_examples/usb_cdc_tx_sample_app/README
 
+**Sample Demo:**
+
+:doc:`../srsdk/examples/sample_demo_app/README`
+   **Sample Demo Application** - Demonstrates FreeRTOS task-creation and scheduling reference for SR110.
+
 **AI Vision Demos:**
 
 :doc:`../srsdk/examples/vision_examples/uc_person_classification/README`
@@ -55,6 +63,14 @@ This section provides comprehensive user guides and demo applications for the SR
 
 :doc:`../srsdk/examples/vision_examples/uc_hand_gesture_detection/README`
    **Hand Guesture Detection Demo** - A complete guide for hand guesture detection applications, perform real-time gesture recognition with hand detection, single hand tracking and hand-key point estimation.
+
+:doc:`../srsdk/examples/vision_examples/uc_fid_hgd/README`
+   **Face Identification with Hand Gesture Detection Demo** - A complete guide for face identification + hand gesture detection applications, perform real-time face identification + gesture recognition with hand detection, single hand tracking and hand-key point estimation.
+
+**Audio Example:**
+
+:doc:`../srsdk/examples/audio_examples/uc_audio_mic/README`
+   **Audio MIC Application demo** - Demonstrates routing microphone audio to the I2S interface and LP_Sense memory to validate cross-interface data compatibility
 
 **Data Transfer & Communication:**
 

@@ -1,0 +1,27 @@
+var group__group__dma__functions =
+[
+    [ "dma_init", "group__group__dma__functions.html#ga79793663d8244cc058d72bfbaea62d13", null ],
+    [ "dma_deinit", "group__group__dma__functions.html#ga1b19ea0a249ad6e4fea3270409a5f914", null ],
+    [ "dma_channel_request", "group__group__dma__functions.html#ga8b4d443374608af62f7dcfef140a5659", null ],
+    [ "dma_request_specific_channel", "group__group__dma__functions.html#gaf8e6e75c9d8289d95451dca941c70bb9", null ],
+    [ "dma_free_channel", "group__group__dma__functions.html#ga933419c9ef381e31fe2e4022719a6231", null ],
+    [ "dma_prepare_transfer", "group__group__dma__functions.html#ga0105656029ea04c868f52ffd254a41be", null ],
+    [ "dma_start_transfer", "group__group__dma__functions.html#ga96f8cf34556ca1bc9f3d92a5737bd712", null ],
+    [ "dma_sw_trig_config", "group__group__dma__functions.html#gaecbdcdd475c3c8d613bd69bc4838d3c2", null ],
+    [ "dma_sw_trig", "group__group__dma__functions.html#ga121fe66129e8922c7b0ff64d74071921", null ],
+    [ "dma_get_status", "group__group__dma__functions.html#ga4d5db6d6183c9a74aa1cd6cca3668311", null ],
+    [ "dma_clear_status", "group__group__dma__functions.html#gaae81b887ac58f690816f3fc1ba787d31", null ],
+    [ "dma_enable_ints", "group__group__dma__functions.html#gac585bdbceeea4ea5a16039e9ccd83623", null ],
+    [ "dma_disable_ints", "group__group__dma__functions.html#gaa911b1327061909223517000a3e885d1", null ],
+    [ "dma_get_error", "group__group__dma__functions.html#gaedb066de9da47ac0750cfb28ad5a9948", null ],
+    [ "dma_pause_transfer", "group__group__dma__functions.html#gaf9d09a14333bc290121873481d752322", null ],
+    [ "dma_resume_transfer", "group__group__dma__functions.html#ga7cf39a7b34e92ed24f52050224096ab8", null ],
+    [ "dma_stop_transfer", "group__group__dma__functions.html#gab7c03d8dcf325e9ff7c0b0045709ac01", null ],
+    [ "dma_abort_transfer", "group__group__dma__functions.html#ga527cfdee63e27f065fc9d93d06ea5917", null ],
+    [ "dma_get_remaining_bytes", "group__group__dma__functions.html#gae84c95fadcf37de43ede5a81ec618f38", null ],
+    [ "dma_channel_is_active", "group__group__dma__functions.html#gafa778cb8df2adabecbb7acc3bb9751ac", null ],
+    [ "dma_create_descriptor", "group__group__dma__functions.html#ga005de4c314cdaf0a7e94f3f96720dbc7", null ],
+    [ "dma_link_descriptors", "group__group__dma__functions.html#ga1dc63c887019f95810cb090bfabf5143", null ],
+    [ "dma_start_descriptor_chain", "group__group__dma__functions.html#ga47088e24cd7862f7b0575d818e9b21c0", null ],
+    [ "dma_free_descriptor", "group__group__dma__functions.html#ga5b9a13fc106855ab97904fb57426fcb3", null ]
+];

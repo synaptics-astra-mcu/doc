@@ -35,6 +35,10 @@ You can:
 - Select the required defconfig directly from the application's `configs/` directory.
 - Run `make list_defconfigs` from the application directory to list all supported defconfigs.
 
+**Available defconfigs:**
+- `sr110_rdk_cm55_hand_gesture_detection_defconfig`
+
+
 ## Building and Flashing the Example using VS Code and CLI
 
 Use the VS Code flow described in the SR110 guide and the VS Code Extension guide:
@@ -173,7 +177,7 @@ The following hand gestures are supported:
 | Two | Two fingers raised. |
 | Three | Three fingers raised. |
 | Four | Four fingers raised. |
-| Five | Open palm with five fingers raised. |
+| Palm | Open palm with five fingers raised. |
 | Fist | Closed fist with fingers folded inward. |
 | Thumbs Up | Thumb raised upward with other fingers folded. |
 | Thumbs Down | Thumb pointed downward with other fingers folded. |
@@ -197,9 +201,9 @@ The following hand gestures are supported:
 
 ![Gesture four](assets/hgd_four.png)
 
-**Gesture five**
+**Gesture palm**
 
-![Gesture five](assets/hgd_five.png)
+![Gesture palm](assets/hgd_palm.png)
 
 **Gesture fist**
 

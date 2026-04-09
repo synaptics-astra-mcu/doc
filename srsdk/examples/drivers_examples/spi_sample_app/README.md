@@ -45,6 +45,15 @@ You can:
 - Select the required defconfig directly from the application's `configs/` directory.
 - Run `make list_defconfigs` from the application directory to list all supported defconfigs.
 
+**Available defconfigs:**
+- `sr110_rdk_cm55_spi_sample_app_double_board_controller_defconfig`
+- `sr110_rdk_cm55_spi_sample_app_double_board_peripheral_defconfig`
+- `sr110_rdk_cm55_spi_sample_app_preroll_controller_defconfig`
+- `sr110_rdk_cm55_spi_sample_app_single_board_defconfig`
+
+For this app, the default defconfig is:
+   - `sr110_rdk_cm55_spi_sample_app_single_board_defconfig`
+
 ## Mode Configuration (Important)
 
 Update `spi_sample_app.h` before build.

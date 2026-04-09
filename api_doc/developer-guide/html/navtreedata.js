@@ -25,20 +25,22 @@
 var NAVTREE =
 [
   [ "Astra MCU SDK Peripheral Driver Library", "index.html", [
-    [ "Peripherals", "topics.html", "topics" ]
-  ] ]
+    [ "Peripheral", "group__peripherals.html", "group__peripherals" ]
+  ] ],
+  [ "Astra MCU SDK Hardware Identifiers", "group__soc__docs.html", "group__soc__docs" ]
 ];
 
 var NAVTREEINDEX =
 [
 "group___c_l_k___e_n_u_m_s___s_r110.html",
-"group___p_i_n_m_u_x___e_n_u_m_s___s_r110.html#gga1e3f37e2bba6bf228285a8fe7c404040a7397624e31a862639a420553a0e13a22",
-"group__group__dma__functions.html#gae84c95fadcf37de43ede5a81ec618f38",
-"group__group__sdio__enums.html#gga68911d68372fc1387314ef24cc124623a8933ce9c1e8d1255a1f41e9e5b577a9a",
-"group__group__spwm__enums.html#gga06e71f82c0f067d80815eb56c7f0c759abd7615eafc1456b7d69e7b1678246a09",
-"group__group__uart__enums.html#gga43324d0dd5c80817b134aff1b104a0cba6bd09c71cfa2fa2ef6af798f1e0f81e8",
-"structspi__config.html#a55c3ea5e604d521cfd48f2e1fd54261a"
+"group___p_i_n_m_u_x___e_n_u_m_s___s_r110.html#gga1e3f37e2bba6bf228285a8fe7c404040a7e47fec535a51bb86d7a5640b6c9abd9",
+"group__group__dma__functions.html#gab7c03d8dcf325e9ff7c0b0045709ac01",
+"group__group__pinmux__general__functions.html",
+"group__group__spi__enums.html#gga29285fa13b417d0ef5bbeedbcee7dc38a1fd30298376f59f8d15c375c329ab243",
+"group__group__spwm__functions.html#ga32b1bf864c3ee1309ac7329e944168f1",
+"structgpio__pin__config__t.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';
 var SYNCOFFMSG = 'click to enable panel synchronization';
+var LISTOFALLMEMBERS = 'List of all members';

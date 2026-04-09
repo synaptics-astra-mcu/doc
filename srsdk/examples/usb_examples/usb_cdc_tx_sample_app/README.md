@@ -52,6 +52,10 @@ You can:
 - Select the required defconfig directly from the application's `configs/` directory.
 - Run `make list_defconfigs` from the application directory to list all supported defconfigs.
 
+**Available defconfigs:**
+- `sr110_rdk_cm55_usb_cdc_tx_sample_app_defconfig`
+
+
 ## Building and Flashing the Example using VS Code
 
 Use the VS Code flow described in the SR110 guide and the VS Code Extension guide:
@@ -75,12 +79,19 @@ Use the CLI flow described in the SR110 guide:
 - [SR110 Build and Flash with CLI](../../../docs/SR110/SR110_Build_and_Flash_with_CLI.md)
 
 **Build (CLI):**
-1. From `<sdk-root>/examples`, build the example:
+1. Build from the application directory itself:
    ```bash
-   cd <sdk-root>/examples
+   cd <sdk-root>/examples/usb_examples/usb_cdc_tx_sample_app
    export SRSDK_DIR=<sdk-root>
-   make sr110_rdk_cm55_usb_cdc_tx_sample_app_defconfig BOARD=SR110_RDK BUILD=SRSDK
+   make <app_defconfig> BUILD=SRSDK
    ```
+2. For faster rebuilds when only app code changes, reuse the app-local installed SDK package:
+   ```bash
+   cd <sdk-root>/examples/usb_examples/usb_cdc_tx_sample_app
+   export SRSDK_DIR=<sdk-root>
+   make build
+   ```
+3. If this app has been exported to its own repository, use the same commands from that exported app directory after setting `SRSDK_DIR` to the SDK root.
 
 **Flash (CLI):**
 1. Activate the SDK venv (required for image generation tools):
@@ -97,8 +108,8 @@ Use the CLI flow described in the SR110 guide:
      -B0 \
      -flash_image \
      -sdk_secured \
-     -spk "<sdk-root>/tools/srsdk_image_generator/B0_Input_examples/spk_rc4_1_0_secure_otpk.bin" \
-     -apbl "<sdk-root>/tools/srsdk_image_generator/B0_Input_examples/sr100_b0_bootloader_ver_0x012F_ASIC.axf" \
+     -spk "<sdk-root>/tools/srsdk_image_generator/Inputs/spk_rc4_1_0_secure_otpk.bin" \
+     -apbl "<sdk-root>/tools/srsdk_image_generator/Inputs/sr100_b0_bootloader_ver_0x012F_ASIC.axf" \
      -m55_image "<sdk-root>/examples/<example_type>/<app>/out/sr110_cm55_fw/release/sr110_cm55_fw.elf" \
      -flash_type "GD25LE128" \
      -flash_freq "67"

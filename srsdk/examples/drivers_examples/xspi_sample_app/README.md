@@ -43,6 +43,15 @@ You can:
 - Select the required defconfig directly from the application's `configs/` directory.
 - Run `make list_defconfigs` from the application directory to list all supported defconfigs.
 
+**Available defconfigs:**
+- `sl2610_rdk_cm52_xspi_sample_app_defconfig`
+- `sr110_rdk_cm55_xspi_sample_app_defconfig`
+
+
+For this app, the default defconfig is:
+   - SR110_RDK: `sr110_rdk_cm55_xspi_sample_app_defconfig`
+   - SL2610_RDK: `sl2610_rdk_cm52_xspi_sample_app_defconfig`
+
 ## Building and Flashing the Example using VS Code
 
 Use the VS Code flow described in the respective soc vscode guides and the VS Code Extension guide:

@@ -7,5 +7,7 @@ var group___c_m52___s_l2610 =
     [ "XSPI", "group___x_s_p_i___s_l2610.html", "group___x_s_p_i___s_l2610" ],
     [ "DMA", "group___d_m_a___s_l2610.html", "group___d_m_a___s_l2610" ],
     [ "EMMC", "group___e_m_m_c___s_l2610.html", "group___e_m_m_c___s_l2610" ],
-    [ "IPC", "group___i_p_c___s_l2610.html", "group___i_p_c___s_l2610" ]
+    [ "SPWM", "group___s_p_w_m___s_l2610.html", "group___s_p_w_m___s_l2610" ],
+    [ "IPC", "group___i_p_c___s_l2610.html", "group___i_p_c___s_l2610" ],
+    [ "I2S", "group___i2_s___s_l2610.html", "group___i2_s___s_l2610" ]
 ];

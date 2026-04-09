@@ -48,6 +48,10 @@ You can:
 - Select the required defconfig directly from the application's `configs/` directory.
 - Run `make list_defconfigs` from the application directory to list all supported defconfigs.
 
+**Available defconfigs:**
+- `sr110_rdk_cm55_bt_sample_app_defconfig`
+
+
 ## Memory Configuration (Important)
 
 Before building BT sample app, increase heap size for Bluetooth stack.

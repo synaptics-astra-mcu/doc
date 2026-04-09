@@ -45,6 +45,9 @@ You can:
 - `sl2610_rdk_cm52_i2s_sample_app_dual_rx_defconfig`: Dual-board RX node image.
 - `sl2610_rdk_cm52_i2s_sample_app_dual_rx_replay_defconfig`: Dual-board RX capture with TX replay.
 
+For this app, the default defconfig is:
+   - `sl2610_rdk_cm52_i2s_sample_app_single_board_loopback_defconfig`
+
 ## Building and Flashing the Example using VS Code
 
 Use the VS Code flow described in the respective soc vscode guides and the VS Code Extension guide:

@@ -47,6 +47,14 @@ You can:
 - Select the required defconfig directly from the application's `configs/` directory.
 - Run `make list_defconfigs` from the application directory to list all supported defconfigs.
 
+**Available defconfigs:**
+- `sr110_rdk_cm55_uart_sample_app_flow_control_client_defconfig`
+- `sr110_rdk_cm55_uart_sample_app_flow_control_host_defconfig`
+- `sr110_rdk_cm55_uart_sample_app_tx_rx_defconfig`
+
+For this app, the default defconfig is:
+   - `sr110_rdk_cm55_uart_sample_app_tx_rx_defconfig`
+
 ## UART Connections (UART Bridge)
 
 ### UART0 for sample TX/RX

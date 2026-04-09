@@ -23,7 +23,6 @@ The application can also be exported and built as a **standalone app repository*
 ## Supported Boards
 
 This application supports:
-- `SL2610_PEK`
 - `SL2610_RDK`
 
 Select the defconfig that matches your target board, and the build system will pick the corresponding board-specific hardware setup from `hw/<BOARD>/`.
@@ -40,6 +39,13 @@ Before building, choose the testcase defconfig that matches your target board.
 You can:
 - Select the required defconfig directly from the application's `configs/` directory.
 - Run `make list_defconfigs` from the application directory to list all supported defconfigs.
+
+**Available defconfigs:**
+- `sl2610_rdk_cm52_i2c_exp_app_defconfig`
+
+
+For this app, the default defconfig is:
+   - `sl2610_rdk_cm52_i2c_exp_app_defconfig`
 
 ## Building and Flashing the Example using VS Code
 

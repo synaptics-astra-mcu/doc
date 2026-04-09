@@ -31,6 +31,10 @@ You can:
 - Select the required defconfig directly from the application's `configs/` directory.
 - Run `make list_defconfigs` from the application directory to list all supported defconfigs.
 
+**Available defconfigs:**
+- `sr110_rdk_cm55_inference_basic_flash_sample_app_defconfig`
+
+
 ## Building and Flashing the Example using VS Code
 
 Use the VS Code flow described in the SR110 guide and the VS Code Extension guide:

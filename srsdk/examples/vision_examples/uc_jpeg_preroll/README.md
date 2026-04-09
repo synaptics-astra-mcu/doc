@@ -31,6 +31,17 @@ You can:
 - Select the required defconfig directly from the application's `configs/` directory.
 - Run `make list_defconfigs` from the application directory to list all supported defconfigs.
 
+**Available defconfigs:**
+- `sr110_rdk_cm55_doorbell_gpio_wakeup_defconfig`
+- `sr110_rdk_cm55_doorbell_spi_preroll_defconfig`
+- `sr110_rdk_cm55_doorbell_timer_wakeup_defconfig`
+- `sr110_rdk_cm55_serial_camera_door_bell_gpio_wakeup_defconfig`
+- `sr110_rdk_cm55_serial_camera_door_bell_timer_wakeup_defconfig`
+
+
+For this app, the default defconfig is:
+   - `sr110_rdk_cm55_doorbell_timer_wakeup_defconfig`
+
 ## Building and Flashing the Example using VS Code and CLI
 
 Use the VS Code flow described in the SR110 guide and the VS Code Extension guide:

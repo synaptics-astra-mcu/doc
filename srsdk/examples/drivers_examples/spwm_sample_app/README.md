@@ -24,7 +24,6 @@ The application can also be exported and built as a **standalone app repository*
 ## Supported Boards
 
 This application supports:
-- `SL2610_PEK`
 - `SL2610_RDK`
 
 Select the defconfig that matches your target board and the desired SPWM mode, and the build system will pick the corresponding board-specific hardware setup from `hw/<BOARD>/`.
@@ -41,6 +40,17 @@ Before building, choose the testcase defconfig that matches both your target boa
 You can:
 - Select the required defconfig directly from the application's `configs/` directory.
 - Run `make list_defconfigs` from the application directory to list all supported defconfigs.
+
+**Available defconfigs:**
+- `sl2610_rdk_cm52_spwm_capture_mode_defconfig`
+- `sl2610_rdk_cm52_spwm_pwm_deadtime_mode_defconfig`
+- `sl2610_rdk_cm52_spwm_pwm_desc_mode_defconfig`
+- `sl2610_rdk_cm52_spwm_pwm_mode_defconfig`
+- `sl2610_rdk_cm52_spwm_pwm_pseudo_random_mode_defconfig`
+- `sl2610_rdk_cm52_spwm_timer_mode_defconfig`
+
+For this app, the default defconfig is:
+   - `sl2610_rdk_cm52_spwm_timer_mode_defconfig`
 
 ## Building and Flashing the Example using VS Code
 

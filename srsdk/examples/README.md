@@ -80,7 +80,7 @@ Each example typically contains:
 ### Configuration Files (defconfigs)
 
 Application defconfigs define:
-- **Board selection** (for example `CONFIG_BOARD="sr110_rdk"` or `CONFIG_BOARD="sl2610_pek"`)
+- **Board selection** (for example `CONFIG_BOARD="sr110_rdk"`)
 - **Compiler choice** (GCC, AC6, or LLVM where supported)
 - **Build type** (`cm55_fw`, `cm52_fw`, and other app target types as applicable)
 - **Enabled SDK modules**
