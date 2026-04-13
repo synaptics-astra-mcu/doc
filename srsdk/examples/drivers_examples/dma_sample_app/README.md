@@ -74,8 +74,15 @@ Use the VS Code flow described in the respective soc vscode guides and the VS Co
 4. Build with **Build (SDK + App)** for the first build, or **Build App** for rebuilds.
 
 **Flash (VS Code):**
-1. Use **Image Conversion** to generate the flash image.
-2. Use **Image Flashing** (SWD/JTAG) to flash the firmware image.
+1. For `SR110`:
+   - Use **Image Conversion** to generate the flash image.
+   - Use **Image Flashing** with **SWD/JTAG** to flash the firmware image.
+2. For `SL2610`:
+   - Use the SL2610 image-generation flow to generate the required sub-image.
+   - Open **Image Flashing (SL2610)**.
+   - Select **Flash Target** as **M52 Image**.
+   - In **Image Path**, browse to and select the generated sub-image file, such as `sysmgr.subimg.gz`.
+   - Start the flashing operation to program the image to the target.
 
 ---
 
@@ -125,7 +132,7 @@ Use the CLI flow described in the respective build guide:
      -sdk_secured \
      -spk "<sdk-root>/tools/srsdk_image_generator/Inputs/spk_rc4_1_0_secure_otpk.bin" \
      -apbl "<sdk-root>/tools/srsdk_image_generator/Inputs/sr100_b0_bootloader_ver_0x012F_ASIC.axf" \
-     -m55_image "<sdk-root>/examples/<example_type>/<app>/out/sr110_cm55_fw/release/sr110_cm55_fw.elf" \
+     -m55_image "<sdk-root>/examples/driver_examples/dma_sample_app/out/sr110_cm55_fw/release/sr110_cm55_fw.elf" \
      -flash_type "GD25LE128" \
      -flash_freq "67"
    ```
@@ -174,6 +181,8 @@ Use the CLI flow described in the respective build guide:
 
 **Expected Logs**
 
+**SR110**
+
 ```
 SR100.Logger	warning	1769080093.215686	LOGR	0	M55	00:06:31:469:271	Changing logger interface to LOGGER_IF_UART_1
 SR100.Logger	info	1769080093.215686	SYS 	0	M55	00:00:00:000:023	System initialization complete without errors.
@@ -198,4 +207,32 @@ SR100.Logger	info	1769080093.278704	DMA 	0	M55	00:00:00:072:726	Transfer complet
 SR100.Logger	info	1769080093.30992	DMA 	0	M55	00:00:00:077:705	SW-triggered DMA transfer successful!
 SR100.Logger	info	1769080093.310964	DMA 	0	M55	00:00:00:080:833	All DMA transfers successful.
 SR100.Logger	info	1769080093.31193	DMA 	0	M55	00:00:00:083:578	DMA Sample Application Completed.
+```
+
+**SL2610**
+
+```
+BL: MCU Init...
+Init DDR4 @ 3200
+DHL:v0p40 PT:v0p40 ID:0x21010000
+USB MOUNTED
+0000000000:[0][INF][SYS ]:System initialization complete without errors.
+0000000000:[0][INF][SYS ]:sl2610 SDK version 1.3.0
+0000000000:[0][INF][DMA ]:Starting DMA Sample Application...
+0000000005:[0][INF][DMA ]:Running 1D DMA Transfer Test...
+0000000010:[0][INF][DMA ]:Channel 0 allocated successfully.
+0000000015:[0][INF][DMA ]:[DMA] Preparing 1D transfer: 64 elements from 0x300020a0 to 0x30001fa0
+0000000024:[0][INF][DMA ]:Transfer Paused.
+0000000028:[0][INF][DMA ]:Transfer resumed.
+0000000032:[0][INF][DMA ]:[DMA] 1D transfer successful: 64 elements verified
+0000000039:[0][INF][DMA ]:Running Linked DMA Transfer Test...
+0000000044:[0][INF][DMA ]:Transfer Paused.
+0000000048:[0][INF][DMA ]:Transfer resumed.
+0000000052:[0][INF][DMA ]:Linked transfers verified successfully.
+0000000058:[0][INF][DMA ]:Running SW-Triggered DMA Transfer Test...
+0000000064:[0][INF][DMA ]:Channel 0 allocated successfully.
+0000000069:[0][INF][DMA ]:Final status = 0x10000
+0000000074:[0][INF][DMA ]:Transfer completed. Verifying data...
+0000000079:[0][INF][DMA ]:SW-triggered DMA transfer successful!
+0000000085:[0][INF][DMA ]:DMA Sample Application Completed.
 ```

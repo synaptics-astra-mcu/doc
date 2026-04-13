@@ -109,7 +109,7 @@ Use the CLI flow described in the SR110 guide:
      -sdk_secured \
      -spk "<sdk-root>/tools/srsdk_image_generator/Inputs/spk_rc4_1_0_secure_otpk.bin" \
      -apbl "<sdk-root>/tools/srsdk_image_generator/Inputs/sr100_b0_bootloader_ver_0x012F_ASIC.axf" \
-     -m55_image "<sdk-root>/examples/<example_type>/<app>/out/sr110_cm55_fw/release/sr110_cm55_fw.elf" \
+     -m55_image "<sdk-root>/examples/usb_examples/usb_cdc_image_downloader_sample_app/out/sr110_cm55_fw/release/sr110_cm55_fw.elf" \
      -flash_type "GD25LE128" \
      -flash_freq "67"
    ```
@@ -173,6 +173,82 @@ Use the CLI flow described in the SR110 guide:
    - This upload/download image cycle repeats continuously while the USB CDC connection remains active.
    
    ![Running USB CDC Image Downloader SAmple App](assets/vs_image_downloader_app.png)
+
+## Expected Logs
+
+```
+0000000179:[0][INF][SYS ]:Application drivers initialization complete without errors.
+0000004360:[0][INF][SYS ]:M52:: Build Date 01-04-2026 Time 16:51:54 Commit unknown
+0000008410:[0][INF][SYS ]:------------------------------------------
+0000011777:[0][INF][SYS ]:            Hello  ASTRA
+0000015144:[0][INF][SYS ]:------------------------------------------
+0000018510:[0][INF][SYS ]:System initialization done
+0000021111:[0][INF][SYS ]:sr110 SDK version 1.3.0
+0000023602:[0][INF][USB ]:USB device unmounted
+0000025934:[0][DBG][HAPI]:------------------------------------------
+0000029297:[0][DBG][HAPI]:       Host API Router task
+0000032663:[0][DBG][HAPI]:------------------------------------------
+0000036021:[0][INF][HAPI]:Active interface is USB
+0000038481:[0][INF][USB ]:Usb CDC Image Downloader Test Task Enter
+0000041754:[0][INF][GENR]:Usecase manager service started.
+0000044643:[0][DBG][HAPI]:A new service was registered, service ID: 6.
+0000364968:[0][INF][USB ]:USB device mounted
+0009045978:[0][INF][USB ]:Starting Image Download window
+0009707546:[0][INF][USB ]:IMAGE Start Pattern found. Res [320x320], Type=0x0101
+0009708011:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 512 bytes
+0009708100:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 1024 bytes
+0009708194:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 1536 bytes
+0009708274:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 2048 bytes
+0009708334:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 2560 bytes
+0009708393:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 3072 bytes
+0009708453:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 3584 bytes
+0009708513:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 4096 bytes
+0009708573:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 4608 bytes
+0009708632:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 5120 bytes
+0009708692:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 5632 bytes
+0009708752:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 6144 bytes
+0009708812:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 6656 bytes
+0009708871:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 7168 bytes
+0009792926:[0][INF][USB ]:Starting Image Download window
+0011792083:[0][INF][USB ]:Aborting, Received 0 bytes
+0011793091:[0][INF][USB ]:Starting Image Download window
+0013533286:[0][INF][USB ]:IMAGE Start Pattern found. Res [320x320], Type=0x0101
+0013533631:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 512 bytes
+0013533703:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 1024 bytes
+0013533792:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 1536 bytes
+0013533886:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 2048 bytes
+0013533917:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 2560 bytes
+0013534027:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 3072 bytes
+0013534087:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 3584 bytes
+0013534146:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 4096 bytes
+0013534207:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 4608 bytes
+0013534266:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 5120 bytes
+0013534326:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 5632 bytes
+0013534374:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 6144 bytes
+0013534450:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 6656 bytes
+0013534510:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 7168 bytes
+0034253266:[0][INF][USB ]:Starting Image Download window
+0034253331:[0][INF][USB ]:IMAGE Start Pattern found. Res [320x320], Type=0x0101
+0034253395:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 512 bytes
+0034253425:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 1006 bytes
+0035253059:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 1006 bytes
+0035467001:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 1024 bytes
+0035467337:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 1536 bytes
+0035467397:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 2048 bytes
+0035467487:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 2560 bytes
+0035467592:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 3072 bytes
+0035467652:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 3584 bytes
+0035467714:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 4096 bytes
+0035467774:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 4608 bytes
+0035467833:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 5120 bytes
+0035467893:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 5632 bytes
+0035467953:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 6144 bytes
+0035468012:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 6656 bytes
+0035468073:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 7168 bytes
+0035468132:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 7680 bytes
+0035468192:[0][INF][USB ]:IMAGE_DOWNLOAD_IN_PROCESS. Received 8192 bytes
+*** Disconnected from /dev/ttyACM1 ***
+```
 
 ## Features of Python Script
 

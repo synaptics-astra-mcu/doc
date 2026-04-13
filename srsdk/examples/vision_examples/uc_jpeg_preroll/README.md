@@ -91,9 +91,21 @@ The build process will produce the necessary .elf or .axf files for deployment w
    ```
 2. Generate flash image:
    ```bash
+   cd <sdk-root>/tools/srsdk_image_generator
+   python srsdk_image_generator.py \
+     -B0 \
+     -flash_image \
+     -sdk_secured \
+     -spk "<sdk-root>/tools/srsdk_image_generator/Inputs/spk_rc4_1_0_secure_otpk.bin" \
+     -apbl "<sdk-root>/tools/srsdk_image_generator/Inputs/sr100_b0_bootloader_ver_0x012F_ASIC.axf" \
+     -m55_image "<sdk-root>/examples/vision_examples/uc_jpeg_preroll/out/sr110_cm55_fw/release/sr110_cm55_fw.elf" \
+     -flash_type "GD25LE128" \
+     -flash_freq "67"
+   ```
+3. Flash the firmware image:
+   ```bash
    cd <sdk-root>
-   python tools/srsdk_image_generator/srsdk_image_generator.py \
-     --axf <path-to-doorbell.axf> \
+   python tools/openocd/scripts/flash_xspi_tcl.py \
      --cfg_path tools/openocd/configs/sr110_m55.cfg \
      --image tools/srsdk_image_generator/Output/B0_Flash/B0_flash_full_image_GD25LE128_67Mhz_secured.bin \
      --erase-all
@@ -115,7 +127,9 @@ The build process will produce the necessary .elf or .axf files for deployment w
      - **Linux/macOS:** try the higher-numbered J14 port first.
    - If you do not see logs after a reset, switch to the other J14 port.
 3. Doorbell application automatically connects to Video Streamer upon reset.
-4. On person detection, video streamer opens with the captured frame and preroll context images.
+4. On person detection, video streamer opens with the captured frame and preroll context images saved to `video_stream_output/overlayed_frames`.
+
+   ![Video Streamer Window](assets/doorbell_streamer.png)
 
 ## Adapting Pipeline for Custom Object Detection Models
 
@@ -132,7 +146,7 @@ Before adapting this pipeline for another object detection model, you must verif
 #### 2. Vela Compiler Compatibility Check
 
 **Step 1: Analyze Original Model**
-1. Load your `object_detection_model.tflite` file in [Netron](https://netron.app/)
+1. Load your `door_bell_flash(384x512).tflite` file in [Netron](https://netron.app/)
 2. Document the output tensors:
    - Tensor names
    - Tensor identifiers/indexes
@@ -167,7 +181,7 @@ If the Vela compilation changes:
 
 ### Code Modifications
 
-If your model's output tensor indexes change after Vela compilation, you need to update the tensor parameter assignments in `uc_person_detection.c`:
+If your model's output tensor indexes change after Vela compilation, you need to update the tensor parameter assignments in `uc_jpeg_preroll.c`:
 
 #### Location: `detection_post_process` function
 

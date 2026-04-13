@@ -1,29 +1,30 @@
-# I2C Expander Sample Application
+# I2C Bus Scanner Sample Application
 
 ## Description
 
-The I2C Expander sample application demonstrates I2C communication and GPIO control through I2C expanders on the supported boards for this application. It performs continuous GPIO toggling on I2C expander pins to verify reliable I2C communication and GPIO expansion functionality.
+The I2C Bus Scanner sample application demonstrates I2C bus scanning and device detection on the supported boards for this application. It performs comprehensive I2C address scanning to identify all connected devices and verify reliable I2C communication functionality.
 
 The sample includes multiple I2C operations:
-- **I2C initialization:** Initialize I2C interface and configure communication with expander devices.
-- **Expander detection:** Support for multiple I2C expander types (FXL6408, TCA6416A).
-- **GPIO configuration:** Configure GPIO pins on the expander for output operations.
-- **Continuous toggling:** Toggle GPIO pin 5 between high (1) and low (0) states with configurable delay.
-- **Multi-device support:** Control multiple I2C expanders simultaneously if configured.
+- **I2C controller initialization:** Initialize I2C interface and configure communication parameters.
+- **Pinmux configuration:** Configure I2C pins for the selected instance (I2C0, I2C1, I2C2).
+- **Controller configuration:** Set up I2C speed, addressing mode, and timeout parameters.
+- **Address scanning:** Systematically scan all valid 7-bit addresses (0x08 to 0x77) to detect connected devices.
+- **Device detection:** Use write probes to identify responsive I2C devices on the bus.
+- **Results reporting:** Log detected devices with their addresses and scan statistics.
 
-During each run, the app logs I2C initialization, expander detection, GPIO state changes, and operation results. This makes it easy for end users to confirm that I2C setup and GPIO expansion are working as expected.
+During each run, the app logs initialization status, configuration parameters, scan progress, detected devices, and completion status. This makes it easy for end users to confirm that I2C setup and device detection are working as expected.
 
 The latest example structure uses a **common application source tree** with board-specific hardware setup kept under `hw/<BOARD>/`. For this app:
-- Common application sources such as `main.c`, `i2c_exp_app.c`, and `i2c_exp_app.h` stay in the app root.
+- Common application sources such as `main.c`, `i2c_scan_sample_app.c`, and `i2c_scan_sample_app.h` stay in the app root.
 - Application defconfigs are stored under `configs/`.
-- Board and hardware-specific setup is selected from `hw/<BOARD>/`, for example `hw/SL2610_RDK/`.
+- Board and hardware-specific setup is selected from `hw/<BOARD>/`, for example `hw/SL2610_PEK/`.
 
 The application can also be exported and built as a **standalone app repository**. In that flow, keep this app in its own directory, point `SRSDK_DIR` to the SDK root, and build from the app directory itself. For the full application workflow model, see [Astra MCU SDK User Guide](../../../docs/Astra_MCU_SDK_User_Guide.md).
 
 ## Supported Boards
 
 This application supports:
-- `SL2610_RDK`
+- `SL2610_PEK`
 
 Select the defconfig that matches your target board, and the build system will pick the corresponding board-specific hardware setup from `hw/<BOARD>/`.
 
@@ -41,11 +42,8 @@ You can:
 - Run `make list_defconfigs` from the application directory to list all supported defconfigs.
 
 **Available defconfigs:**
-- `sl2610_rdk_cm52_i2c_exp_app_defconfig`
+- `sl2610_pek_cm52_i2c_scan_app_defconfig`
 
-
-For this app, the default defconfig is:
-   - `sl2610_rdk_cm52_i2c_exp_app_defconfig`
 
 ## Building and Flashing the Example using VS Code
 
@@ -55,7 +53,7 @@ Use the VS Code flow described in the respective soc vscode guides and the VS Co
 
 **Build (VS Code):**
 1. Open **Build and Deploy** -> **Build Configurations**.
-2. Select **i2c_exp_app** in the **Application** dropdown.
+2. Select **i2c_scan_sample_app** in the **Application** dropdown.
 3. Build with **Build (SDK + App)** for the first build, or **Build App** for rebuilds.
 
 **Flash (VS Code):**
@@ -76,13 +74,13 @@ Use the CLI flow described in the respective build guide:
 **Build (CLI):**
 1. Build from the application directory itself:
    ```bash
-   cd <sdk-root>/examples/driver_examples/i2c_exp_app
+   cd <sdk-root>/examples/driver_examples/i2c_scan_sample_app
    export SRSDK_DIR=<sdk-root>
    make <app_defconfig> BUILD=SRSDK
    ```
 2. For faster rebuilds when only app code changes, reuse the app-local installed SDK package:
    ```bash
-   cd <sdk-root>/examples/driver_examples/i2c_exp_app
+   cd <sdk-root>/examples/driver_examples/i2c_scan_sample_app
    export SRSDK_DIR=<sdk-root>
    make build
    ```
@@ -106,7 +104,7 @@ Use the CLI flow described in the respective build guide:
 
 2. Generate the system sub-image.
    ```
-   cd <sdk-root>/examples/driver_examples/i2c_exp_app
+   cd <sdk-root>/examples/driver_examples/i2c_scan_sample_app
    export SRSDK_DIR=<sdk-root>
    make imagegen
    ```
@@ -126,34 +124,4 @@ Use the CLI flow described in the respective build guide:
      - **Windows:** try the lower-numbered J14 COM port first.
      - **Linux/macOS:** try the higher-numbered J14 port first.
    - If you do not see logs after a reset, switch to the other J14 port.
-3. I2C expander logs appear in the logger window, including GPIO toggle status and I2C communication results.
-
-**Expected Logs**
-
-```
-Init DDR4 @ 3200
-DHL:v0p40 PT:v0p40 ID:0x21010000
-USB MOUNTED
-0000000000:[0][WRN][LOGR]:Changing logger interface to LOGGER_IF_UART_0
-0000000000:[0][INF][SYS ]:M52:: Build Date 22-01-2026 Time 10:59:39 Commit unknown
-0000000000:[0][INF][GENR]:I2C Expander GPIO Toggle Task Started
-0000000005:[0][INF][GENR]:Controlling FXL6408 pin 5
-0000000010:[0][INF][GENR]:FXL6408 pin 5 set to 0
-0000001015:[0][INF][GENR]:FXL6408 pin 5 set to 1
-0000002019:[0][INF][GENR]:FXL6408 pin 5 set to 0
-0000003023:[0][INF][GENR]:FXL6408 pin 5 set to 1
-0000004027:[0][INF][GENR]:FXL6408 pin 5 set to 0
-0000005031:[0][INF][GENR]:FXL6408 pin 5 set to 1
-0000006035:[0][INF][GENR]:FXL6408 pin 5 set to 0
-0000007039:[0][INF][GENR]:FXL6408 pin 5 set to 1
-0000008043:[0][INF][GENR]:FXL6408 pin 5 set to 0
-0000009047:[0][INF][GENR]:FXL6408 pin 5 set to 1
-0000010051:[0][INF][GENR]:FXL6408 pin 5 set to 0
-0000011055:[0][INF][GENR]:FXL6408 pin 5 set to 1
-0000012059:[0][INF][GENR]:FXL6408 pin 5 set to 0
-0000013063:[0][INF][GENR]:FXL6408 pin 5 set to 1
-0000014067:[0][INF][GENR]:FXL6408 pin 5 set to 0
-0000015071:[0][INF][GENR]:FXL6408 pin 5 set to 1
-0000016075:[0][INF][GENR]:FXL6408 pin 5 set to 0
-
-```
+3. I2C scan logs appear in the logger window, including scan progress and detected devices.

@@ -60,8 +60,8 @@ Connect I2C source pins to I2C target pins on the same board.
 - `GPIO_16 (I2C_SDA) -> GPIO_45 (I2C_SDA)`
 
 **RevC and RevE:**
-- `GPIO42 (I2C_SCL) -> GPIO_44 (I2C_SCL)`
-- `GPIO43 (I2C_SDA) -> GPIO_45 (I2C_SDA)`
+- `GPIO42 (I2C_SCL) -> GPIO_45 (I2C_SCL)`
+- `GPIO43 (I2C_SDA) -> GPIO_44 (I2C_SDA)`
 
 ### SR110_RDK double-board wiring
 Connect between two boards:

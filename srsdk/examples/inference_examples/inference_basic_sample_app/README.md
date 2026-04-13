@@ -35,7 +35,7 @@ You can:
 - `sr110_rdk_cm55_inference_basic_sample_app_defconfig`
 
 
-## Building and Flashing the Example using VS Code and CLI
+## Building and Flashing the Example using VS Code
 
 Use the VS Code flow described in the SR110 guide and the VS Code Extension guide:
 - [SR110 Build and Flash with VS Code](../../../docs/SR110/SR110_Build_and_Flash_with_VSCode.md)
@@ -47,6 +47,30 @@ Use the VS Code flow described in the SR110 guide and the VS Code Extension guid
 3. Build with **Build (SDK + App)** for the first build, or **Build App** for rebuilds.
 
 ![Build Configurations](assets/image_1.png)
+
+**Flash and Image Generation (VS Code):**
+1. Open the Astra MCU SDK VS Code Extension and connect to the Debug IC USB port on the Astra Machina Micro Kit.
+   - Refer to the [Astra MCU SDK User Guide](../../../docs/Astra_MCU_SDK_User_Guide.md) for detailed setup steps.
+2. Generate firmware binaries using **Build and Deploy** -> **Image Conversion**.
+   - Select the required `.axf` or `.elf` file. If the use case is built using the VS Code extension, the file path will be auto-populated.
+
+![Binary Conversion](assets/image_2.png)
+
+3. Flash the application using **Build and Deploy** -> **Image Flashing**.
+   - Select **SWD/JTAG** as the interface.
+   - Choose the respective image bins and click **Run**.
+
+![Image Flashing](assets/image_3.png)
+
+> Note: This sample runs models from SRAM, so separate model binary conversion/flashing is not required.
+
+---
+
+## Building and Flashing the Example using CLI
+
+Use the CLI flow described in the respective build guide:
+- [SR110 Build and Flash with CLI](../../../docs/SR110/SR110_Build_and_Flash_with_CLI.md)
+- [Astra MCU SDK User Guide](../../../docs/Astra_MCU_SDK_User_Guide.md)
 
 **Build (CLI):**
 1. Build from the application directory itself:
@@ -63,19 +87,39 @@ Use the VS Code flow described in the SR110 guide and the VS Code Extension guid
    ```
 3. If this app has been exported to its own repository, use the same commands from that exported app directory after setting `SRSDK_DIR` to the SDK root.
 
-**Flash and Image Generation (VS Code):**
-1. Open the Astra MCU SDK VS Code Extension and connect to the Debug IC USB port on the Astra Machina Micro Kit.
-   - Refer to the [Astra MCU SDK User Guide](../../../docs/Astra_MCU_SDK_User_Guide.md) for detailed setup steps.
-2. Generate firmware binaries using **Build and Deploy** -> **Image Conversion**.
-   - Select the required `.axf` or `.elf` file. If the use case is built using the VS Code extension, the file path will be auto-populated.
+**Build outputs (CLI):**
+- Application binary: `<app-dir>/out/<target>/release/<target>.elf`
+- App-local SDK package: `<app-dir>/install/<BOARD>/<BUILD_TYPE>/`
 
-![Binary Conversion](assets/image_2.png)
-
-3. Flash the application using **Build and Deploy** -> **Image Flashing**.
-   - Select **SWD/JTAG** as the interface.
-   - Choose the respective image bins and click **Run**.
-
-![Image Flashing](assets/image_3.png)
+**Flash (CLI):**
+1. Activate the SDK venv (required for image generation tools):
+   ```bash
+   # Linux/macOS
+   source <sdk-root>/.venv/bin/activate
+   # Windows PowerShell
+   .\.venv\Scripts\Activate.ps1
+   ```
+2. Generate the flash image:
+   ```bash
+   cd <sdk-root>/tools/srsdk_image_generator
+   python srsdk_image_generator.py \
+     -B0 \
+     -flash_image \
+     -sdk_secured \
+     -spk "<sdk-root>/tools/srsdk_image_generator/Inputs/spk_rc4_1_0_secure_otpk.bin" \
+     -apbl "<sdk-root>/tools/srsdk_image_generator/Inputs/sr100_b0_bootloader_ver_0x012F_ASIC.axf" \
+     -m55_image "<sdk-root>/examples/inference_examples/inference_basic_sample_app/out/sr110_cm55_fw/release/sr110_cm55_fw.elf" \
+     -flash_type "GD25LE128" \
+     -flash_freq "67"
+   ```
+3. Flash the firmware image:
+   ```bash
+   cd <sdk-root>
+   python tools/openocd/scripts/flash_xspi_tcl.py \
+     --cfg_path tools/openocd/configs/sr110_m55.cfg \
+     --image tools/srsdk_image_generator/Output/B0_Flash/B0_flash_full_image_GD25LE128_67Mhz_secured.bin \
+     --erase-all
+   ```
 
 > Note: This sample runs models from SRAM, so separate model binary conversion/flashing is not required.
 

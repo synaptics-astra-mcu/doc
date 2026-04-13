@@ -64,13 +64,13 @@ The steps do not run until the **Run** button at the bottom of the view is press
 **Result:**
 - Build outputs are generated under the project's `out/sl2610_cm52_fw/release/` directory, for example `out/sl2610_cm52_fw/release/sl2610_cm52_fw.elf`.
 
-![SL2610 Build UI](../Assets/Images/media/vs_build_sl2610.png)
+![SL2610 Build UI](assets/vs_build_sl2610.png)
 
 ## Image Generation (SL2610)
 
 **Purpose:** Convert MCU executables (.elf) into System Manager sub-images.
 
-![SL2610 Image Generator](../Assets/Images/media/vs_image_gen_sl2610.png)
+![SL2610 Image Generator](assets/vs_image_gen_sl2610.png)
 
 **Bootloader prerequisite:**
 Before generating an SL2610 image, build the `SL2610_RDK` bootloader once from the imported SDK folder in VS Code:
@@ -126,7 +126,7 @@ Choose the target as **M52 Image** or **Full Image** in the **Flash Target** dro
 - Use **Browse** to select a custom sysmgr sub-image, typically found at `out/image/eMMCimg/sysmgr.subimg.gz`
 - **Note** this will be automatically populated after image generation. 
 
-![SL2610 Image Flashing - M52](../Assets/Images/media/vs_image_flash_sl2610.png)
+![SL2610 Image Flashing - M52](assets/vs_image_flash_sl2610.png)
 
 **Full Image requirements:**
 - Provide the eMMC folder path that contains `emmc_part_list` and `emmc_image_list`. The extension uses these files to determine partitions and image order for flashing.

@@ -38,7 +38,7 @@ The steps do not run until the **Run** button at the bottom of the view is press
 3. Open **Build and Deploy** from the **Imported Projects** view and set `Device` -> `SR110`.
 4. If multiple projects are imported, select the correct project in the **Build and Deploy** project dropdown.
 
-![Build and Deploy Window](../Assets/Images/media/Build_and_Deploy.png)
+![Build and Deploy Window](assets/Build_and_Deploy.png)
 
 ## Build Configurations (SR110)
 <a id="build-configurations-sr110"></a>
@@ -71,7 +71,7 @@ The steps do not run until the **Run** button at the bottom of the view is press
 - Example output: `out/sr110_cm55_fw/release/sr110_cm55_fw.elf`
 - The executable extension depends on the selected compiler: `.elf` for GCC/LLVM and `.axf` for AC6.
 
-![SR110 Build UI](../Assets/Images/media/VS_Build_Deploy.png)
+![SR110 Build UI](assets/VS_Build_Deploy.png)
 
 ## Image Conversion (SR110)
 
@@ -91,7 +91,7 @@ The steps do not run until the **Run** button at the bottom of the view is press
 **Result:**
 - Converted binaries are written under `out/bin_files/Output/B0_Flash/B0_flash_full_image_GD25LE128_67Mhz_secured.bin`
 
-![SR110 Image Conversion](../Assets/Images/media/VS_Image_Conv.png)
+![SR110 Image Conversion](assets/VS_Image_Conv.png)
 
 ## Image Flashing (SR110)
 
@@ -116,7 +116,7 @@ The Debug IC on the Astra Machina Micro is a CMSIS-DAP device. There is an SWD c
 **Model binaries (vision examples):**
 If your application includes a model `.bin`, flash it using the **Model Binary** option and the offset specified by the example README (often `0x629000` for VGA use cases)
 
-![SR110 Image Flashing](../Assets/Images/media/VS_Flash.png)
+![SR110 Image Flashing](assets/VS_Flash.png)
 
 #### FW mode (UART/CDC)
 This is the device firmware update (DFU) mechanism. For this method to work an image with the Host API and FW Update enabled must be running on the SR110. By default the communication protocol is USB CDC. This USB CDC enumerates on J13 of the Astra Machina Micro. 
@@ -178,14 +178,14 @@ Some vision examples stream image data over USB CDC. On Windows, install the cor
 2. Run `zadig-2.8.exe`.
 3. From **Options**, select **List All Devices**.
 
-   ![Zadig - List All Devices](../Assets/Images/media/image10.png)
+   ![Zadig - List All Devices](assets/image10.png)
 
 4. In the device dropdown, select **SR 100-B0 CDC 1**.
 
-   ![Zadig - Device Selection](../Assets/Images/media/image11.jpeg)
+   ![Zadig - Device Selection](assets/image11.jpeg)
 
 5. Choose **WinUSB** as the driver and click **Replace Driver**.
 
-   ![Zadig - Replace Driver](../Assets/Images/media/image12.png)
+   ![Zadig - Replace Driver](assets/image12.png)
 
 6. Reconnect the board and verify streaming in your example.

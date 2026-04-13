@@ -6,10 +6,32 @@ The Serial Camera Doorbell sample application uses the K351 serial camera sensor
 
 It detects a person in the field of view and, on detection, automatically sends 9 JPEG preroll images to provide context before the event. The JPEG preroll images are saved in the `overlayed_frames` subfolder inside `video_stream_output` (for example, `C:\Users\<username>\video_stream_output` or `/home/<user>/video_stream_output`).
 
+## Supported Boards
+
+This application supports:
+- `SR110_RDK`
+
+Select the defconfig that matches your target board, and the build system will pick the corresponding board-specific hardware setup from `hw/<BOARD>/`.
+
 ## Prerequisites
 - Choose **one** setup path:
   - **CLI**: [Setup and Install SDK using CLI](../../../docs/Astra_MCU_SDK_Setup_and_Install_CLI.md)
   - **VS Code**: [Setup and Install SDK using VS Code](../../../docs/Astra_MCU_SDK_Setup_and_Install_VsCode.md)
+
+## Test Case Selection
+
+Before building, choose the testcase defconfig that matches both your target board and the transfer mode you want to validate.
+
+You can:
+- Select the required defconfig directly from the application's `configs/` directory.
+- Run `make list_defconfigs` from the application directory to list all supported defconfigs.
+
+**Available defconfigs:**
+- `sr110_rdk_cm55_serial_camera_door_bell_gpio_wakeup_defconfig`
+- `sr110_rdk_cm55_serial_camera_door_bell_timer_wakeup_defconfig`
+
+For this app, the default defconfig is:
+   - `sr110_rdk_cm55_serial_camera_door_bell_timer_wakeup_defconfig`
 
 ## Building and Flashing the Example using VS Code and CLI
 
@@ -65,15 +87,28 @@ The build process will produce the necessary .elf or .axf files for deployment w
    ```
 2. Generate flash image:
    ```bash
+   cd <sdk-root>/tools/srsdk_image_generator
+   python srsdk_image_generator.py \
+     -B0 \
+     -flash_image \
+     -sdk_secured \
+     -spk "<sdk-root>/tools/srsdk_image_generator/Inputs/spk_rc4_1_0_secure_otpk.bin" \
+     -apbl "<sdk-root>/tools/srsdk_image_generator/Inputs/sr100_b0_bootloader_ver_0x012F_ASIC.axf" \
+     -m55_image "<sdk-root>/examples/vision_examples/uc_jpeg_preroll/out/sr110_cm55_fw/release/sr110_cm55_fw.elf" \
+     -flash_type "GD25LE128" \
+     -flash_freq "67"
+   ```
+3. Flash the firmware image:
+   ```bash
    cd <sdk-root>
-   python tools/srsdk_image_generator/srsdk_image_generator.py \
-     --axf <path-to-serial_camera_door_bell.axf> \
+   python tools/openocd/scripts/flash_xspi_tcl.py \
      --cfg_path tools/openocd/configs/sr110_m55.cfg \
      --image tools/srsdk_image_generator/Output/B0_Flash/B0_flash_full_image_GD25LE128_67Mhz_secured.bin \
      --erase-all
    ```
-3. Flash model binary:
+4. Flash model binary:
    ```bash
+   cd <sdk-root>
    python tools/openocd/scripts/flash_xspi_tcl.py \
      --cfg_path tools/openocd/configs/sr110_m55.cfg \
      --image <path-to-door_bell_flash(384x512).bin> \
@@ -97,6 +132,8 @@ The build process will produce the necessary .elf or .axf files for deployment w
    - If you do not see logs after a reset, switch to the other J14 port.
 3. Serial camera doorbell application automatically connects to Video Streamer upon reset.
 4. On person detection, video streamer opens with the captured frame and preroll context images saved to `video_stream_output/overlayed_frames`.
+
+   ![Video Streamer window](assets/serial_doorbell.png)
 
 ## Wakeup Triggers
 

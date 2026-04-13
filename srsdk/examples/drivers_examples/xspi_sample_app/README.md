@@ -66,8 +66,15 @@ Use the VS Code flow described in the respective soc vscode guides and the VS Co
 4. Build with **Build (SDK + App)** for the first build, or **Build App** for rebuilds.
 
 **Flash (VS Code):**
-1. Use **Image Conversion** to generate the flash image.
-2. Use **Image Flashing** (SWD/JTAG) to flash the firmware image.
+1. For `SR110`:
+   - Use **Image Conversion** to generate the flash image.
+   - Use **Image Flashing** with **SWD/JTAG** to flash the firmware image.
+2. For `SL2610`:
+   - Use the SL2610 image-generation flow to generate the required sub-image.
+   - Open **Image Flashing (SL2610)**.
+   - Select **Flash Target** as **M52 Image**.
+   - In **Image Path**, browse to and select the generated sub-image file, such as `sysmgr.subimg.gz`.
+   - Start the flashing operation to program the image to the target.
 
 ---
 
@@ -166,6 +173,8 @@ Use the CLI flow described in the respective build guide:
 
 **Expected Logs**
 
+**SR110**
+
 ```
 0391470066:[0][WRN][LOGR]:Changing logger interface to LOGGER_IF_UART_1
 0000000023:[0][INF][SYS ]:Application drivers initialization complete without errors.
@@ -205,4 +214,50 @@ Use the CLI flow described in the respective build guide:
 0000161715:[0][INF][FLSH]:Read/Write Throughput Test Passed.
 0000164702:[0][INF][FLSH]:All Flash Tests Completed Successfully.
 0000167954:[0][INF][FLSH]:XSPI Sample Application Completed Successfully.
+```
+
+**SL2610**
+
+```
+BL: MCU Init...
+Init DDR4 @ 3200
+DHL:v0p40 PT:v0p40 ID:0x21010000
+USB MOUNTED
+0000000000:[0][INF][SYS ]:Application drivers initialization complete without errors.
+0000000000:[0][INF][SYS ]:------------------------------------------
+0000000000:[0][INF][SYS ]:            Hello  ASTRA
+0000000000:[0][INF][SYS ]:------------------------------------------
+0000000000:[0][INF][SYS ]:System initialization done
+0000000000:[0][INF][SYS ]:sl2610 SDK version 1.3.0
+0000000000:[0][INF][FLSH]:Starting XSPI Sample Application...
+0000000005:[0][INF][FLSH]:Starting Flash Initialization Test...
+0000000011:[0][DBG][FLSH]:JEDEC ID: 0x1860C8
+0000000015:[0][INF][FLSH]:[FLASH] Init successful
+0000000019:[0][INF][FLSH]:Flash Initialization Test Passed.
+0000000025:[0][INF][FLSH]:Starting Read Device ID Test...
+0000000030:[0][DBG][FLSH]:JEDEC ID: 0x101860C8
+0000000034:[0][INF][FLSH]:[FLASH] JEDEC ID: 0x1860C8 (MFG=0xC8)
+0000000040:[0][INF][FLSH]:Read Device ID Test Passed.
+0000000045:[0][INF][FLSH]:Starting Read/Write Throughput Test...
+0000000051:[0][INF][FLSH]:Flash RW throughput test started
+0000000056:[0][INF][FLSH]:Testing throughput: IO=1-bit, Mode=SDR
+0000000062:[0][INF][FLSH]:[FLASH] RW throughput test (IO=1-bit, Mode=SDR)
+0000000068:[0][DBG][FLSH]:Configuring XSPI instance 0 for DIRECT mode with IO=1, DTR=0
+0000000076:[0][DBG][FLSH]:flash_erase: addr=0x0, len=0x200
+0000000114:[0][INF][FLSH]:[FLASH] Write: 512 bytes in 4 ms
+0000000120:[0][INF][FLSH]:[FLASH] Read : 512 bytes in 1 ms
+0000000125:[0][INF][FLSH]:[FLASH] RW throughput test passed
+0000000130:[0][INF][FLSH]:Throughput test PASSED: IO=1-bit, Mode=SDR
+0000000136:[0][INF][FLSH]:Testing throughput: IO=4-bit, Mode=SDR
+0000000142:[0][INF][FLSH]:[FLASH] RW throughput test (IO=4-bit, Mode=SDR)
+0000000149:[0][DBG][FLSH]:Configuring XSPI instance 0 for DIRECT mode with IO=4, DTR=0
+0000000156:[0][DBG][FLSH]:flash_erase: addr=0x0, len=0x200
+0000000195:[0][INF][FLSH]:[FLASH] Write: 512 bytes in 4 ms
+0000000201:[0][INF][FLSH]:[FLASH] Read : 512 bytes in 0 ms
+0000000206:[0][INF][FLSH]:[FLASH] RW throughput test passed
+0000000212:[0][INF][FLSH]:Throughput test PASSED: IO=4-bit, Mode=SDR
+0000000218:[0][INF][FLSH]:Flash RW throughput test completed, final status=0
+0000000225:[0][INF][FLSH]:Read/Write Throughput Test Passed.
+0000000230:[0][INF][FLSH]:All Flash Tests Completed Successfully.
+0000000236:[0][INF][FLSH]:XSPI Sample Application Completed Successfully.
 ```

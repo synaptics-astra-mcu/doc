@@ -65,19 +65,22 @@ Observe logs on the UART0 console unless you intentionally change the logger con
 
 ## Connections
 
-### UART0 console wiring
+### UART0 logging wiring (UART bridge)
 
-Connect a UART bridge to the board's UART0 pins according to the `SL2610_RDK` board revision:
+**REV-A**
 
-**RDK Rev A**
-- `GPIO17` -> UART0 TX
-- `GPIO31` -> UART0 RX
-- `GND` -> UART bridge GND
+Connect UART bridge:
+- `UART TX -> G8`
+- `UART RX -> G28`
+- `GND -> G6`
 
-**RDK Rev B**
-- `GPIO8` -> UART0 TX
-- `GPIO7` -> UART0 RX
-- `GND` -> UART bridge GND
+
+**REV-B**
+
+Connect UART bridge:
+- `UART TX -> G8`
+- `UART RX -> G10`
+- `GND -> G6`
 
 ## Building and Flashing the Example using VS Code
 
@@ -93,8 +96,11 @@ Use the VS Code flow described in the respective platform guide and the VS Code 
 5. Build with **Build (SDK + App)** for the first build, or **Build App** for rebuilds.
 
 **Flash (VS Code):**
-1. Use **Image Conversion** to generate the flash image.
-2. Use **Image Flashing** (SWD/JTAG) to flash the firmware image.
+1. Use the SL2610 image-generation flow to generate the required sub-image.
+2. Open **Image Flashing (SL2610)**.
+3. Select **Flash Target** as **M52 Image**.
+4. In **Image Path**, browse to and select the generated sub-image file, such as `sysmgr.subimg.gz`.
+5. Start the flashing operation to program the image to the target.
 
 ---
 

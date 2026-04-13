@@ -172,7 +172,7 @@ Use the CLI flow described in the respective build guide:
      -sdk_secured \
      -spk "<sdk-root>/tools/srsdk_image_generator/Inputs/spk_rc4_1_0_secure_otpk.bin" \
      -apbl "<sdk-root>/tools/srsdk_image_generator/Inputs/sr100_b0_bootloader_ver_0x012F_ASIC.axf" \
-     -m55_image "<sdk-root>/examples/<example_type>/<app>/out/sr110_cm55_fw/release/sr110_cm55_fw.elf" \
+     -m55_image "<sdk-root>/examples/driver_examples/spi_sample_app/out/sr110_cm55_fw/release/sr110_cm55_fw.elf" \
      -flash_type "GD25LE128" \
      -flash_freq "67"
    ```

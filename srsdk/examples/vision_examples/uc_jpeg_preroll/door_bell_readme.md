@@ -11,6 +11,13 @@ Captured images can be delivered in two modes:
 | USB CDC (to Host PC) | Sends images via USB CDC to a host PC. | VS Code Extension |
 | SPI to Controller | Sends images over SPI to another Astra Machina Micro acting as controller and receives frames for validation/logging. | Logger |
 
+## Supported Boards
+
+This application supports:
+- `SR110_RDK`
+
+Select the defconfig that matches your target board, and the build system will pick the corresponding board-specific hardware setup from `hw/<BOARD>/`.
+
 ## Prerequisites
 
 - Choose **one** setup path:
@@ -24,6 +31,13 @@ Before building, choose the testcase defconfig that matches both your target boa
 You can:
 - Select the required defconfig directly from the application's `configs/` directory.
 - Run `make list_defconfigs` from the application directory to list all supported defconfigs.
+
+**Available defconfigs:**
+- `sr110_rdk_cm55_doorbell_gpio_wakeup_defconfig`
+- `sr110_rdk_cm55_doorbell_timer_wakeup_defconfig`
+
+For this app, the default defconfig is:
+   - `sr110_rdk_cm55_doorbell_timer_wakeup_defconfig`
 
 ## Building and Flashing the Example using VS Code and CLI
 
@@ -81,9 +95,21 @@ The build process will produce the necessary .elf or .axf files for deployment w
    ```
 2. Generate flash image:
    ```bash
+   cd <sdk-root>/tools/srsdk_image_generator
+   python srsdk_image_generator.py \
+     -B0 \
+     -flash_image \
+     -sdk_secured \
+     -spk "<sdk-root>/tools/srsdk_image_generator/Inputs/spk_rc4_1_0_secure_otpk.bin" \
+     -apbl "<sdk-root>/tools/srsdk_image_generator/Inputs/sr100_b0_bootloader_ver_0x012F_ASIC.axf" \
+     -m55_image "<sdk-root>/examples/vision_examples/uc_jpeg_preroll/out/sr110_cm55_fw/release/sr110_cm55_fw.elf" \
+     -flash_type "GD25LE128" \
+     -flash_freq "67"
+   ```
+3. Flash the firmware image:
+   ```bash
    cd <sdk-root>
-   python tools/srsdk_image_generator/srsdk_image_generator.py \
-     --axf <path-to-doorbell.axf> \
+   python tools/openocd/scripts/flash_xspi_tcl.py \
      --cfg_path tools/openocd/configs/sr110_m55.cfg \
      --image tools/srsdk_image_generator/Output/B0_Flash/B0_flash_full_image_GD25LE128_67Mhz_secured.bin \
      --erase-all
@@ -245,7 +271,7 @@ If the Vela compilation changes:
 
 ### Code Modifications
 
-If your model's output tensor indexes change after Vela compilation, you need to update the tensor parameter assignments in `uc_person_detection.c`:
+If your model's output tensor indexes change after Vela compilation, you need to update the tensor parameter assignments in `uc_jpeg_preroll.c`:
 
 #### Location: `detection_post_process` function
 

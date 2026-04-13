@@ -87,17 +87,12 @@ Use the VS Code flow described in the SL2610 guides and VS Code Extension guide:
 - App-local SDK package: `<app-dir>/install/<BOARD>/<BUILD_TYPE>/`
 
 **Flash/Image Generation (VS Code):**
-1. Build the SL2610 bootloader image.
-2. Generate output binaries (equivalent of `make imagegen`) and collect:
-   - `sl2610_bootloader_extras.bin`
-   - `sl2610_bootloader_output.bin`
-   - `sl2610_cm52_fw_extras.bin`
-   - `sl2610_cm52_fw_output.bin`
-3. Copy generated binaries to VSSDK.
-4. Generate the system sub-image in VSSDK.
-   - Refer: [SL2610 Platform Guide - Image Generation](../../docs/SL2610/SL2610_Platform_Guide.md#image-generation-2)
-5. Flash/download the MCU image to target.
-   - Refer: [SL2610 Platform Guide - Image Flashing](../../docs/SL2610/SL2610_Platform_Guide.md#image-flashing)
+1. Build the SL2610 bootloader image and generate the required output binaries.
+2. Use the SL2610 image-generation flow in the VS Code extension to create the required sub-image.
+3. Open **Image Flashing (SL2610)**.
+4. Select **Flash Target** as **M52 Image**.
+5. In **Image Path**, browse to and select the generated sub-image file, such as `sysmgr.subimg.gz`.
+6. Start the flashing operation to program the image to the target.
 
 **Flash/Image Generation (CLI):**
 > **Note:** SL2610 image generation is not supported on native Windows.

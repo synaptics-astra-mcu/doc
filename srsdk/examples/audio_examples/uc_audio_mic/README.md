@@ -84,12 +84,16 @@ The build process will produce the necessary .elf or .axf files for deployment w
    ```
 2. Generate flash image:
    ```bash
-   cd <sdk-root>
-   python tools/srsdk_image_generator/srsdk_image_generator.py \
-     --axf <path-to-audio_mic.axf> \
-     --cfg_path tools/openocd/configs/sr110_m55.cfg \
-     --image tools/srsdk_image_generator/Output/B0_Flash/B0_flash_full_image_GD25LE128_67Mhz_secured.bin \
-     --erase-all
+   cd <sdk-root>/tools/srsdk_image_generator
+   python srsdk_image_generator.py \
+     -B0 \
+     -flash_image \
+     -sdk_secured \
+     -spk "<sdk-root>/tools/srsdk_image_generator/Inputs/spk_rc4_1_0_secure_otpk.bin" \
+     -apbl "<sdk-root>/tools/srsdk_image_generator/Inputs/sr100_b0_bootloader_ver_0x012F_ASIC.axf" \
+     -m55_image "<sdk-root>/examples/audio_examples/uc_audio_mic/out/sr110_cm55_fw/release/sr110_cm55_fw.elf" \
+     -flash_type "GD25LE128" \
+     -flash_freq "67"
    ```
 3. Flash the application:
    ```bash

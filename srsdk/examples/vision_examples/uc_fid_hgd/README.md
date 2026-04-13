@@ -5,7 +5,7 @@
 Face ID + Hand Gesture Detection is an advanced real-time computer vision application that integrates facial recognition and hand gesture control. It enables seamless, contactless user interaction through intelligent ML-based recognition and gesture-driven commands. Supports only HD resolution.
 
 The latest example structure uses a **common application source tree** with board-specific hardware setup kept under `hw/<BOARD>/`. For this app:
-- Common application sources such as `main.c`, `uc_person_detection.c`, and `uc_person_detection.h` stay in the app root.
+- Common application sources such as `main.c`, `uc_fid_hgd.c`, and `uc_fid_hgd.h` stay in the app root.
 - Application defconfigs are stored under `configs/`.
 - Board and hardware-specific setup is selected from `hw/<BOARD>/`, for example `hw/SR110_RDK/`.
 
