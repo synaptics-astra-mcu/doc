@@ -60,12 +60,12 @@ Use the VS Code flow described in the SL2610 guides and VS Code Extension guide:
 
 **Build (VS Code):**
 1. Open **Build and Deploy** -> **Build Configurations**.
-2. Select one system manager configuration in the **Application** dropdown:
+2. Select one system manager project configuration in the **Project Configuration** dropdown:
    - `sl2610_rdk_system_manager`
    - `sl2610_rdk_system_manager_ddr3`
    - `sl2610_rdk_system_manager_lpddr4`
    - `sl2610_rdk_system_manager_ddr4_1x16`
-3. Build with **Build (SDK + App)** for the first build, or **Build App** for rebuilds.
+3. Build with **Build (SDK+Project)** for the first build, or **Build (Project)** for rebuilds.
 
 **Build (CLI):**
 1. Build from the application directory itself:

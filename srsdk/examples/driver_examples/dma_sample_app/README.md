@@ -69,9 +69,9 @@ Use the VS Code flow described in the respective soc vscode guides and the VS Co
 
 **Build (VS Code):**
 1. Open **Build and Deploy** -> **Build Configurations**.
-2. Select **dma_sample_app** in the **Application** dropdown.
+2. Select the **dma_sample_app** project configuration in the **Project Configuration** dropdown.
 3. Select the required defconfig for the application.
-4. Build with **Build (SDK + App)** for the first build, or **Build App** for rebuilds.
+4. Build with **Build (SDK+Project)** for the first build, or **Build (Project)** for rebuilds.
 
 **Flash (VS Code):**
 1. For `SR110`:

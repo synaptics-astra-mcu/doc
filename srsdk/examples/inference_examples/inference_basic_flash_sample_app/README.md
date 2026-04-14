@@ -45,8 +45,8 @@ Use the VS Code flow described in the SR110 guide and the VS Code Extension guid
 1. Replace `model_flash_io.cc` and `model_flash.cc` with Vela-generated `model_io.cc` and `model.cc`.
 2. Remove model weights from `model_flash.cc` because model weights will be flashed separately.
 3. Open **Build and Deploy** -> **Build Configurations**.
-4. Select **inference_basic_flash_sample_app** in the **Application** dropdown.
-5. Build with **Build (SDK + App)** for the first build, or **Build App** for rebuilds.
+4. Select the **inference_basic_flash_sample_app** project configuration in the **Project Configuration** dropdown.
+5. Build with **Build (SDK+Project)** for the first build, or **Build (Project)** for rebuilds.
 
 **Flash (VS Code):**
 1. Use **Image Conversion** to generate the flash image.

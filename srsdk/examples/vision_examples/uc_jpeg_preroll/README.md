@@ -50,8 +50,8 @@ Use the VS Code flow described in the SR110 guide and the VS Code Extension guid
 
 **Build (VS Code):**
 1. Open **Build and Deploy** → **Build Configurations**.
-2. Select **doorbell** in the **Application** dropdown.
-3. Build with **Build (SDK + App)** for the first build, or **Build App** for rebuilds.
+2. Select the **doorbell** project configuration in the **Project Configuration** dropdown.
+3. Build with **Build (SDK+Project)** for the first build, or **Build (Project)** for rebuilds.
 
 **Build (CLI):**
 1. Build from the application directory itself:

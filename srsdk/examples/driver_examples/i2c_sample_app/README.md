@@ -81,9 +81,9 @@ Use the VS Code flow described in the respective platform guide and the VS Code 
 **Build (VS Code):**
 1. Select the defconfig that matches your target board and required sample mode.
 2. Open **Build and Deploy** -> **Build Configurations**.
-3. Select **i2c_sample_app** in the **Application** dropdown.
+3. Select the **i2c_sample_app** project configuration in the **Project Configuration** dropdown.
 4. If you need to adjust SR110-specific I2C mode options, use the extension's configuration flow or `menuconfig` before building.
-5. Build with **Build (SDK + App)** for the first build, or **Build App** for rebuilds.
+5. Build with **Build (SDK+Project)** for the first build, or **Build (Project)** for rebuilds.
 
 **Flash (VS Code):**
 1. Use **Image Conversion** to generate the flash image.

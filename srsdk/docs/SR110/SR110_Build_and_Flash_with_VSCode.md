@@ -60,6 +60,7 @@ The steps do not run until the **Run** button at the bottom of the view is press
 | Option | What it does | When to use it |
 | :--- | :--- | :--- |
 | **SDK Build (default_package)** | Generates the shared SDK foundation in `<sdk-root>/install`. | Use this first to prepare the common SDK package required by project builds. |
+| **Build (SDK+Project)** | Builds the SDK components required by the app based on the app configuration, installs them into the app-local install folder, and then builds the example using that generated install package. | Use this when building an app for the first time and the required SDK components have not yet been generated for that app. |
 | **Build (Project)** | Builds the active SR110 project using project-local artifacts. | Use this during normal development when you want a fresh build for the selected project. |
 | **Build (Use Pre-built SDK)** | Builds the active SR110 project against the common install root in `<sdk-root>/install`. | Use this to reuse an existing SDK package and avoid rebuilding shared components. |
 

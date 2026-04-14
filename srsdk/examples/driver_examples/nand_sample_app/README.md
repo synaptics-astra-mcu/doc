@@ -90,10 +90,10 @@ Use the VS Code flow described in the respective platform guide and the VS Code 
 
 **Build (VS Code):**
 1. Open **Build and Deploy** -> **Build Configurations**.
-2. Select **nand_sample_app** in the **Application** dropdown.
+2. Select the **nand_sample_app** project configuration in the **Project Configuration** dropdown.
 3. Select `sl2610_rdk_cm52_nand_sample_app_defconfig`.
 4. If you need a different NAND test mode, update the application configuration before building.
-5. Build with **Build (SDK + App)** for the first build, or **Build App** for rebuilds.
+5. Build with **Build (SDK+Project)** for the first build, or **Build (Project)** for rebuilds.
 
 **Flash (VS Code):**
 1. Use the SL2610 image-generation flow to generate the required sub-image.

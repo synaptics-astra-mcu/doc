@@ -55,8 +55,8 @@ Use the VS Code flow described in the respective soc vscode guides and the VS Co
 
 **Build (VS Code):**
 1. Open **Build and Deploy** -> **Build Configurations**.
-2. Select **i2c_exp_app** in the **Application** dropdown.
-3. Build with **Build (SDK + App)** for the first build, or **Build App** for rebuilds.
+2. Select the **i2c_exp_app** project configuration in the **Project Configuration** dropdown.
+3. Build with **Build (SDK+Project)** for the first build, or **Build (Project)** for rebuilds.
 
 **Flash (VS Code):**
 1. Use the SL2610 image-generation flow to generate the required sub-image.

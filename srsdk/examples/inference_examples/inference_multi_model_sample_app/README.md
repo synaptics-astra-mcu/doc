@@ -61,8 +61,8 @@ Use the VS Code flow described in the SR110 guide and the VS Code Extension guid
 
 **Build (VS Code):**
 1. Open **Build and Deploy** -> **Build Configurations**.
-2. Select **inference_multi_model_sample_app** in the **Application** dropdown.
-3. Build with **Build (SDK + App)** for the first build, or **Build App** for rebuilds.
+2. Select the **inference_multi_model_sample_app** project configuration in the **Project Configuration** dropdown.
+3. Build with **Build (SDK+Project)** for the first build, or **Build (Project)** for rebuilds.
 
 ![Build Configurations](assets/image_1.png)
 

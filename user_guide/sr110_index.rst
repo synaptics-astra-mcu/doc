@@ -19,19 +19,19 @@ This section provides comprehensive user guides and demo applications for the SR
    ../srsdk/examples/vision_examples/uc_hand_gesture_detection/README
    ../srsdk/examples/vision_examples/uc_fid_hgd/README
    ../srsdk/examples/vision_examples/uc_jpeg_preroll/README
-   ../srsdk/examples/drivers_examples/bt_sample_app/bt_sample_readme
+   ../srsdk/examples/driver_examples/bt_sample_app/bt_sample_readme
    ../srsdk/examples/audio_examples/uc_audio_mic/README
-   ../srsdk/examples/drivers_examples/clk_sample_app/README
-   ../srsdk/examples/drivers_examples/dma_sample_app/README
-   ../srsdk/examples/drivers_examples/fatfs_sample_app/README
-   ../srsdk/examples/drivers_examples/gpio_sample_app/README
-   ../srsdk/examples/drivers_examples/i2c_sample_app/README
-   ../srsdk/examples/drivers_examples/pinmux_sample_app/README
-   ../srsdk/examples/drivers_examples/sdio_sample_app/README
-   ../srsdk/examples/drivers_examples/spi_sample_app/README
-   ../srsdk/examples/drivers_examples/uart_sample_app/README
-   ../srsdk/examples/drivers_examples/wifi_sample_app/README
-   ../srsdk/examples/drivers_examples/xspi_sample_app/README
+   ../srsdk/examples/driver_examples/clk_sample_app/README
+   ../srsdk/examples/driver_examples/dma_sample_app/README
+   ../srsdk/examples/driver_examples/fatfs_sample_app/README
+   ../srsdk/examples/driver_examples/gpio_sample_app/README
+   ../srsdk/examples/driver_examples/i2c_sample_app/README
+   ../srsdk/examples/driver_examples/pinmux_sample_app/README
+   ../srsdk/examples/driver_examples/sdio_sample_app/README
+   ../srsdk/examples/driver_examples/spi_sample_app/README
+   ../srsdk/examples/driver_examples/uart_sample_app/README
+   ../srsdk/examples/driver_examples/wifi_sample_app/README
+   ../srsdk/examples/driver_examples/xspi_sample_app/README
    ../srsdk/examples/inference_examples/inference_basic_sample_app/README
    ../srsdk/examples/inference_examples/inference_basic_flash_sample_app/README
    ../srsdk/examples/inference_examples/inference_multi_model_sample_app/README
@@ -77,42 +77,42 @@ This section provides comprehensive user guides and demo applications for the SR
 :doc:`../srsdk/examples/vision_examples/uc_jpeg_preroll/README`
    **JPEG Preroll Demo** - Guide for JPEG image capture and preroll functionality, including USB transfer and image processing workflows.
 
-:doc:`../srsdk/examples/drivers_examples/bt_sample_app/bt_sample_readme`
+:doc:`../srsdk/examples/driver_examples/bt_sample_app/bt_sample_readme`
    **Bletooth Demo** - The BT sample application showcases BLE capabilities, including stack initialization, GATT server functionality, advertising, device discovery and connection, and GATT read/write operations.
 
 **Driver Examples:**
 
-:doc:`../srsdk/examples/drivers_examples/clk_sample_app/README`
+:doc:`../srsdk/examples/driver_examples/clk_sample_app/README`
    **Clock Demo** - Shows clock source configuration and peripheral clock setup for SR110 driver applications.
 
-:doc:`../srsdk/examples/drivers_examples/dma_sample_app/README`
+:doc:`../srsdk/examples/driver_examples/dma_sample_app/README`
    **DMA Demo** - Demonstrates direct memory access transfers for efficient data movement between memory and peripherals.
 
-:doc:`../srsdk/examples/drivers_examples/fatfs_sample_app/README`
+:doc:`../srsdk/examples/driver_examples/fatfs_sample_app/README`
    **FATFS Demo** - Covers FAT file system initialization, file operations, and storage access workflows.
 
-:doc:`../srsdk/examples/drivers_examples/gpio_sample_app/README`
+:doc:`../srsdk/examples/driver_examples/gpio_sample_app/README`
    **GPIO Demo** - Explains GPIO pin configuration, input/output control, and basic digital signal handling.
 
-:doc:`../srsdk/examples/drivers_examples/i2c_sample_app/README`
+:doc:`../srsdk/examples/driver_examples/i2c_sample_app/README`
    **I2C Demo** - Provides steps for I2C bus setup and read/write communication with connected devices.
 
-:doc:`../srsdk/examples/drivers_examples/pinmux_sample_app/README`
+:doc:`../srsdk/examples/driver_examples/pinmux_sample_app/README`
    **Pinmux Demo** - Describes pin multiplexing configuration to map board pins to required peripheral functions.
 
-:doc:`../srsdk/examples/drivers_examples/sdio_sample_app/README`
+:doc:`../srsdk/examples/driver_examples/sdio_sample_app/README`
    **SDIO Demo** - Shows SDIO interface bring-up and data transfer flow for SDIO-capable devices.
 
-:doc:`../srsdk/examples/drivers_examples/spi_sample_app/README`
+:doc:`../srsdk/examples/driver_examples/spi_sample_app/README`
    **SPI Demo** - Details SPI master communication, transfer parameters, and example transaction sequences.
 
-:doc:`../srsdk/examples/drivers_examples/uart_sample_app/README`
+:doc:`../srsdk/examples/driver_examples/uart_sample_app/README`
    **UART Demo** - Demonstrates serial communication setup, transmit/receive operations, and console interaction.
 
-:doc:`../srsdk/examples/drivers_examples/wifi_sample_app/README`
+:doc:`../srsdk/examples/driver_examples/wifi_sample_app/README`
    **Wi-Fi Demo** - Introduces Wi-Fi initialization, connection flow, and basic network communication examples.
 
-:doc:`../srsdk/examples/drivers_examples/xspi_sample_app/README`
+:doc:`../srsdk/examples/driver_examples/xspi_sample_app/README`
    **XSPI Demo** - Explains extended SPI usage for external flash/peripheral access with high-speed transactions.
 
 **Inference Examples:**

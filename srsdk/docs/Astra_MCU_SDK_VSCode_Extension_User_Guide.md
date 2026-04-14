@@ -265,14 +265,15 @@ operation at a time or combination of operations.
 
 **Project Build Options**
 
-When building a project, the extension provides three distinct methods to handle SDK dependencies. Selecting the correct option ensures efficient build times and proper management of build artifacts.
+When building a project, the extension provides four distinct methods to handle SDK dependencies. Selecting the correct option ensures efficient build times and proper management of build artifacts.
 
    ![](./Assets/Images/media/image_vs_build_options.png)
 
 | Option | What it does | When to use it |
 | :--- | :--- | :--- |
 | **SDK Build (default_package)** | Generates the core foundation (compiler CMakes and basic packages) in `<sdk-root>/examples/install`. | **First-time setup:** Use this to generate the required base package before building projects. |
-| **Build (Project)** | Performs a local build using artifacts generated specifically for the active . | **Development:** Use this when making changes to project-specific code and you require a fresh, isolated build. |
+| **Build (SDK+Project)** | Builds the SDK components required by the app based on the app configuration, installs them into the app-local install folder, and then builds the example using that generated install package. | **First-time app build:** Use this when building an app for the first time and the required SDK components have not yet been generated for that app. |
+| **Build (Project)** | Performs a local build using artifacts generated specifically for the active project. | **Development:** Use this when making changes to project-specific code and you require a fresh, isolated build. |
 | **Build (Use Pre-built SDK)** | Links the project to the common install root available in `<sdk-root>/examples/install`. | **Efficiency:** Use this to share a common SDK package across multiple apps, saving time and avoiding redundant builds. |
 
 ---

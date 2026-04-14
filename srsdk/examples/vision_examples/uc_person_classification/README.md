@@ -51,13 +51,13 @@ Use the VS Code flow described in the SR110 guide and the VS Code Extension guid
 
 **Build (VS Code):**
 1. Open **Build and Deploy** -> **Build Configurations**.
-2. Select **person_classification** in the **Application** dropdown.
+2. Select the **person_classification** project configuration in the **Project Configuration** dropdown.
 3. If you need **VGA (640x480)**, click **Edit Configs** (Menuconfig) in the Build and Deploy view, then set  
    `COMPONENTS CONFIGURATION -> Off Chip Components -> Display Resolution` to **VGA**.
 4. Optional configuration changes in Menuconfig:
    - **WQVGA in LP Sense**: `COMPONENTS CONFIGURATION -> Drivers` -> enable `MODULE_LP_SENSE_ENABLED`
    - **Static Image**: `COMPONENTS CONFIGURATION -> Off Chip Components` -> disable `MODULE_IMAGE_SENSOR_ENABLED`
-5. Build with **Build (SDK + App)** for the first build, or **Build App** for rebuilds.
+5. Build with **Build (SDK+Project)** for the first build, or **Build (Project)** for rebuilds.
 
 **Build (CLI):**
 1. Build from the application directory itself:
