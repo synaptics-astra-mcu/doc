@@ -231,7 +231,6 @@ Hardware Manual Button Settings
     A white circuit bo    rd with red symbol     AI-gener  ted content may be            
     ===================== ====================== ========= ==============================
 
-incorrect.|
 
 Figure 7. Locations of push buttons on Machina Micro board
 
@@ -252,7 +251,6 @@ Hardware Manual Slide Switch Settings
     A white circui  board  ith green squares AI-   enerated content may                                                       
     =============== ====== ======================= ===========================================================================
 
-incorrect.|
 
 Figure 8. Slide switch locations on Machina Micro board
 
@@ -357,7 +355,6 @@ with power meter for power measurement.
     A white circuit   oard with red an                                          blue symbols AI  generated conten                                                                      
     ================= ========================================================= ================ ======================================================================================
 
-may be incorrect.|
 
 Figure 12. Probe points (Top side)
 
