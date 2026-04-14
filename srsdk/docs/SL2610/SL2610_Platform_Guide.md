@@ -1,6 +1,6 @@
 # SL2610 Platform Guide
 
-This document provides SL2610-specific hardware setup and platform notes. For more detailed information on the SL2610 RDK, see the **SL2610 Board User Guide**:  
+This document provides SL2610-specific hardware setup and platform notes. For more detailed information on the SL2610 RDK, see the **SL2610 Board User Guide**:
 https://cp.synaptics.com/cognidox/download/NR-160458-MS-APPROVED.pdf
 
 For build, image generation, and flashing workflows, use:
@@ -29,7 +29,9 @@ For build, image generation, and flashing workflows, use:
 
 ### SL2610 RDK
 
-![SL2610 RDK Board](../Assets/Images/media/SL2610_RDK.png)
+![SL2610 RDK Board](assets/SL2610_RDK.png)
+<figcaption><b>Figure 1.</b> SL2610 RDK Board</figcaption>
+
 
 ### Connection Steps
 

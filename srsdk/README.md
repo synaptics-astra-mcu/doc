@@ -14,7 +14,7 @@ It combines optimized libraries, a production-grade build system, and integrated
 ## Getting Started
 
 ### Step 1: Obtain the SDK
-Extract or clone the SDK to a local directory (for example, `/path/to/Astra_MCU_SDK`). This folder is your SDK root, in the rest of this document it will be refered to as <sdk-root>.
+Extract or clone the SDK to a local directory (for example, `/path/to/Astra_MCU_SDK`). This folder is your SDK root, in the rest of this document it will be referred to as <sdk-root>.
 - On Windows keep the path short (less than 100 characters) to avoid path length issues.
 - **Note:** In order to clone the Astra MCU SDK repository you must first install Git LFS. For more details, see [https://git-lfs.com/](https://git-lfs.com/).
 
@@ -38,7 +38,7 @@ Extract or clone the SDK to a local directory (for example, `/path/to/Astra_MCU_
 - [Astra MCU SDK - WSL User Guide](./docs/Astra_MCU_SDK_WSL_User_Guide.md)
 
 ### Step 5: Explore SDK Applications
-- [Astra MCU SDK Application User Guide](../user_guide/index.rst)
+- [Astra MCU SDK Application User Guide](./examples/README.md)
 
 ## Driver User Guide
 - [Astra MCU SDK Driver Guide (HTML)](../api_doc/index.rst)

@@ -78,6 +78,6 @@ var searchData=
   ['gpio_5fport_5fset_5fint_5ftype_75',['gpio_port_set_int_type',['../group__group__gpio__port__functions.html#gae9e3919e43f5c6b79f534a2591ca4d41',1,'gpio.h']]],
   ['gpio_5fport_5fwrite_76',['gpio_port_write',['../group__group__gpio__port__functions.html#ga0e41a70cb5f0b5233820b407e0d900dd',1,'gpio.h']]],
   ['gpio_5fstatus_5fen_77',['gpio_status_en',['../group__group__gpio__enums.html#ga8aa60baa2d2ea95ef167475dc1652922',1,'gpio.h']]],
-  ['group_20definitions_78',['1. &lt;strong&gt;sr110_groups.h&lt;/strong&gt; (Main Group Definitions)',['../md__r_e_a_d_m_e___s_t_r_u_c_t_u_r_e.html#autotoc_md8',1,'']]],
+  ['group_20definitions_78',['1. &lt;b&gt;sr110_groups.h&lt;/b&gt; (Main Group Definitions)',['../md__r_e_a_d_m_e___s_t_r_u_c_t_u_r_e.html#autotoc_md8',1,'']]],
   ['guide_79',['Documentation Generation Guide',['../md__r_e_a_d_m_e.html',1,'']]]
 ];

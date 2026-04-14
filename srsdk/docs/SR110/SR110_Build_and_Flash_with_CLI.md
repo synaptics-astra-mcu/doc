@@ -21,26 +21,24 @@ Throughout this guide, `<sdk-root>` refers to the directory where you extracted 
 
    List all available application defconfigs (these are the presets you can build):
    ```bash
-   ls <sdk-root>/examples/SR110_RDK/configs/*defconfig
+   ls <sdk-root>/examples/<example_type>/<app>/configs/*defconfig
    ```
 
-   Recommended first example: `cm55_demo_sample_app_defconfig`.
+   Recommended first example: `sr110_rdk_cm55_demo_sample_app_defconfig`.
 
-   Set `SRSDK_DIR` to `<sdk-root>` and build (run from `<sdk-root>/examples`).
-   - The first `make` applies the defconfig and builds the SDK package for SR110.
-   - The second `make build` builds the example using the installed SDK package.
+   Set `SRSDK_DIR` to `<sdk-root>` and build (run from `<sdk-root>/examples/<example_type>/<app>`).
+
    ```bash
-   cd <sdk-root>/examples
+   cd <sdk-root>/examples/<example_type>/<app>
    export SRSDK_DIR=<sdk-root>
 
-   make cm55_demo_sample_app_defconfig BOARD=SR110_RDK BUILD=SRSDK
-   make build BOARD=SR110_RDK
+   make sr110_rdk_cm55_demo_sample_app_defconfig BUILD=SRSDK
    ```
 
    Expected output:
    ```
-   <sdk-root>/examples/out/sr110_cm55_fw/release/sr110_cm55_fw.elf   # GCC/LLVM
-   <sdk-root>/examples/out/sr110_cm55_fw/release/sr110_cm55_fw.axf   # AC6
+   <sdk-root>/examples/<example_type>/<app>/out/sr110_cm55_fw/release/sr110_cm55_fw.elf   # GCC/LLVM
+   <sdk-root>/examples/<example_type>/<app>/out/sr110_cm55_fw/release/sr110_cm55_fw.axf   # AC6
    ```
 
 2. Generate the flash image (SDK image generator; run from `<sdk-root>/tools/srsdk_image_generator`):
@@ -51,9 +49,9 @@ Throughout this guide, `<sdk-root>` refers to the directory where you extracted 
      -B0 \
      -flash_image \
      -sdk_secured \
-     -spk "<sdk-root>/tools/srsdk_image_generator/B0_Input_examples/spk_rc4_1_0_secure_otpk.bin" \
-     -apbl "<sdk-root>/tools/srsdk_image_generator/B0_Input_examples/sr100_b0_bootloader_ver_0x012F_ASIC.axf" \
-     -m55_image "<sdk-root>/examples/out/sr110_cm55_fw/release/sr110_cm55_fw.elf" \
+     -spk "<sdk-root>/tools/srsdk_image_generator/Inputs/spk_rc4_1_0_secure_otpk.bin" \
+     -apbl "<sdk-root>/tools/srsdk_image_generator/Inputs/sr100_b0_bootloader_ver_0x012F_ASIC.axf" \
+     -m55_image "<sdk-root>/examples/<example_type>/<app>/out/sr110_cm55_fw/release/sr110_cm55_fw.elf" \
      -flash_type "GD25LE128" \
      -flash_freq "67"
    ```

@@ -71,12 +71,11 @@ Log out and log back in (or reboot) for the group change to take effect.
 
 ## Import Application/Example and Set SRSDK_DIR
 
-1. In the Synaptics sidebar, choose **Import Application/Example**.
+1. In the Synaptics sidebar, choose **Import Project**.
 
-    ![Synaptics Sidebar - Import Application/Example and Import SDK](./Assets/Images/media/VS_Quick_Start.png)
-2. Import from local (select the SDK `<sdk-root>/examples/` folder).
-3. After importing examples, open **Import SDK** and set `SRSDK_DIR` to `<sdk-root>` (not the `<sdk-root>/examples/` folder).
-    - **Note:** The **Import SDK** button appears after you import the examples. 
+    ![Synaptics Sidebar - Import Application/Example and Import SDK](./Assets/Images/media/VS_Quick_Start.jpg)
+2. Import from local (select the project from the SDK folder `<sdk-root>/examples/<example-type>/<app>`).
+3. After importing the project, open **Import SDK** and set `SRSDK_DIR` to `<sdk-root>` (not the `<sdk-root>/examples/<example-type>/<app>` folder).
 
 This updates the workspace `settings.json` so build, image conversion, and flashing can locate the SDK.
 
@@ -91,10 +90,10 @@ SoC-specific build and flash flows:
 - Only one SDK can be imported per VS Code workspace.
 - On Windows, keep the SDK path short to avoid path length issues.
 - If Build and Deploy is disabled, re-check `SRSDK_DIR` in **Import SDK**.
-- Examples can only be built from the SDK `<sdk-root>/examples/` directory; import it via **Import Application/Example**.
+- Examples can only be built from the SDK `<sdk-root>/examples/<example-type>/<app>` directory; import it via **Import Project**.
 - **Problem:** Build and Deploy button is disabled or grayed out.  
   **Cause:** Examples directory not imported or `SRSDK_DIR` not set.  
   **Solution:**  
-  1. Verify you imported the `<sdk-root>/examples/` folder (not the SDK root).  
+  1. Verify you imported the `<sdk-root>/examples/<example-type>/<app>` folder (not the SDK root).  
   2. Use **Import SDK** to set `SRSDK_DIR`.  
   3. Refresh the workspace (close and reopen VS Code).

@@ -4,6 +4,7 @@ var group__api__ref =
     [ "Clock", "group__group__clk__driver.html", "group__group__clk__driver" ],
     [ "DMA", "group__group__dma__driver.html", "group__group__dma__driver" ],
     [ "GPIO", "group__group__gpio__driver.html", "group__group__gpio__driver" ],
+    [ "I2S", "group__group__i2s__driver.html", "group__group__i2s__driver" ],
     [ "Pinmux", "group__group__pinmux__driver.html", "group__group__pinmux__driver" ],
     [ "SDIO", "group__group__sdio__driver.html", "group__group__sdio__driver" ],
     [ "SPI", "group__group__spi__driver.html", "group__group__spi__driver" ],

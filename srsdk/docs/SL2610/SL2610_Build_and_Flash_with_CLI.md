@@ -22,37 +22,36 @@ Throughout this guide, `<sdk-root>` refers to the directory where you extracted 
 1. Build the System Manager and bootloader (SDK build + image assets):
 
    ```bash
-   cd <sdk-root>/examples
+   cd <sdk-root>/examples/system_manager
    export SRSDK_DIR=<sdk-root>
-   make sl2610_system_manager_rdk_defconfig BOARD=SL2610_RDK BUILD=SRSDK
-   make build BOARD=SL2610_RDK
+   make sl2610_rdk_system_manager_defconfig BUILD=SRSDK
 
    cd <sdk-root>
    make sl2610_bootloader_rdk_defconfig BOARD=SL2610_RDK
-   make build
+   make astrasdk
    ```
 
-   - The first pair of commands builds the System Manager using the SDK build system.
+   - The first command builds the System Manager using the SDK build system.
    - The second pair builds the bootloader needed for USB boot and image packaging.
 
-2. Generate MCU sub-images using the SDK image generator (run from `<sdk-root>/examples`):
+2. Generate MCU sub-images using the SDK image generator (run from `<sdk-root>/examples/<example_type>/<app>`):
 
    Before running `make imagegen`, ensure the bootloader is built:
    ```bash
    cd <sdk-root>
    make sl2610_bootloader_rdk_defconfig BOARD=SL2610_RDK
-   make build
+   make astrasdk
    ```
 
    ```bash
-   cd <sdk-root>/examples
+   cd <sdk-root>/examples/<example_type>/<app>
    make imagegen
    ```
 
    Expected outputs:
-   - System Manager sub-image (for `run-sm`, uncompressed): `<sdk-root>/examples/out/image/intermediate/sysmgr.subimg`
-   - Compressed sub-images (for eMMC packaging, includes `sysmgr.subimg.gz`): `<sdk-root>/examples/out/image/eMMCimg/`
-   - USB boot inputs (SPK/keys/bootloader): `<sdk-root>/examples/out/image/usb_boot/`
+   - System Manager sub-image (for `run-sm`, uncompressed): `<sdk-root>/examples/<example_type>/<app>/out/image/eMMCimg/sysmgr.subimg.gz`
+   - Compressed sub-images (for eMMC packaging, includes `sysmgr.subimg.gz`): `<sdk-root>/examples/<example_type>/<app>/out/image/eMMCimg/`
+   - USB boot inputs (SPK/keys/bootloader): `<sdk-root>/examples/<example_type>/<app>/out/image/usb_boot/`
 
    If you see permission errors on Linux/macOS, run:
    ```bash
@@ -74,10 +73,10 @@ Throughout this guide, `<sdk-root>` refers to the directory where you extracted 
    ```bash
    cd <sdk-root>/tools/usb_boot_python_tool/USB_BOOT_TOOL
    python usb_boot_tool.py --op run-sm \
-     --sm <sdk-root>/examples/out/image/intermediate/sysmgr.subimg \
-     --spk <sdk-root>/examples/out/image/usb_boot/spk.bin \
-     --keys <sdk-root>/examples/out/image/usb_boot/key.bin \
-     --m52bl <sdk-root>/examples/out/image/usb_boot/m52bl.bin
+     --sm <sdk-root>/examples/<example_type>/<app>/out/image/eMMCimg/sysmgr.subimg.gz \
+     --spk <sdk-root>/examples/<example_type>/<app>/out/image/usb_boot/spk.bin \
+     --keys <sdk-root>/examples/<example_type>/<app>/out/image/usb_boot/key.bin \
+     --m52bl <sdk-root>/examples/<example_type>/<app>/out/image/usb_boot/m52bl.bin
 
    # For full eMMC flashing, use a Yocto-generated eMMCimg folder (see Notes).
    python usb_boot_tool.py --op emmc --img-dir <path-to-eMMCimg>
@@ -86,8 +85,8 @@ Throughout this guide, `<sdk-root>` refers to the directory where you extracted 
    **Flash System Manager Sub-Image**
    ```bash
    python usb_boot_tool.py --op emmc-sm \
-     --sm <sdk-root>/examples/out/image/intermediate/sysmgr.subimg \
-     --sm-image <sdk-root>/examples/out/image/eMMCimg/sysmgr.subimg.gz
+     --sm <sdk-root>/examples/<example_type>/<app>/out/image/eMMCimg/sysmgr.subimg.gz \
+     --sm-image <sdk-root>/examples/<example_type>/<app>/out/image/eMMCimg/sysmgr.subimg.gz
    ```
 
 ## WSL USB Flashing Flow (usbipd)
@@ -170,7 +169,7 @@ Use this flow when flashing from WSL (Windows Subsystem for Linux). It uses `usb
 5. In WSL, flash System Manager:
 
    ```bash
-   python usb_boot_tool.py --op run-sm --sm <sdk-root>/examples/out/image/intermediate/sysmgr.subimg
+   python usb_boot_tool.py --op run-sm --sm <sdk-root>/examples/<example_type>/<app>/out/image/eMMCimg/sysmgr.subimg.gz
    ```
 
 6. Bind and attach SM CDC (`CAFE:4002`):
@@ -209,7 +208,7 @@ usbipd attach --wsl --busid <bus_id>
 # [WSL terminal]
 cd <sdk-root>/tools/usb_boot_python_tool/USB_BOOT_TOOL
 python usb_boot_tool.py --op run-spk
-python usb_boot_tool.py --op run-sm --sm <sdk-root>/examples/out/image/intermediate/sysmgr.subimg
+python usb_boot_tool.py --op run-sm --sm <sdk-root>/examples/<example_type>/<app>/out/image/eMMCimg/sysmgr.subimg.gz
 python usb_boot_tool.py --op emmc --img-dir <path-to-eMMCimg>
 ```
 

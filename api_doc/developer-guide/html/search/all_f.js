@@ -7,6 +7,7 @@ var searchData=
   ['npu_5fclk_4',['NPU_CLK',['../group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455a61c3e2a6813ff7055ef2a9acad514d2f',1,'sr110_cm55.h']]],
   ['null_5fclk_5',['NULL_CLK',['../group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455ac6c98c79842e1e964a3d927f2811dae5',1,'sr110_cm55.h']]],
   ['num_6',['num',['../structuart__put__config__t.html#a101a3566ffb117a712235e4b4aaf9776',1,'uart_put_config_t::num'],['../structuart__get__config__t.html#a3e47310e87c76a58ab3ba2029ef03f7d',1,'uart_get_config_t::num']]],
-  ['numberofblock_7',['numberOfBlock',['../structsdio__data__config__t.html#afa60fa94c09a057b66550cce59b44938',1,'sdio_data_config_t']]],
-  ['numberofblocks_8',['numberOfBlocks',['../structsdio__write__read__config__t.html#a72d00898a1111dd317962283ead8de20',1,'sdio_write_read_config_t']]]
+  ['num_5fblocks_7',['num_blocks',['../structi2s__config__t.html#a7cb80344f4a8cbb96702b507a35ed952',1,'i2s_config_t']]],
+  ['numberofblock_8',['numberOfBlock',['../structsdio__data__config__t.html#afa60fa94c09a057b66550cce59b44938',1,'sdio_data_config_t']]],
+  ['numberofblocks_9',['numberOfBlocks',['../structsdio__write__read__config__t.html#a72d00898a1111dd317962283ead8de20',1,'sdio_write_read_config_t']]]
 ];

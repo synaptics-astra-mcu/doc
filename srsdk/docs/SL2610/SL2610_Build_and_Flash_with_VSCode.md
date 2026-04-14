@@ -32,9 +32,10 @@ You may also run each step one at a time if desired.
 The steps do not run until the **Run** button at the bottom of the view is pressed.
 
 ## Environment Setup
-1. Ensure the current working directory is the `<sdk-root>/examples` folder. Select this via the **Import Application/Example** view.
-2. Set the workspace `SRSDK_DIR` to `<sdk-root>` via the **Import SDK** view so the Build UI can detect the SDK.
-3. Open the **Build and Deploy** view in the Synaptics extension and set `Device` → `SL2610`.
+1. Import the SDK root and set workspace `SRSDK_DIR` to `<sdk-root>` via the **Import SDK** view.
+2. Import the project you want to build via the **Import Project** view.
+3. Open **Build and Deploy** from the **Imported Projects** view and set `Device` -> `SL2610`.
+4. If multiple projects are imported, select the correct project in the **Build and Deploy** project dropdown.
 
 ## Build Configurations (SL2610)
 <a id="build-configurations-sl2610"></a>
@@ -42,35 +43,64 @@ The steps do not run until the **Run** button at the bottom of the view is press
 **Purpose:** Generate .elf for SL2610 CM52 firmware.
 
 **Steps:**
-1. Set **Build Toolchain** to `GCC.13.2.1`
-2. Select desired **Application** from dropdown
-3. Enable the desired Build and Clean checkboxes
-- **Build (SDK + App)** builds and installs the SDK and builds the application. 
-- **Build App** builds the application only and relies on previously installed SDK.
+1. Check the **Build Configurations** checkbox.
+2. If multiple projects are imported, select the correct project in the **Build and Deploy** project dropdown.
+3. Set **Build Configuration** to `Release`.
+4. Select the target **Board** and **Compiler**.
+5. Set **Build Toolchain** to `GCC.13.2.1` when the field is available.
+6. Select the desired **Application** from the dropdown.
+7. Choose the appropriate build option:
+
+| Option | What it does | When to use it |
+| :--- | :--- | :--- |
+| **SDK Build (default_package)** | Generates the shared SDK foundation in `<sdk-root>/install`. | Use this first to prepare the common SDK package required by project builds. |
+| **Build (SDK+Project)** | Builds the SDK components required by the app based on the app configuration, installs them into the app-local install folder, and then builds the example using that generated install package. | Use this when building an app for the first time and the required SDK components have not yet been generated for that app. |
+| **Build (Project)** | Builds the active SL2610 project using project-local artifacts. | Use this during normal development when you want a fresh build for the selected project. |
+| **Build (Use Pre-built SDK)** | Builds the active SL2610 project against the common install root in `<sdk-root>/install`. | Use this to reuse an existing SDK package and avoid rebuilding shared components. |
 
 **Notes:**
-- SL2610 builds only support Release mode from the extension UI.
+- SL2610 builds only support `Release` mode from the extension UI.
+- If **Build Configurations** is disabled, verify that `SRSDK_DIR` is set correctly through the **Import SDK** view.
 
-![SL2610 Build UI](../Assets/Images/media/vs_build_sl2610.png)
+**Result:**
+- Build outputs are generated under the project's `out/sl2610_cm52_fw/release/` directory, for example `out/sl2610_cm52_fw/release/sl2610_cm52_fw.elf`.
+
+![SL2610 Build UI](assets/vs_build_sl2610.png)
 
 ## Image Generation (SL2610)
 
 **Purpose:** Convert MCU executables (.elf) into System Manager sub-images.
 
-![SL2610 Image Generator](../Assets/Images/media/vs_image_gen_sl2610.png)
+![SL2610 Image Generator](assets/vs_image_gen_sl2610.png)
+
+**Bootloader prerequisite:**
+Before generating an SL2610 image, build the `SL2610_RDK` bootloader once from the imported SDK folder in VS Code:
+
+1. Open **Build and Deploy** for the imported SDK folder.
+2. Set `Device` -> `SL2610`.
+3. In **Build Configurations**, select:
+   - **Build Target** -> `bootloader`
+   - **Build Configuration** -> `Release`
+   - **Board** -> `SL2610_RDK`
+   - **Compiler** and **Build Toolchain** as required by your environment
+   - A matching `SL2610_RDK` bootloader defconfig, for example `sl2610_bootloader_rdk_defconfig`
+4. Enable **Build** and click **Run**.
+
+**Bootloader result:**
+- The bootloader build generates `out/sl2610_bootloader/release/sl2610_bootloader.elf` under the SDK root.
+- This bootloader artifact is required by the SL2610 image-packaging flow.
 
 **Steps:**
-1. Build the bootloader from `<sdk-root>`:
-   ```bash
-   make sl2610_bootloader_rdk_defconfig BOARD=SL2610_RDK
-   make build
-   ```
+1. Open **Build and Deploy** for the imported SL2610 application project.
 2. Check **Image Generation (SL2610)**.
-3. Confirm the pre-populated Release build path or use **Browse** to select a custom MCU executable.
-   **Note** This will be automatically populated after the build completes.
+3. Use the **Build and Deploy** workflow to generate the image together with **Build Configurations**, or run **Build Configurations** once before image generation so the Release `.elf` is available.
+4. Confirm the pre-populated Release build path or use **Browse** to select a custom MCU executable.
+   **Note:** This path is automatically populated after the build completes.
+5. Click **Run**. The extension uses the previously built `SL2610_RDK` bootloader together with the application `.elf` to package the SL2610 image outputs.
 
 **Result:**
-The sub-image is generated at `out/sl2610_cm52_fw/release/sysmgr.subimg.gz`.
+- The System Manager sub-image is generated under `out/image/eMMCimg/sysmgr.subimg.gz`.
+- Additional image-packaging outputs are generated under `out/image/eMMCimg/` and `out/image/usb_boot/`.
 
 > Note: Image Generation for SL2610 is available only on Linux platforms.
 
@@ -94,10 +124,10 @@ Choose the target as **M52 Image** or **Full Image** in the **Flash Target** dro
 
 **M52 Image requirements:**
 - Provide the sysmgr sub-image path in the Image Flashing panel.
-- Use **Browse** to select a custom sysmgr sub-image which can be found here: `out/sl2610_cm52_fw/release/sysmgr.subimg.gz`
+- Use **Browse** to select a custom sysmgr sub-image, typically found at `out/image/eMMCimg/sysmgr.subimg.gz`
 - **Note** this will be automatically populated after image generation. 
 
-![SL2610 Image Flashing - M52](../Assets/Images/media/vs_image_flash_sl2610.png)
+![SL2610 Image Flashing - M52](assets/vs_image_flash_sl2610.png)
 
 **Full Image requirements:**
 - Provide the eMMC folder path that contains `emmc_part_list` and `emmc_image_list`. The extension uses these files to determine partitions and image order for flashing.

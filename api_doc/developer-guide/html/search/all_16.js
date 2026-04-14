@@ -121,10 +121,11 @@ var searchData=
   ['underflow_5fmode_118',['underflow_mode',['../structspwm__pwm__cfg__t.html#ab4298901bbf8873b0559582c94214b78',1,'spwm_pwm_cfg_t']]],
   ['unit_5fsize_119',['unit_size',['../structdma__1d__config__t.html#ab0318b990f33027cdf9a8aa2bbcadc45',1,'dma_1d_config_t::unit_size'],['../structdma__2d__config__t.html#a6d0dace2b1637e6a1ac4c2935be7fc98',1,'dma_2d_config_t::unit_size']]],
   ['usage_120',['Typical Usage',['../group__group__i2c__driver.html#group_i2c_usage',1,'']]],
-  ['usb2_5faxi_5fclk_121',['USB2_AXI_CLK',['../group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455a5a824773c7e4d5d71a1c247c98b0dae5',1,'sr110_cm55.h']]],
-  ['usb2_5fcfg_5fclk_122',['USB2_CFG_CLK',['../group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455a440418d7df07b155b535656329a59e75',1,'sr110_cm55.h']]],
-  ['usb2_5fcore_5fclk_123',['USB2_CORE_CLK',['../group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455a469e6045add601b496a190b6610a4d3e',1,'sr110_cm55.h']]],
-  ['usb2_5fref_5fclk_124',['USB2_REF_CLK',['../group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455a27ef34c28578b13c6e9eb0ca4e4aaf42',1,'sr110_cm55.h']]],
-  ['usb2_5ftest_5fclk_125',['USB2_TEST_CLK',['../group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455a4793bfb91a90c8c066ad8e1429eac1d0',1,'sr110_cm55.h']]],
-  ['user_5fdata_126',['user_data',['../structdma__channel__config__t.html#acc2ac218880edaf75cb71f637818b18b',1,'dma_channel_config_t::user_data'],['../structspi__xfer__config.html#ab0e10aa2100750b64071f71360071ee9',1,'spi_xfer_config::user_data'],['../structuart__put__config__t.html#ac4d9eb8731e1e210f1316a56bf0103f8',1,'uart_put_config_t::user_data'],['../structuart__get__config__t.html#af53df3b5e3a686e4b511605673ef8970',1,'uart_get_config_t::user_data']]]
+  ['usage_20examples_121',['Usage Examples',['../group__group__i2s__driver.html#group_i2s_usage_examples',1,'']]],
+  ['usb2_5faxi_5fclk_122',['USB2_AXI_CLK',['../group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455a5a824773c7e4d5d71a1c247c98b0dae5',1,'sr110_cm55.h']]],
+  ['usb2_5fcfg_5fclk_123',['USB2_CFG_CLK',['../group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455a440418d7df07b155b535656329a59e75',1,'sr110_cm55.h']]],
+  ['usb2_5fcore_5fclk_124',['USB2_CORE_CLK',['../group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455a469e6045add601b496a190b6610a4d3e',1,'sr110_cm55.h']]],
+  ['usb2_5fref_5fclk_125',['USB2_REF_CLK',['../group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455a27ef34c28578b13c6e9eb0ca4e4aaf42',1,'sr110_cm55.h']]],
+  ['usb2_5ftest_5fclk_126',['USB2_TEST_CLK',['../group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455a4793bfb91a90c8c066ad8e1429eac1d0',1,'sr110_cm55.h']]],
+  ['user_5fdata_127',['user_data',['../structdma__channel__config__t.html#acc2ac218880edaf75cb71f637818b18b',1,'dma_channel_config_t::user_data'],['../structspi__xfer__config.html#ab0e10aa2100750b64071f71360071ee9',1,'spi_xfer_config::user_data'],['../structuart__put__config__t.html#ac4d9eb8731e1e210f1316a56bf0103f8',1,'uart_put_config_t::user_data'],['../structuart__get__config__t.html#af53df3b5e3a686e4b511605673ef8970',1,'uart_get_config_t::user_data']]]
 ];

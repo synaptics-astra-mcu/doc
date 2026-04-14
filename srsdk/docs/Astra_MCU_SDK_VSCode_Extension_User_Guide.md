@@ -1,5 +1,7 @@
 # Astra MCU SDK - VS Code Extension User Guide
 
+This guide provides instructions for using the Astra MCU SDK VS Code Extension to develop, build, and flash projects for various Synaptics SoCs. It covers everything from initial environment setup and tool installation to advanced debugging and video streaming workflows.
+
 Throughout this guide, `<sdk-root>` refers to the directory where you extracted or cloned the SDK.
 
 ## Table of Contents
@@ -12,12 +14,13 @@ Throughout this guide, `<sdk-root>` refers to the directory where you extracted 
   - [Tools checking](#tools-checking)
   - [Tools installation](#tools-installation)
 - [Linux USB/serial permissions (recommended)](#linux-usbserial-permissions-recommended)
-- [Import Application/Example and Set SRSDK_DIR](#import-applicationexample-and-set-srsdk_dir)
+- [Standalone Image Flashing (No SDK Import Required)](#standalone-image-flashing)
+- [Import SDK and Project](#import-sdk-and-project)
 - [Imported Example](#imported-example)
   - [Build and Deploy](#build-and-deploy)
 - [Logger](#logger)
 - [Memory Analyzer](#memory-analyzer)
-- [SR110 Debugging UI](#sr110-debugging-ui)
+- [Debugging UI](#debugging-ui)
 - [Video Streamer](#video-streamer)
 - [Register Info Data Base](#register-info-data-base)
 
@@ -36,7 +39,7 @@ Throughout this guide, sections marked with 🔧 indicate SoC-specific functiona
 
 - Supported host OS: Windows x64, Linux x86_64 or aarch64 (Ubuntu 22.04), macOS x86_64 or ARM64.
     - **Note:** For SL2610 development only Linux hosts are supported (WSL with Ubuntu 22.04 is supported). See [Astra MCU SDK - WSL User Guide](./Astra_MCU_SDK_WSL_User_Guide.md).
-    - Windows users are strongly encouraged to use WSL2. See the VS Code WSL guide and the [Astra MCU SDK - WSL User Guide](./Astra_MCU_SDK_WSL_User_Guide.md).
+    - Windows users can now use WSL2 (Ubuntu 22.04) for a full Linux-native development experience. WSL is fully supported for Flashing and Video Streamer using integrated usbipd support. See the VS Code WSL guide and the [Astra MCU SDK - WSL User Guide](./Astra_MCU_SDK_WSL_User_Guide.md).
 - Visual Studio Code installed.
 
 ## Install the Synaptics VS Code Extension
@@ -45,14 +48,19 @@ Throughout this guide, sections marked with 🔧 indicate SoC-specific functiona
    ![Extension Toolbar](./Assets/Images/media/Extension_Toolbar.png)
 2. Locate the VSIX package in `tools/` (for example, `Astra_MCU_SDK_vscode_extension-<version>.vsix`), and click **Install**.
 3. Confirm the Synaptics extension appears in the VS Code activity bar.
+
    ![Synaptics VS Code Extension](./Assets/Images/media/vs_syna_logo.png)
+
 4. **Close and then reopen VS Code.**
 
 ### Uninstall old package and reinstall
 
 1. Remove the currently imported Example directory from the workspace using the **Remove from workspace** option.
+
    ![Remove from Workspace](./Assets/Images/media/image_vs4.png)
+   
 2. Uninstall the current extension using the **Uninstall** button.
+
    ![Uninstall button](./Assets/Images/media/image_vs5.jpeg)
 3. Close any active Webview or reload the window.
 4. Install the new extension VSIX package using the steps above.
@@ -62,7 +70,7 @@ Throughout this guide, sections marked with 🔧 indicate SoC-specific functiona
 
 **Purpose:** Check and install the necessary tools for build, image generation, flashing, and debugging.
 
-![Figure 6 Install Tools](./Assets/Images/media/image_vs6.png)
+   ![Figure 6 Install Tools](./Assets/Images/media/image_vs6.png) 
 
 ### Tools checking
 
@@ -76,7 +84,7 @@ Throughout this guide, sections marked with 🔧 indicate SoC-specific functiona
 
 **Note:** If you are updating from a older version of the extension please reinstall the required tools 
 
-![Figure 7 jq install terminal](./Assets/Images/media/image_vs7.png)
+![Figure 7 jq install terminal](./Assets/Images/media/image_vs_jq.png)
 
 **Result:**
 
@@ -88,7 +96,7 @@ Throughout this guide, sections marked with 🔧 indicate SoC-specific functiona
     (✅) will appear, and the installation
     checkbox will remain unselected.
 
-    ![Figure 8 Tools Checking](./Assets/Images/media/image_vs9.png)
+    ![Figure 8 Tools Checking](./Assets/Images/media/image_vs_tools_checking.png)
 
 ### Tools installation
 
@@ -102,22 +110,40 @@ Throughout this guide, sections marked with 🔧 indicate SoC-specific functiona
 
 **Note:**
 
-- On Linux and macOS, you may be prompted for your password in the **Install Script Terminal**.
+- On Linux and macOS, you will be prompted for your password in the **Install Script Terminal**.
 
 
 **Note for AC6:**
 
 - Arm Compiler 6 requires manual installation due to licensing constraints. Follow the steps shown in the Tools Installer webview.
-    ![](./Assets/Images/media/image_vs10.png)
+    ![](./Assets/Images/media/image_vs_ac6.png)
 
-**After installation:** close and reopen VS Code.
+**Note for WSL Users:**
+- Ensure you check the USBIPD-WIN box in the tool list to enable device passthrough for flashing video streaming and debugging.
+
+    ![](./Assets/Images/media/vs_image_usbipd.png)
+
+**Manual download fallback (if tool download fails):**
+
+If a tool download fails in the **Install Script Terminal** (for example due to restricted network, proxy, or CDN access), use this fallback:
+
+1. Run **Install** once and note the failed installer filename shown in terminal output.
+2. Download the same installer manually from the official vendor website.
+3. Copy the downloaded file to the extension temporary tools folder.
+   - Windows example: `%USERPROFILE%/SRSDK_Build_tools/temp`
+   - Linux/macOS example: `<home>/SRSDK_Build_tools/temp`
+4. Run **Install** again from the tools installer page.
+5. If the local file name matches the expected package, the installer uses the local file and continues installation.
+
+**Note:** This workaround is especially useful on restricted networks where automated script downloads may be blocked.
+
+**After installation:** Close and reopen VS Code.
 
 **VS Code extensions installed by the tools installer:**
 - C/C++ (Microsoft) for IntelliSense and debugging
 - Serial Monitor
 - MemoryView
 - Memory Inspector CDT
-
 
 
 ## Linux USB/serial permissions (recommended)
@@ -130,112 +156,127 @@ sudo usermod -aG dialout $USER
 
 Log out and log back in (or reboot) for the group change to take effect.
 
+## Standalone Image Flashing (No SDK Import Required)
+<a id="standalone-image-flashing"></a>
 
-## Import Application/Example and Set SRSDK_DIR
-<a id="import-examples-and-set-srsdk_dir"></a>
+**Purpose:** Flash a prebuilt image (`.bin`/`.img`) directly to the target SoC without importing the SDK into the workspace.
 
-**Purpose:** Import the SDK `<sdk-root>/examples/` directory into the VS Code workspace, either from a local folder or by cloning a repo.
+**Prerequisite:** Complete **Install Tools** first. This feature depends on the required flashing tools (for example OpenOCD and Python environment).
 
-![Figure 10 Import SDK](./Assets/Images/media/image_vs11.png)
+1. In the Synaptics sidebar, open **TOOLS** and click **Image Flashing**.
+
+   ![Standalone Image Flashing Entry](./Assets/Images/media/vs_image_flashing_standalone_sidebar.png)
+
+2. In the **Image Flashing** page (shown as **STANDALONE MODE**), verify the tool status indicators are ready.
+
+   ![Standalone Image Flashing Webview](./Assets/Images/media/vs_image_flashing_standalone_webview.png)
+
+3. Select your SoC tab (**SR110** or **SL2610**) and configure the flashing options.
+4. Browse and select the prebuilt image file (`.bin`/`.img`), then click **Flash**.
+
+**Note:** This standalone flow is intended for flashing an existing image only; SDK import is not required for this operation.
+
+
+## Import SDK and Project
+<a id="import-sdk-and-project"></a>
+
+**Purpose:** Configure the workspace by setting the SDK path `<sdk-root>`and importing specific project folders, either from a local folder or by cloning a repo. In this version, you can now manage the SDK and multiple projects within the same workspace.
+
+   ![Figure 10 Import SDK and Project](./Assets/Images/media/vs_image_import_sdk_and_project.png)
+
+### 1. Import SDK
+<a id="import-sdk"></a>
+Purpose: The Import SDK action adds the SDK to your workspace and configures the SRSDK_DIR path in settings.json. If you only need to update the path without importing the physical folder, simply select the checkbox to set the SRSDK_DIR only.
 
 **Steps:**
 
-1.  Click on the "Import Application/Example" button under the `Quick Start Panel` view. 
+1. Open the **Import SDK** view from the `Quick Start Panel` in the Synaptics sidebar.
 
-2.  This will open the web view to import SDKs example folder both from local and remote repositories. 
+2. **Local Import:** Under the **LOCAL** tab, click **BROWSE SDK FOLDER** and select your `<sdk-root>` directory.
 
-3.  **Local Import:** Under "LOCAL" tab, click on the "BROWSE" button
-    and select the Astra MCU SDK's example directory to import. This action will import the
-    Astra MCU SDK and add it to the workspace.
-    
-    ![Figure 11 Import SDK from local](./Assets/Images/media/image_vs12.png)
+   ![Browse SDK](./Assets/Images/media/vs_image_browse_sdk.png)
 
-4.  **Remote Import:** Under the "REMOTE" tab, click on "CLONE REPO",
-    paste the repository URL to clone and then select the
-    folder/location to clone into. GitLab needs proper SSH key setup.
-    Cloning large repositories will take time. After cloning, the
-    repository will be imported and added to the workspace in the
-    "Imported Example".\
-    \
-    ![Figure 12 Import SDK from remote](./Assets/Images/media/image_vs13.png)
+   *Note: If you do not want to import the SDK root into the workspace, select the checkbox to set the SRSDK_DIR only.*
 
-5.  Once the Astra MCU SDK is added to the workspace, tool paths will be
-    set in the settings.json. If settings.json doesn\'t exist, it will
-    be created; if it does, it will be modified accordingly.
+   - If you want to clear the already set SRSDK_DIR path, click the **Clear** button.
 
-6.  After importing the examples, set `SRSDK_DIR` to `<sdk-root>` using **Import SDK** (see below).
+3. **Remote Import:** Under the **REMOTE** tab, click **CLONE REPO**, paste the SDK repository URL, and select the local folder to clone into. 
+   * **Note:** GitLab requires proper SSH key setup.
 
-> **Note:** The settings.json, which is updated during tools installation, is used to configure workspace-specific settings such as paths and environment variables needed for proper Astra MCU SDK integration and development.
+4. Confirm the selection. The extension updates `settings.json` and enables the **Build and Deploy** panels.
 
-### Import SDK (Set SRSDK_DIR)
-<a id="import-sdk"></a>
+### 2. Import Project
+<a id="import-project"></a>
 
-**Purpose:**
+**Purpose:** Import specific project source code into the workspace. You can now import individual projects separately rather than importing the entire examples directory.
 
-The Import SDK action is used to set the workspace `SRSDK_DIR` to the Astra MCU SDK root <sdk-root>. It does not perform repository cloning or import example/application source code — those actions are handled by the **Import Application/Example** flow. The `SRSDK_DIR` setting lets the extension locate tools, SDK packages, and the top-level SDK layout for build, image conversion and flashing workflows.
+**Steps:**
 
-**What it does**
+1. Click **Import Project** under the `Quick Start Panel` view.
 
-- Writes or updates the workspace `settings.json` entry (for example `SRSDK_DIR`) so other extension panels can find the SDK automatically.
+2. **Local Import:** Click **BROWSE** and select the folder you wish to work on:
+   * **Projects:** Navigate to a specific sub-folder (e.g., `<sdk-root>/examples/vision_examples/uc_person_detection`).
 
-**Steps — Set SRSDK_DIR**
+3. **Remote Import:** Use the **REMOTE** tab to clone a specific project repository directly into your workspace.
 
-1. Open the Import SDK view from the Synaptics extension sidebar. (Which will be visible after importing an example directory.)
+4. Confirm the selection. The project will appear in the **Imported Projects** view.
 
-    ![alt text](./Assets/Images/media/image_vs100_k.png)
+   ![Project Selection](./Assets/Images/media/image_vs_project_selection.png)
 
-2. Click `BROWSE` and choose the Astra MCU SDK root directory.
-    ![alt text](./Assets/Images/media/image_vs101_k.png)
+---
 
-3. Confirm the selection. The extension validates the folder and updates the workspace `settings.json` with `SRSDK_DIR` pointing to the chosen path.
-
-    ![alt text](./Assets/Images/media/image_vs102_k.png)
-4. Verify the **Build and Deploy** panels detect the SDK path. If `SRSDK_DIR` is not set, the Build Configurations section is disabled.
-
-    ![alt text](./Assets/Images/media/vs_sdk_path_warning.png)
-
-## Imported Example
+## Imported Projects
 <a id="imported-example"></a>
 
-**Purpose:** Provides a quick interface for managing the imported Astra
-MCU SDK's example folder and offers essential actions.
-
-![Figure 13 Imported Repos](./Assets/Images/media/image_vs14.png)
+**Purpose:** Provides a quick interface for managing all projects currently imported into your VS Code workspace.
 
 **Options:**
 
-1.  **Refresh:** Will reload the current workspace.
+1. **Refresh**: Reloads the current workspace.
+2. **Build and Deploy**: Opens the unified interface for the selected project.
+3. **View in Explorer**: Opens the project folder in the VS Code file explorer.
+4. **Remove from Workspace**: Removes the selected project from the current workspace.
 
-2.  **Build and Deploy:** Provides a combined interface for building and
-    flashing the image onto the device and for debugging.
+   ![](./Assets/Images/media/image_vs_option.png)
 
-3.  **View in Explorer:** To open the current folder in explorer.
-
-4.  **Remove from Workspace:** To remove the currently imported folder from the workspace.
-
-**Note:** Currently, only one Astra MCU SDK can be imported at a time.
-Importing multiple repos in same workspace is not supported yet. In
-Windows, the suggested path length of the imported SDK folder should not
-exceed 100 characters.
+**Note:** Version 1.4 now supports importing multiple projects in the same workspace. On Windows, the suggested path length of the imported SDK folder should not exceed 100 characters to avoid build issues.
 
 ### Build and Deploy
 <a id="build-and-deploy"></a>
 
-**Purpose:** Provides a unified environment to build, image generation,
-flashing and debugging.
+**Purpose:** Provides a unified environment for building, image generation, flashing, and debugging.
 
 **Steps:**
 
-1.  Once the required Astra MCU SDK is imported, within Imported Repos
-    column, click on "Build and Deploy". This will open the Build and
-    Deploy Webview. Make sure you have imported the "examples" directory
-    for building the custom applications.
+1. Once the required SDK and Project are imported, click **Build and Deploy** in the `Imported Projects` column.
 
-2.  Once you import the examples directory and open the Build and Deploy if you have not set the SRSDK_DIR through the `Import SDK` view you will not be able to build any application so please make sure you import the SDK if you want to continue with the build configuration step.
+   ![](./Assets/Images/media/image_vs_build_and_deploy.png)
 
+2. **Project Selection**: If multiple projects are in the workspace, ensure the correct one is selected in the dropdown menu within the Build and Deploy webview.
+
+3. **Configuration**: Select your **Build Configuration** (e.g., Release/Debug), **Board**, and **Compiler**.
+
+   ![](./Assets/Images/media/image_vs_build_config.png)
+
+   * *Note*: If Build configurations are disabled, verify that `SRSDK_DIR` was set correctly through the **Import SDK** view.
 **Workflow Description:** The Build and Deploy webview is a unified
 interface for multiple operations. Users can perform either one
 operation at a time or combination of operations.
+
+**Project Build Options**
+
+When building a project, the extension provides four distinct methods to handle SDK dependencies. Selecting the correct option ensures efficient build times and proper management of build artifacts.
+
+   ![](./Assets/Images/media/image_vs_build_options.png)
+
+| Option | What it does | When to use it |
+| :--- | :--- | :--- |
+| **SDK Build (default_package)** | Generates the core foundation (compiler CMakes and basic packages) in `<sdk-root>/examples/install`. | **First-time setup:** Use this to generate the required base package before building projects. |
+| **Build (SDK+Project)** | Builds the SDK components required by the app based on the app configuration, installs them into the app-local install folder, and then builds the example using that generated install package. | **First-time app build:** Use this when building an app for the first time and the required SDK components have not yet been generated for that app. |
+| **Build (Project)** | Performs a local build using artifacts generated specifically for the active project. | **Development:** Use this when making changes to project-specific code and you require a fresh, isolated build. |
+| **Build (Use Pre-built SDK)** | Links the project to the common install root available in `<sdk-root>/examples/install`. | **Efficiency:** Use this to share a common SDK package across multiple apps, saving time and avoiding redundant builds. |
+
+---
 
 🔧 **SoC-Specific Build & Deploy Workflows:**
 
@@ -264,6 +305,8 @@ b.  **Isolated workflow --** Users can perform individual steps
 - **Debug Options** (SR110 only).
 
 The exact options within each panel are SoC-specific; follow the platform build-and-flash guides for details.
+
+---
 
 ## Logger
 <a id="logger"></a>
@@ -318,12 +361,13 @@ The Memory Analyzer parses linker `.map` files and produces both summary and per
     ![alt text](./Assets/Images/media/image_vs63.png)
 5. Use the search box to filter objects/functions, change `Sort by` to reorder, and use pagination controls to navigate large result sets.
 
-## SR110 Debugging UI
-<a id="sr110-debugging-ui"></a>
+## Debugging UI
+<a id="debugging-ui"></a>
 
-🔧 **SR110 only**
 
-This section covers SR110-specific debugging UI features available in the extension. For step-by-step setup and build/flash prerequisites, see [SR110 Build and Flash with VS Code](./SR110/SR110_Build_and_Flash_with_VSCode.md).
+This section covers generic debugging UI features available in the extension. For step-by-step setup and build/flash prerequisites, see
+-  [SR110 Build and Flash with VS Code](./SR110/SR110_Build_and_Flash_with_VSCode.md#debugging-sr110).
+- [SL2610 Build and Flash with VS Code](./SL2610/SL2610_Build_and_Flash_with_VSCode.md#debugging-sl2610) 
 
 ### Download and Reset Program
 
@@ -343,7 +387,7 @@ This section covers SR110-specific debugging UI features available in the extens
 1. In the Build and Deploy webview, select the **Debug Options** panel.
 2. For a unified workflow, open **Build Configurations**, choose **Debug** under **BuildType**, and enable **Debug Options**.
 
-   ![Debug Options Panel](./Assets/Images/media/image_vs34.png)
+   ![Debug Options Panel](./Assets/Images/media/image_vs_debug.png)
 
 3. In **Debug Options**, select the AXF/ELF path (auto-populated if a debug build completed).
 4. Choose the probe, transport, and speed settings appropriate for your setup.
@@ -356,6 +400,7 @@ This section covers SR110-specific debugging UI features available in the extens
    ![Debug Mode selection](./Assets/Images/media/image_vs36.png)
 
 7. Click **Run** to start debugging. OpenOCD and GDB will start in separate terminals.
+
 8. Once connected, the debugger pauses at `main`.
 
    ![Debugger paused at main](./Assets/Images/media/image_vs37.png)
@@ -407,11 +452,13 @@ Once a debug session starts, the toolbar provides common controls.
 1. Right-click a variable and select **View Binary Data** to open a memory view.
 
    ![View Binary Data button](./Assets/Images/media/image_vs44.png)
+
    ![Memory View](./Assets/Images/media/image_vs45.png)
 
 2. Right-click in the editor and select **Open Memory Viewer** for a split view with edit/fill controls.
 
    ![Open Memory Viewer button](./Assets/Images/media/image_vs46.png)
+
    ![Memory Edit and Fill panel](./Assets/Images/media/image_vs47.png)
 
 3. The left panel supports multiple formats, periodic refresh, and configurable display.
@@ -467,13 +514,13 @@ Follow the configuration steps above, then select **Attach and Halt Program** to
 
 **Purpose:** Stream video output frames while a vision use case is running.
 
-![Video Streamer](./Assets/Images/media/image_vs54.png)
+![Video Streamer](./Assets/Images/media/image_vs_vs.png)
 
 **Pre-requisites:**
 - Install Python and required packages via the Astra SDK Tools Installer.
 - Flash the vision use case binary and ensure the device is connected.
 
-![Video Streamer Webview](./Assets/Images/media/image_vs55.png)
+![Video Streamer Webview](./Assets/Images/media/image_vs_video.png)
 
 **Steps for vision use cases:**
 
@@ -507,6 +554,11 @@ Follow the configuration steps above, then select **Attach and Halt Program** to
 2. Switch visualization modes (720p, 320x320, Text only).
 3. Adjust exposure/gain sliders as needed.
 4. If upgrading from older extension versions, reinstall Python packages (new modules are used).
+
+**Face ID + Hand Gesture Detection use case:**
+- Users can now select the combined **Face ID + Hand Gesture** use case from the UC ID dropdown. This allows for concurrent detection and visualization of both faces and gestures.
+
+![](./Assets/Images/media/image_vs_hg_and_fi.png)
 
 > **Note:** For non-auto-run use cases, **Create Use Case** + **Start Use Case** is sufficient. **Connect Image Source** is for auto-run use cases.
 

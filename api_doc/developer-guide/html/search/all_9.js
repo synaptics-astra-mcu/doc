@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['h_20strong_20cm55_20specific_20definitions_0',['2. &lt;strong&gt;sr110_cm55.h&lt;/strong&gt; (CM55-Specific Definitions)',['../md__r_e_a_d_m_e___s_t_r_u_c_t_u_r_e.html#autotoc_md9',1,'']]],
-  ['h_20strong_20main_20group_20definitions_1',['1. &lt;strong&gt;sr110_groups.h&lt;/strong&gt; (Main Group Definitions)',['../md__r_e_a_d_m_e___s_t_r_u_c_t_u_r_e.html#autotoc_md8',1,'']]],
+  ['h_20cm55_20specific_20definitions_0',['2. &lt;b&gt;sr110_cm55.h&lt;/b&gt; (CM55-Specific Definitions)',['../md__r_e_a_d_m_e___s_t_r_u_c_t_u_r_e.html#autotoc_md9',1,'']]],
+  ['h_20main_20group_20definitions_1',['1. &lt;b&gt;sr110_groups.h&lt;/b&gt; (Main Group Definitions)',['../md__r_e_a_d_m_e___s_t_r_u_c_t_u_r_e.html#autotoc_md8',1,'']]],
   ['handler_2',['Callback Handler',['../group__group__i2c__driver.html#i2c_callback',1,'']]],
   ['handling_20for_20sdio_20operations_3',['Cache Handling for SDIO Operations',['../group__group__sdio__driver.html#section11',1,'']]],
   ['hardware_20identifiers_4',['Astra MCU SDK Hardware Identifiers',['../group__soc__docs.html',1,'']]],

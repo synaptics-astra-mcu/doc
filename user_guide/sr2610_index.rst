@@ -11,27 +11,39 @@ This section provides comprehensive user guides and demo applications for the SR
 .. toctree::
    :maxdepth: 1
 
-   ../srsdk/examples/SL2610_RDK/driver_sample_app/dma_sample_app/README
-   ../srsdk/examples/SL2610_RDK/driver_sample_app/i2c_exp_app/README
-   ../srsdk/examples/SL2610_RDK/driver_sample_app/spwm_sample_app/README
-   ../srsdk/examples/SL2610_RDK/driver_sample_app/xspi_sample_app/README
-   ../srsdk/examples/SL2610_RDK/system_manager/README
+   ../srsdk/examples/driver_examples/dma_sample_app/README
+   ../srsdk/examples/driver_examples/i2c_exp_app/README
+   ../srsdk/examples/driver_examples/i2s_sample_app/README
+   ../srsdk/examples/driver_examples/nand_sample_app/README
+   ../srsdk/examples/driver_examples/spwm_sample_app/README
+   ../srsdk/examples/driver_examples/watchdog_sample_app/README
+   ../srsdk/examples/driver_examples/xspi_sample_app/README
+   ../srsdk/examples/system_manager/README
 
 **Sample Application Demos:**
 
-:doc:`../srsdk/examples/SL2610_RDK/driver_sample_app/dma_sample_app/README`
+:doc:`../srsdk/examples/driver_examples/dma_sample_app/README`
    **DMA Sample App Demo** - Demonstrates advanced DMA usage including 1D memory transfers, linked descriptor chains, software-triggered transfers, channel management, pause/resume control, and interrupt-driven completion handling with data integrity validation.
 
-:doc:`../srsdk/examples/SL2610_RDK/driver_sample_app/i2c_exp_app/README`
+:doc:`../srsdk/examples/driver_examples/i2c_exp_app/README`
    **I2C Expander Sample App Demo** - Demonstrates GPIO output control using an external FXL6408 I2C-based GPIO expander with periodic toggling and status logging.
 
-:doc:`../srsdk/examples/SL2610_RDK/driver_sample_app/spwm_sample_app/README`
+:doc:`../srsdk/examples/driver_examples/i2s_sample_app/README`
+   **I2S Sample App Demo** - Demonstrates I2S interface setup and audio data transfer flow for peripheral communication.
+
+:doc:`../srsdk/examples/driver_examples/nand_sample_app/README`
+   **Nand Sample App Demo** - Demonstrates initialization, JEDEC ID detection, erase, read, and write operations on an external SPI-NAND flash device.
+
+:doc:`../srsdk/examples/driver_examples/spwm_sample_app/README`
    **SPWM Driver App Demo** - Configurable PWM framework for motor control and power electronics, supporting Normal PWM, PWM with Dead-Time, and Pseudo-Random PWM modes.
 
-:doc:`../srsdk/examples/SL2610_RDK/driver_sample_app/xspi_sample_app/README`
+:doc:`../srsdk/examples/driver_examples/watchdog_sample_app/README`
+   **Watchdog Driver Sample App Demo** - Demonstrates watchdog start, refresh, stop, restart, and timeout-reset validation through functional test scenarios on supported boards.
+
+:doc:`../srsdk/examples/driver_examples/xspi_sample_app/README`
    **XSPI Sample App Demo** - Demonstrates external SPI-NOR flash operations including initialization, JEDEC ID detection, erase, read/write operations, and throughput measurement.
 
-:doc:`../srsdk/examples/SL2610_RDK/system_manager/README`
+:doc:`../srsdk/examples/system_manager/README`
    **System Manager Application** - Guide for SL2610 system manager boot flow handling, supported boot paths, and bring-up/runtime logging.
 
 

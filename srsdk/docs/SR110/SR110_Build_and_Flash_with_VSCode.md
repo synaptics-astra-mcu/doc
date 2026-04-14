@@ -33,11 +33,12 @@ You may also run each step one at a time if desired.
 The steps do not run until the **Run** button at the bottom of the view is pressed.
 
 ## Environment Setup
-1. Ensure the current working directory is the `<sdk-root>/examples` folder. Select this via the **Import Application/Example** view.
-2. Set the workspace `SRSDK_DIR` to `<sdk-root>` via the **Import SDK** view so the Build UI can detect the SDK.
-3. Open the **Build and Deploy** view in the Synaptics extension and set `Device` → `SR110`.
+1. Import the SDK root and set workspace `SRSDK_DIR` to `<sdk-root>` via the **Import SDK** view.
+2. Import the project you want to build via the **Import Project** view.
+3. Open **Build and Deploy** from the **Imported Projects** view and set `Device` -> `SR110`.
+4. If multiple projects are imported, select the correct project in the **Build and Deploy** project dropdown.
 
-![Build and Deploy Window](../Assets/Images/media/Build_and_Deploy.png)
+![Build and Deploy Window](assets/Build_and_Deploy.png)
 
 ## Build Configurations (SR110)
 <a id="build-configurations-sr110"></a>
@@ -45,21 +46,33 @@ The steps do not run until the **Run** button at the bottom of the view is press
 **Purpose:** Generate .elf/.axf for SR110 firmware (cm55).
 
 **Steps:**
-1. Check the **Build Configurations** checkbox
-2. Select the desired **Build Mode**:
+1. Check the **Build Configurations** checkbox.
+2. If multiple projects are imported, select the correct project in the **Build and Deploy** project dropdown.
+3. Select the desired **Build Configuration**:
    - **Release** for flashing
    - **Debug** for GDB debugging
-3. Select the application from the **Application** dropdown.
-4. **Board Revision** is printed on the bottom of Astra Machina Micro.
+4. Select the target **Board** and **Board Revision**.
+   - **Board Revision** is printed on the bottom of Astra Machina Micro.
 5. Choose the desired **Compiler** and **Build Toolchain**.
-6. Enable the desired build and clean checkboxes
-- **Build (SDK + App)** builds and installs the SDK and builds the application. 
-- **Build App** builds the application only and relies on previously installed SDK.
+6. Select the application from the **Application** dropdown.
+7. Choose the appropriate build option:
+
+| Option | What it does | When to use it |
+| :--- | :--- | :--- |
+| **SDK Build (default_package)** | Generates the shared SDK foundation in `<sdk-root>/install`. | Use this first to prepare the common SDK package required by project builds. |
+| **Build (SDK+Project)** | Builds the SDK components required by the app based on the app configuration, installs them into the app-local install folder, and then builds the example using that generated install package. | Use this when building an app for the first time and the required SDK components have not yet been generated for that app. |
+| **Build (Project)** | Builds the active SR110 project using project-local artifacts. | Use this during normal development when you want a fresh build for the selected project. |
+| **Build (Use Pre-built SDK)** | Builds the active SR110 project against the common install root in `<sdk-root>/install`. | Use this to reuse an existing SDK package and avoid rebuilding shared components. |
+
+**Notes:**
+- If **Build Configurations** is disabled, verify that `SRSDK_DIR` is set correctly through the **Import SDK** view.
 
 **Result:**
-- .axf/.bin files are written to `out/sr110_<Build_Type>/<Build_Mode>/sr110_<Build_Type>.elf/.axf` for example out/sr110_cm55_fw/release/sr110_cm55_fw.elf. 
+- Build outputs are generated under the project's `out/sr110_<Build_Type>/<Build_Mode>/` directory.
+- Example output: `out/sr110_cm55_fw/release/sr110_cm55_fw.elf`
+- The executable extension depends on the selected compiler: `.elf` for GCC/LLVM and `.axf` for AC6.
 
-![SR110 Build UI](../Assets/Images/media/VS_Build_Deploy.png)
+![SR110 Build UI](assets/VS_Build_Deploy.png)
 
 ## Image Conversion (SR110)
 
@@ -79,7 +92,7 @@ The steps do not run until the **Run** button at the bottom of the view is press
 **Result:**
 - Converted binaries are written under `out/bin_files/Output/B0_Flash/B0_flash_full_image_GD25LE128_67Mhz_secured.bin`
 
-![SR110 Image Conversion](../Assets/Images/media/VS_Image_Conv.png)
+![SR110 Image Conversion](assets/VS_Image_Conv.png)
 
 ## Image Flashing (SR110)
 
@@ -104,7 +117,7 @@ The Debug IC on the Astra Machina Micro is a CMSIS-DAP device. There is an SWD c
 **Model binaries (vision examples):**
 If your application includes a model `.bin`, flash it using the **Model Binary** option and the offset specified by the example README (often `0x629000` for VGA use cases)
 
-![SR110 Image Flashing](../Assets/Images/media/VS_Flash.png)
+![SR110 Image Flashing](assets/VS_Flash.png)
 
 #### FW mode (UART/CDC)
 This is the device firmware update (DFU) mechanism. For this method to work an image with the Host API and FW Update enabled must be running on the SR110. By default the communication protocol is USB CDC. This USB CDC enumerates on J13 of the Astra Machina Micro. 
@@ -166,14 +179,14 @@ Some vision examples stream image data over USB CDC. On Windows, install the cor
 2. Run `zadig-2.8.exe`.
 3. From **Options**, select **List All Devices**.
 
-   ![Zadig - List All Devices](../Assets/Images/media/image10.png)
+   ![Zadig - List All Devices](assets/image10.png)
 
 4. In the device dropdown, select **SR 100-B0 CDC 1**.
 
-   ![Zadig - Device Selection](../Assets/Images/media/image11.jpeg)
+   ![Zadig - Device Selection](assets/image11.jpeg)
 
 5. Choose **WinUSB** as the driver and click **Replace Driver**.
 
-   ![Zadig - Replace Driver](../Assets/Images/media/image12.png)
+   ![Zadig - Replace Driver](assets/image12.png)
 
 6. Reconnect the board and verify streaming in your example.
