@@ -1,7 +1,7 @@
-SR2610 User Guide
+SL2610 User Guide
 *****************
 
-This section provides comprehensive user guides and demo applications for the SR2610 evaluation platform. Learn how to run Sample applications, configure peripheral, and explore the full capabilities of the SR2610 board through hands-on examples.
+This section provides comprehensive user guides and demo applications for the SL2610 evaluation platform. Learn how to run Sample applications, configure peripheral, and explore the full capabilities of the SL2610 board through hands-on examples.
 
 **Download Binaries (Path)**: All demo binaries can be downloaded from the GitHub repository under `GitHub Releases <https://github.com/synaptics-astra-mcu/srsdk_demos/tree/v1.2.0>`_
 

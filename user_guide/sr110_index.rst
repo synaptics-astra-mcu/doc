@@ -19,7 +19,6 @@ This section provides comprehensive user guides and demo applications for the SR
    ../srsdk/examples/vision_examples/uc_hand_gesture_detection/README
    ../srsdk/examples/vision_examples/uc_fid_hgd/README
    ../srsdk/examples/vision_examples/uc_jpeg_preroll/README
-   ../srsdk/examples/driver_examples/bt_sample_app/bt_sample_readme
    ../srsdk/examples/audio_examples/uc_audio_mic/README
    ../srsdk/examples/driver_examples/clk_sample_app/README
    ../srsdk/examples/driver_examples/dma_sample_app/README
@@ -30,7 +29,6 @@ This section provides comprehensive user guides and demo applications for the SR
    ../srsdk/examples/driver_examples/sdio_sample_app/README
    ../srsdk/examples/driver_examples/spi_sample_app/README
    ../srsdk/examples/driver_examples/uart_sample_app/README
-   ../srsdk/examples/driver_examples/wifi_sample_app/README
    ../srsdk/examples/driver_examples/xspi_sample_app/README
    ../srsdk/examples/inference_examples/inference_basic_sample_app/README
    ../srsdk/examples/inference_examples/inference_basic_flash_sample_app/README
@@ -77,9 +75,6 @@ This section provides comprehensive user guides and demo applications for the SR
 :doc:`../srsdk/examples/vision_examples/uc_jpeg_preroll/README`
    **JPEG Preroll Demo** - Guide for JPEG image capture and preroll functionality, including USB transfer and image processing workflows.
 
-:doc:`../srsdk/examples/driver_examples/bt_sample_app/bt_sample_readme`
-   **Bletooth Demo** - The BT sample application showcases BLE capabilities, including stack initialization, GATT server functionality, advertising, device discovery and connection, and GATT read/write operations.
-
 **Driver Examples:**
 
 :doc:`../srsdk/examples/driver_examples/clk_sample_app/README`
@@ -108,9 +103,6 @@ This section provides comprehensive user guides and demo applications for the SR
 
 :doc:`../srsdk/examples/driver_examples/uart_sample_app/README`
    **UART Demo** - Demonstrates serial communication setup, transmit/receive operations, and console interaction.
-
-:doc:`../srsdk/examples/driver_examples/wifi_sample_app/README`
-   **Wi-Fi Demo** - Introduces Wi-Fi initialization, connection flow, and basic network communication examples.
 
 :doc:`../srsdk/examples/driver_examples/xspi_sample_app/README`
    **XSPI Demo** - Explains extended SPI usage for external flash/peripheral access with high-speed transactions.
