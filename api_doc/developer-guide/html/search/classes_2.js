@@ -1,11 +1,4 @@
 var searchData=
 [
-  ['i2c_5fblocking_5fconfig_5ft_0',['i2c_blocking_config_t',['../structi2c__blocking__config__t.html',1,'']]],
-  ['i2c_5fcontroller_5fconfig_5ft_1',['i2c_controller_config_t',['../structi2c__controller__config__t.html',1,'']]],
-  ['i2c_5fnonblocking_5fconfig_5ft_2',['i2c_nonblocking_config_t',['../structi2c__nonblocking__config__t.html',1,'']]],
-  ['i2c_5ftarget_5fconfig_5ft_3',['i2c_target_config_t',['../structi2c__target__config__t.html',1,'']]],
-  ['i2s_5fcapabilities_5ft_4',['i2s_capabilities_t',['../structi2s__capabilities__t.html',1,'']]],
-  ['i2s_5fclock_5fmode_5ft_5',['i2s_clock_mode_t',['../structi2s__clock__mode__t.html',1,'']]],
-  ['i2s_5fconfig_5ft_6',['i2s_config_t',['../structi2s__config__t.html',1,'']]],
-  ['i2s_5fmem_5fif_5fops_5ft_7',['i2s_mem_if_ops_t',['../structi2s__mem__if__ops__t.html',1,'']]]
+  ['gpio_5fpin_5fconfig_5ft_0',['gpio_pin_config_t',['../structgpio__pin__config__t.html',1,'']]]
 ];

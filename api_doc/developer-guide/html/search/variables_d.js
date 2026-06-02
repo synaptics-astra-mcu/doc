@@ -1,5 +1,27 @@
 var searchData=
 [
-  ['quad_0',['quad',['../structspwm__config__t.html#ab7aa9ff985f68ae06601de5d3c11a079',1,'spwm_config_t']]],
-  ['quad_5fmode_1',['quad_mode',['../structspwm__quad__cfg__t.html#a627c752b1d67e7bcf3ab054f2596572c',1,'spwm_quad_cfg_t']]]
+  ['parity_0',['parity',['../structuart__config__t.html#a8eef548606b698b16b893dcd8b2b3e1b',1,'uart_config_t']]],
+  ['parity_5ferror_1',['parity_error',['../structuart__usr__lsr__status__bits__t.html#ac20511b0e8b6d0ec340c7460b77dbb6b',1,'uart_usr_lsr_status_bits_t']]],
+  ['payload_5flength_2',['payload_length',['../structi3c__ccc__response__entry__t.html#af9cb869bc43e63a89c14914b84def67c',1,'i3c_ccc_response_entry_t']]],
+  ['pdm_5fclk_5fhz_3',['pdm_clk_Hz',['../structdmic__io__config__s.html#accbd4cb2985dbdf022ac32caf66fa929',1,'dmic_io_config_s']]],
+  ['period_4',['period',['../structspwm__config__t.html#abc1cd0f945c8fdbd692a70445d619b5e',1,'spwm_config_t']]],
+  ['period_5fbuff_5',['period_buff',['../structspwm__config__t.html#a5136d9aff3d9532ae0721dbf5db4ddeb',1,'spwm_config_t']]],
+  ['period_5fbytes_6',['period_bytes',['../structdmic__dma__config__s.html#abf8f85158fe4a8c3317f36259ca6542e',1,'dmic_dma_config_s']]],
+  ['pid_7',['pid',['../structi3c__target__id__t.html#a40d9a8c2ba4621e4d5065ee12f85eee1',1,'i3c_target_id_t']]],
+  ['pin_5fname_8',['pin_name',['../structpinmux__config__all__t.html#a5ed5751ca261018694b711c74978dc51',1,'pinmux_config_all_t']]],
+  ['polarity_5freversal_9',['polarity_reversal',['../structdmic__io__config__s.html#a11bd7673c0deeaa53fcde128391574c2',1,'dmic_io_config_s']]],
+  ['pp_5fhigh_5fns_10',['pp_high_ns',['../structscl__push__pull__timing__t.html#a65cd798edcd5b04f2b759ecaa4c3f570',1,'scl_push_pull_timing_t']]],
+  ['pp_5flow_5fns_11',['pp_low_ns',['../structscl__push__pull__timing__t.html#ac53f84bf509a8704a8003775f059d3ad',1,'scl_push_pull_timing_t']]],
+  ['prescale_12',['prescale',['../structspwm__config__t.html#a139ea70e9d36dd58b1b135993b57d65f',1,'spwm_config_t']]],
+  ['priority_13',['priority',['../structdma__channel__config__t.html#a026b5c9b93a14ab2b086120b45aab372',1,'dma_channel_config_t']]],
+  ['privilege_14',['privilege',['../structdma__channel__attr__t.html#a3d6142209a9770ab24aed2caf88c65ec',1,'dma_channel_attr_t']]],
+  ['pull_5ftype_15',['pull_type',['../structpinmux__elec__config__t.html#a3572860db7cac45c942a135352dc8424',1,'pinmux_elec_config_t']]],
+  ['push_5fpull_5ftiming_16',['push_pull_timing',['../structi3c__scl__timing__t.html#a9ea179f5f364ff99bee0fecdb1946201',1,'i3c_scl_timing_t']]],
+  ['put_5fbuff_17',['put_buff',['../structuart__put__config__t.html#a9be5b14149f068e7c31cf19c0f919273',1,'uart_put_config_t']]],
+  ['pwm_18',['pwm',['../structspwm__pwmdt__cfg__t.html#a65b56f0ef39b1612367732d2b17ca43a',1,'spwm_pwmdt_cfg_t::pwm'],['../structspwm__pwmpr__cfg__t.html#a6bfc9684034128fad3f41035c1d4f10d',1,'spwm_pwmpr_cfg_t::pwm'],['../structspwm__config__t.html#a4f8d7c0302adbe52e62230bc16660c48',1,'spwm_config_t::pwm']]],
+  ['pwm_5fimm_5fkill_19',['pwm_imm_kill',['../structspwm__pwm__cfg__t.html#a7a984c3c11de81d7b0d1c590864e3f03',1,'spwm_pwm_cfg_t']]],
+  ['pwm_5fstop_5fon_5fkill_20',['pwm_stop_on_kill',['../structspwm__pwm__cfg__t.html#a211102b240a29dfd55dfa7fae6001a2c',1,'spwm_pwm_cfg_t']]],
+  ['pwm_5fsync_5fkill_21',['pwm_sync_kill',['../structspwm__pwm__cfg__t.html#a0abbc2c4f43cc3384b00c2eaa5ff24a1',1,'spwm_pwm_cfg_t']]],
+  ['pwmdt_22',['pwmdt',['../structspwm__config__t.html#abda88ba2a2ee0a0d070fa8c4095d25d9',1,'spwm_config_t']]],
+  ['pwmpr_23',['pwmpr',['../structspwm__config__t.html#a2743318bc67ac2d425fd8b9e9776b1b7',1,'spwm_config_t']]]
 ];

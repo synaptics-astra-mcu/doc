@@ -5,7 +5,7 @@ var searchData=
   ['gear3_5faux_5fclk_2',['GEAR3_AUX_CLK',['../group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455a3dcd06cc1d03bb6f7f718e1114a8521f',1,'sr110_cm55.h']]],
   ['gear3_5fbase_5fclk_3',['GEAR3_BASE_CLK',['../group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455a7fe8cc2b9ec6950034be86fe93dda114',1,'sr110_cm55.h']]],
   ['general_4',['General',['../group__group__gpio__general__functions.html',1,'General'],['../group__group__spi__general__functions.html',1,'General'],['../group__group__uart__general__functions.html',1,'General']]],
-  ['general_20functions_5',['General Functions',['../group__group__i2c__functions.html',1,'General Functions'],['../group__group__pinmux__general__functions.html',1,'General Functions'],['../group__group__uart__driver.html#snippets_gen_level',1,'General Functions.']]],
+  ['general_20functions_5',['General Functions',['../group__group__dmic__functions.html',1,'General Functions'],['../group__group__i2c__functions.html',1,'General Functions'],['../group__group__pinmux__general__functions.html',1,'General Functions'],['../group__group__uart__driver.html#snippets_gen_level',1,'General Functions.']]],
   ['general_5fcall_5fresponse_6',['general_call_response',['../structi2c__target__config__t.html#a9a36418a353be172bf910ed83fc12100',1,'i2c_target_config_t']]],
   ['generate_20documentation_7',['How to Generate Documentation',['../md__r_e_a_d_m_e.html#autotoc_md2',1,'']]],
   ['generation_20guide_8',['Documentation Generation Guide',['../md__r_e_a_d_m_e.html',1,'']]],

@@ -1,4 +1,19 @@
 var searchData=
 [
-  ['gpio_5fpin_5fconfig_5ft_0',['gpio_pin_config_t',['../structgpio__pin__config__t.html',1,'']]]
+  ['data_5fbuffer_5fthld_5ft_0',['data_buffer_thld_t',['../structdata__buffer__thld__t.html',1,'']]],
+  ['dma_5f1d_5fconfig_5ft_1',['dma_1d_config_t',['../structdma__1d__config__t.html',1,'']]],
+  ['dma_5f2d_5fconfig_5ft_2',['dma_2d_config_t',['../structdma__2d__config__t.html',1,'']]],
+  ['dma_5fauto_5frestart_5fconfig_5ft_3',['dma_auto_restart_config_t',['../structdma__auto__restart__config__t.html',1,'']]],
+  ['dma_5fchannel_5fattr_5ft_4',['dma_channel_attr_t',['../structdma__channel__attr__t.html',1,'']]],
+  ['dma_5fchannel_5fconfig_5ft_5',['dma_channel_config_t',['../structdma__channel__config__t.html',1,'']]],
+  ['dma_5fhw_5ftrigger_5fconfig_5ft_6',['dma_hw_trigger_config_t',['../structdma__hw__trigger__config__t.html',1,'']]],
+  ['dma_5fsw_5ftrigger_5fconfig_5ft_7',['dma_sw_trigger_config_t',['../structdma__sw__trigger__config__t.html',1,'']]],
+  ['dma_5ftemplate_5fconfig_5ft_8',['dma_template_config_t',['../structdma__template__config__t.html',1,'']]],
+  ['dmic_5fbuffer_5fcontext_5fs_9',['dmic_buffer_context_s',['../structdmic__buffer__context__s.html',1,'']]],
+  ['dmic_5fcapability_5fs_10',['dmic_capability_s',['../structdmic__capability__s.html',1,'']]],
+  ['dmic_5fchannel_5fconfig_5fs_11',['dmic_channel_config_s',['../structdmic__channel__config__s.html',1,'']]],
+  ['dmic_5fdata_5fpath_5fconfig_5fs_12',['dmic_data_path_config_s',['../structdmic__data__path__config__s.html',1,'']]],
+  ['dmic_5fdma_5fconfig_5fs_13',['dmic_dma_config_s',['../structdmic__dma__config__s.html',1,'']]],
+  ['dmic_5ffifo_5fconfig_5fs_14',['dmic_fifo_config_s',['../structdmic__fifo__config__s.html',1,'']]],
+  ['dmic_5fio_5fconfig_5fs_15',['dmic_io_config_s',['../structdmic__io__config__s.html',1,'']]]
 ];

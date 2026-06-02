@@ -5,7 +5,7 @@ var searchData=
   ['gear3_5faux_5fclk_2',['GEAR3_AUX_CLK',['../group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455a3dcd06cc1d03bb6f7f718e1114a8521f',1,'sr110_cm55.h']]],
   ['gear3_5fbase_5fclk_3',['GEAR3_BASE_CLK',['../group___c_l_k___e_n_u_m_s___s_r110.html#ggadf58d5869a776847e03e148a76403455a7fe8cc2b9ec6950034be86fe93dda114',1,'sr110_cm55.h']]],
   ['general_4',['General',['../group__group__gpio__general__functions.html',1,'General'],['../group__group__spi__general__functions.html',1,'General'],['../group__group__uart__general__functions.html',1,'General']]],
-  ['general_20functions_5',['General Functions',['../group__group__i2c__functions.html',1,'General Functions'],['../group__group__pinmux__general__functions.html',1,'General Functions'],['../group__group__uart__driver.html#snippets_gen_level',1,'General Functions.']]],
+  ['general_20functions_5',['General Functions',['../group__group__dmic__functions.html',1,'General Functions'],['../group__group__i2c__functions.html',1,'General Functions'],['../group__group__pinmux__general__functions.html',1,'General Functions'],['../group__group__uart__driver.html#snippets_gen_level',1,'General Functions.']]],
   ['general_5fcall_5fresponse_6',['general_call_response',['../structi2c__target__config__t.html#a9a36418a353be172bf910ed83fc12100',1,'i2c_target_config_t']]],
   ['generate_20documentation_7',['How to Generate Documentation',['../md__r_e_a_d_m_e.html#autotoc_md2',1,'']]],
   ['generation_20guide_8',['Documentation Generation Guide',['../md__r_e_a_d_m_e.html',1,'']]],
@@ -78,6 +78,6 @@ var searchData=
   ['gpio_5fport_5fset_5fint_5ftype_75',['gpio_port_set_int_type',['../group__group__gpio__port__functions.html#gae9e3919e43f5c6b79f534a2591ca4d41',1,'gpio.h']]],
   ['gpio_5fport_5fwrite_76',['gpio_port_write',['../group__group__gpio__port__functions.html#ga0e41a70cb5f0b5233820b407e0d900dd',1,'gpio.h']]],
   ['gpio_5fstatus_5fen_77',['gpio_status_en',['../group__group__gpio__enums.html#ga8aa60baa2d2ea95ef167475dc1652922',1,'gpio.h']]],
-  ['group_20definitions_78',['1. &lt;strong&gt;sr110_groups.h&lt;/strong&gt; (Main Group Definitions)',['../md__r_e_a_d_m_e___s_t_r_u_c_t_u_r_e.html#autotoc_md8',1,'']]],
+  ['group_20definitions_78',['1. &lt;b&gt;sr110_groups.h&lt;/b&gt; (Main Group Definitions)',['../md__r_e_a_d_m_e___s_t_r_u_c_t_u_r_e.html#autotoc_md8',1,'']]],
   ['guide_79',['Documentation Generation Guide',['../md__r_e_a_d_m_e.html',1,'']]]
 ];

@@ -4,6 +4,8 @@
 
 The UC Person Detection application is designed to identify and locate persons within its field of view. It leverages object detection techniques to generate bounding boxes around detected individuals and assigns confidence scores to indicate the reliability of each detection. The output includes the precise location of each person in the image along with a confidence value, enabling accurate and efficient person recognition for various embedded vision applications. This example supports both WQVGA(480x270) and VGA(640x480) resolutions.
 
+This usecase supports both **MIPI CSI** sensors (image-proc path) and **parallel/IIF** sensors (LP Sense data-flow path).
+
 The latest example structure uses a **common application source tree** with board-specific hardware setup kept under `hw/<BOARD>/`. For this app:
 - Common application sources such as `main.c`, `uc_person_detection.c`, and `uc_person_detection.h` stay in the app root.
 - Application defconfigs are stored under `configs/`.
@@ -32,6 +34,7 @@ You can:
 - Run `make list_defconfigs` from the application directory to list all supported defconfigs.
 
 **Available defconfigs:**
+- `sr110_rdk_cm55_parallel_camera_person_detection_defconfig` (PS5416 parallel / IIF)
 - `sr110_rdk_cm55_person_detection_vga_img_proc_autorun_defconfig`
 - `sr110_rdk_cm55_person_detection_vga_img_proc_defconfig`
 - `sr110_rdk_cm55_person_detection_wqvga_img_proc_autorun_defconfig`

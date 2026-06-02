@@ -2,10 +2,16 @@ var group___c_m52___s_l2610 =
 [
     [ "UART", "group___u_a_r_t___s_l2610.html", "group___u_a_r_t___s_l2610" ],
     [ "GPIO", "group___g_p_i_o___s_l2610.html", "group___g_p_i_o___s_l2610" ],
+    [ "I3C", "group___i3_c___s_l2610.html", "group___i3_c___s_l2610" ],
     [ "Pinmux", "group___p_i_n_m_u_x___s_l2610.html", "group___p_i_n_m_u_x___s_l2610" ],
     [ "I2C", "group___i2_c___s_l2610.html", "group___i2_c___s_l2610" ],
     [ "XSPI", "group___x_s_p_i___s_l2610.html", "group___x_s_p_i___s_l2610" ],
     [ "DMA", "group___d_m_a___s_l2610.html", "group___d_m_a___s_l2610" ],
+    [ "CAN", "group___c_a_n___s_l2610.html", "group___c_a_n___s_l2610" ],
     [ "EMMC", "group___e_m_m_c___s_l2610.html", "group___e_m_m_c___s_l2610" ],
-    [ "IPC", "group___i_p_c___s_l2610.html", "group___i_p_c___s_l2610" ]
+    [ "SPWM", "group___s_p_w_m___s_l2610.html", "group___s_p_w_m___s_l2610" ],
+    [ "IPC", "group___i_p_c___s_l2610.html", "group___i_p_c___s_l2610" ],
+    [ "I2S", "group___i2_s___s_l2610.html", "group___i2_s___s_l2610" ],
+    [ "DMIC", "group___d_m_i_c___s_l2610.html", "group___d_m_i_c___s_l2610" ],
+    [ "SDIO", "group___s_d_i_o___s_l2610.html", "group___s_d_i_o___s_l2610" ]
 ];
