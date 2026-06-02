@@ -19,5 +19,16 @@ var searchData=
   ['dma_5ftrigger_5fmode_5fen_16',['dma_trigger_mode_en',['../group__group__dma__enums.html#ga3982c2281ccb2acc3ee78463ecb0161f',1,'dma.h']]],
   ['dma_5ftrigger_5ftarget_5fen_17',['dma_trigger_target_en',['../group__group__dma__enums.html#ga14a7c9f55db3d06c7db4d021d6bd76d2',1,'dma.h']]],
   ['dma_5ftrigger_5ftype_5fen_18',['dma_trigger_type_en',['../group__group__dma__enums.html#gacd7a27c22a38e096d1f46fe11f4bcb35',1,'dma.h']]],
-  ['dma_5funit_5fsize_5fen_19',['dma_unit_size_en',['../group__group__dma__enums.html#gacb71933896161321885b02e1f1094915',1,'dma.h']]]
+  ['dma_5funit_5fsize_5fen_19',['dma_unit_size_en',['../group__group__dma__enums.html#gacb71933896161321885b02e1f1094915',1,'dma.h']]],
+  ['dmic_5fboost_5fen_20',['dmic_boost_en',['../group__group__dmic__enums.html#ga73f57b6d2cd3062ec53b96370d52951a',1,'dmic.h']]],
+  ['dmic_5fbuffer_5fmode_5fen_21',['dmic_buffer_mode_en',['../group__group__dmic__enums.html#ga7e55950b57f831ca9c65058e37e4a5e7',1,'dmic.h']]],
+  ['dmic_5fdecimation_5fratio_5fen_22',['dmic_decimation_ratio_en',['../group__group__dmic__enums.html#ga2bb0106efe5b6fc3a922e13ba3b8fa31',1,'dmic.h']]],
+  ['dmic_5fevent_5fen_23',['dmic_event_en',['../group__group__dmic__enums.html#ga00181a2ce14fde5a6990c289ee9f19f3',1,'dmic.h']]],
+  ['dmic_5fgain_5fctrl_5fen_24',['dmic_gain_ctrl_en',['../group__group__dmic__enums.html#ga2921e41d3264aa37e917e1409f739b2a',1,'dmic.h']]],
+  ['dmic_5fin_5fphase_5fen_25',['dmic_in_phase_en',['../group__group__dmic__enums.html#ga54c0a3aa2116884d76116b75bd744721',1,'dmic.h']]],
+  ['dmic_5finstance_5fen_26',['dmic_instance_en',['../group___d_m_i_c___e_n_u_m_s___s_l2610.html#ga23fe9d3036c1708e5f0c7f3b0dd2b6bd',1,'sl2610_cm52.h']]],
+  ['dmic_5fint_5fen_27',['dmic_int_en',['../group__group__dmic__enums.html#gaa7ef20614eb4508b99b610ed1845e04c',1,'dmic.h']]],
+  ['dmic_5fsample_5fsize_5fen_28',['dmic_sample_size_en',['../group__group__dmic__enums.html#gab9b40df6c7d6bb8d41ee0c3aead49488',1,'dmic.h']]],
+  ['dmic_5fstatus_5fen_29',['dmic_status_en',['../group__group__dmic__enums.html#ga2f87c6716fb119b4ed9fe5666197861d',1,'dmic.h']]],
+  ['dmic_5ftransfer_5fmode_5fen_30',['dmic_transfer_mode_en',['../group__group__dmic__enums.html#ga85b65b5c6fc3027f60b7a9c713ac50cc',1,'dmic.h']]]
 ];

@@ -1,16 +1,18 @@
-# I2S Driver Sample Application
+# I2S and TDM Driver Sample Application
 
 ## Description
 
-The I2S Driver sample application demonstrates I2S audio data transfer on the supported boards for this application. It performs end-to-end I2S validation including transmit, receive, loopback, dual-board communication, and DMA-driven buffering.
+The I2S and TDM driver sample application demonstrates both standard I2S and TDM audio data transfer on supported boards. It performs end-to-end validation including transmit, receive, loopback, dual-board communication, DMA-driven buffering, and TDM frame/slot verification.
 
-The sample includes multiple I2S verification modes:
+The sample includes multiple I2S/TDM verification modes:
 - **Single-board loopback:** Asynchronous TX with RX loopback on the same board.
 - **Dual TX node:** Transmit-only node for dual-board testing.
 - **Dual RX node:** Receive-only node with integrity validation.
 - **Dual RX replay:** Capture on RX and replay the captured data on TX.
+- **TDM modes (single-board and dual-board):** Verify time-division multiplexed frame/slot-based audio transfer on TX/RX paths.
+  TDM verification supports 2-channel, 4-channel, and 8-channel configurations.
 
-During each run, the app logs initialization status, configuration details, DMA rate/IRQ stats, and validation results. This makes it easy for end users to confirm that I2S setup and data flow are working as expected.
+During each run, the app logs initialization status, configuration details, DMA rate/IRQ stats, and validation results. This makes it easy for end users to confirm that I2S/TDM setup and data flow are working as expected.
 
 The latest example structure uses a **common application source tree** with board-specific hardware setup kept under `hw/<BOARD>/`. For this app:
 - Common application sources such as `main.c`, `i2s_sample_app.c`, and `i2s_sample_app.h` stay in the app root.
@@ -24,7 +26,7 @@ The application can also be exported and built as a **standalone app repository*
 This application supports:
 - `SL2610_RDK`
 
-Select the defconfig that matches your target board and the desired I2S mode, and the build system will pick the corresponding board-specific hardware setup from `hw/<BOARD>/`.
+Select the defconfig that matches your target board and the desired I2S/TDM mode, and the build system will pick the corresponding board-specific hardware setup from `hw/<BOARD>/`.
 
 ## Prerequisites
 - Choose **one** setup path:
@@ -33,20 +35,27 @@ Select the defconfig that matches your target board and the desired I2S mode, an
 
 ## Test Case Selection
 
-Before building, choose the testcase defconfig that matches both your target board and the I2S mode you want to validate.
+Before building, choose the testcase defconfig that matches both your target board and the I2S/TDM mode you want to validate.
+For TDM validation, select one of the dedicated `*_tdm_defconfig` variants listed below.
+For channel scaling checks in TDM mode, validate with 2, 4, and 8 channels.
 
 You can:
 - Select the required defconfig directly from the application's `configs/` directory.
 - Run `make list_defconfigs` from the application directory to list all supported defconfigs.
 
-**Available I2S defconfigs (SL2610 RDK):**
+**Available I2S/TDM defconfigs (SL2610 RDK):**
 - `sl2610_rdk_cm52_i2s_sample_app_single_board_loopback_defconfig`: Async TX with RX loopback on a single board.
 - `sl2610_rdk_cm52_i2s_sample_app_dual_tx_defconfig`: Dual-board TX node image.
 - `sl2610_rdk_cm52_i2s_sample_app_dual_rx_defconfig`: Dual-board RX node image.
 - `sl2610_rdk_cm52_i2s_sample_app_dual_rx_replay_defconfig`: Dual-board RX capture with TX replay.
+- `sl2610_rdk_cm52_i2s_sample_app_tdm_defconfig`: Single-board TDM mode validation.
+- `sl2610_rdk_cm52_i2s_sample_app_dual_tx_tdm_defconfig`: Dual-board TX node image in TDM mode.
+- `sl2610_rdk_cm52_i2s_sample_app_dual_rx_tdm_defconfig`: Dual-board RX node image in TDM mode.
 
-For this app, the default defconfig is:
-   - `sl2610_rdk_cm52_i2s_sample_app_single_board_loopback_defconfig`
+**Available TDM defconfigs (SL2610 RDK):**
+- `sl2610_rdk_cm52_i2s_sample_app_single_board_loopback_tdm_defconfig`
+- `sl2610_rdk_cm52_i2s_sample_app_dual_tx_tdm_defconfig`
+- `sl2610_rdk_cm52_i2s_sample_app_dual_rx_tdm_defconfig`
 
 ## Building and Flashing the Example using VS Code
 
@@ -56,16 +65,13 @@ Use the VS Code flow described in the respective soc vscode guides and the VS Co
 
 **Build (VS Code):**
 1. Open **Build and Deploy** -> **Build Configurations**.
-2. Select the **i2s_sample_app** project configuration in the **Project Configuration** dropdown.
-3. Select the required defconfig for the I2S mode you want to validate.
-4. Build with **Build (SDK+Project)** for the first build, or **Build (Project)** for rebuilds.
+2. Select **i2s_sample_app** in the **Application** dropdown.
+3. Select the required defconfig for the I2S/TDM mode you want to validate.
+4. Build with **Build (SDK + App)** for the first build, or **Build App** for rebuilds.
 
 **Flash (VS Code):**
-1. Use the SL2610 image-generation flow to generate the required sub-image.
-2. Open **Image Flashing (SL2610)**.
-3. Select **Flash Target** as **M52 Image**.
-4. In **Image Path**, browse to and select the generated sub-image file, such as `sysmgr.subimg.gz`.
-5. Start the flashing operation to program the image to the target.
+1. Use **Image Conversion** to generate the flash image.
+2. Use **Image Flashing** (SWD/JTAG) to flash the firmware image.
 
 ---
 
@@ -128,8 +134,8 @@ Use the CLI flow described in the respective build guide:
      - **Windows:** try the lower-numbered J14 COM port first.
      - **Linux/macOS:** try the higher-numbered J14 port first.
    - If you do not see logs after a reset, switch to the other J14 port.
-3. For I2S signal observation, connect a logic analyzer to the I2S pins used by your board.
-4. I2S sample logs appear in the logger window, including transfer progress and validation results.
+3. For I2S/TDM signal observation, connect a logic analyzer to the corresponding audio interface pins used by your board.
+4. Sample logs appear in the logger window, including transfer progress and validation results.
 
 **Expected Logs**
 

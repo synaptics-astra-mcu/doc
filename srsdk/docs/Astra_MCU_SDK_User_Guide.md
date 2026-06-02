@@ -49,7 +49,7 @@ Before using this reference, complete the setup and installation steps:
 | --- | --- | --- |
 | MCU core | Cortex-M55 | Cortex-M52 |
 | NPU | Ethos-U55 | None |
-| Flash media | External XSPI | eMMC (via USB boot tool) |
+| Flash media | External XSPI | eMMC and on-board xSPI NOR (via USB boot tool) |
 | Image generation | SRSDK image generator | Image generator + USB boot tool |
 | Debug | OpenOCD + probe | Not supported in this SDK flow |
 | Toolchains | GCC, AC6, LLVM | GCC, AC6 |
@@ -538,7 +538,8 @@ This runs a two-step pipeline:
 Final outputs:
 - `<app-dir>/out/image/eMMCimg/sysmgr.subimg.gz`
 - `<app-dir>/out/image/eMMCimg/`
-- `<app-dir>/out/image/usb_boot/`
+- `<app-dir>/out/image/XSPIimg/spi.bin` — xSPI NOR flash image (when xSPI boot source is selected)
+- `<app-dir>/out/image/USBimg/`
 
 Intermediate outputs from image generation:
 - `<app-dir>/out/nexus_bin/`
@@ -596,9 +597,9 @@ Key options:
 cd <sdk-root>/tools/usb_boot_python_tool/USB_BOOT_TOOL
 python usb_boot_tool.py --op run-sm \
   --sm <sdk-root>/examples/<example_type>/<app>/out/image/eMMCimg/sysmgr.subimg.gz \
-  --spk <sdk-root>/examples/<example_type>/<app>/out/image/usb_boot/spk.bin \
-  --keys <sdk-root>/examples/<example_type>/<app>/out/image/usb_boot/key.bin \
-  --m52bl <sdk-root>/examples/<example_type>/<app>/out/image/usb_boot/m52bl.bin
+  --spk <sdk-root>/examples/<example_type>/<app>/out/image/USBimg/spk.bin \
+  --keys <sdk-root>/examples/<example_type>/<app>/out/image/USBimg/key.bin \
+  --m52bl <sdk-root>/examples/<example_type>/<app>/out/image/USBimg/m52bl.bin
 ```
 
 **Full eMMC flashing:**
@@ -606,8 +607,20 @@ python usb_boot_tool.py --op run-sm \
 python usb_boot_tool.py --op emmc --img-dir <path-to-eMMCimg>
 ```
 
+**xSPI NOR flashing:**
+
+Programs the xSPI NOR flash image (`spi.bin`) generated under `out/image/XSPIimg/`. `--keys`, `--spk`, `--m52bl`, and `--sm` default to the files bundled next to `usb_boot_tool.py`; override only what you need.
+
+```
+python usb_boot_tool.py --op xspi-sm \
+  --spi-img <sdk-root>/examples/<example_type>/<app>/out/image/XSPIimg/spi.bin
+```
+
+Additional xSPI utilities (SM must be running): `--op xspi-jedec-id`, `--op xspi-chip-erase`, and `--op xspi-read --read-size <bytes> [--read-offset <addr>] [--read-out <file>]`.
+
 Notes:
 - `--op emmc` requires a Yocto-generated `eMMCimg` folder with `emmc_part_list` and `emmc_image_list`.
+- `--op xspi-sm` requires `spi.bin` from `out/image/XSPIimg/` (built by `make imagegen` when the xSPI boot source is selected — see [tools/image_gen/README.md](../tools/image_gen/README.md)).
 - If `run-sm` fails because SM CDC is already running, power-cycle the board and retry.
 
 ## Where to Run Commands
@@ -625,7 +638,7 @@ Use the table below to choose the correct working directory.
 | `make imagegen` | `<sdk-root>/examples/<example_type>/<app>` or `<sdk-root>/examples/<app>` | Application image generation pipeline |
 | `srsdk_image_generator.py` | `<sdk-root>/tools/srsdk_image_generator` | SR110 image generation |
 | `flash_xspi_tcl.py` | `<sdk-root>/tools/openocd/scripts` | SR110 flashing (OpenOCD) |
-| `usb_boot_tool.py` | `<sdk-root>/tools/usb_boot_python_tool/USB_BOOT_TOOL` | SL2610 USB boot flashing |
+| `usb_boot_tool.py` | `<sdk-root>/tools/usb_boot_python_tool/USB_BOOT_TOOL` | SL2610 USB boot flashing (eMMC and xSPI) |
 
 ## Debugging
 
@@ -661,7 +674,7 @@ Build any sample app in **release** mode, then run `make imagegen`. Detailed ste
 
 On completion, you should get:
 
-- `m52bl.bin` at `out/image/usb_boot/m52bl.bin`
+- `m52bl.bin` at `out/image/USBimg/m52bl.bin`
 
 Copy the full path to `m52bl.bin` for the next step.
 

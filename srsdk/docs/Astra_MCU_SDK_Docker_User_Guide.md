@@ -120,7 +120,8 @@ make imagegen
 Outputs:
 - System Manager sub-image: `examples/<example_type>/<app>/out/image/eMMCimg/sysmgr.subimg.gz`
 - Compressed images: `examples/<example_type>/<app>/out/image/eMMCimg/`
-- USB boot inputs: `examples/<example_type>/<app>/out/image/usb_boot/`
+- xSPI NOR image: `examples/<example_type>/<app>/out/image/XSPIimg/spi.bin` (when xSPI boot source is selected)
+- USB boot inputs: `examples/<example_type>/<app>/out/image/USBimg/`
 
 ## Copy outputs to the host
 
@@ -130,7 +131,7 @@ Because the SDK is mounted into the container, all build artifacts already appea
 
 Flashing/debugging uses host USB access and is typically run on the host OS:
 - SR110: `tools/openocd/scripts/flash_xspi_tcl.py`
-- SL2610: `tools/usb_boot_python_tool/USB_BOOT_TOOL/usb_boot_tool.py`
+- SL2610: `tools/usb_boot_python_tool/USB_BOOT_TOOL/usb_boot_tool.py` — flashes eMMC (`--op emmc`) and xSPI NOR (`--op xspi-sm`)
 
 See the platform guides for the full flash/debug flows:
 - `docs/SR110/SR110_Build_and_Flash_with_CLI.md`

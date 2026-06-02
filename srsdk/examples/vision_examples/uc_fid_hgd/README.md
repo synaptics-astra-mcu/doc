@@ -11,6 +11,8 @@ The latest example structure uses a **common application source tree** with boar
 
 The application can also be exported and built as a **standalone app repository**. In that flow, keep this app in its own directory, point `SRSDK_DIR` to the SDK root, and build from the app directory itself. For the full application workflow model, see [Astra MCU SDK User Guide](../../../docs/Astra_MCU_SDK_User_Guide.md).
 
+**Note**: Please reach out to Synaptic representative for FID models
+
 ## Supported Boards
 
 This application supports:
@@ -82,6 +84,7 @@ Use the VS Code flow described in the SR110 guide and the VS Code Extension guid
    - `hand_gesture_detection_flash(320x320).bin` at 0x9DC000
 6. Flash the generated firmware image (`B0_flash_full_image_GD25LE128_67Mhz_secured.bin`).
 
+
 **Flash (CLI):**
 
 1. Activate the SDK venv (required for image generation tools):
@@ -138,7 +141,7 @@ Use the VS Code flow described in the SR110 guide and the VS Code Extension guid
 
 ## Running the Application using VS Code Extension
 
-> **Windows note:** Ensure the USB drivers are installed for streaming. See the Zadig steps in  
+> **Windows note:** Ensure the USB drivers are installed for streaming. See the Zadig steps in
 > [SR110 Build and Flash with VS Code](../../../docs/SR110/SR110_Build_and_Flash_with_VSCode.md#usb-cdc-image-streaming-windows).
 
 1. In VS Code, open **Video Streamer** from the Synaptics sidebar.
@@ -159,9 +162,9 @@ Use the VS Code flow described in the SR110 guide and the VS Code Extension guid
 
 4. Use the Video Streamer controls:
 
-   a. Select **FACEID+HAND_GESTURE** from the **UC ID** dropdown.  
-   b. Set **RGB Demosaic** to **BayerGBRG**.  
-   c. Click **Create Use Case**.  
+   a. Select **FACEID+HAND_GESTURE** from the **UC ID** dropdown.
+   b. Set **RGB Demosaic** to **BayerGBRG**.
+   c. Click **Create Use Case**.
    d. Click **Start Use Case** (a Python window opens and the video stream appears).
 
    ![video streamer controls](assets/fid_hgd_video_controls.png)
@@ -182,7 +185,7 @@ Use the VS Code flow described in the SR110 guide and the VS Code Extension guid
 8. After starting the use case, Face Identification will begin streaming video as shown below.
 
    - ***Enrollmemt Mode:***
-     Used to register a new user. The system captures and stores the facial 
+     Used to register a new user. The system captures and stores the facial
 embeddings for future recognition.
 
      ![Usecase Running](assets/image_13.png)

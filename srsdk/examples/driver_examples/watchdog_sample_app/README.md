@@ -41,7 +41,8 @@ You can:
 - Run `make list_defconfigs` from the application directory to list all supported defconfigs.
 
 **Available watchdog defconfigs (SL2610 RDK):**
-- `sl2610_rdk_cm52_watchdog_sample_app_defconfig`: Runs all five watchdog functional testcases.
+- `sl2610_rdk_cm52_watchdog_sample_app_defconfig`: Normal watchdog path (`CONFIG_APP_WATCHDOG_INSTANCE=0`).
+- `sl2610_rdk_cm52_watchdog_sample_app_slowclk_defconfig`: Slowclk watchdog path (`CONFIG_APP_WATCHDOG_INSTANCE=3`).
 
 ## Building and Flashing the Example using VS Code
 
@@ -148,7 +149,7 @@ SM image verified
 0000000042:[0][INF][WDT ]:NOTE: SL2610 has no AON - verify reset by observing reboot.
 
 ```
-**Second boot [Make sure to hit reset in the board again] (WDG-FN-01 Phase 2 + remaining testcases):**
+**WDG-FN-01 Phase 2 + remaining testcases:**
 ```
 BL: MCU Init...
 send command successfully
