@@ -337,6 +337,9 @@ Known Issues
 |             | mode is high in Doorbell  |              |          |
 |             | Application               |              |          |
 +-------------+---------------------------+--------------+----------+
+| SRSDKI-1531 | SR110 bootloader fails to | Bootloader   | High     |
+|             | build                     |              |          |
++-------------+---------------------------+--------------+----------+
 
 Revision History 
 ================
