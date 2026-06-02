@@ -21,6 +21,7 @@ jobs:
 
     process:
         name: Process
+        if: github.event_name != 'pull_request'
 
         permissions:
             actions: write
