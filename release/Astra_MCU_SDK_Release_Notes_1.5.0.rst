@@ -352,7 +352,7 @@ Last Modified    Revision    Description
    November 2025    0.3      Astra MCU SDK Release 1.2.0
    January 2026     0.4      Astra MCU SDK Release 1.3.0
    April 2026       0.5      Astra MCU SDK Release 1.4.0
-   May 2026         0.6      Astra MCU SDK Release 1.5.0
+   June 2026        0.6      Astra MCU SDK Release 1.5.0
 ================ ======== ==============================
 
 Copyright
