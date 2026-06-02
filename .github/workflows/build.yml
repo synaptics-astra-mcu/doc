@@ -21,6 +21,7 @@ jobs:
 
     process:
         name: Process
+        if: github.event_name != 'pull_request'
 
         permissions:
             actions: write
@@ -29,3 +30,5 @@ jobs:
             id-token: write            
 
         uses: syna-astra-mcu-dev/action-doc-publish/.github/workflows/process.yml@v2
+        with:
+          deploy: ${{ github.event_name != 'pull_request' }}
