@@ -6,4 +6,3 @@ The compiled documentation is available at https://synaptics-astra-mcu.github.io
 To build the sources locally use the following command::
 
   $ ./build.sh
-
