@@ -2,7 +2,7 @@ name: Process changes to documentation
 
 on:
     workflow_dispatch:
-    
+
     release:
         types: [published]
 
@@ -11,24 +11,22 @@ on:
             - main
 
     pull_request:
-        types: [ opened, synchronize, closed ]
+        types: [ opened, synchronize, closed, published ]
 
 env:
     ACTIONS_STEP_DEBUG: true
     ACTIONS_RUNNER_DEBUG: true
+    FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
 
     process:
         name: Process
-        if: github.event_name != 'pull_request'
 
         permissions:
             actions: write
             contents: write
             pages: write
-            id-token: write            
+            id-token: write
 
         uses: syna-astra-mcu-dev/action-doc-publish/.github/workflows/process.yml@v2
-        with:
-          deploy: ${{ github.event_name != 'pull_request' }}
