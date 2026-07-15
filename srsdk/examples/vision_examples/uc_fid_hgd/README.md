@@ -11,6 +11,8 @@ The latest example structure uses a **common application source tree** with boar
 
 The application can also be exported and built as a **standalone app repository**. In that flow, keep this app in its own directory, point `SRSDK_DIR` to the SDK root, and build from the app directory itself. For the full application workflow model, see [Astra MCU SDK User Guide](../../../docs/Astra_MCU_SDK_User_Guide.md).
 
+**Note**: Please reach out to Synaptic representative for FID models
+
 ## Supported Boards
 
 This application supports:
