@@ -8,7 +8,6 @@ var searchData=
   ['to_20modify_20documentation_5',['How to Modify Documentation',['../md__r_e_a_d_m_e.html#autotoc_md3',1,'']]],
   ['transfer_20operation_20cmd52_6',['SDIO Direct I/O Transfer Operation (CMD52)',['../group__group__sdio__driver.html#SDIO_CMD52_OPERATION',1,'']]],
   ['transfer_20operation_20cmd53_7',['SDIO Extended I/O Transfer Operation (CMD53)',['../group__group__sdio__driver.html#SDIO_CMD53_OPERATION',1,'']]],
-  ['tx_20and_20rx_20paths_8',['Using TX and RX Paths',['../group__group__can__driver.html#group_can_transfer_usage',1,'']]],
-  ['tx_20rx_9',['Full Duplex TX/RX',['../group__group__i2s__driver.html#i2s_full_duplex',1,'']]],
-  ['typical_20usage_10',['Typical Usage',['../group__group__i2c__driver.html#group_i2c_usage',1,'']]]
+  ['tx_20rx_8',['Full Duplex TX/RX',['../group__group__i2s__driver.html#i2s_full_duplex',1,'']]],
+  ['typical_20usage_9',['Typical Usage',['../group__group__i2c__driver.html#group_i2c_usage',1,'']]]
 ];

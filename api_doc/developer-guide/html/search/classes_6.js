@@ -1,24 +1,8 @@
 var searchData=
 [
-  ['scl_5fext_5flow_5fcount_5ftiming_5ft_0',['scl_ext_low_count_timing_t',['../structscl__ext__low__count__timing__t.html',1,'']]],
-  ['scl_5ffast_5fmode_5fplus_5ftiming_5ft_1',['scl_fast_mode_plus_timing_t',['../structscl__fast__mode__plus__timing__t.html',1,'']]],
-  ['scl_5ffast_5fmode_5ftiming_5ft_2',['scl_fast_mode_timing_t',['../structscl__fast__mode__timing__t.html',1,'']]],
-  ['scl_5fopen_5fdrain_5ftiming_5ft_3',['scl_open_drain_timing_t',['../structscl__open__drain__timing__t.html',1,'']]],
-  ['scl_5fpush_5fpull_5ftiming_5ft_4',['scl_push_pull_timing_t',['../structscl__push__pull__timing__t.html',1,'']]],
-  ['sdio_5fcmd_5fconfig_5ft_5',['sdio_cmd_config_t',['../structsdio__cmd__config__t.html',1,'']]],
-  ['sdio_5fconfig_5ft_6',['sdio_config_t',['../structsdio__config__t.html',1,'']]],
-  ['sdio_5fdata_5fconfig_5ft_7',['sdio_data_config_t',['../structsdio__data__config__t.html',1,'']]],
-  ['sdio_5fsd_5fcard_5fconfig_5ft_8',['sdio_sd_card_config_t',['../structsdio__sd__card__config__t.html',1,'']]],
-  ['sdio_5fwrite_5fread_5fconfig_5ft_9',['sdio_write_read_config_t',['../structsdio__write__read__config__t.html',1,'']]],
-  ['spi_5fconfig_10',['spi_config',['../structspi__config.html',1,'']]],
-  ['spi_5fxfer_5fconfig_11',['spi_xfer_config',['../structspi__xfer__config.html',1,'']]],
-  ['spwm_5fconfig_5ft_12',['spwm_config_t',['../structspwm__config__t.html',1,'']]],
-  ['spwm_5fdsc_5fchain_5fstatus_5ft_13',['spwm_dsc_chain_status_t',['../structspwm__dsc__chain__status__t.html',1,'']]],
-  ['spwm_5fpwm_5fcfg_5ft_14',['spwm_pwm_cfg_t',['../structspwm__pwm__cfg__t.html',1,'']]],
-  ['spwm_5fpwmdt_5fcfg_5ft_15',['spwm_pwmdt_cfg_t',['../structspwm__pwmdt__cfg__t.html',1,'']]],
-  ['spwm_5fpwmpr_5fcfg_5ft_16',['spwm_pwmpr_cfg_t',['../structspwm__pwmpr__cfg__t.html',1,'']]],
-  ['spwm_5fquad_5fcfg_5ft_17',['spwm_quad_cfg_t',['../structspwm__quad__cfg__t.html',1,'']]],
-  ['spwm_5fsr_5fcfg_5ft_18',['spwm_sr_cfg_t',['../structspwm__sr__cfg__t.html',1,'']]],
-  ['spwm_5ftimer_5fcfg_5ft_19',['spwm_timer_cfg_t',['../structspwm__timer__cfg__t.html',1,'']]],
-  ['spwm_5ftrigger_5fin_5fcfg_5ft_20',['spwm_trigger_in_cfg_t',['../structspwm__trigger__in__cfg__t.html',1,'']]]
+  ['uart_5fconfig_5ft_0',['uart_config_t',['../structuart__config__t.html',1,'']]],
+  ['uart_5fget_5fconfig_5ft_1',['uart_get_config_t',['../structuart__get__config__t.html',1,'']]],
+  ['uart_5fhw_5fstatus_5ft_2',['uart_hw_status_t',['../structuart__hw__status__t.html',1,'']]],
+  ['uart_5fput_5fconfig_5ft_3',['uart_put_config_t',['../structuart__put__config__t.html',1,'']]],
+  ['uart_5fusr_5flsr_5fstatus_5fbits_5ft_4',['uart_usr_lsr_status_bits_t',['../structuart__usr__lsr__status__bits__t.html',1,'']]]
 ];

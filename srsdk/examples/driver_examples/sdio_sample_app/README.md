@@ -36,9 +36,9 @@ Select the defconfig that matches your target board, and the build system will p
   - **CLI**: [Setup and Install SDK using CLI](../../../docs/Astra_MCU_SDK_Setup_and_Install_CLI.md)
   - **VS Code**: [Setup and Install SDK using VS Code](../../../docs/Astra_MCU_SDK_Setup_and_Install_VsCode.md)
 
-## Test Case Selection
+## Project Configuration Selection
 
-Before building, choose the testcase defconfig that matches your target board.
+Before building, choose the project configuration (defconfig) that matches your target board.
 
 You can:
 - Select the required defconfig directly from the application's `configs/` directory.

@@ -1,4 +1,4 @@
-# Setup Guide for Development Environment on macOS (Apple Silicon + Intel) for GCC
+# Setup Guide for Development Environment on macOS for GCC
 
 ## Table of Contents
 - [Install Basic Tools and Dependencies](#install-basic-tools-and-dependencies)

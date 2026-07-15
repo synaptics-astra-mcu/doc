@@ -89,7 +89,6 @@ SoC-specific build and flash flows:
 
 - Only one SDK can be imported per VS Code workspace.
 - On Windows, keep the SDK path short to avoid path length issues.
-- If Build and Deploy is disabled, re-check `SRSDK_DIR` in **Import SDK**.
 - Examples can only be built from the SDK `<sdk-root>/examples/<example-type>/<app>` directory; import it via **Import Project**.
 - **Problem:** Build and Deploy button is disabled or grayed out.  
   **Cause:** Examples directory not imported or `SRSDK_DIR` not set.  

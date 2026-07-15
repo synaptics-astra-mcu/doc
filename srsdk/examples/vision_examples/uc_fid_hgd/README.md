@@ -11,8 +11,6 @@ The latest example structure uses a **common application source tree** with boar
 
 The application can also be exported and built as a **standalone app repository**. In that flow, keep this app in its own directory, point `SRSDK_DIR` to the SDK root, and build from the app directory itself. For the full application workflow model, see [Astra MCU SDK User Guide](../../../docs/Astra_MCU_SDK_User_Guide.md).
 
-**Note**: Please reach out to Synaptic representative for FID models
-
 ## Supported Boards
 
 This application supports:
@@ -25,13 +23,24 @@ Select the defconfig that matches your target board, and the build system will p
   - **CLI**: [Setup and Install SDK using CLI](../../../docs/Astra_MCU_SDK_Setup_and_Install_CLI.md)
   - **VS Code**: [Setup and Install SDK using VS Code](../../../docs/Astra_MCU_SDK_Setup_and_Install_VsCode.md)
 
-### Hardware Requirements
-- Sensor Adapter (included with the Astra Machina Micro kit)
+## Hardware Requirements
+- Astra Machina Micro kit - SR110
 - OV5647 Camera Sensor
 
-## Test Case Selection
+> **Note:** The OV5647 camera sensor is **not included** with the Astra Machina Micro kit and must be procured separately. For part details and procurement options, reach out to Synaptics on the OV5647 part details.
 
-Before building, choose the testcase defconfig that matches both your target board and the transfer mode you want to validate.
+### Connecting the Sensor
+1. Insert the OV5647 sensor into the **J23** port on the SR110 RDK kit.
+
+   ![OV5647 Camera Sensor](assets/ov5647.jpg)
+
+2. Make sure the sensor is mounted in the correct orientation. Refer to the picture below for the correct orientation.
+
+   ![HGD Sensor Orientation](assets/hgd_orientation.jpg)
+
+## Project Configuration Selection
+
+Before building, choose the project configuration (defconfig) that matches both your target board and the transfer mode you want to validate.
 
 You can:
 - Select the required defconfig directly from the application's `configs/` directory.
@@ -83,7 +92,6 @@ Use the VS Code flow described in the SR110 guide and the VS Code Extension guid
    - `face_embeddings_flash(112x112).bin` at `0x737000`
    - `hand_gesture_detection_flash(320x320).bin` at 0x9DC000
 6. Flash the generated firmware image (`B0_flash_full_image_GD25LE128_67Mhz_secured.bin`).
-
 
 **Flash (CLI):**
 
@@ -141,7 +149,7 @@ Use the VS Code flow described in the SR110 guide and the VS Code Extension guid
 
 ## Running the Application using VS Code Extension
 
-> **Windows note:** Ensure the USB drivers are installed for streaming. See the Zadig steps in
+> **Windows note:** Ensure the USB drivers are installed for streaming. See the Zadig steps in  
 > [SR110 Build and Flash with VS Code](../../../docs/SR110/SR110_Build_and_Flash_with_VSCode.md#usb-cdc-image-streaming-windows).
 
 1. In VS Code, open **Video Streamer** from the Synaptics sidebar.
@@ -162,9 +170,9 @@ Use the VS Code flow described in the SR110 guide and the VS Code Extension guid
 
 4. Use the Video Streamer controls:
 
-   a. Select **FACEID+HAND_GESTURE** from the **UC ID** dropdown.
-   b. Set **RGB Demosaic** to **BayerGBRG**.
-   c. Click **Create Use Case**.
+   a. Select **FACEID+HAND_GESTURE** from the **UC ID** dropdown.  
+   b. Set **RGB Demosaic** to **BayerGBRG**.  
+   c. Click **Create Use Case**.  
    d. Click **Start Use Case** (a Python window opens and the video stream appears).
 
    ![video streamer controls](assets/fid_hgd_video_controls.png)
@@ -185,7 +193,7 @@ Use the VS Code flow described in the SR110 guide and the VS Code Extension guid
 8. After starting the use case, Face Identification will begin streaming video as shown below.
 
    - ***Enrollmemt Mode:***
-     Used to register a new user. The system captures and stores the facial
+     Used to register a new user. The system captures and stores the facial 
 embeddings for future recognition.
 
      ![Usecase Running](assets/image_13.png)
@@ -205,11 +213,13 @@ The following hand gestures are supported:
 | Two | Two fingers raised. |
 | Three | Three fingers raised. |
 | Four | Four fingers raised. |
-| Five | Open palm with five fingers raised. |
+| Five | Open palm with five fingers raised and slightly spread apart. |
 | Fist | Closed fist with fingers folded inward. |
 | Thumbs Up | Thumb raised upward with other fingers folded. |
 | Thumbs Down | Thumb pointed downward with other fingers folded. |
 | Pinch | Thumb and index finger brought close together (pinching pose). |
+
+> **Note:** For the **Five / Palm** gesture, keep your fingers **slightly spread apart**, not pressed together. A flat palm with the fingers held tightly together may not be detected reliably.
 
 </br>
 

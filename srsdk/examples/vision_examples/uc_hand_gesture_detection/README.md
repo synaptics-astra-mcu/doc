@@ -24,12 +24,23 @@ Select the defconfig that matches your target board, and the build system will p
   - **VS Code**: [Setup and Install SDK using VS Code](../../../docs/Astra_MCU_SDK_Setup_and_Install_VsCode.md)
 
 ## Hardware Requirements
-- Sensor Adapter (included with the Astra Machina Micro kit)
+- Astra Machina Micro kit - SR110
 - OV5647 Camera Sensor
 
-## Test Case Selection
+> **Note:** The OV5647 camera sensor is **not included** with the Astra Machina Micro kit and must be procured separately. For part details and procurement options, reach out to Synaptics on the OV5647 part details.
 
-Before building, choose the testcase defconfig that matches both your target board and the transfer mode you want to validate.
+### Connecting the Sensor
+1. Insert the OV5647 sensor into the **J23** port on the SR110 RDK kit.
+
+   ![OV5647 Camera Sensor](assets/ov5647.jpg)
+
+2. Make sure the sensor is mounted in the correct orientation. Refer to the picture below for the correct orientation.
+
+   ![HGD Sensor Orientation](assets/hgd_orientation.jpg)
+
+## Project Configuration Selection
+
+Before building, choose the project configuration (defconfig) that matches both your target board and the transfer mode you want to validate.
 
 You can:
 - Select the required defconfig directly from the application's `configs/` directory.
@@ -177,11 +188,13 @@ The following hand gestures are supported:
 | Two | Two fingers raised. |
 | Three | Three fingers raised. |
 | Four | Four fingers raised. |
-| Palm | Open palm with five fingers raised. |
+| Palm | Open palm with five fingers raised and slightly spread apart. |
 | Fist | Closed fist with fingers folded inward. |
 | Thumbs Up | Thumb raised upward with other fingers folded. |
 | Thumbs Down | Thumb pointed downward with other fingers folded. |
 | Pinch | Thumb and index finger brought close together (pinching pose). |
+
+> **Note:** For the **Palm** gesture, keep your fingers **slightly spread apart**, not pressed together. A flat palm with the fingers held tightly together may not be detected reliably.
 
 </br>
 

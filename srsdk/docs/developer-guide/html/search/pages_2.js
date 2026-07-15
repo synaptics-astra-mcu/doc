@@ -10,10 +10,9 @@ var searchData=
   ['and_20initialization_7',['and Initialization',['../group__group__sdio__driver.html#SDIO_CONFIG',1,'SDIO Host Configuration and Initialization.'],['../group__group__sdio__driver.html#SDIO_HOST_INIT_TEST',1,'SDIO Host Configuration and Initialization.'],['../group__group__sdio__driver.html#SDIO_DEVICE_INIT_TEST',1,'SDIO I/O Device Configuration and Initialization.'],['../group__group__sdio__driver.html#SDIO_SD_CARD_INIT',1,'SDIO SD Card Configuration and Initialization.']]],
   ['and_20pinmux_20configuration_8',['I2C Initialization and Pinmux Configuration',['../group__group__i2c__driver.html#i2c_init',1,'']]],
   ['and_20read_9',['and Read',['../group__group__i2c__driver.html#i2c_block',1,'Blocking Controller Write and Read'],['../group__group__i2c__driver.html#i2c_non_block',1,'Non-Blocking Controller Write and Read']]],
-  ['and_20rx_20paths_10',['Using TX and RX Paths',['../group__group__can__driver.html#group_can_transfer_usage',1,'']]],
-  ['api_20organization_11',['API Organization',['../group__group__i2c__driver.html#group_i2c_api_organization',1,'']]],
-  ['application_20managed_20multi_20buffer_20rx_20recommended_12',['Application-Managed Multi-buffer RX (Recommended)',['../group__group__i2s__driver.html#i2s_app_managed_rx',1,'']]],
-  ['assignment_20daa_13',['Using Dynamic Address Assignment (DAA)',['../group__group__i3c__driver.html#group_i3c_daa_usage',1,'']]],
-  ['astra_20mcu_20sdk_20peripheral_20driver_20library_14',['Astra MCU SDK Peripheral Driver Library',['../index.html',1,'']]],
-  ['audio_20format_20timing_20and_20framing_20critical_15',['Audio Format Timing and Framing (Critical)',['../group__group__i2s__driver.html#group_i2s_format_timing',1,'']]]
+  ['api_20organization_10',['API Organization',['../group__group__i2c__driver.html#group_i2c_api_organization',1,'']]],
+  ['application_20managed_20multi_20buffer_20rx_20recommended_11',['Application-Managed Multi-buffer RX (Recommended)',['../group__group__i2s__driver.html#i2s_app_managed_rx',1,'']]],
+  ['assignment_20daa_12',['Using Dynamic Address Assignment (DAA)',['../group__group__i3c__driver.html#group_i3c_daa_usage',1,'']]],
+  ['astra_20mcu_20sdk_20peripheral_20driver_20library_13',['Astra MCU SDK Peripheral Driver Library',['../index.html',1,'']]],
+  ['audio_20format_20timing_20and_20framing_20critical_14',['Audio Format Timing and Framing (Critical)',['../group__group__i2s__driver.html#group_i2s_format_timing',1,'']]]
 ];

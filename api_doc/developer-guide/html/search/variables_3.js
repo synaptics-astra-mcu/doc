@@ -1,7 +1,7 @@
 var searchData=
 [
   ['dat_5findex_0',['dat_index',['../structi3c__device__t.html#a364cb0391f0da155b6d6199c1ad12052',1,'i3c_device_t::dat_index'],['../structi3c__current__xfer__t.html#aac9d360a194250720a6301445e6516be',1,'i3c_current_xfer_t::dat_index'],['../structi3c__ccc__response__entry__t.html#a2e84322c4a8c7b6ae1deb40da0d11b16',1,'i3c_ccc_response_entry_t::dat_index'],['../structi3c__event__info__t.html#a9648658c589cda7c27f07ad2fb50ae37',1,'i3c_event_info_t::dat_index'],['../structi3c__transfer__t.html#a7915b3cce0c602edebe629f765d3a56c',1,'i3c_transfer_t::dat_index']]],
-  ['data_1',['data',['../structcan__tx__frame__t.html#a9be013dc5c8b0a8695ba5513b2324adf',1,'can_tx_frame_t::data'],['../structcan__rx__frame__t.html#a04027c95ff817f79c55be8487ff50343',1,'can_rx_frame_t::data'],['../structsdio__data__config__t.html#a0b694c9f323471c4b8226ddda3b624cc',1,'sdio_data_config_t::data'],['../structsdio__write__read__config__t.html#a8c032b56f2a6c4ceac33ba6a7edcf9fe',1,'sdio_write_read_config_t::data']]],
+  ['data_1',['data',['../structsdio__data__config__t.html#a0b694c9f323471c4b8226ddda3b624cc',1,'sdio_data_config_t::data'],['../structsdio__write__read__config__t.html#a8c032b56f2a6c4ceac33ba6a7edcf9fe',1,'sdio_write_read_config_t::data']]],
   ['data_5fbuffer_5fthld_2',['data_buffer_thld',['../structi3c__threshold__ctrl__t.html#afb45773bd65138eefd960140825b44b1',1,'i3c_threshold_ctrl_t']]],
   ['data_5fformat_3',['data_format',['../structi2s__config__t.html#a14b6ddee3e3ace594e3b8ff412a805a6',1,'i2s_config_t']]],
   ['data_5fready_4',['data_ready',['../structuart__usr__lsr__status__bits__t.html#ab6393d6877fc0e457375a61a9bb6f53c',1,'uart_usr_lsr_status_bits_t']]],
@@ -23,17 +23,14 @@ var searchData=
   ['dest_5fy_5fstride_20',['dest_y_stride',['../structdma__2d__config__t.html#a9b0b91274eca54c32144d795041516b8',1,'dma_2d_config_t']]],
   ['device_5ftype_21',['device_type',['../structi3c__device__config__t.html#a1394dca8a948774e3ce8c9a633794df3',1,'i3c_device_config_t::device_type'],['../structi3c__device__t.html#adeb3f7d4f6e31a2adbb39d8c3096b8bf',1,'i3c_device_t::device_type'],['../structi3c__dat__entry__t.html#a88bc84f262cde7bbec5f0a5f196a0ed8',1,'i3c_dat_entry_t::device_type']]],
   ['direction_22',['direction',['../structi3c__transfer__t.html#aba00f42a520f6269e5de03df619b2667',1,'i3c_transfer_t']]],
-  ['disable_5fack_5fcheck_23',['disable_ack_check',['../structcan__hw__config__t.html#ae75057381d409c39fb5839c8de5a34b6',1,'can_hw_config_t']]],
-  ['disable_5fmode_24',['disable_mode',['../structspwm__pwm__cfg__t.html#a9a4d6a4986d5d6947834fe1178439193',1,'spwm_pwm_cfg_t']]],
-  ['disable_5fperipheral_5fout_25',['disable_peripheral_out',['../structspi__config.html#a2fdcbcf8a25f14dd7eb1a86e136e5b00',1,'spi_config']]],
-  ['dlc_26',['dlc',['../structcan__tx__frame__t.html#aca370f5ee6b5dcb294ec3306421e0208',1,'can_tx_frame_t::dlc'],['../structcan__rx__classic__header__t.html#ae834dc7f5cd5d1575f67b53eef04ab2d',1,'can_rx_classic_header_t::dlc'],['../structcan__rx__fd__header__t.html#aa8a67b427c50dfe980fb785418fce537',1,'can_rx_fd_header_t::dlc']]],
-  ['dma_27',['dma',['../structdmic__data__path__config__s.html#ad983a6b67d5f9357c91e74dd66fe50d5',1,'dmic_data_path_config_s']]],
-  ['dma_5fconfig_5f2d_5fimage_5fcopy_28',['DMA_CONFIG_2D_IMAGE_COPY',['../group__group__dma__template__configs.html#gac05d2e60fbaaaaade284ee1c0976712a',1,'dma.h']]],
-  ['dma_5fconfig_5fmemory_5fcopy_29',['DMA_CONFIG_MEMORY_COPY',['../group__group__dma__template__configs.html#ga8a955e567bb440e6e5ef590b7278d56b',1,'dma.h']]],
-  ['dma_5fconfig_5fmemory_5fto_5fperipheral_30',['DMA_CONFIG_MEMORY_TO_PERIPHERAL',['../group__group__dma__template__configs.html#gab7c87fe78a8f3e55d55c4180d3d59a3d',1,'dma.h']]],
-  ['dma_5fconfig_5fperipheral_5fto_5fmemory_31',['DMA_CONFIG_PERIPHERAL_TO_MEMORY',['../group__group__dma__template__configs.html#ga97e6fa1fdc68362361347639ac183667',1,'dma.h']]],
-  ['dmatype_32',['dmaType',['../structsdio__config__t.html#a37bcaaf20de46092944773fa7ad11185',1,'sdio_config_t']]],
-  ['done_33',['done',['../structspwm__dsc__chain__status__t.html#a954d1769a6fd97a1cd7e7f49d45189e9',1,'spwm_dsc_chain_status_t']]],
-  ['drive_5fstr_34',['drive_str',['../structpinmux__elec__config__t.html#ab90f9b43fd58b50707bb81cd77abe0d0',1,'pinmux_elec_config_t']]],
-  ['dynamic_5faddress_35',['dynamic_address',['../structi3c__device__config__t.html#aed2f2b7a57da8c4715960b8c05c18774',1,'i3c_device_config_t::dynamic_address'],['../structi3c__device__t.html#ab0c3b79e2404023bc8d3a54ad4992b26',1,'i3c_device_t::dynamic_address'],['../structi3c__dat__entry__t.html#a1eaba5c61ee5b3477e63622c11cc8434',1,'i3c_dat_entry_t::dynamic_address']]]
+  ['disable_5fmode_23',['disable_mode',['../structspwm__pwm__cfg__t.html#a9a4d6a4986d5d6947834fe1178439193',1,'spwm_pwm_cfg_t']]],
+  ['disable_5fperipheral_5fout_24',['disable_peripheral_out',['../structspi__config.html#a2fdcbcf8a25f14dd7eb1a86e136e5b00',1,'spi_config']]],
+  ['dma_5fconfig_5f2d_5fimage_5fcopy_25',['DMA_CONFIG_2D_IMAGE_COPY',['../group__group__dma__template__configs.html#gac05d2e60fbaaaaade284ee1c0976712a',1,'dma.h']]],
+  ['dma_5fconfig_5fmemory_5fcopy_26',['DMA_CONFIG_MEMORY_COPY',['../group__group__dma__template__configs.html#ga8a955e567bb440e6e5ef590b7278d56b',1,'dma.h']]],
+  ['dma_5fconfig_5fmemory_5fto_5fperipheral_27',['DMA_CONFIG_MEMORY_TO_PERIPHERAL',['../group__group__dma__template__configs.html#gab7c87fe78a8f3e55d55c4180d3d59a3d',1,'dma.h']]],
+  ['dma_5fconfig_5fperipheral_5fto_5fmemory_28',['DMA_CONFIG_PERIPHERAL_TO_MEMORY',['../group__group__dma__template__configs.html#ga97e6fa1fdc68362361347639ac183667',1,'dma.h']]],
+  ['dmatype_29',['dmaType',['../structsdio__config__t.html#a37bcaaf20de46092944773fa7ad11185',1,'sdio_config_t']]],
+  ['done_30',['done',['../structspwm__dsc__chain__status__t.html#a954d1769a6fd97a1cd7e7f49d45189e9',1,'spwm_dsc_chain_status_t']]],
+  ['drive_5fstr_31',['drive_str',['../structpinmux__elec__config__t.html#ab90f9b43fd58b50707bb81cd77abe0d0',1,'pinmux_elec_config_t']]],
+  ['dynamic_5faddress_32',['dynamic_address',['../structi3c__device__config__t.html#aed2f2b7a57da8c4715960b8c05c18774',1,'i3c_device_config_t::dynamic_address'],['../structi3c__device__t.html#ab0c3b79e2404023bc8d3a54ad4992b26',1,'i3c_device_t::dynamic_address'],['../structi3c__dat__entry__t.html#a1eaba5c61ee5b3477e63622c11cc8434',1,'i3c_dat_entry_t::dynamic_address']]]
 ];

@@ -16,7 +16,7 @@ Throughout this guide, `<sdk-root>` refers to the directory where you extracted 
 - [Linux USB/serial permissions (recommended)](#linux-usbserial-permissions-recommended)
 - [Standalone Image Flashing (No SDK Import Required)](#standalone-image-flashing)
 - [Import SDK and Project](#import-sdk-and-project)
-- [Imported Example](#imported-example)
+- [Imported Projects](#imported-projects)
   - [Build and Deploy](#build-and-deploy)
 - [Logger](#logger)
 - [Memory Analyzer](#memory-analyzer)
@@ -45,7 +45,7 @@ Throughout this guide, sections marked with 🔧 indicate SoC-specific functiona
 ## Install the Synaptics VS Code Extension
 
 1. Click the Extensions icon on the side bar, click the three dots at the top right of the extensions window, and select **Install from VSIX...**
-   ![Extension Toolbar](./Assets/Images/media/Extension_Toolbar.png)
+   ![Extension Toolbar](./Assets/Images/media/install_from_vsix.png)
 2. Locate the VSIX package in `tools/` (for example, `Astra_MCU_SDK_vscode_extension-<version>.vsix`), and click **Install**.
 3. Confirm the Synaptics extension appears in the VS Code activity bar.
 
@@ -55,9 +55,9 @@ Throughout this guide, sections marked with 🔧 indicate SoC-specific functiona
 
 ### Uninstall old package and reinstall
 
-1. Remove the currently imported Example directory from the workspace using the **Remove from workspace** option.
+1. Remove the currently imported Project directory from the workspace using the **Remove from workspace** option.
 
-   ![Remove from Workspace](./Assets/Images/media/image_vs4.png)
+   ![Remove from Workspace](./Assets/Images/media/improted_project.png)
    
 2. Uninstall the current extension using the **Uninstall** button.
 
@@ -226,7 +226,7 @@ Purpose: The Import SDK action adds the SDK to your workspace and configures the
 ---
 
 ## Imported Projects
-<a id="imported-example"></a>
+<a id="imported-Project"></a>
 
 **Purpose:** Provides a quick interface for managing all projects currently imported into your VS Code workspace.
 
@@ -272,7 +272,7 @@ When building a project, the extension provides four distinct methods to handle 
 | Option | What it does | When to use it |
 | :--- | :--- | :--- |
 | **SDK Build (default_package)** | Generates the core foundation (compiler CMakes and basic packages) in `<sdk-root>/examples/install`. | **First-time setup:** Use this to generate the required base package before building projects. |
-| **Build (SDK+Project)** | Builds the SDK components required by the app based on the app configuration, installs them into the app-local install folder, and then builds the example using that generated install package. | **First-time app build:** Use this when building an app for the first time and the required SDK components have not yet been generated for that app. |
+| **Build (SDK+Project)** | Builds the SDK components required by the app based on the app configuration, installs them into the app-local install folder, and then builds the project using that generated install package. | **First-time app build:** Use this when building an app for the first time and the required SDK components have not yet been generated for that app. |
 | **Build (Project)** | Performs a local build using artifacts generated specifically for the active project. | **Development:** Use this when making changes to project-specific code and you require a fresh, isolated build. |
 | **Build (Use Pre-built SDK)** | Links the project to the common install root available in `<sdk-root>/examples/install`. | **Efficiency:** Use this to share a common SDK package across multiple apps, saving time and avoiding redundant builds. |
 

@@ -34,9 +34,9 @@ Select the defconfig that matches your target board, and the build system will p
   - **CLI**: [Setup and Install SDK using CLI](../../docs/Astra_MCU_SDK_Setup_and_Install_CLI.md)
   - **VS Code**: [Setup and Install SDK using VS Code](../../docs/Astra_MCU_SDK_Setup_and_Install_VsCode.md)
 
-## Test Case Selection
+## Project Configuration Selection
 
-Before building, choose the testcase defconfig that matches your target board.
+Before building, choose the project configuration (defconfig) that matches your target board.
 
 You can:
 - Select the required defconfig directly from the application's `configs/` directory.
@@ -232,3 +232,87 @@ NOTICE:  BL31: Built : 15:02:46, Jun  1 2022
 ```
 
 After the above sequence, the System Manager hands off control and boots the A-core (A55).
+
+---
+
+## RPMSG Support
+
+The System Manager application includes RPMSG support for inter-processor communication between the M52 (MCU) and A55 cores. RPMSG enables bidirectional message passing and provides a ping-pong service to verify communication link establishment.
+
+Before enabling or building RPMSG, initialize submodules from the SDK root so `rpmsg-lite` sources are present:
+
+```bash
+git submodule update --init --recursive
+```
+
+### Configuration
+
+To enable RPMSG support in the System Manager, ensure the following configuration options are enabled in your defconfig:
+`examples/system_manager/configs`
+
+```
+CONFIG_MODULE_RPMSG_MNG_ENABLED=y
+```
+
+#### Linux Side
+
+Update the configs in sl261x_defconfig and sl2610_core_defconfig:
+
+```
+CONFIG_SYNA_IPC=y
+CONFIG_SYNA_RPMSG=y
+CONFIG_RPMSG_CLIENT_PINGPONG=y
+```
+
+### Expected Logs with RPMSG Enabled
+
+When RPMSG is properly configured and enabled, you will see the following logs:
+
+**M52 Side (MCU) Initialization:**
+```
+BL: MCU Init...
+Init DDR4 @ 3200
+DHL:v0p40 PT:v0p40 ID:0x21010000
+
+SM image verified
+0000000000:[0][INF][TMR ]:timer init done
+0000000000:[0][INF][SYS ]:------------------------------------------
+0000000000:[0][INF][SYS ]:            Hello  ASTRA
+0000000000:[0][INF][SYS ]:------------------------------------------
+0000000000:[0][INF][SYS ]:System initialization done
+0000000000:[0][INF][SYS ]:M52:: Build Date 30-04-2026 Time 11:09:59 Commit f0856ae1
+0000000000:[0][INF][SYS ]:sl2610 SDK version 1.4.0
+0000000000:[0][INF][SYS ]:[REMOTE] Ping-pong task started
+0000000005:[0][INF][SYS ]:[REMOTE] Waiting for RPMSG link... 0xb0000000
+0000000011:[0][INF][SYS ]:[REMOTE] RPMSG remote initialized successfully
+0000000103:[0][INF][SYS ]:VCORE 850 mV
+0000000106:[0][INF][SYS ]:eMMC: Boot A55
+0000000176:[0][INF][SYS ]:Loading bl_a
+0000000269:[0][INF][SYS ]:Loading tzk_a
+```
+
+Key log indicators:
+- `[REMOTE] Ping-pong task started` - RPMSG ping-pong service has started on M52
+- `[REMOTE] Waiting for RPMSG link...` - M52 is waiting for the A55 core to establish the RPMSG link
+- `[REMOTE] RPMSG remote initialized successfully` - Communication link established successfully
+
+**A55 Side (Application Core) Communication:**
+
+After A55 boots and the Linux kernel initializes, you will see bidirectional ping-pong communication:
+
+```
+[    3.267553] rpmsg_client_pingpong virtio0.rpmsg-client-pingpong.-1.30: new channel: 0x400 -> 0x1e!
+[    3.276750] rpmsg_client_pingpong virtio0.rpmsg-client-pingpong.-1.30: get 1 (src: 0x1e)
+[    3.285185] rpmsg_client_pingpong virtio0.rpmsg-client-pingpong.-1.30: get 3 (src: 0x1e)
+[    3.293641] rpmsg_client_pingpong virtio0.rpmsg-client-pingpong.-1.30: get 5 (src: 0x1e)
+[    3.302481] rpmsg_client_pingpong virtio0.rpmsg-client-pingpong.-1.30: get 7 (src: 0x1e)
+[    3.311157] rpmsg_client_pingpong virtio0.rpmsg-client-pingpong.-1.30: get 9 (src: 0x1e)
+...
+[    3.702159] rpmsg_client_pingpong virtio0.rpmsg-client-pingpong.-1.30: get 101 (src: 0x1e)
+[    3.702159] rpmsg_client_pingpong virtio0.rpmsg-client-pingpong.-1.30: goodbye!
+```
+
+The logs show:
+- `new channel: 0x400 -> 0x1e!` - RPMSG channel established between A55 and M52
+- `get <value> (src: 0x1e)` - Ping-pong messages being exchanged between cores (odd numbers from M52, even numbers from A55)
+- `goodbye!` - Ping-pong sequence completed successfully

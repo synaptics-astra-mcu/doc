@@ -1,7 +1,6 @@
 # SR110 Platform Guide
 
-This document provides SR110-specific hardware setup and platform notes. For more detailed information on the Astra Machina Micro, see the **Astra Machina Micro User Guide**:  
-https://cp.synaptics.com/cognidox/download/NR-160034-MS-APPROVED.pdf
+This document provides SR110-specific hardware setup and platform notes. For more detailed information on the Astra Machina Micro, see the [Astra Machina Micro User Guide](https://cp.synaptics.com/cognidox/download/NR-160034-MS-APPROVED.pdf).
 
 For build, image conversion, flashing, and debugging workflows, use:
 
@@ -26,7 +25,10 @@ For build, image conversion, flashing, and debugging workflows, use:
 
 ### Astra Machina Micro (SR110 RDK)
 
-![SR110 RDK Board](../Assets/Images/media/Astra_Machina_Micro_Annotated.png)
+<figure>
+<img src="./assets/SR110.png" style="width:3.39653in;height:2.89792in" alt="SR110 RDK" />
+<figcaption><b>Figure 1.</b> SR110 RDK Board</figcaption>
+</figure>
 
 ### Connection Steps
 
@@ -62,7 +64,7 @@ For build, image conversion, flashing, and debugging workflows, use:
 
 1. Confirm the board powers up when J14 is connected.
 2. Verify the COM ports appear on the host.
-3. Open a serial terminal (115200 baud, 8N1) and reset the board to see logs.
+3. Open a serial terminal (230400 baud, 8N1) and reset the board to see logs.
 
 ---
 

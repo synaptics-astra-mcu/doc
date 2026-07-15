@@ -23,9 +23,9 @@ Select the defconfig that matches your target board, and the build system will p
   - **CLI**: [Setup and Install SDK using CLI](../../../docs/Astra_MCU_SDK_Setup_and_Install_CLI.md)
   - **VS Code**: [Setup and Install SDK using VS Code](../../../docs/Astra_MCU_SDK_Setup_and_Install_VsCode.md)
 
-## Test Case Selection
+## Project Configuration Selection
 
-Before building, choose the testcase defconfig that matches both your target board and the transfer mode you want to validate.
+Before building, choose the project configuration (defconfig) that matches both your target board and the transfer mode you want to validate.
 
 You can:
 - Select the required defconfig directly from the application's `configs/` directory.
@@ -85,8 +85,11 @@ Use the VS Code flow described in the SR110 guide and the VS Code Extension guid
 
 **Flash (VS Code):**
 1. Use **Image Conversion** to generate the flash image.
-2. Use **Image Flashing** (SWD/JTAG) to flash the firmware image.
-3. **VGA use case:** flash the **model binary second**, after the **use case image**.  
+2. In **Image Conversion**, open **Advanced Configurations** and edit `NVM_data.json`.
+3. Set the model flash offset in `NVM_data.json`:
+   - `image_offset_Model_A_offset`: `00629000`
+4. Use **Image Flashing** (SWD/JTAG) to flash the firmware image.
+5. **VGA use case:** flash the **model binary second**, after the **use case image**.  
    In **Image Flashing**, check **Model Binary** and set **Flash Offset** to `0x629000`, then flash the model file.  
    After that, flash the firmware image normally.
 
@@ -99,7 +102,9 @@ Use the VS Code flow described in the SR110 guide and the VS Code Extension guid
    # Windows PowerShell
    .\.venv\Scripts\Activate.ps1
    ```
-2. Generate the flash image:
+2. Set the model flash offset in `tools/srsdk_image_generator/Input_Config/NVM_data.json`:
+   - `image_offset_Model_A_offset`: `00629000`
+3. Generate the flash image:
    ```bash
    cd <sdk-root>/tools/srsdk_image_generator
    python srsdk_image_generator.py \
@@ -112,7 +117,7 @@ Use the VS Code flow described in the SR110 guide and the VS Code Extension guid
      -flash_type "GD25LE128" \
      -flash_freq "67"
    ```
-3. Flash the firmware image:
+4. Flash the firmware image:
    ```bash
    cd <sdk-root>
    python tools/openocd/scripts/flash_xspi_tcl.py \
@@ -120,7 +125,7 @@ Use the VS Code flow described in the SR110 guide and the VS Code Extension guid
      --image tools/srsdk_image_generator/Output/B0_Flash/B0_flash_full_image_GD25LE128_67Mhz_secured.bin \
      --erase-all
    ```
-4. **VGA use case:** flash the model binary second at offset `0x629000`:
+5. **VGA use case:** flash the model binary second at offset `0x629000`:
    ```bash
    cd <sdk-root>
    python tools/openocd/scripts/flash_xspi_tcl.py \

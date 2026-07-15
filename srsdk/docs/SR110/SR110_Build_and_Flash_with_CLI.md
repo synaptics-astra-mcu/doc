@@ -81,4 +81,4 @@ Throughout this guide, `<sdk-root>` refers to the directory where you extracted 
 
 ## Running Examples
 
-After flashing, reset the board and follow the README for the example you built.
+After flashing, reset the board and follow the [README](../../../user_guide/index.rst) for the example you built.

@@ -28,7 +28,6 @@ var searchData=
   ['sr110_20multi_20file_20documentation_20structure_25',['SR110 Multi-File Documentation Structure',['../md__r_e_a_d_m_e___s_t_r_u_c_t_u_r_e.html',1,'']]],
   ['sr110_5fcm55_20h_20cm55_20specific_20definitions_26',['2. &lt;b&gt;sr110_cm55.h&lt;/b&gt; (CM55-Specific Definitions)',['../md__r_e_a_d_m_e___s_t_r_u_c_t_u_r_e.html#autotoc_md9',1,'']]],
   ['sr110_5fgroups_20h_20main_20group_20definitions_27',['1. &lt;b&gt;sr110_groups.h&lt;/b&gt; (Main Group Definitions)',['../md__r_e_a_d_m_e___s_t_r_u_c_t_u_r_e.html#autotoc_md8',1,'']]],
-  ['streaming_20mode_28',['Non-Blocking Streaming Mode',['../group__group__dmic__driver.html#dmic_nonblocking_mode',1,'']]],
-  ['structure_29',['Structure',['../group__group__pinmux__driver.html#snippet_cfg_all',1,'Combined Configuration Structure'],['../group__group__pinmux__driver.html#snippet_elec_cfg',1,'Electrical Configuration Structure'],['../md__r_e_a_d_m_e___s_t_r_u_c_t_u_r_e.html#autotoc_md7',1,'File Structure'],['../md__r_e_a_d_m_e.html#autotoc_md4',1,'Folder Structure'],['../md__r_e_a_d_m_e___s_t_r_u_c_t_u_r_e.html',1,'SR110 Multi-File Documentation Structure']]],
-  ['supported_20drivers_30',['Supported Drivers',['../index.html#drivers_sec',1,'']]]
+  ['structure_28',['Structure',['../group__group__pinmux__driver.html#snippet_cfg_all',1,'Combined Configuration Structure'],['../group__group__pinmux__driver.html#snippet_elec_cfg',1,'Electrical Configuration Structure'],['../md__r_e_a_d_m_e___s_t_r_u_c_t_u_r_e.html#autotoc_md7',1,'File Structure'],['../md__r_e_a_d_m_e.html#autotoc_md4',1,'Folder Structure'],['../md__r_e_a_d_m_e___s_t_r_u_c_t_u_r_e.html',1,'SR110 Multi-File Documentation Structure']]],
+  ['supported_20drivers_29',['Supported Drivers',['../index.html#drivers_sec',1,'']]]
 ];

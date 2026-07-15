@@ -23,9 +23,9 @@ Select the defconfig that matches your target board, and the build system will p
   - **CLI**: [Setup and Install SDK using CLI](../../../docs/Astra_MCU_SDK_Setup_and_Install_CLI.md)
   - **VS Code**: [Setup and Install SDK using VS Code](../../../docs/Astra_MCU_SDK_Setup_and_Install_VsCode.md)
 
-## Test Case Selection
+## Project Configuration Selection
 
-Before building, choose the testcase defconfig that matches both your target board and the transfer mode you want to validate.
+Before building, choose the project configuration (defconfig) that matches both your target board and the transfer mode you want to validate.
 
 You can:
 - Select the required defconfig directly from the application's `configs/` directory.
@@ -89,7 +89,9 @@ The build process will produce the necessary .elf or .axf files for deployment w
    # Windows PowerShell
    .\.venv\Scripts\Activate.ps1
    ```
-2. Generate flash image:
+2. Set the model flash offset in `tools/srsdk_image_generator/Input_Config/NVM_data.json`:
+   - `image_offset_Model_A_offset`: `00629000`
+3. Generate flash image:
    ```bash
    cd <sdk-root>/tools/srsdk_image_generator
    python srsdk_image_generator.py \
@@ -102,7 +104,7 @@ The build process will produce the necessary .elf or .axf files for deployment w
      -flash_type "GD25LE128" \
      -flash_freq "67"
    ```
-3. Flash the firmware image:
+4. Flash the firmware image:
    ```bash
    cd <sdk-root>
    python tools/openocd/scripts/flash_xspi_tcl.py \

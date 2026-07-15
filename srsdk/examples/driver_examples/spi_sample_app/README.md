@@ -37,9 +37,9 @@ Select the defconfig that matches your target board, and the build system will p
   - **CLI**: [Setup and Install SDK using CLI](../../../docs/Astra_MCU_SDK_Setup_and_Install_CLI.md)
   - **VS Code**: [Setup and Install SDK using VS Code](../../../docs/Astra_MCU_SDK_Setup_and_Install_VsCode.md)
 
-## Test Case Selection
+## Project Configuration Selection
 
-Before building, choose the testcase defconfig that matches your target board.
+Before building, choose the project configuration (defconfig) that matches your target board.
 
 You can:
 - Select the required defconfig directly from the application's `configs/` directory.
@@ -53,31 +53,6 @@ You can:
 
 For this app, the default defconfig is:
    - `sr110_rdk_cm55_spi_sample_app_single_board_defconfig`
-
-## Mode Configuration (Important)
-
-Update `spi_sample_app.h` before build.
-
-### Single-board non-blocking mode (requested baseline)
-Set:
-- `SPI_NON_BLOCKING_XFER = 1`
-- `SPI_SINGLE_BOARD_MODE = 1`
-- `SPI_DMA_XFER = 0`
-- `SPI_DOUBLE_BOARD_MODE = 0`
-
-### Single-board DMA mode
-Set:
-- `SPI_DMA_XFER = 1`
-- Keep `SPI_SINGLE_BOARD_MODE = 1`
-- Keep `SPI_DOUBLE_BOARD_MODE = 0`
-
-### Double-board mode
-Set:
-- `SPI_DOUBLE_BOARD_MODE = 1`
-- `SPI_SINGLE_BOARD_MODE = 0`
-- Build two different images:
-  - **Controller board image:** `SPI_CONTROLLER_MODE = 1`, `SPI_PERIPHERAL_MODE = 0`
-  - **Peripheral board image:** `SPI_CONTROLLER_MODE = 0`, `SPI_PERIPHERAL_MODE = 1`
 
 ## Logger Interface Configuration
 

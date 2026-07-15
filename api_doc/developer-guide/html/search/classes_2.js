@@ -1,4 +1,29 @@
 var searchData=
 [
-  ['gpio_5fpin_5fconfig_5ft_0',['gpio_pin_config_t',['../structgpio__pin__config__t.html',1,'']]]
+  ['i2c_5fblocking_5fconfig_5ft_0',['i2c_blocking_config_t',['../structi2c__blocking__config__t.html',1,'']]],
+  ['i2c_5fcontroller_5fconfig_5ft_1',['i2c_controller_config_t',['../structi2c__controller__config__t.html',1,'']]],
+  ['i2c_5fnonblocking_5fconfig_5ft_2',['i2c_nonblocking_config_t',['../structi2c__nonblocking__config__t.html',1,'']]],
+  ['i2c_5ftarget_5fconfig_5ft_3',['i2c_target_config_t',['../structi2c__target__config__t.html',1,'']]],
+  ['i2s_5fcapabilities_5ft_4',['i2s_capabilities_t',['../structi2s__capabilities__t.html',1,'']]],
+  ['i2s_5fclock_5fmode_5ft_5',['i2s_clock_mode_t',['../structi2s__clock__mode__t.html',1,'']]],
+  ['i2s_5fconfig_5ft_6',['i2s_config_t',['../structi2s__config__t.html',1,'']]],
+  ['i2s_5fmem_5fif_5fops_5ft_7',['i2s_mem_if_ops_t',['../structi2s__mem__if__ops__t.html',1,'']]],
+  ['i3c_5fbus_5favail_5ftiming_5ft_8',['i3c_bus_avail_timing_t',['../structi3c__bus__avail__timing__t.html',1,'']]],
+  ['i3c_5fccc_5fresponse_5fentry_5ft_9',['i3c_ccc_response_entry_t',['../structi3c__ccc__response__entry__t.html',1,'']]],
+  ['i3c_5fcontroller_5fconfig_5ft_10',['i3c_controller_config_t',['../structi3c__controller__config__t.html',1,'']]],
+  ['i3c_5fcontroller_5fpolicy_5fconfig_5ft_11',['i3c_controller_policy_config_t',['../structi3c__controller__policy__config__t.html',1,'']]],
+  ['i3c_5fcurrent_5fxfer_5ft_12',['i3c_current_xfer_t',['../structi3c__current__xfer__t.html',1,'']]],
+  ['i3c_5fdat_5fentry_5ft_13',['i3c_dat_entry_t',['../structi3c__dat__entry__t.html',1,'']]],
+  ['i3c_5fdevice_5fconfig_5ft_14',['i3c_device_config_t',['../structi3c__device__config__t.html',1,'']]],
+  ['i3c_5fdevice_5ft_15',['i3c_device_t',['../structi3c__device__t.html',1,'']]],
+  ['i3c_5fevent_5finfo_5ft_16',['i3c_event_info_t',['../structi3c__event__info__t.html',1,'']]],
+  ['i3c_5fhdr_5fconfig_5ft_17',['i3c_hdr_config_t',['../structi3c__hdr__config__t.html',1,'']]],
+  ['i3c_5fibi_5fconfig_5ft_18',['i3c_ibi_config_t',['../structi3c__ibi__config__t.html',1,'']]],
+  ['i3c_5finterrupt_5fconfig_5ft_19',['i3c_interrupt_config_t',['../structi3c__interrupt__config__t.html',1,'']]],
+  ['i3c_5fscl_5ftiming_5ft_20',['i3c_scl_timing_t',['../structi3c__scl__timing__t.html',1,'']]],
+  ['i3c_5fsir_5fconfig_5ft_21',['i3c_sir_config_t',['../structi3c__sir__config__t.html',1,'']]],
+  ['i3c_5ftarget_5fconfig_5ft_22',['i3c_target_config_t',['../structi3c__target__config__t.html',1,'']]],
+  ['i3c_5ftarget_5fid_5ft_23',['i3c_target_id_t',['../structi3c__target__id__t.html',1,'']]],
+  ['i3c_5fthreshold_5fctrl_5ft_24',['i3c_threshold_ctrl_t',['../structi3c__threshold__ctrl__t.html',1,'']]],
+  ['i3c_5ftransfer_5ft_25',['i3c_transfer_t',['../structi3c__transfer__t.html',1,'']]]
 ];

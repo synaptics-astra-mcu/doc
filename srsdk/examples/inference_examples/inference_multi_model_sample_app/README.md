@@ -41,9 +41,9 @@ Notes from source behavior:
 - In callback-chained mode (`Option 2`), queue sizing matters. If inference queue depth is too low, deadlock can occur.
 - In simultaneous locking mode (`Option 3`), behavior differs depending on shared vs independent arena mode.
 
-## Test Case Selection
+## Project Configuration Selection
 
-Before building, choose the testcase defconfig that matches both your target board and the transfer mode you want to validate.
+Before building, choose the project configuration (defconfig) that matches both your target board and the transfer mode you want to validate.
 
 You can:
 - Select the required defconfig directly from the application's `configs/` directory.

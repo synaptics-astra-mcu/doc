@@ -43,9 +43,9 @@ You can tune demo behavior in `sample_demo_app.c`:
 - `SAMPLE_APP_TASK_PRIORITY`
 - `SAMPLE_APP_STACK_DEPTH`
 
-## Test Case Selection
+## Project Configuration Selection
 
-Before building, choose the testcase defconfig that matches both your target board and the transfer mode you want to validate.
+Before building, choose the project configuration (defconfig) that matches both your target board and the transfer mode you want to validate.
 
 You can:
 - Select the required defconfig directly from the application's `configs/` directory.

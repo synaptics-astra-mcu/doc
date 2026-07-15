@@ -16,7 +16,7 @@ For build, image generation, and flashing workflows, use:
 
 **Processor:** Arm Cortex-M52 CPU
 
-**Memory:** eMMC storage for boot images and filesystem; on-board xSPI NOR flash also supported as a boot/program target
+**Memory:** eMMC storage for boot images and filesystem
 
 **Supported Development Kits:** **SL2610_RDK** (Astra Machina Micro SL Series)
 
@@ -47,7 +47,6 @@ For build, image generation, and flashing workflows, use:
 - Connect the **USB 2.0 OTG port** to your host machine using a USB-C cable.
 - This connection is used for:
   - eMMC flashing
-  - xSPI NOR flash flashing
   - System Manager image installation
 
 #### 3. UART Logging Connection

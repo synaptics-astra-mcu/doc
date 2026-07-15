@@ -26,7 +26,7 @@ Add environment variable
 GCC_TOOLCHAIN_ROOT = C:\Program Files (x86)\Arm GNU Toolchain arm-none-eabi\13.2 Rel1
 ```
 
-Note: LLVM builds require `GCC_TOOLCHAIN_ROOT` for the GCC sysroot and libstdc++.
+> Note: For LLVM builds, `GCC_TOOLCHAIN_ROOT` must point to the toolchain root directory (the folder that *contains* `bin`), **not** the `bin` directory itself. LLVM accesses the standard libraries (sysroot and libstdc++) from the Arm GNU Toolchain, so the path must be one level above `bin`. Confirm the install path matches your installation, as it may differ depending on the chosen install location.
 
 ## Install LLVM Toolchain
 
@@ -38,6 +38,8 @@ Add environment variable
 ```bash
 LLVM_TOOLCHAIN_ROOT = C:\Program Files (x86)\LLVM\bin
 ```
+
+> Note: Make sure to add the LLVM `bin` directory (e.g. `C:\Program Files (x86)\LLVM\bin`) to Path in System Variables. Confirm the install path matches your installation, as it may differ depending on the chosen install location.
 
 ## MSYS2 Installation For Windows
 Follow the below steps to install MSYS2 in Windows:

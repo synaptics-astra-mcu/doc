@@ -33,9 +33,9 @@ Select the defconfig that matches your target board and the desired SPWM mode, a
   - **CLI**: [Setup and Install SDK using CLI](../../../docs/Astra_MCU_SDK_Setup_and_Install_CLI.md)
   - **VS Code**: [Setup and Install SDK using VS Code](../../../docs/Astra_MCU_SDK_Setup_and_Install_VsCode.md)
 
-## Test Case Selection
+## Project Configuration Selection
 
-Before building, choose the testcase defconfig that matches both your target board and the SPWM mode you want to validate.
+Before building, choose the project configuration (defconfig) that matches both your target board and the SPWM mode you want to validate.
 
 You can:
 - Select the required defconfig directly from the application's `configs/` directory.

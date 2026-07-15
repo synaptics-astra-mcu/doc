@@ -138,7 +138,7 @@ SDIO Pinmux Configuration</h3>
 SD Card</h1>
 <h3 class="doxsection"><a class="anchor" id="SDIO_INIT"></a>
 SDIO Init Operation</h3>
-<p>Initializes the SDIO module and prepares it for communication. </p><div class="fragment"><div class="line">ret = <a class="code hl_function" href="group__group__sdio__functions.html#gaba89037bdff689b3c1177d2388d161dd">sdio_init</a>(SDIO0);</div>
+<p>Initializes the SDIO module and prepares it for communication. </p><div class="fragment"><div class="line">ret = <a class="code hl_function" href="group__group__sdio__functions.html#gaba89037bdff689b3c1177d2388d161dd">sdio_init</a>(<a class="code hl_enumvalue" href="group___s_d_i_o___e_n_u_m_s___s_r110.html#ggaf3477c969e68259718bf72995d4bb223a748c666a92d7c5032fd9b0b4918a280f">SDIO0</a>);</div>
 <div class="line"><span class="keywordflow">if</span> (ret != <a class="code hl_enumvalue" href="group__group__sdio__enums.html#gga5219916e992c3cf6741b897a5aef6f6eadbeb2d3757a517724dd2f5e97ae648a7">SDIO_OK</a>) {</div>
 <div class="line">    LOG_INFO(LOG_MOD_SDIO,<span class="stringliteral">&quot;SDIO Init Failure!\n&quot;</span>);</div>
 <div class="line">} <span class="keywordflow">else</span> {</div>
@@ -150,7 +150,7 @@ SDIO Host Configuration and Initialization.</h3>
 <div class="line">    .dmaType          = CONFIG_SDIO_HOST_DMA_TYPE,</div>
 <div class="line">};</div>
 <div class="line"> </div>
-<div class="line">ret = <a class="code hl_function" href="group__group__sdio__functions.html#ga4ff0d37ae45362fbcc54f1764caebb66">sdio_config</a>(SDIO0, &amp;sdHostConfig);</div>
+<div class="line">ret = <a class="code hl_function" href="group__group__sdio__functions.html#ga4ff0d37ae45362fbcc54f1764caebb66">sdio_config</a>(<a class="code hl_enumvalue" href="group___s_d_i_o___e_n_u_m_s___s_r110.html#ggaf3477c969e68259718bf72995d4bb223a748c666a92d7c5032fd9b0b4918a280f">SDIO0</a>, &amp;sdHostConfig);</div>
 <div class="line"><span class="keywordflow">if</span> (ret != <a class="code hl_enumvalue" href="group__group__sdio__enums.html#gga5219916e992c3cf6741b897a5aef6f6eadbeb2d3757a517724dd2f5e97ae648a7">SDIO_OK</a>) {</div>
 <div class="line">    LOG_INFO(LOG_MOD_SDIO,<span class="stringliteral">&quot;SDIO Config Failure!\n&quot;</span>);</div>
 <div class="line">} <span class="keywordflow">else</span> {</div>
@@ -171,7 +171,7 @@ SDIO SD Card Configuration and Initialization.</h3>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">/* Initialize the card */</span></div>
-<div class="line">ret = <a class="code hl_function" href="group__group__sdio__functions.html#gaf206f72ee1025c36b51f5e6da1709155">sdio_sd_card_init</a>(SDIO0, &amp;sdCardConfig );</div>
+<div class="line">ret = <a class="code hl_function" href="group__group__sdio__functions.html#gaf206f72ee1025c36b51f5e6da1709155">sdio_sd_card_init</a>(<a class="code hl_enumvalue" href="group___s_d_i_o___e_n_u_m_s___s_r110.html#ggaf3477c969e68259718bf72995d4bb223a748c666a92d7c5032fd9b0b4918a280f">SDIO0</a>, &amp;sdCardConfig );</div>
 <div class="line"><span class="keywordflow">if</span> (ret != <a class="code hl_enumvalue" href="group__group__sdio__enums.html#gga5219916e992c3cf6741b897a5aef6f6eadbeb2d3757a517724dd2f5e97ae648a7">SDIO_OK</a>) {</div>
 <div class="line">    LOG_INFO(LOG_MOD_SDIO,<span class="stringliteral">&quot;SDIO Init Card Failure!\n&quot;</span>);</div>
 <div class="line">} <span class="keywordflow">else</span> {</div>
@@ -189,11 +189,11 @@ SDIO SD Card Write Operation.</h3>
 <div class="line"><span class="comment">/*force TX buffer into memory*/</span></div>
 <div class="line">cache_clean_addr((uint32_t*)&amp;txBuff[0], <a class="code hl_define" href="group__group__sdio__macros.html#gae2b22da2fd3683faf7b150e3848d566e">SDIO_BLOCK_SIZE</a>);</div>
 <div class="line">data.data = (uint32_t*)txBuff;                  <span class="comment">/* The pointer to data to write. */</span></div>
-<div class="line">ret = <a class="code hl_function" href="group__group__sdio__functions.html#gaee2ce601faeade870e8f2a1a4fad9332">sdio_sd_card_write</a>(SDIO0,&amp;data);          <span class="comment">/* Write data to the card. */</span></div>
+<div class="line">ret = <a class="code hl_function" href="group__group__sdio__functions.html#gaee2ce601faeade870e8f2a1a4fad9332">sdio_sd_card_write</a>(<a class="code hl_enumvalue" href="group___s_d_i_o___e_n_u_m_s___s_r110.html#ggaf3477c969e68259718bf72995d4bb223a748c666a92d7c5032fd9b0b4918a280f">SDIO0</a>,&amp;data);          <span class="comment">/* Write data to the card. */</span></div>
 </div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="SDIO_READ_OPERATION"></a>
 SDIO SD Card Read Operation.</h3>
 <p>Reads a data block from the SD card using the SDIO interface. </p><div class="fragment"><div class="line">data.data = (uint32_t*)rxBuff;                  <span class="comment">/* The pointer to data to read. */</span></div>
-<div class="line">ret = <a class="code hl_function" href="group__group__sdio__functions.html#ga913708f9eb8b643d442b18faa6fcf409">sdio_sd_card_read</a>(SDIO0, &amp;data);          <span class="comment">/* Read data from the card. */</span></div>
+<div class="line">ret = <a class="code hl_function" href="group__group__sdio__functions.html#ga913708f9eb8b643d442b18faa6fcf409">sdio_sd_card_read</a>(<a class="code hl_enumvalue" href="group___s_d_i_o___e_n_u_m_s___s_r110.html#ggaf3477c969e68259718bf72995d4bb223a748c666a92d7c5032fd9b0b4918a280f">SDIO0</a>, &amp;data);          <span class="comment">/* Read data from the card. */</span></div>
 <div class="line"><span class="comment">/*force read buffer from memory*/</span></div>
 <div class="line"><span class="keywordflow">if</span>(data.enableDma == <span class="keyword">false</span>) {</div>
 <div class="line">    cache_clean_addr((uint32_t*)&amp;rxBuff[0], <a class="code hl_define" href="group__group__sdio__macros.html#gae2b22da2fd3683faf7b150e3848d566e">SDIO_BLOCK_SIZE</a>);</div>
@@ -203,7 +203,7 @@ SDIO SD Card Read Operation.</h3>
 I/O Device</h1>
 <h3 class="doxsection"><a class="anchor" id="SDIO_INIT_IO"></a>
 SDIO Init Operation</h3>
-<p>Initializes the SDIO module and prepares it for communication. </p><div class="fragment"><div class="line">ret = <a class="code hl_function" href="group__group__sdio__functions.html#gaba89037bdff689b3c1177d2388d161dd">sdio_init</a>(SDIO1);</div>
+<p>Initializes the SDIO module and prepares it for communication. </p><div class="fragment"><div class="line">ret = <a class="code hl_function" href="group__group__sdio__functions.html#gaba89037bdff689b3c1177d2388d161dd">sdio_init</a>(<a class="code hl_enumvalue" href="group___s_d_i_o___e_n_u_m_s___s_r110.html#ggaf3477c969e68259718bf72995d4bb223a163ea6bf3192d4a6254b7e25bd3c1f98">SDIO1</a>);</div>
 <div class="line"><span class="keywordflow">if</span> (ret != <a class="code hl_enumvalue" href="group__group__sdio__enums.html#gga5219916e992c3cf6741b897a5aef6f6eadbeb2d3757a517724dd2f5e97ae648a7">SDIO_OK</a>) {</div>
 <div class="line">    LOG_INFO(LOG_MOD_SDIO,<span class="stringliteral">&quot;SDIO Init Failure!\n&quot;</span>);</div>
 <div class="line">} <span class="keywordflow">else</span> {</div>
@@ -215,7 +215,7 @@ SDIO Host Configuration and Initialization.</h3>
 <div class="line">    .dmaType          = CONFIG_SDIO_HOST_DMA_TYPE,</div>
 <div class="line">};</div>
 <div class="line"> </div>
-<div class="line">ret = sdio_host_init_test(SDIO1, &amp;sdHostConfig);</div>
+<div class="line">ret = sdio_host_init_test(<a class="code hl_enumvalue" href="group___s_d_i_o___e_n_u_m_s___s_r110.html#ggaf3477c969e68259718bf72995d4bb223a163ea6bf3192d4a6254b7e25bd3c1f98">SDIO1</a>, &amp;sdHostConfig);</div>
 <div class="line"><span class="keywordflow">if</span> (ret != <a class="code hl_enumvalue" href="group__group__sdio__enums.html#gga5219916e992c3cf6741b897a5aef6f6eadbeb2d3757a517724dd2f5e97ae648a7">SDIO_OK</a>) {</div>
 <div class="line">    LOG_INFO(LOG_MOD_SDIO,<span class="stringliteral">&quot;SDIO Config Failure!\n&quot;</span>);</div>
 <div class="line">} <span class="keywordflow">else</span> {</div>
@@ -236,7 +236,7 @@ SDIO I/O Device Configuration and Initialization.</h3>
 <div class="line">};</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">/* Initialize the IO Device */</span></div>
-<div class="line">ret = sdio_device_init_test(SDIO1);</div>
+<div class="line">ret = sdio_device_init_test(<a class="code hl_enumvalue" href="group___s_d_i_o___e_n_u_m_s___s_r110.html#ggaf3477c969e68259718bf72995d4bb223a163ea6bf3192d4a6254b7e25bd3c1f98">SDIO1</a>);</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordflow">if</span> (ret != <a class="code hl_enumvalue" href="group__group__sdio__enums.html#gga5219916e992c3cf6741b897a5aef6f6eadbeb2d3757a517724dd2f5e97ae648a7">SDIO_OK</a>) {</div>
 <div class="line">    LOG_INFO(LOG_MOD_SDIO,<span class="stringliteral">&quot;SDIO IO Device Init Failure!\n&quot;</span>);</div>
@@ -247,7 +247,7 @@ SDIO I/O Device Configuration and Initialization.</h3>
 </div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="SDIO_CMD52_OPERATION"></a>
 SDIO Direct I/O Transfer Operation (CMD52)</h3>
 <p>Performs single-byte read/write to a specific register address in the I/O device. </p><div class="fragment"><div class="line">sdio_lock_test(sdio_mutex);</div>
-<div class="line"><a class="code hl_enumeration" href="group__group__sdio__enums.html#ga5219916e992c3cf6741b897a5aef6f6e">sdio_status_en</a> ret = sdio_sd_cmd52_test(SDIO1, rw_flag, function_number, raw_flag, reg_addr, data);</div>
+<div class="line"><a class="code hl_enumeration" href="group__group__sdio__enums.html#ga5219916e992c3cf6741b897a5aef6f6e">sdio_status_en</a> ret = sdio_sd_cmd52_test(<a class="code hl_enumvalue" href="group___s_d_i_o___e_n_u_m_s___s_r110.html#ggaf3477c969e68259718bf72995d4bb223a163ea6bf3192d4a6254b7e25bd3c1f98">SDIO1</a>, rw_flag, function_number, raw_flag, reg_addr, data);</div>
 <div class="line"><span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="group__group__sdio__enums.html#gga5219916e992c3cf6741b897a5aef6f6eadbeb2d3757a517724dd2f5e97ae648a7">SDIO_OK</a> == ret) {</div>
 <div class="line">    <span class="keywordflow">if</span> (xSemaphoreTake(sdio_completion_sem, 5000) != pdPASS) {</div>
 <div class="line">        LOG_ERROR(LOG_MOD_SDIO,<span class="stringliteral">&quot;Timeout waiting for CMD52 completion!\n&quot;</span>);</div>
@@ -259,7 +259,7 @@ SDIO Direct I/O Transfer Operation (CMD52)</h3>
 </div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="SDIO_CMD53_OPERATION"></a>
 SDIO Extended I/O Transfer Operation (CMD53)</h3>
 <p>Performs multi-byte (or block) read or write transfer between the host and the I/O device. </p><div class="fragment"><div class="line">sdio_lock_test(sdio_mutex);</div>
-<div class="line">sdio_sd_cmd53_test(SDIO1, read, funcNum, block_mode, opCode, reg_addr, byteCnt, globalBuffer);</div>
+<div class="line">sdio_sd_cmd53_test(<a class="code hl_enumvalue" href="group___s_d_i_o___e_n_u_m_s___s_r110.html#ggaf3477c969e68259718bf72995d4bb223a163ea6bf3192d4a6254b7e25bd3c1f98">SDIO1</a>, read, funcNum, block_mode, opCode, reg_addr, byteCnt, globalBuffer);</div>
 <div class="line"><span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="group__group__sdio__enums.html#gga5219916e992c3cf6741b897a5aef6f6eadbeb2d3757a517724dd2f5e97ae648a7">SDIO_OK</a> != ret) {</div>
 <div class="line">    LOG_ERROR(LOG_MOD_SDIO, <span class="stringliteral">&quot;2nd CMD53 failed!\n&quot;</span>);</div>
 <div class="line">}</div>

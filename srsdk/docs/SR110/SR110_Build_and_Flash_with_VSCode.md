@@ -35,8 +35,7 @@ The steps do not run until the **Run** button at the bottom of the view is press
 ## Environment Setup
 1. Import the SDK root and set workspace `SRSDK_DIR` to `<sdk-root>` via the **Import SDK** view.
 2. Import the project you want to build via the **Import Project** view.
-3. Open **Build and Deploy** from the **Imported Projects** view and set `Device` -> `SR110`.
-4. If multiple projects are imported, select the correct project in the **Build and Deploy** project dropdown.
+3. Under IMPORTED PROJECTS/SDK select the Build and Deploy option for your selected project, and set `Device` -> `SR110`.
 
 ![Build and Deploy Window](assets/Build_and_Deploy.png)
 
@@ -47,19 +46,18 @@ The steps do not run until the **Run** button at the bottom of the view is press
 
 **Steps:**
 1. Check the **Build Configurations** checkbox.
-2. If multiple projects are imported, select the correct project in the **Build and Deploy** project dropdown.
-3. Select the desired **Build Configuration**:
+2. Select the desired **Project Configuration**. Project Configurations (defconfigs) are predefined sets of build options and enabled features for the project. Choose the one that matches the example or feature set you want to build.
+3. Select the desired **Build Mode**:
    - **Release** for flashing
    - **Debug** for GDB debugging
-4. Select the target **Board** and **Board Revision**.
+4. Select the desired **Build Target**.
+5. Select the target **Board** and **Board Revision**.
    - **Board Revision** is printed on the bottom of Astra Machina Micro.
-5. Choose the desired **Compiler** and **Build Toolchain**.
-6. Select the application from the **Application** dropdown.
+6. Choose the desired **Compiler** and **Build Toolchain**.
 7. Choose the appropriate build option:
 
 | Option | What it does | When to use it |
 | :--- | :--- | :--- |
-| **SDK Build (default_package)** | Generates the shared SDK foundation in `<sdk-root>/install`. | Use this first to prepare the common SDK package required by project builds. |
 | **Build (SDK+Project)** | Builds the SDK components required by the app based on the app configuration, installs them into the app-local install folder, and then builds the example using that generated install package. | Use this when building an app for the first time and the required SDK components have not yet been generated for that app. |
 | **Build (Project)** | Builds the active SR110 project using project-local artifacts. | Use this during normal development when you want a fresh build for the selected project. |
 | **Build (Use Pre-built SDK)** | Builds the active SR110 project against the common install root in `<sdk-root>/install`. | Use this to reuse an existing SDK package and avoid rebuilding shared components. |
@@ -68,7 +66,7 @@ The steps do not run until the **Run** button at the bottom of the view is press
 - If **Build Configurations** is disabled, verify that `SRSDK_DIR` is set correctly through the **Import SDK** view.
 
 **Result:**
-- Build outputs are generated under the project's `out/sr110_<Build_Type>/<Build_Mode>/` directory.
+- Build outputs are generated under the project's `out/sr110_<Build_Target>/<Build_Mode>/` directory.
 - Example output: `out/sr110_cm55_fw/release/sr110_cm55_fw.elf`
 - The executable extension depends on the selected compiler: `.elf` for GCC/LLVM and `.axf` for AC6.
 
@@ -76,21 +74,21 @@ The steps do not run until the **Run** button at the bottom of the view is press
 
 ## Image Conversion (SR110)
 
-**Purpose:** Convert .axf/.elf outputs into flashable `.bin` images.
+**Purpose:** Convert .axf/.elf outputs into flashable `.bin` images. The `.bin` file is used for flashing onto the external flash on the Astra Machina Micro board.
 
 **Steps (basic):**
 1. Check the **Image Conversion** checkbox.
 2. The built .elf/.axf path is auto-populated after the build completes. 
 3. Select **Flash Image**
 4. Select **Secured**
-5. For flash images, choose **Flash Type** (default `GD25LE128`) and **Flash Frequency** (default `67`).
+5. For flash images, choose **Flash Type** (default `GD25LE128`) and set **Flash Frequency** to `100` MHz.
 6. Click **Run** to convert.
 
 **Optional (advanced):**
 - Convert a model bin when needed by selecting the model file and its security setting.
 
 **Result:**
-- Converted binaries are written under `out/bin_files/Output/B0_Flash/B0_flash_full_image_GD25LE128_67Mhz_secured.bin`
+- Converted binaries are written under the project's directory: `out/bin_files/Output/B0_Flash/B0_flash_full_image_GD25LE128_100Mhz_secured.bin`
 
 ![SR110 Image Conversion](assets/VS_Image_Conv.png)
 
@@ -181,9 +179,9 @@ Some vision examples stream image data over USB CDC. On Windows, install the cor
 
    ![Zadig - List All Devices](assets/image10.png)
 
-4. In the device dropdown, select **SR 100-B0 CDC 1**.
+4. In the device dropdown, select **SYNA CDC 1**.
 
-   ![Zadig - Device Selection](assets/image11.jpeg)
+   ![Zadig - Device Selection](assets/image11.png)
 
 5. Choose **WinUSB** as the driver and click **Replace Driver**.
 

@@ -24,6 +24,8 @@ Add environment variable
 GCC_TOOLCHAIN_13_2_1 = C:\Program Files (x86)\Arm GNU Toolchain arm-none-eabi\13.2 Rel1\bin
 ```
 
+> Note: Make sure to add the toolchain's `bin` directory (e.g. `C:\Program Files (x86)\Arm GNU Toolchain arm-none-eabi\13.2 Rel1\bin`) to Path in System Variables.
+
 ## MSYS2 Installation For Windows
 Follow the below steps to install MSYS2 in Windows:
 
