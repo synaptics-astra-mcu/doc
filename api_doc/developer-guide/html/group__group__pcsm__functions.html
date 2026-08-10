@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Astra MCU SDK Peripheral Driver Library: Functions</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><div id="titlearea"><table cellspacing="0" cellpadding="0"><tbody><tr id="projectrow"><td id="projectlogo"><img alt="Logo" src="syna_logo.png"/></td><td id="projectalign"><div id="projectname">Astra MCU SDK Peripheral Driver Library</div></td></tr></tbody></table></div></div>
+<div id="container"><div id="doc-content">
+<div class="header"><div class="headertitle"><div class="title">Functions <div class="ingroups"><a class="el" href="group__peripherals.html">Peripherals</a> &raquo; <a class="el" href="group__api__ref.html">Driver API Reference</a> &raquo; <a class="el" href="group__group__pcsm__driver.html">PCSM</a></div></div></div></div>
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">PCSM APIs</h2></td></tr>
+<tr class="memitem:ga_pcsm_set_wakeup" id="r_ga_pcsm_set_wakeup"><td class="memItemLeft">int32_t&#160;</td><td class="memItemRight"><a class="el" href="#ga_pcsm_set_wakeup">pcsm_set_wakeup</a> (pcsm_instance_en id, uint32_t mask, uint32_t pol)</td></tr>
+<tr class="memdesc:ga_pcsm_set_wakeup"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set wakeup event mask and polarity for a PCSM instance. <br /></td></tr>
+<tr class="memitem:ga_pcsm_get_wakeup_mask" id="r_ga_pcsm_get_wakeup_mask"><td class="memItemLeft">int32_t&#160;</td><td class="memItemRight"><a class="el" href="#ga_pcsm_get_wakeup_mask">pcsm_get_wakeup_mask</a> (pcsm_instance_en id, uint32_t *mask)</td></tr>
+<tr class="memdesc:ga_pcsm_get_wakeup_mask"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the configured wakeup event mask for a PCSM instance. <br /></td></tr>
+<tr class="memitem:ga_is_power_domain_stable" id="r_ga_is_power_domain_stable"><td class="memItemLeft">int32_t&#160;</td><td class="memItemRight"><a class="el" href="#ga_is_power_domain_stable">is_power_domain_stable</a> (pcsm_instance_en id)</td></tr>
+<tr class="memdesc:ga_is_power_domain_stable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether the target power domain is stable in ON state. <br /></td></tr>
+<tr class="memitem:ga_pcsm_clear_wakeup_mask" id="r_ga_pcsm_clear_wakeup_mask"><td class="memItemLeft">int32_t&#160;</td><td class="memItemRight"><a class="el" href="#ga_pcsm_clear_wakeup_mask">pcsm_clear_wakeup_mask</a> (pcsm_instance_en id, uint32_t mask)</td></tr>
+<tr class="memdesc:ga_pcsm_clear_wakeup_mask"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear wakeup event mask bits for a PCSM instance. <br /></td></tr>
+<tr class="memitem:ga_get_power_state" id="r_ga_get_power_state"><td class="memItemLeft">int32_t&#160;</td><td class="memItemRight"><a class="el" href="#ga_get_power_state">get_power_state</a> (pcsm_instance_en id, uint32_t *state)</td></tr>
+<tr class="memdesc:ga_get_power_state"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current power state snapshot from PCSM status registers. <br /></td></tr>
+<tr class="memitem:ga_pcsm_ctrl_config_ds_mode" id="r_ga_pcsm_ctrl_config_ds_mode"><td class="memItemLeft">int32_t&#160;</td><td class="memItemRight"><a class="el" href="#ga_pcsm_ctrl_config_ds_mode">pcsm_ctrl_config_ds_mode</a> (pcsm_instance_en id, <a class="el" href="group__group__ppu__enums.html#ga_power_state_e">power_state_e</a> ds_mode)</td></tr>
+<tr class="memdesc:ga_pcsm_ctrl_config_ds_mode"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure PCSM CTRL sleep/deep-sleep behavior for the selected mode. <br /></td></tr>
+</table>
+<a id="ga_pcsm_set_wakeup" name="ga_pcsm_set_wakeup"></a><h2 class="memtitle">pcsm_set_wakeup()</h2>
+<div class="memitem"><div class="memdoc"><p>Set wakeup event mask and polarity for a PCSM instance.</p>
+<p><b>Parameters:</b></p>
+<ul>
+<li><b>id</b>: PCSM instance identifier.</li>
+<li><b>mask</b>: Wakeup source bitmask to configure.</li>
+<li><b>pol</b>: Wakeup polarity bitmask corresponding to <b>mask</b> bits.</li>
+</ul>
+<p><b>Return:</b> 0 on success, otherwise a <a class="el" href="group__group__pcsm__enums.html#ga_pcsm_err_e">pcsm_err_e</a> negative error code.</p>
+<p><b>Return values:</b></p>
+<ul>
+<li><a class="el" href="group__group__pcsm__enums.html#gga_pcsm_err_e_PCSM_OK">PCSM_OK</a>: Wakeup mask and polarity configured successfully.</li>
+<li><a class="el" href="group__group__pcsm__enums.html#gga_pcsm_err_e_PCSM_ERR_INVALID_PARAM">PCSM_ERR_INVALID_PARAM</a>: Invalid PCSM instance identifier.</li>
+</ul>
+</div></div>
+<a id="ga_pcsm_get_wakeup_mask" name="ga_pcsm_get_wakeup_mask"></a><h2 class="memtitle">pcsm_get_wakeup_mask()</h2>
+<div class="memitem"><div class="memdoc"><p>Get wakeup event mask for a PCSM instance.</p>
+<p><b>Parameters:</b></p>
+<ul>
+<li><b>id</b>: PCSM instance identifier.</li>
+<li><b>mask</b>: Pointer to receive current wakeup mask bits.</li>
+</ul>
+<p><b>Return:</b> 0 on success, otherwise a <a class="el" href="group__group__pcsm__enums.html#ga_pcsm_err_e">pcsm_err_e</a> negative error code.</p>
+<p><b>Return values:</b></p>
+<ul>
+<li><a class="el" href="group__group__pcsm__enums.html#gga_pcsm_err_e_PCSM_OK">PCSM_OK</a>: Wakeup mask read successfully.</li>
+<li><a class="el" href="group__group__pcsm__enums.html#gga_pcsm_err_e_PCSM_ERR_INVALID_PARAM">PCSM_ERR_INVALID_PARAM</a>: Invalid PCSM instance identifier or NULL <b>mask</b> pointer.</li>
+</ul>
+</div></div>
+<a id="ga_is_power_domain_stable" name="ga_is_power_domain_stable"></a><h2 class="memtitle">is_power_domain_stable()</h2>
+<div class="memitem"><div class="memdoc"><p>Check whether the power domain is stable-on.</p>
+<p><b>Parameters:</b></p>
+<ul>
+<li><b>id</b>: PCSM instance identifier.</li>
+</ul>
+<p><b>Return:</b> 1 if stable-on, 0 if not stable-on, otherwise a <a class="el" href="group__group__pcsm__enums.html#ga_pcsm_err_e">pcsm_err_e</a> negative error code.</p>
+<p><b>Return values:</b></p>
+<ul>
+<li><b>1</b>: Power domain is stable-on.</li>
+<li><b>0</b>: Power domain is not stable-on.</li>
+<li><a class="el" href="group__group__pcsm__enums.html#gga_pcsm_err_e_PCSM_ERR_INVALID_PARAM">PCSM_ERR_INVALID_PARAM</a>: Invalid PCSM instance identifier.</li>
+<li><a class="el" href="group__group__pcsm__enums.html#gga_pcsm_err_e_PCSM_ERR_NOT_SUPPORTED">PCSM_ERR_NOT_SUPPORTED</a>: State-status feature is not supported on this SoC.</li>
+</ul>
+</div></div>
+<a id="ga_pcsm_clear_wakeup_mask" name="ga_pcsm_clear_wakeup_mask"></a><h2 class="memtitle">pcsm_clear_wakeup_mask()</h2>
+<div class="memitem"><div class="memdoc"><p>Clear wakeup event mask bits for a PCSM instance.</p>
+<p><b>Parameters:</b></p>
+<ul>
+<li><b>id</b>: PCSM instance identifier.</li>
+<li><b>mask</b>: Wakeup mask bits to clear.</li>
+</ul>
+<p><b>Return:</b> 0 on success, otherwise a <a class="el" href="group__group__pcsm__enums.html#ga_pcsm_err_e">pcsm_err_e</a> negative error code.</p>
+<p><b>Return values:</b></p>
+<ul>
+<li><a class="el" href="group__group__pcsm__enums.html#gga_pcsm_err_e_PCSM_OK">PCSM_OK</a>: Wakeup mask bits cleared successfully.</li>
+<li><a class="el" href="group__group__pcsm__enums.html#gga_pcsm_err_e_PCSM_ERR_INVALID_PARAM">PCSM_ERR_INVALID_PARAM</a>: Invalid PCSM instance identifier.</li>
+</ul>
+</div></div>
+<a id="ga_get_power_state" name="ga_get_power_state"></a><h2 class="memtitle">get_power_state()</h2>
+<div class="memitem"><div class="memdoc"><p>Get current power state from PCSM.</p>
+<p><b>Parameters:</b></p>
+<ul>
+<li><b>id</b>: PCSM instance identifier.</li>
+<li><b>state</b>: Pointer to receive current power state value.</li>
+</ul>
+<p><b>Return:</b> 0 on success, otherwise a <a class="el" href="group__group__pcsm__enums.html#ga_pcsm_err_e">pcsm_err_e</a> negative error code.</p>
+<p><b>Return values:</b></p>
+<ul>
+<li><a class="el" href="group__group__pcsm__enums.html#gga_pcsm_err_e_PCSM_OK">PCSM_OK</a>: Power-state value read successfully.</li>
+<li><a class="el" href="group__group__pcsm__enums.html#gga_pcsm_err_e_PCSM_ERR_INVALID_PARAM">PCSM_ERR_INVALID_PARAM</a>: Invalid PCSM instance identifier or NULL <b>state</b> pointer.</li>
+<li><a class="el" href="group__group__pcsm__enums.html#gga_pcsm_err_e_PCSM_ERR_NOT_SUPPORTED">PCSM_ERR_NOT_SUPPORTED</a>: Power-state readback is not supported on this SoC.</li>
+</ul>
+</div></div>
+<a id="ga_pcsm_ctrl_config_ds_mode" name="ga_pcsm_ctrl_config_ds_mode"></a><h2 class="memtitle">pcsm_ctrl_config_ds_mode()</h2>
+<div class="memitem"><div class="memdoc"><p>Configure PCSM CTRL register behavior for target deep-sleep mode.</p>
+<p>Mode mapping:</p>
+<ul>
+<li><b>PM_STATE_ON</b>: sleep and deep-sleep disabled.</li>
+<li><b>PM_STATE_MEM_RET</b>: sleep enabled, deep-sleep disabled.</li>
+<li><b>PM_STATE_FULL_RET</b>: sleep and deep-sleep enabled.</li>
+<li><b>PM_STATE_STANDBY</b>: sleep and deep-sleep enabled.</li>
+</ul>
+<p><b>Parameters:</b></p>
+<ul>
+<li><b>id</b>: PCSM instance identifier.</li>
+<li><b>ds_mode</b>: Target power mode to configure.</li>
+</ul>
+<p><b>Return:</b> 0 on success, otherwise a <a class="el" href="group__group__pcsm__enums.html#ga_pcsm_err_e">pcsm_err_e</a> negative error code.</p>
+<p><b>Return values:</b></p>
+<ul>
+<li><a class="el" href="group__group__pcsm__enums.html#gga_pcsm_err_e_PCSM_OK">PCSM_OK</a>: Deep-sleep mode control configured successfully.</li>
+<li><a class="el" href="group__group__pcsm__enums.html#gga_pcsm_err_e_PCSM_ERR_INVALID_PARAM">PCSM_ERR_INVALID_PARAM</a>: Invalid PCSM instance identifier or unsupported <b>ds_mode</b>.</li>
+</ul>
+</div></div>
+</div></div></div>
+<div id="nav-path" class="navpath"><ul><li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li></ul></div>
+</body>
+</html>
