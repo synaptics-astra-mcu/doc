@@ -6,5 +6,4 @@ This section contains detailed guides covering specific topics and specialized m
 .. toctree::
    :hidden:
 
-   toolkit/toolkit
    sensor/sensor

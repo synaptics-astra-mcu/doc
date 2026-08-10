@@ -43,9 +43,9 @@ Select the defconfig that matches your target board, and the build system will p
 pip install pyserial Pillow matplotlib numpy
 ```
 
-## Test Case Selection
+## Project Configuration Selection
 
-Before building, choose the testcase defconfig that matches your target board.
+Before building, choose the project configuration (defconfig) that matches your target board.
 
 You can:
 - Select the required defconfig directly from the application's `configs/` directory.

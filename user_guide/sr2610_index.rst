@@ -11,11 +11,14 @@ This section provides comprehensive user guides and demo applications for the SL
 .. toctree::
    :maxdepth: 1
 
+   ../srsdk/examples/driver_examples/can_sample_app/README
    ../srsdk/examples/driver_examples/dma_sample_app/README
    ../srsdk/examples/driver_examples/dmic_sample_app/README
+   ../srsdk/examples/driver_examples/eMMC_sample_app/README
    ../srsdk/examples/driver_examples/fc_sample_app/README
    ../srsdk/examples/driver_examples/i2c_exp_app/README
    ../srsdk/examples/driver_examples/i2s_sample_app/README
+   ../srsdk/examples/driver_examples/i3c_sample_app/README
    ../srsdk/examples/driver_examples/nand_sample_app/README
    ../srsdk/examples/driver_examples/spwm_sample_app/README
    ../srsdk/examples/driver_examples/timer_sample_app/README
@@ -33,6 +36,9 @@ This section provides comprehensive user guides and demo applications for the SL
 
 :doc:`../srsdk/examples/driver_examples/dmic_sample_app/README`
    **DMIC Sample App Demo** - A complete guide for the DMIC PDM-RX sample application, capture and verify digital microphone audio through FIFO and DMA-based receive paths, with support for blocking, non-blocking, and callback-driven capture modes, including PCM data validation and diagnostic logging.
+
+:doc:`../srsdk/examples/driver_examples/eMMC_sample_app/README`
+   **eMMC Sample App Demo** - Demonstrates eMMC bring-up, storage access, and basic read/write workflows for embedded flash storage validation.
 
 :doc:`../srsdk/examples/driver_examples/fc_sample_app/README`
    **FC Sample App Demo** - A complete guide for the FC Driver sample application, demonstrate Fault Controller operation with controller initialization, fault-source routing, interrupt and reset validation, fault log capture, and callback completion verification.

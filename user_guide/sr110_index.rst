@@ -38,10 +38,12 @@ This section provides comprehensive user guides and demo applications for the SR
    ../srsdk/examples/inference_examples/inference_multi_model_sample_app/README
    ../srsdk/examples/usb_examples/usb_cdc_camera_sensor_tx_sample_app/README
    ../srsdk/examples/usb_examples/usb_cdc_echo_sample_app/README
+   ../srsdk/examples/usb_examples/usb_cdc_hid_mouse_sample_app/README
    ../srsdk/examples/usb_examples/usb_cdc_image_downloader_sample_app/README
    ../srsdk/examples/usb_examples/usb_cdc_rx_sample_app/README
    ../srsdk/examples/usb_examples/usb_cdc_tx_counter_sample_app/README
    ../srsdk/examples/usb_examples/usb_cdc_tx_sample_app/README
+   ../srsdk/examples/usb_examples/usb_hid_mouse_sample_app/README
 
 **Sample Demo:**
 
@@ -135,6 +137,9 @@ This section provides comprehensive user guides and demo applications for the SR
 :doc:`../srsdk/examples/usb_examples/usb_cdc_echo_sample_app/README`
    **USB CDC Echo Demo** - Shows loopback/echo behavior for validating USB CDC communication.
 
+:doc:`../srsdk/examples/usb_examples/usb_cdc_hid_mouse_sample_app/README`
+   **USB CDC HID Mouse Demo** - Demonstrates a combined CDC and HID mouse interface for host interaction over USB.
+
 :doc:`../srsdk/examples/usb_examples/usb_cdc_image_downloader_sample_app/README`
    **USB CDC Image Downloader Demo** - Provides image transfer workflow from host to device over USB CDC.
 
@@ -146,4 +151,7 @@ This section provides comprehensive user guides and demo applications for the SR
 
 :doc:`../srsdk/examples/usb_examples/usb_cdc_tx_sample_app/README`
    **USB CDC TX Demo** - Shows basic USB CDC transmit flow for sending application data to the host.
+
+:doc:`../srsdk/examples/usb_examples/usb_hid_mouse_sample_app/README`
+   **USB HID Mouse Demo** - Provides a simple USB HID mouse example for host-side pointer interaction.
 

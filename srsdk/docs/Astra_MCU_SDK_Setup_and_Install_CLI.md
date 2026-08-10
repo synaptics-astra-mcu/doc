@@ -114,7 +114,7 @@ Set the SDK root and toolchain paths in your shell.
 export SRSDK_DIR=<sdk-root>
 ```
 
-Note: `SRSDK_DIR` must be set in any shell where you build from `<sdk-root>/examples` (including app-only builds).
+Note: `SRSDK_DIR` must be set in any shell where you build from your project folder (e.g. `<sdk-root>/examples/<project_category>/<project>`), including app-only builds.
 
 Choose **one** toolchain variable (do not set multiple toolchains at the same time):
 

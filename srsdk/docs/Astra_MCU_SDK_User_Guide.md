@@ -1,6 +1,6 @@
 # Astra MCU SDK Reference
 
-This document is a comprehensive reference for the Astra MCU SDK. It describes the SDK structure, build and configuration model, project layout, image generation, flashing tools, and common troubleshooting. It is not a quick start guide and focuses on SDK internals and CLI workflows.
+This document is a comprehensive reference for the Astra MCU SDK. It describes the SDK structure, build and configuration model, repository layout, image generation, flashing tools, and common troubleshooting. It is not a quick start guide and focuses on SDK internals and CLI workflows.
 
 Throughout this guide, `<sdk-root>` refers to the folder where you extracted or cloned the SDK (for example, `C:\Users\<YourName>\ASTRA_MCU_SDK_x.x.x\`).
 
@@ -11,7 +11,7 @@ Throughout this guide, `<sdk-root>` refers to the folder where you extracted or 
 - [Host Requirements](#host-requirements)
 - [Environment Variables and Toolchain Selection](#environment-variables-and-toolchain-selection)
 - [SDK Repository Layout](#sdk-repository-layout)
-- [Project Structure and Module Organization](#project-structure-and-module-organization)
+- [SDK Structure and Module Organization](#sdk-structure-and-module-organization)
 - [Build System Overview](#build-system-overview)
 - [CMake Build Details](#cmake-build-details)
 - [Configuration Model (Kconfig)](#configuration-model-kconfig)
@@ -21,7 +21,7 @@ Throughout this guide, `<sdk-root>` refers to the folder where you extracted or 
 - [Flashing](#flashing)
 - [Debugging](#debugging)
 - [Where to Run Commands](#where-to-run-commands)
-- [Applications (Modify or Create)](#applications-modify-or-create)
+- [Projects (Modify or Create)](#projects-modify-or-create)
 - [Command Reference](#command-reference)
 - [Troubleshooting](#troubleshooting)
 - [Related References](#related-references)
@@ -30,8 +30,8 @@ Throughout this guide, `<sdk-root>` refers to the folder where you extracted or 
 
 Use this reference if you need to:
 - Understand how the SDK is organized and built.
-- Configure SDK or application features.
-- Build SDK packages and applications with the CLI.
+- Configure SDK or project features.
+- Build SDK packages and projects with the CLI.
 - Generate images and flash devices.
 - Troubleshoot build, image generation, or flashing issues.
 
@@ -49,9 +49,9 @@ Before using this reference, complete the setup and installation steps:
 | --- | --- | --- |
 | MCU core | Cortex-M55 | Cortex-M52 |
 | NPU | Ethos-U55 | None |
-| Flash media | External XSPI | eMMC and on-board xSPI NOR (via USB boot tool) |
+| Flash media | External XSPI | eMMC (via USB boot tool) |
 | Image generation | SRSDK image generator | Image generator + USB boot tool |
-| Debug | OpenOCD + probe | Not supported in this SDK flow |
+| Debug | OpenOCD + probe | OpenOCD + GDB over J-Link (manual; see SL2610 guides) |
 | Toolchains | GCC, AC6, LLVM | GCC, AC6 |
 
 ### Platform Guides
@@ -78,11 +78,12 @@ Before using this reference, complete the setup and installation steps:
 - **Arm Compiler 6.19** (AC6)
 - **LLVM Clang 21.x** (SR110 only; requires GCC sysroot)
 
-Use only **one toolchain per build**. Do not mix toolchains across SDK and application builds.
+Use only **one toolchain per build**. Do not mix toolchains across SDK and project builds.
 
-## Environment Setup 
+## Environment Variables and Toolchain Selection
 Use these for host setup and tool installation:
 - [Setup and Install SDK using CLI](./Astra_MCU_SDK_Setup_and_Install_CLI.md)
+- [Setup and Install SDK using VS Code](./Astra_MCU_SDK_Setup_and_Install_VsCode.md)
 - [Build environment guides](./build_env/index.rst) (OS + toolchain specific guides)
 
 
@@ -94,7 +95,7 @@ Top-level directories:
 - `bootloader/` Bootloader sources
 - `configs/` SDK defconfigs (bootloader, tflite, default package)
 - `drivers/` Hardware drivers
-- `examples/` Sample applications and example build system
+- `examples/` Sample projects and example build system
 - `kconfig/` SDK-level configuration entry
 - `os/` RTOS support (FreeRTOS and related)
 - `soc/` SoC-specific sources
@@ -107,31 +108,31 @@ Top-level directories:
 examples/
 |-- README.md                    # Examples overview and build guidance
 |-- audio_examples/              # Audio examples
-|   `-- <example>/               # Example application
+|   `-- <example>/               # Example project
 |-- driver_examples/             # Driver examples
-|   |-- <example>/               # Example application
-|   |   |-- configs/             # Application defconfigs
+|   |-- <example>/               # Example project
+|   |   |-- configs/             # Project defconfigs
 |   |   |-- hw/<BOARD>/          # Board-specific init files
-|   |   |-- CMakeLists.txt       # Application CMake entry
-|   |   |-- Makefile             # Application build wrapper
-|   |   |-- kconfig              # Application config options
-|   |   |-- src.cmake            # Application source list
-|   |   `-- <sources>            # Application source files
+|   |   |-- CMakeLists.txt       # Project CMake entry
+|   |   |-- Makefile             # Project build wrapper
+|   |   |-- kconfig              # Project config options
+|   |   |-- src.cmake            # Project source list
+|   |   `-- <sources>            # Project source files
 |-- inference_examples/          # Inference examples
-|   `-- <example>/               # Example application
-|-- sample_demo_app/             # Standalone demo application
-|-- system_manager/              # Standalone system manager application
+|   `-- <example>/               # Example project
+|-- sample_demo_app/             # Standalone demo project
+|-- system_manager/              # Standalone system manager project
 |-- usb_examples/                # USB examples
-|   `-- <example>/               # Example application
+|   `-- <example>/               # Example project
 `-- vision_examples/             # Vision examples
-    `-- <example>/               # Example application
+    `-- <example>/               # Example project
 ```
 
-Out-of-tree custom applications are supported. Point `SRSDK_DIR` to the SDK root and keep your application repo separate.
+Out-of-tree custom projects are supported. Point `SRSDK_DIR` to the SDK root and keep your project repo separate.
 
-The current in-tree examples are organized by functional category. Within each application, the `configs/` directory holds that app's defconfigs for all supported boards, while the `hw/<BOARD>/` directory contains board-specific hardware setup needed by that app, such as pinmux, UART, and logger mux configuration.
+The current in-tree examples are organized by functional category. Within each project, the `configs/` directory holds that project's defconfigs for all supported boards, while the `hw/<BOARD>/` directory contains board-specific hardware setup needed by that project, such as pinmux, UART, and logger mux configuration.
 
-## Project Structure and Module Organization
+## SDK Structure and Module Organization
 
 The SDK is organized as functional modules. Each module typically contains its own `CMakeLists.txt` and, when configurable, a `Kconfig` file. The root `CMakeLists.txt` includes major subsystems, and each subsystem adds its sources and include paths.
 
@@ -156,18 +157,18 @@ The SDK is organized as functional modules. Each module typically contains its o
 - **Bootloader**: `bootloader/`
 - **TFLite Micro**: `AI/` and `third_party/`
 - **Tools and scripts**: `tools/`
-- **App/Example inclusion logic**: category-level files such as `examples/inference_examples/CMakeLists.txt` and per-app files such as `examples/<example_type>/<app>/CMakeLists.txt`
+- **Project/Example inclusion logic**: category-level files such as `examples/inference_examples/CMakeLists.txt` and per-project files such as `examples/<example_type>/<project>/CMakeLists.txt`
 
 ## Build System Overview
 
 The SDK supports two primary build entry points:
 - **SDK root (`<sdk-root>`)**: build the SDK package, bootloader, or TFLite Micro libraries.
-- **Application folder (`<sdk-root>/examples/<example_type>/<app>` or `examples/<app>`)**: build an individual application, either app-only or combined SDK + app.
+- **Project folder (`<sdk-root>/examples/<example_type>/<project>` or `examples/<project>`)**: build an individual project, either project-only or combined SDK + project.
 
-Out-of-tree builds are supported: keep your custom application in a separate folder and set `SRSDK_DIR` to the SDK root.
+Out-of-tree builds are supported: keep your custom project in a separate folder and set `SRSDK_DIR` to the SDK root.
 
 The build system is layered:
-- **Make**: orchestration and entry points (`Makefile` in the SDK root and in each application directory under `examples/`).
+- **Make**: orchestration and entry points (`Makefile` in the SDK root and in each project directory under `examples/`).
 - **Kconfig**: configuration UI and `.config` generation.
 - **CMake**: build generation.
 - **Ninja**: actual compilation and linking.
@@ -176,8 +177,8 @@ The build system is layered:
 - **Defconfig**: Minimal config snapshot. Applied to produce `.config`.
 - **.config**: Full configuration file, used to generate `config.h` and build flags.
 - **config.h**: Generated header consumed by C/C++ sources.
-- **SDK package**: Installed libraries and headers used by application builds.
-- **SDK package installation**: Produces a reusable SDK package (headers, libraries, toolchain CMake files, and `config.h`) that application builds link against.
+- **SDK package**: Installed libraries and headers used by project builds.
+- **SDK package installation**: Produces a reusable SDK package (headers, libraries, toolchain CMake files, and `config.h`) that project builds link against.
 
 ## CMake Build Details
 
@@ -189,20 +190,20 @@ This section describes the CMake flow at a practical level.
 - Builds the SDK libraries and packages them for reuse.
 - Exports a CMake package under `install/<BOARD>/<BUILD_TYPE>/lib/cmake/SynapticsSDK/`.
 
-### Examples CMake (application builds)
-- Builds app targets named `${CONFIG_PROJECT}_${CONFIG_BUILD_TYPE}` (for example `sr110_cm55_fw`).
-- `BUILD=SRSDK` builds the SDK package and the app together.
-- `BUILD=EXAMPLE` uses the app-local SDK install under that application's `install/` directory. This requires that the application's SDK package has already been created at least once, typically by an earlier combined SDK+app build.
+### Examples CMake (project builds)
+- Builds project targets named `${CONFIG_PROJECT}_${CONFIG_BUILD_TYPE}` (for example `sr110_cm55_fw`).
+- `BUILD=SRSDK` builds the SDK package and the project together.
+- `BUILD=EXAMPLE` uses the project-local SDK install under that project's `install/` directory. This requires that the project's SDK package has already been created at least once, typically by an earlier combined SDK+project build.
 - `BUILD=EXAMPLE USE_PREINSTALLED_SDK=1` uses the SDK package already installed under `SRSDK_DIR/install/<BOARD>/<BUILD_TYPE>/`, typically created earlier from the SDK root for the selected board and build type.
-- Some applications need SDK dependencies beyond what is included in the default installed SDK package. In that case, the build system automatically falls back to building an app-specific SDK package locally and then builds the application against that package.
-- Example apps are included when their `kconfig` symbol is enabled.
-- `USE_APP_CACHE=ON` (default) uses a small per‑app cache of SDK headers/libs for faster rebuilds.
+- Some projects need SDK dependencies beyond what is included in the default installed SDK package. In that case, the build system automatically falls back to building a project-specific SDK package locally and then builds the project against that package.
+- Example projects are included when their `kconfig` symbol is enabled.
+- `USE_APP_CACHE=ON` (default) uses a small per-project cache of SDK headers/libs for faster rebuilds.
 
 ## Configuration Model (Kconfig)
 
 ### Where Configuration Lives
 - **SDK defconfigs**: `configs/<BOARD>/*_defconfig`
-- **Application defconfigs**: `examples/**/configs/*_defconfig`
+- **Project defconfigs**: `examples/**/configs/*_defconfig`
 
 ### Configuration Flow
 1. Apply a defconfig to generate `.config`.
@@ -227,7 +228,7 @@ Common fields you will see in defconfigs:
 - `CONFIG_BUILD_LIST`: Multi-CPU build entries processed by `make astrasdk` (for example `cm55_fw cm55_bootloader_fw cm4_fw`).
 
 These values drive the build directory structure and output names.
-`CONFIG_COMPILER` must match the active toolchain environment variables; use the same compiler for SDK and app builds.
+`CONFIG_COMPILER` must match the active toolchain environment variables; use the same compiler for SDK and project builds.
 If `CONFIG_BUILD_LIST` is defined in the active SDK defconfig, the SDK root build runs in multi-CPU mode and builds each listed firmware entry in sequence.
 
 ### Build Modes
@@ -286,7 +287,7 @@ How the workflow runs:
 1. `make sr110_rdk_main_defconfig BOARD=SR110_RDK` selects the board-level multi-CPU build definition.
 2. `make astrasdk` reads `CONFIG_BUILD_LIST` and treats each entry as a separate SDK build target.
 3. For each entry, the build system merges the main defconfig with the matching CPU-specific defconfig from `configs/<BOARD>/`, generates `build/config.h`, and runs CMake + Ninja for that target.
-4. Installable entries produce reusable SDK package outputs that later application builds can link against.
+4. Installable entries produce reusable SDK package outputs that later project builds can link against.
 
 Common `CONFIG_BUILD_LIST` entry patterns:
 
@@ -309,65 +310,65 @@ Defconfig naming follows the entry type. Examples:
 
 This layout also supports master-slave CPU designs. In those cases, keep shared resource ownership such as clock and pinmux on the master CPU and use the slave CPU defconfig to enable only the modules and drivers that CPU actually needs.
 
-After the SDK multi-CPU build completes, application builds remain per application and per target CPU. Build each application from its own directory using the app defconfig for the CPU you want, and reuse the installed SDK package with `BUILD=EXAMPLE` or `USE_PREINSTALLED_SDK=1` as needed.
+After the SDK multi-CPU build completes, project builds remain per project and per target CPU. Build each project from its own directory using the project defconfig for the CPU you want, and reuse the installed SDK package with `BUILD=EXAMPLE` or `USE_PREINSTALLED_SDK=1` as needed.
 
-### Application Builds (from an application directory under `examples/`)
-Use an individual application directory such as `<sdk-root>/examples/<example_type>/<app>` or `<sdk-root>/examples/<app>` to build that application.
+### Project Builds (from a project directory under `examples/`)
+Use an individual project directory such as `<sdk-root>/examples/<example_type>/<project>` or `<sdk-root>/examples/<project>` to build that project.
 
-The `configs/` directory contains the defconfigs supported by that application.
+The `configs/` directory contains the defconfigs supported by that project.
 
 **Path tips:** Use absolute paths for `SRSDK_DIR` and toolchain variables. On Windows, use escaped backslashes or forward slashes.
 
-#### Combined SDK + App build
+#### Combined SDK + Project build
 ```
 export SRSDK_DIR=<sdk-root>
-make <app_defconfig> BUILD=SRSDK
+make <project_defconfig> BUILD=SRSDK
 ```
 
-#### App-only build (uses installed SDK package)
+#### Project-only build (uses installed SDK package)
 ```
 export SRSDK_DIR=<sdk-root>
 make build
 ```
 
-### BUILD Mode (Application only)
-- `BUILD=EXAMPLE` (default): build the app only using the app-local SDK package under that application's `install/` directory. This package must already exist from an earlier SDK+app build.
-- `BUILD=SRSDK`: build SDK package and the app in one flow (requires `SRSDK_DIR`).
+### BUILD Mode (Project only)
+- `BUILD=EXAMPLE` (default): build the project only using the project-local SDK package under that project's `install/` directory. This package must already exist from an earlier SDK+project build.
+- `BUILD=SRSDK`: build SDK package and the project in one flow (requires `SRSDK_DIR`).
 - `BUILD=NONE`: apply defconfig only (no build).
 
 **When to use:**
 - Use **BUILD=SRSDK** for the first build, after SDK source changes, or when switching toolchains.
-- Use **BUILD=EXAMPLE** for faster iteration when only app code changes and the application's local SDK package already exists.
+- Use **BUILD=EXAMPLE** for faster iteration when only project code changes and the project's local SDK package already exists.
 
-### Custom Tools Override for Application Builds
-By default, application builds use the SDK's shared tools from:
+### Custom Tools Override for Project Builds
+By default, project builds use the SDK's shared tools from:
 
 ```text
 <sdk-root>/tools/
 ```
 
-The application build wrapper resolves this as:
+The project build wrapper resolves this as:
 - `TOOLS_DIR=$(SRSDK_DIR)/tools` when `USE_CUSTOM_TOOLS=0` (default)
-- `TOOLS_DIR=<app-dir>/tools` when `USE_CUSTOM_TOOLS=1`
+- `TOOLS_DIR=<project-dir>/tools` when `USE_CUSTOM_TOOLS=1`
 
-Use this when an application repository needs to carry its own copy of the application build helpers instead of using the SDK copy.
+Use this when a project repository needs to carry its own copy of the project build helpers instead of using the SDK copy.
 
 Example:
 ```bash
-cd <sdk-root>/examples/<example_type>/<app>
+cd <sdk-root>/examples/<example_type>/<project>
 export SRSDK_DIR=<sdk-root>
-make <app_defconfig> BUILD=SRSDK USE_CUSTOM_TOOLS=1
+make <project_defconfig> BUILD=SRSDK USE_CUSTOM_TOOLS=1
 ```
 
-The same override can also be used with other app-side flows such as:
+The same override can also be used with other project-side flows such as:
 ```bash
-make <app_defconfig> BUILD=NONE USE_CUSTOM_TOOLS=1
+make <project_defconfig> BUILD=NONE USE_CUSTOM_TOOLS=1
 make build USE_CUSTOM_TOOLS=1
 make imagegen USE_CUSTOM_TOOLS=1
 ```
 
 #### What `USE_CUSTOM_TOOLS=1` changes
-The application wrapper and app CMake look for these helper paths under `<app-dir>/tools/` instead of `<sdk-root>/tools/`:
+The project wrapper and project CMake look for these helper paths under `<project-dir>/tools/` instead of `<sdk-root>/tools/`:
 
 - `cmake/ParseConfigHeader.cmake`
 - `cmake/example_config_setup.cmake`
@@ -388,16 +389,16 @@ The application wrapper and app CMake look for these helper paths under `<app-di
 - `scripts/image/build_preboot_mcu.py`
 - `scripts/image/build_preboot_mcu_wsl.py`
 
-If you keep custom tools inside the application repository, preserve the same directory layout and filenames so the existing application `Makefile` and `CMakeLists.txt` continue to work unchanged.
+If you keep custom tools inside the project repository, preserve the same directory layout and filenames so the existing project `Makefile` and `CMakeLists.txt` continue to work unchanged.
 
 Note:
 - `SRSDK_DIR` is still required even when `USE_CUSTOM_TOOLS=1`.
-- The application wrapper itself is still included from `$(SRSDK_DIR)/tools/make/example_app.mk`.
+- The project wrapper itself is still included from `$(SRSDK_DIR)/tools/make/example_app.mk`.
 - During `BUILD=SRSDK`, the compiler toolchain file `${CONFIG_TOOLCHAIN}.cmake` is still included from `$(SRSDK_DIR)/tools/cmake/`.
 - During `BUILD=EXAMPLE`, the toolchain file is loaded from the selected installed SDK package under `install/<BOARD>/<BUILD_TYPE>/tools/cmake/`.
 
-### Build Multiple Applications with One SDK Package
-If you want to build several applications against the same SDK package, first build and install the SDK from the SDK root, then build each application with `BUILD=EXAMPLE USE_PREINSTALLED_SDK=1`.
+### Build Multiple Projects with One SDK Package
+If you want to build several projects against the same SDK package, first build and install the SDK from the SDK root, then build each project with `BUILD=EXAMPLE USE_PREINSTALLED_SDK=1`.
 
 ```
 cd <sdk-root>
@@ -405,33 +406,33 @@ export SRSDK_DIR=<sdk-root>
 make default_config BOARD=<BOARD>
 make astrasdk
 
-cd <sdk-root>/examples/<example_type>/<app1>
-make <app1>_defconfig BUILD=EXAMPLE USE_PREINSTALLED_SDK=1
+cd <sdk-root>/examples/<example_type>/<project1>
+make <project1>_defconfig BUILD=EXAMPLE USE_PREINSTALLED_SDK=1
 
-cd <sdk-root>/examples/<example_type>/<app2>
-make <app2>_defconfig BUILD=EXAMPLE USE_PREINSTALLED_SDK=1
+cd <sdk-root>/examples/<example_type>/<project2>
+make <project2>_defconfig BUILD=EXAMPLE USE_PREINSTALLED_SDK=1
 ```
 
-This reuses the SDK package from `SRSDK_DIR/install/<BOARD>/<BUILD_TYPE>/`. If that package does not include the SDK pieces required by a specific application, the build system automatically creates an app-local SDK package for that application and continues the build.
+This reuses the SDK package from `SRSDK_DIR/install/<BOARD>/<BUILD_TYPE>/`. If that package does not include the SDK pieces required by a specific project, the build system automatically creates a project-local SDK package for that project and continues the build.
 
-### Create a Custom Defconfig (Application)
+### Create a Custom Defconfig (Project)
 1. Start from an existing defconfig:
    ```
-   make <app>_defconfig BUILD=NONE
+   make <project>_defconfig BUILD=NONE
    ```
 2. Open the configuration UI:
    ```
    make menuconfig
    ```
-3. Save your new defconfig under `configs/` (for example `my_custom_app_defconfig`).
+3. Save your new defconfig under `configs/` (for example `my_custom_project_defconfig`).
    ```
-   make savedefconfig OUT=my_custom_app
+   make savedefconfig OUT=my_custom_project
    ```
-   This writes `configs/my_custom_app_defconfig` in the current application directory.
+   This writes `configs/my_custom_project_defconfig` in the current project directory.
 
 The new defconfig can then be used like any other:
 ```
-make my_custom_app_defconfig BUILD=SRSDK
+make my_custom_project_defconfig BUILD=SRSDK
 ```
 
 ## Build Outputs and Artifacts
@@ -445,23 +446,23 @@ make my_custom_app_defconfig BUILD=SRSDK
 
 For multi-CPU SDK builds, you get one output target per `CONFIG_BUILD_LIST` entry, for example `out/sr110_cm55_fw/release/` and `out/sr110_cm4_fw/release/`.
 
-### Application Outputs
-- `<app-dir>/out/<target>/<mode>/` contains application binaries.
+### Project Outputs
+- `<project-dir>/out/<target>/<mode>/` contains project binaries.
   - GCC/LLVM: `<target>.elf` and `<target>.bin`
   - AC6: `<target>.axf` and `<target>.bin`
-- `<app-dir>/build/<project>/<compiler>/` contains the application CMake build tree.
-- `<app-dir>/build/<project>/<compiler>/srsdk_build/.cache/` is the app-local SDK cache (auto-managed; refreshed when SDK content changes). Disable with `USE_APP_CACHE=OFF` if needed.
-- `<app-dir>/install/<BOARD>/<BUILD_TYPE>/` contains the app-local installed SDK package:
+- `<project-dir>/build/<project>/<compiler>/` contains the project CMake build tree.
+- `<project-dir>/build/<project>/<compiler>/srsdk_build/.cache/` is the project-local SDK cache (auto-managed; refreshed when SDK content changes). Disable with `USE_APP_CACHE=OFF` if needed.
+- `<project-dir>/install/<BOARD>/<BUILD_TYPE>/` contains the project-local installed SDK package:
   - `include/` SDK headers
   - `lib/` SDK libraries
   - `config.h`
-  - `tools/cmake/` SDK CMake toolchain modules used by the app build
+  - `tools/cmake/` SDK CMake toolchain modules used by the project build
 
 The installed package also provides CMake package files under:
 
-- App-local install, generated during `BUILD=SRSDK` for an application:
+- Project-local install, generated during `BUILD=SRSDK` for a project:
 ```
-<app-dir>/install/<BOARD>/<BUILD_TYPE>/lib/cmake/SynapticsSDK/
+<project-dir>/install/<BOARD>/<BUILD_TYPE>/lib/cmake/SynapticsSDK/
 ```
 
 - SDK-root install, generated from `<sdk-root>` after `make default_config BOARD=<BOARD>` and `make astrasdk`:
@@ -471,7 +472,7 @@ The installed package also provides CMake package files under:
 
 ### Generated Config Headers
 - `build/config.h` in SDK root: generated from SDK `.config`.
-- `build/config.h` in an application directory: generated from that application's `.config` and used for the application build.
+- `build/config.h` in a project directory: generated from that project's `.config` and used for the project build.
 
 Target naming:
 - `<target>` is `${CONFIG_PROJECT}_${CONFIG_BUILD_TYPE}` (for example `sr110_cm55_fw` or `sl2610_cm52_fw`).
@@ -493,7 +494,7 @@ python srsdk_image_generator.py \
   -sdk_secured \
   -spk "<sdk-root>/tools/srsdk_image_generator/Inputs/spk_rc4_1_0_secure_otpk.bin" \
   -apbl "<sdk-root>/tools/srsdk_image_generator/Inputs/sr100_b0_bootloader_ver_0x012F_ASIC.axf" \
-  -m55_image "<sdk-root>/examples/<example_type>/<app>/out/sr110_cm55_fw/release/sr110_cm55_fw.elf" \
+  -m55_image "<sdk-root>/examples/<example_type>/<project>/out/sr110_cm55_fw/release/sr110_cm55_fw.elf" \
   -flash_type "GD25LE128" \
   -flash_freq "67"
 ```
@@ -527,7 +528,7 @@ You can use the VS Code extension's Tools Installer from WSL, or follow
 
 **Recommended entry:**
 ```
-cd <sdk-root>/examples/<app-dir>
+cd <sdk-root>/examples/<project-dir>
 make imagegen
 ```
 
@@ -536,16 +537,15 @@ This runs a two-step pipeline:
 - `tools/scripts/image/build_preboot_mcu.py` to package sub-images for USB boot and eMMC workflows.
 
 Final outputs:
-- `<app-dir>/out/image/eMMCimg/sysmgr.subimg.gz`
-- `<app-dir>/out/image/eMMCimg/`
-- `<app-dir>/out/image/XSPIimg/spi.bin` — xSPI NOR flash image (when xSPI boot source is selected)
-- `<app-dir>/out/image/USBimg/`
+- `<project-dir>/out/image/eMMCimg/sysmgr.subimg.gz`
+- `<project-dir>/out/image/eMMCimg/`
+- `<project-dir>/out/image/usb_boot/`
 
 Intermediate outputs from image generation:
-- `<app-dir>/out/nexus_bin/`
-- `<app-dir>/out/nexus_loadable/`
+- `<project-dir>/out/nexus_bin/`
+- `<project-dir>/out/nexus_loadable/`
 
-If you need to change inputs, update `tools/image_gen/inp.json`. Paths in this file are relative to the application's `out/` directory.
+If you need to change inputs, update `tools/image_gen/inp.json`. Paths in this file are relative to the project's `out/` directory.
 The preboot packaging step uses signing keys under `tools/signingKeys/<soc>/` and SPK assets for USB boot images.
 
 If you see permission errors on Linux/macOS:
@@ -596,10 +596,10 @@ Key options:
 ```
 cd <sdk-root>/tools/usb_boot_python_tool/USB_BOOT_TOOL
 python usb_boot_tool.py --op run-sm \
-  --sm <sdk-root>/examples/<example_type>/<app>/out/image/eMMCimg/sysmgr.subimg.gz \
-  --spk <sdk-root>/examples/<example_type>/<app>/out/image/USBimg/spk.bin \
-  --keys <sdk-root>/examples/<example_type>/<app>/out/image/USBimg/key.bin \
-  --m52bl <sdk-root>/examples/<example_type>/<app>/out/image/USBimg/m52bl.bin
+  --sm <sdk-root>/examples/<example_type>/<project>/out/image/eMMCimg/sysmgr.subimg.gz \
+  --spk <sdk-root>/examples/<example_type>/<project>/out/image/usb_boot/spk.bin \
+  --keys <sdk-root>/examples/<example_type>/<project>/out/image/usb_boot/key.bin \
+  --m52bl <sdk-root>/examples/<example_type>/<project>/out/image/usb_boot/m52bl.bin
 ```
 
 **Full eMMC flashing:**
@@ -607,20 +607,8 @@ python usb_boot_tool.py --op run-sm \
 python usb_boot_tool.py --op emmc --img-dir <path-to-eMMCimg>
 ```
 
-**xSPI NOR flashing:**
-
-Programs the xSPI NOR flash image (`spi.bin`) generated under `out/image/XSPIimg/`. `--keys`, `--spk`, `--m52bl`, and `--sm` default to the files bundled next to `usb_boot_tool.py`; override only what you need.
-
-```
-python usb_boot_tool.py --op xspi-sm \
-  --spi-img <sdk-root>/examples/<example_type>/<app>/out/image/XSPIimg/spi.bin
-```
-
-Additional xSPI utilities (SM must be running): `--op xspi-jedec-id`, `--op xspi-chip-erase`, and `--op xspi-read --read-size <bytes> [--read-offset <addr>] [--read-out <file>]`.
-
 Notes:
 - `--op emmc` requires a Yocto-generated `eMMCimg` folder with `emmc_part_list` and `emmc_image_list`.
-- `--op xspi-sm` requires `spi.bin` from `out/image/XSPIimg/` (built by `make imagegen` when the xSPI boot source is selected — see [tools/image_gen/README.md](../tools/image_gen/README.md)).
 - If `run-sm` fails because SM CDC is already running, power-cycle the board and retry.
 
 ## Where to Run Commands
@@ -633,172 +621,60 @@ Use the table below to choose the correct working directory.
 | `make <bootloader_defconfig> BOARD=<BOARD>` | `<sdk-root>` | Apply SDK bootloader defconfig, then run `make astrasdk` |
 | `make <tflite_defconfig> BOARD=<BOARD>` | `<sdk-root>` | Apply SDK TFLite Micro defconfig, then run `make astrasdk` |
 | `make astrasdk` | `<sdk-root>` | Builds the currently selected SDK target |
-| `make <app_defconfig> BUILD=SRSDK` | `<sdk-root>/examples/<example_type>/<app>` or `<sdk-root>/examples/<app>` | Combined SDK + app build |
-| `make build` | `<sdk-root>/examples/<example_type>/<app>` or `<sdk-root>/examples/<app>` | App-only build (requires `SRSDK_DIR`) |
-| `make imagegen` | `<sdk-root>/examples/<example_type>/<app>` or `<sdk-root>/examples/<app>` | Application image generation pipeline |
+| `make <project_defconfig> BUILD=SRSDK` | `<sdk-root>/examples/<example_type>/<project>` or `<sdk-root>/examples/<project>` | Combined SDK + project build |
+| `make build` | `<sdk-root>/examples/<example_type>/<project>` or `<sdk-root>/examples/<project>` | Project-only build (requires `SRSDK_DIR`) |
+| `make imagegen` | `<sdk-root>/examples/<example_type>/<project>` or `<sdk-root>/examples/<project>` | Project image generation pipeline |
 | `srsdk_image_generator.py` | `<sdk-root>/tools/srsdk_image_generator` | SR110 image generation |
 | `flash_xspi_tcl.py` | `<sdk-root>/tools/openocd/scripts` | SR110 flashing (OpenOCD) |
-| `usb_boot_tool.py` | `<sdk-root>/tools/usb_boot_python_tool/USB_BOOT_TOOL` | SL2610 USB boot flashing (eMMC and xSPI) |
+| `usb_boot_tool.py` | `<sdk-root>/tools/usb_boot_python_tool/USB_BOOT_TOOL` | SL2610 USB boot flashing |
 
 ## Debugging
 
-### SL2610 - Manual Debug Steps (using OpenOCD and GDB)
+### SR110
 
-This section outlines a manual, step-by-step workflow to load the bootloader and connect a debugger for the SL2610 device.
+SR110 supports on-target debugging with OpenOCD and a debug probe (CMSIS-DAP or J-Link). See [SR110 Build and Flash with CLI](./SR110/SR110_Build_and_Flash_with_CLI.md) and [SR110 Build and Flash with VS Code](./SR110/SR110_Build_and_Flash_with_VSCode.md) for the debug workflows.
 
-- For debugging steps using the VS Code extension, see [Astra MCU SDK VSCode Extension User Guide](./Astra_MCU_SDK_VSCode_Extension_User_Guide.md).
+### SL2610
 
+SL2610 supports manual debugging with OpenOCD and GDB over a J-Link connection. The full step-by-step workflow lives in the SL2610 build-and-flash guides:
 
-### Prerequisites
+- CLI: [Debugging (SL2610)](./SL2610/SL2610_Build_and_Flash_with_CLI.md#debugging-sl2610)
+- VS Code: [Debugging (SL2610)](./SL2610/SL2610_Build_and_Flash_with_VSCode.md#debugging-sl2610) (manual OpenOCD + GDB; not yet integrated into the VS Code extension)
 
-- OpenOCD installed and available in `PATH`
-- ARM GNU toolchain installed and available in `PATH`
-- SL2610 board with a J-Link connection
+## Projects (Modify or Create)
 
-### J-Link Connection
-
-![J-Link connection view 1](Assets/Images/media/jtag_conn_1.png)
-
-![J-Link connection view 2](Assets/Images/media/jtag_conn_2.png)
-
-#### 1) Build the Bootloader
-
-From the `<sdk-root>` folder, build the bootloader as outlined in [Build Workflows](#build-workflows). After a successful build, you should see:
-
-- Output file: `sl2610_bootloader.elf`
-- Location: `out/sl2610_bootloader/release`
-
-#### 2) Build a Sample App + Generate Image
-
-Build any sample app in **release** mode, then run `make imagegen`. Detailed steps for image generation is outlined in [SL2610 Image Generation (Image Generator)](#sl2610-image-generation-image-generator)
-
-On completion, you should get:
-
-- `m52bl.bin` at `out/image/USBimg/m52bl.bin`
-
-Copy the full path to `m52bl.bin` for the next step.
-
-#### 3) Run USB Boot Tool
-
-Change directory to the USB boot tool folder:
-
-```powershell
-cd .\tools\usb_boot_python_tool\USB_BOOT_TOOL\
+### Modify an existing project
+- Update sources under `examples/<example_type>/<project>/` or `examples/<project>/`.
+- If you change configuration options, re-run the project defconfig and rebuild:
 ```
-
-Make sure:
-
-- The device is connected
-- The device is in USB boot mode (long press USB boot button, press reset, then release)
-
-#### 4) Load SPK + Bootloader
-
-Run the USB boot tool command:
-
-```powershell
-python usb_boot_tool.py --op run-spk --spk spk.bin --m52bl <paste the m52bl.bin path>
-```
-
-Expected output example:
-
-```
-Auto-detecting VID:0x06CB, PID:0x019E serial port...
-Syna USB CDC port detected: COM88
- ✔  key.bin UPLOADED (0.18s @ 0.15MB/s)
- ✔  spk.bin UPLOADED (0.18s @ 0.12MB/s)
- ✔  m52bl.bin UPLOADED (0.11s @ 0.78MB/s)
-```
-
-#### 5) Start OpenOCD
-
-Open another terminal and run:
-
-```powershell
-openocd -f tools/openocd/configs/Klamath_Jlink.cfg
-```
-
-Expected output example:
-
-```
-xPack Open On-Chip Debugger 0.12.0+dev-01685-gb9224c0c0-dirty (2024-08-02-19:51)
-Licensed under GNU GPL v2
-For bug reports, read
-        http://openocd.org/doc/doxygen/bugs.html
-Info : Listening on port 6666 for tcl connections
-Info : Listening on port 4444 for telnet connections
-Warn : Failed to retrieve serial number: LIBUSB_ERROR_TIMEOUT
-Info : J-Link V12 compiled Feb 20 2025 16:24:27
-Info : Hardware version: 12.00
-Info : VTarget = 1.799 V
-Info : clock speed 1000 kHz
-Info : JTAG tap: nexus.m52 tap/device found: 0x4ba06477 (mfg: 0x23b (ARM Ltd), part: 0xba06, ver: 0x4)
-Info : JTAG tap: soc.ca55 tap/device found: 0x4ba06477 (mfg: 0x23b (ARM Ltd), part: 0xba06, ver: 0x4)
-Info : [m52] Cortex-M52 r0p2 processor detected
-Info : [m52] target has 8 breakpoints, 8 watchpoints
-Info : [m52] Examination succeed
-Info : [m52] starting gdb server on 3333
-Info : Listening on port 3333 for gdb connections
-```
-
-#### 6) Connect with GDB
-
-Once you see the “Listening on port 3333” log, open another terminal and run:
-
-```powershell
-arm-none-eabi-gdb
-```
-
-Then run the following command inside GDB:
-
-```
-target extended-remote: 3333
-file <path_to_debug_elf_file>
-monitor reset init
-monitor halt
-load
-set breakpoint auto-hw on
-monitor arm semihosting enable
-hbreak main
-continue
-step
-```
-
-*Note:* Keep the OpenOCD terminal running while you use GDB. If GDB fails to connect, confirm OpenOCD is still listening on port 3333.
-
-## Applications (Modify or Create)
-
-### Modify an existing app
-- Update sources under `examples/<example_type>/<app>/` or `examples/<app>/`.
-- If you change configuration options, re-run the app defconfig and rebuild:
-```
-cd <sdk-root>/examples/<example_type>/<app>
+cd <sdk-root>/examples/<example_type>/<project>
 export SRSDK_DIR=<sdk-root>
-make <app>_defconfig
+make <project>_defconfig
 ```
 
-### Create a new app (minimal checklist)
-1. Create `examples/<example_type>/<app>/` or `examples/<app>/` for the new application.
-2. Add your application sources and headers.
-3. Add `kconfig` with a `config` symbol for the application.
-4. Add `configs/<app>_defconfig` entries for the supported board and build combinations.
-5. Add `hw/<BOARD>/hw_init.c` and `hw_init.h` if the application needs board-specific hardware setup such as pinmux, UART, logger muxing, or peripheral initialization.
-6. Add `CMakeLists.txt`, `Makefile`, and `src.cmake` following an existing application as a reference.
-7. Build from the application directory:
+### Create a new project (minimal checklist)
+1. Create `examples/<example_type>/<project>/` or `examples/<project>/` for the new project.
+2. Add your project sources and headers.
+3. Add `kconfig` with a `config` symbol for the project.
+4. Add `configs/<project>_defconfig` entries for the supported board and build combinations.
+5. Add `hw/<BOARD>/hw_init.c` and `hw_init.h` if the project needs board-specific hardware setup such as pinmux, UART, logger muxing, or peripheral initialization.
+6. Add `CMakeLists.txt`, `Makefile`, and `src.cmake` following an existing project as a reference.
+7. Build from the project directory:
 ```
-cd <sdk-root>/examples/<example_type>/<app>
+cd <sdk-root>/examples/<example_type>/<project>
 export SRSDK_DIR=<sdk-root>
-make <app>_defconfig BUILD=SRSDK
-make <app>_defconfig
+make <project>_defconfig BUILD=SRSDK
+make <project>_defconfig
 ```
 
 Minimal `kconfig`:
 ```
-config <APP_SYMBOL>
-    bool "Enable <app>"
+config <PROJECT_SYMBOL>
+    bool "Enable <project>"
     default y
 ```
 
-Minimal `CMakeLists.txt` (pattern used by current applications):
+Minimal `CMakeLists.txt` (pattern used by current projects):
 ```cmake
 cmake_minimum_required(VERSION 3.22)
 
@@ -848,9 +724,9 @@ Minimal `src.cmake`:
 ```cmake
 if(${BUILD} STREQUAL "EXAMPLE")
     target_sources(${TARGET} PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/<app>.c
+        ${CMAKE_CURRENT_LIST_DIR}/<project>.c
         ${CMAKE_CURRENT_LIST_DIR}/main.c
-        # Add hw_init.c when the app needs board-specific hardware setup
+        # Add hw_init.c when the project needs board-specific hardware setup
         ${CMAKE_CURRENT_LIST_DIR}/hw/${CONFIG_BOARD_UPPER}/hw_init.c
     )
 
@@ -867,13 +743,13 @@ endif()
 ```
 
 Notes:
-- Follow the defconfig naming pattern used by existing applications for each supported board and core.
+- Follow the defconfig naming pattern used by existing projects for each supported board and core.
 - Add `hw/<BOARD>/` for board-specific hardware setup such as pinmux, UART, or logger mux configuration.
 
 Common mistakes:
-- **Defconfig not found**: confirm the file exists under the application's `configs/` directory and that `BOARD` matches the selected defconfig.
-- **App not built**: ensure `CONFIG_<APP_SYMBOL>=y` is set in the app defconfig.
-- **App directory incomplete**: ensure the app folder has `kconfig`, `CMakeLists.txt`, `Makefile`, and `src.cmake`.
+- **Defconfig not found**: confirm the file exists under the project's `configs/` directory and that `BOARD` matches the selected defconfig.
+- **Project not built**: ensure `CONFIG_<PROJECT_SYMBOL>=y` is set in the project defconfig.
+- **Project directory incomplete**: ensure the project folder has `kconfig`, `CMakeLists.txt`, `Makefile`, and `src.cmake`.
 - **Missing sources**: ensure `src.cmake` and `CMakeLists.txt` include all required source files.
 - **Wrong output target**: check `CONFIG_PROJECT` and `CONFIG_BUILD_TYPE`.
 
@@ -894,31 +770,31 @@ Common mistakes:
 | `make clean` | Remove build artifacts | `build/` cleaned |
 | `make cpp_check` | Run cppcheck | Console output |
 
-### Application Directory (`<sdk-root>/examples/<example_type>/<app>` or `<sdk-root>/examples/<app>`)
+### Project Directory (`<sdk-root>/examples/<example_type>/<project>` or `<sdk-root>/examples/<project>`)
 
 | Command | Purpose | Result |
 | --- | --- | --- |
 | `make help` | Show available targets | Prints target list |
-| `make list_defconfigs` | List application defconfigs | Console list |
+| `make list_defconfigs` | List project defconfigs | Console list |
 | `make default_config` | Apply the first defconfig in `configs/` without building | `.config` updated |
-| `make <app>_defconfig BUILD=NONE` | Apply an application defconfig only | `.config` updated |
-| `make <app>_defconfig BUILD=SRSDK` | Build app-local SDK package and the application | SDK installed under the app and app built |
-| `make <app>_defconfig` | Apply defconfig and build the application with `BUILD=EXAMPLE` | App built using the selected SDK package flow |
-| `make build` | Build the application using the current `.config` | App binary updated in `out/` |
-| `make menuconfig` | Edit application configuration | `.config` updated |
-| `make genconfig` | Generate application `build/config.h` | `build/config.h` created |
-| `make imagegen` | Generate application images | Image outputs created under the application directory |
+| `make <project>_defconfig BUILD=NONE` | Apply a project defconfig only | `.config` updated |
+| `make <project>_defconfig BUILD=SRSDK` | Build project-local SDK package and the project | SDK installed under the project and project built |
+| `make <project>_defconfig` | Apply defconfig and build the project with `BUILD=EXAMPLE` | Project built using the selected SDK package flow |
+| `make build` | Build the project using the current `.config` | Project binary updated in `out/` |
+| `make menuconfig` | Edit project configuration | `.config` updated |
+| `make genconfig` | Generate project `build/config.h` | `build/config.h` created |
+| `make imagegen` | Generate project images | Image outputs created under the project directory |
 | `make savedefconfig OUT=name` | Save minimal defconfig | `configs/name_defconfig` |
-| `make clean` | Remove application build outputs | `build/` and `out/` cleaned |
-| `make clean_package` | Remove the app-local installed SDK package | `install/<BOARD>/` removed |
-| `make all` | Alias for `clean_package` | App-local SDK package removed |
+| `make clean` | Remove project build outputs | `build/` and `out/` cleaned |
+| `make clean_package` | Remove the project-local installed SDK package | `install/<BOARD>/` removed |
+| `make all` | Alias for `clean_package` | Project-local SDK package removed |
 
 Notes:
-- Application-side commands are run from the individual application directory, not from the `examples/` root.
-- The selected defconfig provides `CONFIG_BOARD`, so `BOARD=` is not normally needed for application-side builds.
+- Project-side commands are run from the individual project directory, not from the `examples/` root.
+- The selected defconfig provides `CONFIG_BOARD`, so `BOARD=` is not normally needed for project-side builds.
 - `build_sdk`, `build_advanced`, and `build_all` are internal helper targets typically invoked through the defconfig flow.
 - `BUILD=NONE` can be used to apply a defconfig without building.
-- `USE_CUSTOM_TOOLS=1` switches application helper lookup from `SRSDK_DIR/tools/` to `<app-dir>/tools/`.
+- `USE_CUSTOM_TOOLS=1` switches project helper lookup from `SRSDK_DIR/tools/` to `<project-dir>/tools/`.
 
 ### Python Tools
 
@@ -947,15 +823,15 @@ Note: Some tools have their own dependency requirements (for example `tools/Infe
 ## Troubleshooting
 
 ### Build and Configuration Issues
-- **`SRSDK_DIR` not set (application build fails)**
-  - Fix: `export SRSDK_DIR=<sdk-root>` before running application-side builds such as `BUILD=SRSDK`, `BUILD=EXAMPLE`, or `menuconfig`.
+- **`SRSDK_DIR` not set (project build fails)**
+  - Fix: `export SRSDK_DIR=<sdk-root>` before running project-side builds such as `BUILD=SRSDK`, `BUILD=EXAMPLE`, or `menuconfig`.
 
 - **Build and Deploy button disabled in VS Code**
-  - Cause: An application/example directory is not imported or `SRSDK_DIR` is not set.
-  - Fix: import the application/example, set `SRSDK_DIR` via **Import SDK**, then refresh the workspace (close and reopen VS Code).
+  - Cause: A project/example directory is not imported or `SRSDK_DIR` is not set.
+  - Fix: import the project/example, set `SRSDK_DIR` via **Import SDK**, then refresh the workspace (close and reopen VS Code).
 
-- **App-only build fails because SDK package is missing**
-  - Fix: for app-local builds, run the application's combined build once with `make <app>_defconfig BUILD=SRSDK`. If you want to use a preinstalled SDK package, build it first from `<sdk-root>` using `make default_config BOARD=<BOARD>` followed by `make astrasdk`.
+- **Project-only build fails because SDK package is missing**
+  - Fix: for project-local builds, run the project's combined build once with `make <project>_defconfig BUILD=SRSDK`. If you want to use a preinstalled SDK package, build it first from `<sdk-root>` using `make default_config BOARD=<BOARD>` followed by `make astrasdk`.
 
 - **Toolchain not found**
   - Fix: ensure the correct toolchain env variable is set and the toolchain is on PATH.
@@ -968,16 +844,16 @@ Note: Some tools have their own dependency requirements (for example `tools/Infe
   - Fix: install `libncurses5-dev` and related packages per the Linux build_env guide.
 
 - **`defconfig` not found**
-  - Fix: verify the defconfig file exists under the current application's `configs/` directory and that you are running the command from the correct application directory.
+  - Fix: verify the defconfig file exists under the current project's `configs/` directory and that you are running the command from the correct project directory.
 
 - **Custom tools override fails because helper scripts or CMake modules are missing**
-  - Fix: when using `USE_CUSTOM_TOOLS=1`, make sure the application repository contains the expected `tools/` layout and filenames under `tools/cmake/`, `tools/scripts/kconfig/`, `tools/scripts/`, and `tools/image_gen/`.
+  - Fix: when using `USE_CUSTOM_TOOLS=1`, make sure the project repository contains the expected `tools/` layout and filenames under `tools/cmake/`, `tools/scripts/kconfig/`, `tools/scripts/`, and `tools/image_gen/`.
 
 - **Multi-CPU SDK build stops because one entry is missing a defconfig**
   - Fix: check the active main defconfig under `configs/<BOARD>/` and confirm every `CONFIG_BUILD_LIST` entry has a matching CPU-specific defconfig in the same board config directory.
 
 - **`config.h` missing or stale**
-  - Fix: run `make genconfig` from the SDK root or from the application directory, depending on what you are building, or rerun the build to regenerate `build/config.h`.
+  - Fix: run `make genconfig` from the SDK root or from the project directory, depending on what you are building, or rerun the build to regenerate `build/config.h`.
 
 - **TFLite Micro library not found**
   - Fix: ensure `prebuilt/<PROJECT>/tflite_micro/<mode>/` contains the library, or apply the appropriate TFLite Micro defconfig and rebuild from `<sdk-root>` using `make astrasdk`.
@@ -1007,14 +883,14 @@ Note: Some tools have their own dependency requirements (for example `tools/Infe
   - Fix: re-enter USB boot mode (USB_BOOT + RESET), then retry.
 
 ### Build Output Issues
-- **App builds but image generation fails**
-  - Fix: confirm output `.elf` exists under the application's `out/` directory and update image generator input paths.
+- **Project builds but image generation fails**
+  - Fix: confirm output `.elf` exists under the project's `out/` directory and update image generator input paths.
 
-- **App/Example build does not pick up new SDK headers/libs**
-  - Fix: clean the app cache (`rm -rf <app-dir>/build/<target>/<compiler>/srsdk_build/.cache`) or disable it by configuring with `USE_APP_CACHE=OFF`.
+- **Project/Example build does not pick up new SDK headers/libs**
+  - Fix: clean the project cache (`rm -rf <project-dir>/build/<target>/<compiler>/srsdk_build/.cache`) or disable it by configuring with `USE_APP_CACHE=OFF`.
 
 - **Link errors from mixed toolchains**
-  - Fix: ensure SDK and app are both built with the same compiler (GCC, AC6, or LLVM).
+  - Fix: ensure SDK and project are both built with the same compiler (GCC, AC6, or LLVM).
 
 ## Related References
 

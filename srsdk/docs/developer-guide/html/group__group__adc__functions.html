@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Astra MCU SDK Peripheral Driver Library: General Functions</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><div id="titlearea"><table cellspacing="0" cellpadding="0"><tbody><tr id="projectrow"><td id="projectlogo"><img alt="Logo" src="syna_logo.png"/></td><td id="projectalign"><div id="projectname">Astra MCU SDK Peripheral Driver Library</div></td></tr></tbody></table></div></div>
+<div id="container"><div id="doc-content">
+<div class="header"><div class="headertitle"><div class="title">General Functions <div class="ingroups"><a class="el" href="group__peripherals.html">Peripherals</a> &raquo; <a class="el" href="group__api__ref.html">Driver API Reference</a> &raquo; <a class="el" href="group__group__adc__driver.html">ADC</a></div></div></div></div>
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">ADC APIs</h2></td></tr>
+<tr class="memitem:ga_adc_init" id="r_ga_adc_init"><td class="memItemLeft"><a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_adc_init">adc_init</a> (<a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> id)</td></tr>
+<tr class="memdesc:ga_adc_init"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize ADC instance and driver context. <br /></td></tr>
+<tr class="memitem:ga_adc_deinit" id="r_ga_adc_deinit"><td class="memItemLeft"><a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_adc_deinit">adc_deinit</a> (<a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> id)</td></tr>
+<tr class="memdesc:ga_adc_deinit"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deinitialize ADC instance and release resources. <br /></td></tr>
+<tr class="memitem:ga_adc_config" id="r_ga_adc_config"><td class="memItemLeft"><a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_adc_config">adc_config</a> (<a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> id, const <a class="el" href="group__group__adc__data__structures.html#ga_adc_config_t">adc_config_t</a> *cfg)</td></tr>
+<tr class="memdesc:ga_adc_config"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply ADC runtime configuration. <br /></td></tr>
+<tr class="memitem:ga_adc_select_channel" id="r_ga_adc_select_channel"><td class="memItemLeft"><a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_adc_select_channel">adc_select_channel</a> (<a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> id, <a class="el" href="group__group__adc__enums.html#ga_adc_channel_en">adc_channel_en</a> channel)</td></tr>
+<tr class="memdesc:ga_adc_select_channel"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select ADC input channel. <br /></td></tr>
+<tr class="memitem:ga_adc_enable_interrupt" id="r_ga_adc_enable_interrupt"><td class="memItemLeft"><a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_adc_enable_interrupt">adc_enable_interrupt</a> (<a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> id, uint32_t int_flags, bool enable)</td></tr>
+<tr class="memdesc:ga_adc_enable_interrupt"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable or disable ADC interrupts. <br /></td></tr>
+<tr class="memitem:ga_adc_get_interrupt_status" id="r_ga_adc_get_interrupt_status"><td class="memItemLeft"><a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_adc_get_interrupt_status">adc_get_interrupt_status</a> (<a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> id, uint32_t *status)</td></tr>
+<tr class="memdesc:ga_adc_get_interrupt_status"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read ADC interrupt/status flags. <br /></td></tr>
+<tr class="memitem:ga_adc_enable" id="r_ga_adc_enable"><td class="memItemLeft"><a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_adc_enable">adc_enable</a> (<a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> id)</td></tr>
+<tr class="memdesc:ga_adc_enable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable ADC hardware block. <br /></td></tr>
+<tr class="memitem:ga_adc_disable" id="r_ga_adc_disable"><td class="memItemLeft"><a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_adc_disable">adc_disable</a> (<a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> id)</td></tr>
+<tr class="memdesc:ga_adc_disable"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable ADC hardware block. <br /></td></tr>
+<tr class="memitem:ga_adc_start_conversion" id="r_ga_adc_start_conversion"><td class="memItemLeft"><a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_adc_start_conversion">adc_start_conversion</a> (<a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> id)</td></tr>
+<tr class="memdesc:ga_adc_start_conversion"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trigger ADC conversion sequence. <br /></td></tr>
+<tr class="memitem:ga_adc_read" id="r_ga_adc_read"><td class="memItemLeft"><a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_adc_read">adc_read</a> (<a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> id, uint16_t *result)</td></tr>
+<tr class="memdesc:ga_adc_read"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read latest ADC conversion result. <br /></td></tr>
+<tr class="memitem:ga_adc_register_callback" id="r_ga_adc_register_callback"><td class="memItemLeft"><a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_adc_register_callback">adc_register_callback</a> (<a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> id, <a class="el" href="group__group__adc__data__structures.html#ga_adc_event_cb_t">adc_event_cb_t</a> cb, void *user_data)</td></tr>
+<tr class="memdesc:ga_adc_register_callback"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register ADC ISR callback. <br /></td></tr>
+<tr class="memitem:ga_adc_bist_configure" id="r_ga_adc_bist_configure"><td class="memItemLeft"><a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_adc_bist_configure">adc_bist_configure</a> (<a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> id, const <a class="el" href="group__group__adc__data__structures.html#ga_adc_bist_config_t">adc_bist_config_t</a> *cfg)</td></tr>
+<tr class="memdesc:ga_adc_bist_configure"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure ADC BIST parameters. <br /></td></tr>
+<tr class="memitem:ga_adc_bist_start" id="r_ga_adc_bist_start"><td class="memItemLeft"><a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_adc_bist_start">adc_bist_start</a> (<a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> id)</td></tr>
+<tr class="memdesc:ga_adc_bist_start"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start ADC BIST sequence. <br /></td></tr>
+<tr class="memitem:ga_adc_bist_get_status" id="r_ga_adc_bist_get_status"><td class="memItemLeft"><a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_adc_bist_get_status">adc_bist_get_status</a> (<a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> id, bool *done, bool *fail)</td></tr>
+<tr class="memdesc:ga_adc_bist_get_status"><td class="mdescLeft">&#160;</td><td class="mdescRight">Poll ADC BIST completion and fail status. <br /></td></tr>
+</table>
+<a id="ga_adc_init" name="ga_adc_init"></a><h2 class="memtitle">adc_init()</h2>
+<div class="memitem"><div class="memdoc"><p>Initializes ADC hardware for the selected instance.</p>
+<p><b>Parameters:</b></p>
+<ul>
+<li><b>id</b>: <a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> instance identifier.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a> status code.</p>
+<p><b>Return values:</b></p>
+<ul>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_OK">ADC_OK</a>: Initialization successful.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_PARAMETER">ADC_ERROR_PARAMETER</a>: Invalid ADC instance identifier.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_BUSY">ADC_ERROR_BUSY</a>: Instance already initialized.</li>
+</ul>
+</div></div>
+<a id="ga_adc_deinit" name="ga_adc_deinit"></a><h2 class="memtitle">adc_deinit()</h2>
+<div class="memitem"><div class="memdoc"><p>Deinitializes ADC hardware and clears driver state.</p>
+<p><b>Parameters:</b></p>
+<ul>
+<li><b>id</b>: <a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> instance identifier.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a> status code.</p>
+<p><b>Return values:</b></p>
+<ul>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_OK">ADC_OK</a>: Deinitialization successful.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_PARAMETER">ADC_ERROR_PARAMETER</a>: Invalid ADC instance identifier.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_NOT_READY">ADC_ERROR_NOT_READY</a>: Instance not initialized.</li>
+</ul>
+</div></div>
+<a id="ga_adc_config" name="ga_adc_config"></a><h2 class="memtitle">adc_config()</h2>
+<div class="memitem"><div class="memdoc"><p>Programs conversion mode/type, clock divider, latency, and thresholds.</p>
+<p><b>Parameters:</b></p>
+<ul>
+<li><b>id</b>: <a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> instance identifier.</li>
+<li><b>cfg</b>: Pointer to ADC runtime configuration.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a> status code.</p>
+<p><b>Return values:</b></p>
+<ul>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_OK">ADC_OK</a>: Configuration applied successfully.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_PARAMETER">ADC_ERROR_PARAMETER</a>: Invalid instance or NULL <b>cfg</b> pointer.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_BUSY">ADC_ERROR_BUSY</a>: ADC block is enabled; disable it first.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_NOT_READY">ADC_ERROR_NOT_READY</a>: Instance not initialized.</li>
+</ul>
+</div></div>
+<a id="ga_adc_select_channel" name="ga_adc_select_channel"></a><h2 class="memtitle">adc_select_channel()</h2>
+<div class="memitem"><div class="memdoc"><p>Selects channel CH0..CH7 for subsequent conversions.</p>
+<p><b>Parameters:</b></p>
+<ul>
+<li><b>id</b>: <a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> instance identifier.</li>
+<li><b>channel</b>: ADC input channel to select.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a> status code.</p>
+<p><b>Return values:</b></p>
+<ul>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_OK">ADC_OK</a>: Channel selected successfully.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_PARAMETER">ADC_ERROR_PARAMETER</a>: Invalid instance or channel identifier.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_NOT_READY">ADC_ERROR_NOT_READY</a>: Instance not initialized.</li>
+</ul>
+</div></div>
+<a id="ga_adc_enable_interrupt" name="ga_adc_enable_interrupt"></a><h2 class="memtitle">adc_enable_interrupt()</h2>
+<div class="memitem"><div class="memdoc"><p>Configures interrupt enable state for ADC_INT_* flags.</p>
+<p><b>Parameters:</b></p>
+<ul>
+<li><b>id</b>: <a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> instance identifier.</li>
+<li><b>int_flags</b>: Bitmask of interrupt flags to update.</li>
+<li><b>enable</b>: <span class="tt">true</span> to enable, <span class="tt">false</span> to disable selected interrupt flags.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a> status code.</p>
+<p><b>Return values:</b></p>
+<ul>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_OK">ADC_OK</a>: Interrupt enable state updated.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_PARAMETER">ADC_ERROR_PARAMETER</a>: Invalid instance or unsupported interrupt flag combination.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_NOT_READY">ADC_ERROR_NOT_READY</a>: Instance not initialized.</li>
+</ul>
+</div></div>
+<a id="ga_adc_get_interrupt_status" name="ga_adc_get_interrupt_status"></a><h2 class="memtitle">adc_get_interrupt_status()</h2>
+<div class="memitem"><div class="memdoc"><p>Returns ADC status register bits to the caller.</p>
+<p><b>Parameters:</b></p>
+<ul>
+<li><b>id</b>: <a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> instance identifier.</li>
+<li><b>status</b>: Pointer to receive ADC status bitmask.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a> status code.</p>
+<p><b>Return values:</b></p>
+<ul>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_OK">ADC_OK</a>: Status read successfully.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_PARAMETER">ADC_ERROR_PARAMETER</a>: Invalid instance or NULL <b>status</b> pointer.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_NOT_READY">ADC_ERROR_NOT_READY</a>: Instance not initialized.</li>
+</ul>
+</div></div>
+<a id="ga_adc_enable" name="ga_adc_enable"></a><h2 class="memtitle">adc_enable()</h2>
+<div class="memitem"><div class="memdoc"><p>Enables the ADC analog/digital control path.</p>
+<p><b>Parameters:</b></p>
+<ul>
+<li><b>id</b>: <a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> instance identifier.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a> status code.</p>
+<p><b>Return values:</b></p>
+<ul>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_OK">ADC_OK</a>: ADC block enabled successfully.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_PARAMETER">ADC_ERROR_PARAMETER</a>: Invalid ADC instance identifier.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_NOT_READY">ADC_ERROR_NOT_READY</a>: Instance not initialized.</li>
+</ul>
+</div></div>
+<a id="ga_adc_disable" name="ga_adc_disable"></a><h2 class="memtitle">adc_disable()</h2>
+<div class="memitem"><div class="memdoc"><p>Disables ADC and places block in low-power state.</p>
+<p><b>Parameters:</b></p>
+<ul>
+<li><b>id</b>: <a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> instance identifier.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a> status code.</p>
+<p><b>Return values:</b></p>
+<ul>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_OK">ADC_OK</a>: ADC block disabled successfully.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_PARAMETER">ADC_ERROR_PARAMETER</a>: Invalid ADC instance identifier.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_NOT_READY">ADC_ERROR_NOT_READY</a>: Instance not initialized.</li>
+</ul>
+</div></div>
+<a id="ga_adc_start_conversion" name="ga_adc_start_conversion"></a><h2 class="memtitle">adc_start_conversion()</h2>
+<div class="memitem"><div class="memdoc"><p>Starts single/continuous/window conversion flow.</p>
+<p><b>Parameters:</b></p>
+<ul>
+<li><b>id</b>: <a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> instance identifier.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a> status code.</p>
+<p><b>Return values:</b></p>
+<ul>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_OK">ADC_OK</a>: Conversion start triggered.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_PARAMETER">ADC_ERROR_PARAMETER</a>: Invalid ADC instance identifier.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_NOT_READY">ADC_ERROR_NOT_READY</a>: Instance not initialized or not enabled.</li>
+</ul>
+</div></div>
+<a id="ga_adc_read" name="ga_adc_read"></a><h2 class="memtitle">adc_read()</h2>
+<div class="memitem"><div class="memdoc"><p>Reads 12-bit conversion value from ADC data register.</p>
+<p><b>Parameters:</b></p>
+<ul>
+<li><b>id</b>: <a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> instance identifier.</li>
+<li><b>result</b>: Pointer to receive 12-bit conversion result.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a> status code.</p>
+<p><b>Return values:</b></p>
+<ul>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_OK">ADC_OK</a>: Result read successfully.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_TIMEOUT">ADC_ERROR_TIMEOUT</a>: Polling mode timed out waiting for conversion completion.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_PARAMETER">ADC_ERROR_PARAMETER</a>: Invalid instance or NULL <b>result</b> pointer.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_NOT_READY">ADC_ERROR_NOT_READY</a>: Instance not initialized, not enabled, or no conversion completed yet.</li>
+</ul>
+</div></div>
+<a id="ga_adc_register_callback" name="ga_adc_register_callback"></a><h2 class="memtitle">adc_register_callback()</h2>
+<div class="memitem"><div class="memdoc"><p>Registers user callback invoked from ADC ISR context.</p>
+<p><b>Parameters:</b></p>
+<ul>
+<li><b>id</b>: <a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> instance identifier.</li>
+<li><b>cb</b>: Callback function, or <span class="tt">NULL</span> to unregister.</li>
+<li><b>user_data</b>: User context pointer passed to callback.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a> status code.</p>
+<p><b>Return values:</b></p>
+<ul>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_OK">ADC_OK</a>: Callback registered or unregistered successfully.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_PARAMETER">ADC_ERROR_PARAMETER</a>: Invalid ADC instance identifier.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_NOT_READY">ADC_ERROR_NOT_READY</a>: Instance not initialized.</li>
+</ul>
+</div></div>
+<a id="ga_adc_bist_configure" name="ga_adc_bist_configure"></a><h2 class="memtitle">adc_bist_configure()</h2>
+<div class="memitem"><div class="memdoc"><p>Configures BIST min/max reference values.</p>
+<p><b>Parameters:</b></p>
+<ul>
+<li><b>id</b>: <a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> instance identifier.</li>
+<li><b>cfg</b>: Pointer to BIST configuration structure.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a> status code.</p>
+<p><b>Return values:</b></p>
+<ul>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_OK">ADC_OK</a>: BIST parameters configured successfully.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_PARAMETER">ADC_ERROR_PARAMETER</a>: Invalid instance, NULL <b>cfg</b> pointer, or invalid bounds.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_NOT_READY">ADC_ERROR_NOT_READY</a>: Instance not initialized.</li>
+</ul>
+</div></div>
+<a id="ga_adc_bist_start" name="ga_adc_bist_start"></a><h2 class="memtitle">adc_bist_start()</h2>
+<div class="memitem"><div class="memdoc"><p>Triggers ADC built-in self-test execution.</p>
+<p><b>Parameters:</b></p>
+<ul>
+<li><b>id</b>: <a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> instance identifier.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a> status code.</p>
+<p><b>Return values:</b></p>
+<ul>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_OK">ADC_OK</a>: BIST sequence started successfully.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_BUSY">ADC_ERROR_BUSY</a>: A BIST is already in progress.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_PARAMETER">ADC_ERROR_PARAMETER</a>: Invalid ADC instance identifier.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_NOT_READY">ADC_ERROR_NOT_READY</a>: Instance not initialized, BIST not configured, or ADC not enabled.</li>
+</ul>
+</div></div>
+<a id="ga_adc_bist_get_status" name="ga_adc_bist_get_status"></a><h2 class="memtitle">adc_bist_get_status()</h2>
+<div class="memitem"><div class="memdoc"><p>Reads BIST done/fail indicators.</p>
+<p><b>Parameters:</b></p>
+<ul>
+<li><b>id</b>: <a class="el" href="group__group__adc__enums.html#ga_adc_instance_en">adc_instance_en</a> instance identifier.</li>
+<li><b>done</b>: Pointer to receive completion flag.</li>
+<li><b>fail</b>: Pointer to receive failure flag.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__adc__enums.html#ga_adc_status_en">adc_status_en</a> status code.</p>
+<p><b>Return values:</b></p>
+<ul>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_OK">ADC_OK</a>: Status fields populated successfully.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_PARAMETER">ADC_ERROR_PARAMETER</a>: Invalid instance or NULL <b>done</b>/<b>fail</b> pointers.</li>
+<li><a class="el" href="group__group__adc__enums.html#gga_adc_status_en_ADC_ERROR_NOT_READY">ADC_ERROR_NOT_READY</a>: Instance not initialized.</li>
+</ul>
+</div></div>
+</div></div></div>
+<div id="nav-path" class="navpath"><ul><li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li></ul></div>
+</body>
+</html>

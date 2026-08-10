@@ -1,4 +1,4 @@
-# Setup Guide for Development Environment on macOS (Apple Silicon + Intel) for LLVM/Clang
+# Setup Guide for Development Environment on macOS for LLVM/Clang
 
 ## Table of Contents
 - [Install Basic Tools and Dependencies](#install-basic-tools-and-dependencies)

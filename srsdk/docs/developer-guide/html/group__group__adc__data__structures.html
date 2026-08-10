@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Astra MCU SDK Peripheral Driver Library: Data Structures</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><div id="titlearea"><table cellspacing="0" cellpadding="0"><tbody><tr id="projectrow"><td id="projectlogo"><img alt="Logo" src="syna_logo.png"/></td><td id="projectalign"><div id="projectname">Astra MCU SDK Peripheral Driver Library</div></td></tr></tbody></table></div></div>
+<div id="container"><div id="doc-content">
+<div class="header"><div class="headertitle"><div class="title">Data Structures <div class="ingroups"><a class="el" href="group__peripherals.html">Peripherals</a> &raquo; <a class="el" href="group__api__ref.html">Driver API Reference</a> &raquo; <a class="el" href="group__group__adc__driver.html">ADC</a></div></div></div></div>
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">ADC types</h2></td></tr>
+<tr class="memitem:ga_adc_event_cb_t" id="r_ga_adc_event_cb_t"><td class="memItemLeft">typedef&#160;</td><td class="memItemRight"><a class="el" href="#ga_adc_event_cb_t">adc_event_cb_t</a></td></tr>
+<tr class="memitem:ga_adc_config_t" id="r_ga_adc_config_t"><td class="memItemLeft">struct&#160;</td><td class="memItemRight"><a class="el" href="#ga_adc_config_t">adc_config_t</a></td></tr>
+<tr class="memitem:ga_adc_bist_config_t" id="r_ga_adc_bist_config_t"><td class="memItemLeft">struct&#160;</td><td class="memItemRight"><a class="el" href="#ga_adc_bist_config_t">adc_bist_config_t</a></td></tr>
+</table>
+<a id="ga_adc_event_cb_t" name="ga_adc_event_cb_t"></a><h2 class="memtitle">adc_event_cb_t</h2>
+<div class="memitem"><div class="memdoc"><p>Callback function signature for ADC interrupt events.</p>
+<p><b>Signature:</b> <span class="tt">void (*adc_event_cb_t)(adc_instance_en id, adc_event_en event, void *user_data)</span></p>
+</div></div>
+<a id="ga_adc_config_t" name="ga_adc_config_t"></a><h2 class="memtitle">adc_config_t</h2>
+<div class="memitem"><div class="memdoc"><p>Main ADC runtime configuration structure.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Fields</th></tr>
+<tr><td class="fieldname"><a id="ga_adc_config_t_conv_mode" name="ga_adc_config_t_conv_mode"></a>conv_mode&#160;</td><td class="fielddoc"><p>Conversion cycle-length mode.</p></td></tr>
+<tr><td class="fieldname"><a id="ga_adc_config_t_conv_type" name="ga_adc_config_t_conv_type"></a>conv_type&#160;</td><td class="fielddoc"><p>Conversion trigger/sequencer type.</p></td></tr>
+<tr><td class="fieldname"><a id="ga_adc_config_t_bgclk_div" name="ga_adc_config_t_bgclk_div"></a>bgclk_div&#160;</td><td class="fielddoc"><p>Background clock divider.</p></td></tr>
+<tr><td class="fieldname"><a id="ga_adc_config_t_cont_conv_intv" name="ga_adc_config_t_cont_conv_intv"></a>cont_conv_intv&#160;</td><td class="fielddoc"><p>Continuous conversion interval.</p></td></tr>
+<tr><td class="fieldname"><a id="ga_adc_config_t_con_data_lt" name="ga_adc_config_t_con_data_lt"></a>con_data_lt&#160;</td><td class="fielddoc"><p>Continuous conversion data latency.</p></td></tr>
+<tr><td class="fieldname"><a id="ga_adc_config_t_ana_reg" name="ga_adc_config_t_ana_reg"></a>ana_reg&#160;</td><td class="fielddoc"><p>Analog tuning register value.</p></td></tr>
+<tr><td class="fieldname"><a id="ga_adc_config_t_ulimit_value" name="ga_adc_config_t_ulimit_value"></a>ulimit_value&#160;</td><td class="fielddoc"><p>Upper limit threshold for window mode.</p></td></tr>
+<tr><td class="fieldname"><a id="ga_adc_config_t_llimit_value" name="ga_adc_config_t_llimit_value"></a>llimit_value&#160;</td><td class="fielddoc"><p>Lower limit threshold for window mode.</p></td></tr>
+</table>
+</div></div>
+<a id="ga_adc_bist_config_t" name="ga_adc_bist_config_t"></a><h2 class="memtitle">adc_bist_config_t</h2>
+<div class="memitem"><div class="memdoc"><p>Configuration structure for ADC BIST operation.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Fields</th></tr>
+<tr><td class="fieldname"><a id="ga_adc_bist_config_t_ref_min" name="ga_adc_bist_config_t_ref_min"></a>ref_min&#160;</td><td class="fielddoc"><p>Minimum reference value for BIST sweep.</p></td></tr>
+<tr><td class="fieldname"><a id="ga_adc_bist_config_t_ref_max" name="ga_adc_bist_config_t_ref_max"></a>ref_max&#160;</td><td class="fielddoc"><p>Maximum reference value for BIST sweep.</p></td></tr>
+</table>
+</div></div>
+</div></div></div>
+<div id="nav-path" class="navpath"><ul><li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li></ul></div>
+</body>
+</html>

@@ -21,6 +21,8 @@ Download Arm Compiler 6.19 for Windows: [**Arm Compiler 6.19**](https://develope
 - Under "Select Revision to Download" dropdown menu, select "r6p19-00rel0"
 - Download and install "Arm Compiler for Embedded 6.19 (x86_64 Windows)" 
 
+> Note: Make sure to add the Arm Compiler's `bin` directory (e.g. `C:\Program Files\ArmCompilerforEmbedded6.19\bin`) to Path in System Variables. Confirm the install path matches your installation, as it may differ depending on the chosen install location.
+
 ## MSYS2 Installation For Windows
 Follow the below steps to install MSYS2 in Windows:
 

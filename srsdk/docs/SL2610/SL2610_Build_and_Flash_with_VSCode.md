@@ -69,7 +69,7 @@ The steps do not run until the **Run** button at the bottom of the view is press
 
 ## Image Generation (SL2610)
 
-**Purpose:** Convert MCU executables (.elf) into System Manager sub-images and the xSPI NOR flash images.
+**Purpose:** Convert MCU executables (.elf) into System Manager sub-images.
 
 ![SL2610 Image Generator](assets/vs_image_gen_sl2610.png)
 
@@ -100,8 +100,7 @@ Before generating an SL2610 image, build the `SL2610_RDK` bootloader once from t
 
 **Result:**
 - The System Manager sub-image is generated under `out/image/eMMCimg/sysmgr.subimg.gz`.
-- The xSPI NOR flash image is generated under `out/image/XSPIimg/spi.bin`.
-- Additional image-packaging outputs are generated under `out/image/eMMCimg/`, `out/image/XSPIimg/`, and `out/image/USBimg/`.
+- Additional image-packaging outputs are generated under `out/image/eMMCimg/` and `out/image/usb_boot/`.
 
 > Note: Image Generation for SL2610 is available only on Linux platforms.
 
@@ -119,50 +118,23 @@ If you are running WSL, please consult the [Astra MCU SDK - WSL User Guide](../A
 
 1. Check **Image Flashing (SL2610)**.
 
-The Image Flashing panel exposes three fields you must configure:
+Choose the target as **M52 Image** or **Full Image** in the **Flash Target** dropdown.
+- **M52 Image** = System Manager sub-image
+- **Full Image** = eMMC image
 
-| Field | Description |
-| :--- | :--- |
-| **Storage Type** | The destination flash on the board: `eMMC` or `xSPI NOR`. |
-| **Flash Target** | What to write to that storage. Available options depend on the selected Storage Type (see below). |
-| **Image Path** | Path to the image (or image folder, for `Full Image`) to flash. Auto-populated after image generation; use **Browse** to override. |
+**M52 Image requirements:**
+- Provide the sysmgr sub-image path in the Image Flashing panel.
+- Use **Browse** to select a custom sysmgr sub-image, typically found at `out/image/eMMCimg/sysmgr.subimg.gz`
+- **Note** this will be automatically populated after image generation. 
 
-**Flash Target options by Storage Type:**
+![SL2610 Image Flashing - M52](assets/vs_image_flash_sl2610.png)
 
-| Storage Type | Flash Target | Meaning | Expected Image Path |
-| :--- | :--- | :--- | :--- |
-| `eMMC` | **M52 Image** | System Manager sub-image only | `out/image/eMMCimg/sysmgr.subimg.gz` |
-| `eMMC` | **Full Image** | Full eMMC image (GPT + partitions) | eMMC folder containing `emmc_part_list` and `emmc_image_list` |
-| `xSPI NOR` | **xSPI NOR Image** | xSPI NOR flash image | `out/image/XSPIimg/spi.bin` |
-
-> The supporting USB boot files (`key.bin`, `spk.bin`, `m52bl.bin`, `sysmgr.subimg`) are auto-derived from the same image output folder, so you only need to specify the **Image Path** above.
-
-![SL2610 Image Flashing](assets/vs_image_flash_sl2610.png)
-
-**Per-target details**
-
-- **eMMC → M52 Image** — Provide the sysmgr sub-image path. Auto-populated after image generation; use **Browse** to select a custom sysmgr sub-image (typically `out/image/eMMCimg/sysmgr.subimg.gz`).
-- **eMMC → Full Image** — Provide the eMMC folder path that contains `emmc_part_list` and `emmc_image_list`. The extension uses these files to determine partitions and image order for flashing.
-- **xSPI NOR → xSPI NOR Image** — Provide the NOR flash image, typically `out/image/XSPIimg/spi.bin`. Two optional erase modes are available:
-  - **Full Flash Erase** — Performs a full chip erase, then continues into flashing the provided `spi.bin` (see [Full Flash Erase (xSPI)](#full-flash-erase-xspi) below for the exact sequence).
-  - **Erase Only** — Performs a chip erase without flashing any image afterward.
-
-#### Full Flash Erase (xSPI)
-
-When the **Full Flash Erase** checkbox is selected during an xSPI NOR flash, the operation runs in two phases with a mandatory **USB reset** in between.
-
-**Sequence:**
-
-1. The xSPI flash chip is fully erased.
-2. The extension pauses and waits for a USB reset — a prompt appears in VS Code.
-3. **Perform a USB reset on the board:** press and hold **USB_BOOT**, then press and release **RESET**, then release **USB_BOOT**.
-4. Acknowledge the prompt in VS Code. Flashing of `spi.bin` resumes automatically and runs to completion.
-
-> The USB reset is required because the chip-erase phase leaves the device in a state where it must re-enumerate before the flashing phase can proceed. Skipping or delaying the reset will cause the second phase to time out.
+**Full Image requirements:**
+- Provide the eMMC folder path that contains `emmc_part_list` and `emmc_image_list`. The extension uses these files to determine partitions and image order for flashing.
 
 ## Debugging (SL2610)
 
-Debugging is not yet supported in the VS Code extension for SL2610.
+Debugging is not yet integrated into the VS Code extension for SL2610. In the meantime, you can debug the SL2610 manually using OpenOCD and GDB. See [Debugging (SL2610)](./SL2610_Build_and_Flash_with_CLI.md#debugging-sl2610) in the CLI guide for the full step-by-step workflow.
 
 ## Running Examples
 

@@ -1,12 +1,24 @@
 var searchData=
 [
-  ['od_5fhigh_5fns_0',['od_high_ns',['../structscl__open__drain__timing__t.html#aa11045fc58fd19d5de0c0cb5d30cea3a',1,'scl_open_drain_timing_t']]],
-  ['od_5flow_5fns_1',['od_low_ns',['../structscl__open__drain__timing__t.html#ad03624919095e11dd02e4ef1a220a747',1,'scl_open_drain_timing_t']]],
-  ['offset_5fbytes_2',['offset_bytes',['../structdmic__buffer__context__s.html#af027764339bf7ef30cd7d389ada7e63e',1,'dmic_buffer_context_s']]],
-  ['one_5fshot_3',['one_shot',['../structspwm__config__t.html#afdac78483cf44f621621e15308e2db61',1,'spwm_config_t']]],
-  ['op_5fmode_4',['op_mode',['../structi3c__controller__config__t.html#aec59106199af353ad2575c0cac98519d',1,'i3c_controller_config_t::op_mode'],['../structi3c__target__config__t.html#ada8e78047fab28bf749dd9ce3690ad39',1,'i3c_target_config_t::op_mode']]],
-  ['open_5fdrain_5ftiming_5',['open_drain_timing',['../structi3c__scl__timing__t.html#a376b4da9e1fabe0b442ebcc8bbe8482e',1,'i3c_scl_timing_t']]],
-  ['out_5fen_6',['out_en',['../structgpio__pin__config__t.html#ab28ba2a8be82ccb22c8197515fd2a0d3',1,'gpio_pin_config_t']]],
-  ['overflow_5fmode_7',['overflow_mode',['../structspwm__pwm__cfg__t.html#a0a3315f34c7d598f852841e1e80b018a',1,'spwm_pwm_cfg_t']]],
-  ['overrun_5ferror_8',['overrun_error',['../structuart__usr__lsr__status__bits__t.html#a81b1880d59ef10fecee39ed407eb795c',1,'uart_usr_lsr_status_bits_t']]]
+  ['parity_0',['parity',['../structuart__config__t.html#a8eef548606b698b16b893dcd8b2b3e1b',1,'uart_config_t']]],
+  ['parity_5ferror_1',['parity_error',['../structuart__usr__lsr__status__bits__t.html#ac20511b0e8b6d0ec340c7460b77dbb6b',1,'uart_usr_lsr_status_bits_t']]],
+  ['payload_5flength_2',['payload_length',['../structi3c__ccc__response__entry__t.html#af9cb869bc43e63a89c14914b84def67c',1,'i3c_ccc_response_entry_t']]],
+  ['period_3',['period',['../structspwm__config__t.html#abc1cd0f945c8fdbd692a70445d619b5e',1,'spwm_config_t']]],
+  ['period_5fbuff_4',['period_buff',['../structspwm__config__t.html#a5136d9aff3d9532ae0721dbf5db4ddeb',1,'spwm_config_t']]],
+  ['pid_5',['pid',['../structi3c__target__id__t.html#a40d9a8c2ba4621e4d5065ee12f85eee1',1,'i3c_target_id_t']]],
+  ['pin_5fname_6',['pin_name',['../structpinmux__config__all__t.html#a5ed5751ca261018694b711c74978dc51',1,'pinmux_config_all_t']]],
+  ['pp_5fhigh_5fns_7',['pp_high_ns',['../structscl__push__pull__timing__t.html#a65cd798edcd5b04f2b759ecaa4c3f570',1,'scl_push_pull_timing_t']]],
+  ['pp_5flow_5fns_8',['pp_low_ns',['../structscl__push__pull__timing__t.html#ac53f84bf509a8704a8003775f059d3ad',1,'scl_push_pull_timing_t']]],
+  ['prescale_9',['prescale',['../structspwm__config__t.html#a139ea70e9d36dd58b1b135993b57d65f',1,'spwm_config_t']]],
+  ['priority_10',['priority',['../structdma__channel__config__t.html#a026b5c9b93a14ab2b086120b45aab372',1,'dma_channel_config_t']]],
+  ['privilege_11',['privilege',['../structdma__channel__attr__t.html#a3d6142209a9770ab24aed2caf88c65ec',1,'dma_channel_attr_t']]],
+  ['pull_5ftype_12',['pull_type',['../structpinmux__elec__config__t.html#a3572860db7cac45c942a135352dc8424',1,'pinmux_elec_config_t']]],
+  ['push_5fpull_5ftiming_13',['push_pull_timing',['../structi3c__scl__timing__t.html#a9ea179f5f364ff99bee0fecdb1946201',1,'i3c_scl_timing_t']]],
+  ['put_5fbuff_14',['put_buff',['../structuart__put__config__t.html#a9be5b14149f068e7c31cf19c0f919273',1,'uart_put_config_t']]],
+  ['pwm_15',['pwm',['../structspwm__pwmdt__cfg__t.html#a65b56f0ef39b1612367732d2b17ca43a',1,'spwm_pwmdt_cfg_t::pwm'],['../structspwm__pwmpr__cfg__t.html#a6bfc9684034128fad3f41035c1d4f10d',1,'spwm_pwmpr_cfg_t::pwm'],['../structspwm__config__t.html#a4f8d7c0302adbe52e62230bc16660c48',1,'spwm_config_t::pwm']]],
+  ['pwm_5fimm_5fkill_16',['pwm_imm_kill',['../structspwm__pwm__cfg__t.html#a7a984c3c11de81d7b0d1c590864e3f03',1,'spwm_pwm_cfg_t']]],
+  ['pwm_5fstop_5fon_5fkill_17',['pwm_stop_on_kill',['../structspwm__pwm__cfg__t.html#a211102b240a29dfd55dfa7fae6001a2c',1,'spwm_pwm_cfg_t']]],
+  ['pwm_5fsync_5fkill_18',['pwm_sync_kill',['../structspwm__pwm__cfg__t.html#a0abbc2c4f43cc3384b00c2eaa5ff24a1',1,'spwm_pwm_cfg_t']]],
+  ['pwmdt_19',['pwmdt',['../structspwm__config__t.html#abda88ba2a2ee0a0d070fa8c4095d25d9',1,'spwm_config_t']]],
+  ['pwmpr_20',['pwmpr',['../structspwm__config__t.html#a2743318bc67ac2d425fd8b9e9776b1b7',1,'spwm_config_t']]]
 ];

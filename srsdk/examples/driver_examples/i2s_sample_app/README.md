@@ -33,9 +33,9 @@ Select the defconfig that matches your target board and the desired I2S/TDM mode
   - **CLI**: [Setup and Install SDK using CLI](../../../docs/Astra_MCU_SDK_Setup_and_Install_CLI.md)
   - **VS Code**: [Setup and Install SDK using VS Code](../../../docs/Astra_MCU_SDK_Setup_and_Install_VsCode.md)
 
-## Test Case Selection
+## Project Configuration Selection
 
-Before building, choose the testcase defconfig that matches both your target board and the I2S/TDM mode you want to validate.
+Before building, choose the project configuration (defconfig) that matches both your target board and the I2S/TDM mode you want to validate.
 For TDM validation, select one of the dedicated `*_tdm_defconfig` variants listed below.
 For channel scaling checks in TDM mode, validate with 2, 4, and 8 channels.
 

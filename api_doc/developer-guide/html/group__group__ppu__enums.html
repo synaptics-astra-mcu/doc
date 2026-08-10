@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Astra MCU SDK Peripheral Driver Library: Enumerated Types</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">$(function() { init_search(); });</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><div id="titlearea"><table cellspacing="0" cellpadding="0"><tbody><tr id="projectrow"><td id="projectlogo"><img alt="Logo" src="syna_logo.png"/></td><td id="projectalign"><div id="projectname">Astra MCU SDK Peripheral Driver Library</div></td></tr></tbody></table></div>
+<script type="text/javascript">var searchBox = new SearchBox("searchBox", "search/",'.html');</script>
+</div>
+<div id="container"><div id="doc-content">
+<div class="header">
+  <div class="headertitle"><div class="title">Enumerated Types <div class="ingroups"><a class="el" href="group__peripherals.html">Peripherals</a> &raquo; <a class="el" href="group__api__ref.html">Driver API Reference</a> &raquo; <a class="el" href="group__group__ppu__driver.html">PPU</a></div></div></div>
+</div>
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">Enums used by PPU APIs</h2></td></tr>
+<tr class="memitem:ga_ppu_instance_en" id="r_ga_ppu_instance_en"><td class="memItemLeft">enum&#160;</td><td class="memItemRight"><a class="el" href="#ga_ppu_instance_en">ppu_instance_en</a> { <a class="el" href="#gga_ppu_instance_en_PPU_INSTANCE_0">PPU_INSTANCE_0</a> = 0, <a class="el" href="#gga_ppu_instance_en_PPU_INSTANCE_COUNT">PPU_INSTANCE_COUNT</a> }</td></tr>
+<tr class="memdesc:ga_ppu_instance_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">PPU instance identifier type used by PPU APIs. <br /></td></tr>
+<tr class="memitem:ga_power_state_e" id="r_ga_power_state_e"><td class="memItemLeft">enum&#160;</td><td class="memItemRight"><a class="el" href="#ga_power_state_e">power_state_e</a> { <a class="el" href="#gga_power_state_e_PM_STATE_ON">PM_STATE_ON</a> = 0x8, <a class="el" href="#gga_power_state_e_PM_STATE_FULL_RET">PM_STATE_FULL_RET</a> = 0x5, <a class="el" href="#gga_power_state_e_PM_STATE_MEM_RET">PM_STATE_MEM_RET</a> = 0x2, <a class="el" href="#gga_power_state_e_PM_STATE_STANDBY">PM_STATE_STANDBY</a> = 0x0, <a class="el" href="#gga_power_state_e_PM_STATE_COUNT">PM_STATE_COUNT</a> = 0x9 }</td></tr>
+<tr class="memdesc:ga_power_state_e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Power policy/state type used by PPU APIs. <br /></td></tr>
+</table>
+<a id="ga_ppu_instance_en" name="ga_ppu_instance_en"></a><h2 class="memtitle">ppu_instance_en</h2>
+<div class="memitem"><div class="memdoc"><p>Defined in SoC-specific headers included by the PPU driver integration.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="gga_ppu_instance_en_PPU_INSTANCE_0" name="gga_ppu_instance_en_PPU_INSTANCE_0"></a>PPU_INSTANCE_0&#160;</td><td class="fielddoc"><p>PPU instance 0</p></td></tr>
+<tr><td class="fieldname"><a id="gga_ppu_instance_en_PPU_INSTANCE_COUNT" name="gga_ppu_instance_en_PPU_INSTANCE_COUNT"></a>PPU_INSTANCE_COUNT&#160;</td><td class="fielddoc"><p>Number of PPU instances</p></td></tr>
+</table>
+</div></div>
+<a id="ga_power_state_e" name="ga_power_state_e"></a><h2 class="memtitle">power_state_e</h2>
+<div class="memitem"><div class="memdoc"><p>Defined in SoC/platform power management headers and consumed by <a class="el" href="group__group__ppu__functions.html#ga_ppu_set_power_mode">ppu_set_power_mode</a>.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="gga_power_state_e_PM_STATE_ON" name="gga_power_state_e_PM_STATE_ON"></a>PM_STATE_ON&#160;</td><td class="fielddoc"><p>Power domain fully ON</p></td></tr>
+<tr><td class="fieldname"><a id="gga_power_state_e_PM_STATE_FULL_RET" name="gga_power_state_e_PM_STATE_FULL_RET"></a>PM_STATE_FULL_RET&#160;</td><td class="fielddoc"><p>Full retention mode</p></td></tr>
+<tr><td class="fieldname"><a id="gga_power_state_e_PM_STATE_MEM_RET" name="gga_power_state_e_PM_STATE_MEM_RET"></a>PM_STATE_MEM_RET&#160;</td><td class="fielddoc"><p>Memory retention mode</p></td></tr>
+<tr><td class="fieldname"><a id="gga_power_state_e_PM_STATE_STANDBY" name="gga_power_state_e_PM_STATE_STANDBY"></a>PM_STATE_STANDBY&#160;</td><td class="fielddoc"><p>Standby mode</p></td></tr>
+<tr><td class="fieldname"><a id="gga_power_state_e_PM_STATE_COUNT" name="gga_power_state_e_PM_STATE_COUNT"></a>PM_STATE_COUNT&#160;</td><td class="fielddoc"><p>Number of power state entries</p></td></tr>
+</table>
+</div></div>
+</div></div></div>
+<div id="nav-path" class="navpath"><ul><li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li></ul></div>
+</body>
+</html>
