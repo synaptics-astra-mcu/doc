@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Astra MCU SDK Peripheral Driver Library: Functions</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><div id="titlearea"><table cellspacing="0" cellpadding="0"><tbody><tr id="projectrow"><td id="projectlogo"><img alt="Logo" src="syna_logo.png"/></td><td id="projectalign"><div id="projectname">Astra MCU SDK Peripheral Driver Library</div></td></tr></tbody></table></div></div>
+<div id="container"><div id="doc-content">
+<div class="header"><div class="headertitle"><div class="title">Functions <div class="ingroups"><a class="el" href="group__peripherals.html">Peripherals</a> &raquo; <a class="el" href="group__api__ref.html">Driver API Reference</a> &raquo; <a class="el" href="group__group__fc__driver.html">FC</a></div></div></div></div>
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">FC APIs</h2></td></tr>
+<tr class="memitem:ga_fc_init" id="r_ga_fc_init"><td class="memItemLeft"><a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_init">fc_init</a> (<a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> id)</td></tr>
+<tr class="memitem:ga_fc_deinit" id="r_ga_fc_deinit"><td class="memItemLeft"><a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_deinit">fc_deinit</a> (<a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> id)</td></tr>
+<tr class="memitem:ga_fc_config_fault" id="r_ga_fc_config_fault"><td class="memItemLeft"><a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_config_fault">fc_config_fault</a> (<a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> id, const <a class="el" href="group__group__fc__data__structures.html#ga_fc_fault_config_t">fc_fault_config_t</a> *cfg)</td></tr>
+<tr class="memitem:ga_fc_config_interrupt" id="r_ga_fc_config_interrupt"><td class="memItemLeft"><a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_config_interrupt">fc_config_interrupt</a> (<a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> id, const <a class="el" href="group__group__fc__data__structures.html#ga_fc_intr_config_t">fc_intr_config_t</a> *cfg)</td></tr>
+<tr class="memitem:ga_fc_clear_interrupt" id="r_ga_fc_clear_interrupt"><td class="memItemLeft"><a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_clear_interrupt">fc_clear_interrupt</a> (<a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> id, uint32_t mask)</td></tr>
+<tr class="memitem:ga_fc_get_interrupt_status" id="r_ga_fc_get_interrupt_status"><td class="memItemLeft"><a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_get_interrupt_status">fc_get_interrupt_status</a> (<a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> id, uint32_t *status)</td></tr>
+<tr class="memitem:ga_fc_set_interrupt_timeout" id="r_ga_fc_set_interrupt_timeout"><td class="memItemLeft"><a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_set_interrupt_timeout">fc_set_interrupt_timeout</a> (<a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> id, uint16_t timeout)</td></tr>
+<tr class="memitem:ga_fc_set_trigger_pulse_width" id="r_ga_fc_set_trigger_pulse_width"><td class="memItemLeft"><a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_set_trigger_pulse_width">fc_set_trigger_pulse_width</a> (<a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> id, uint16_t width)</td></tr>
+<tr class="memitem:ga_fc_set_reset_pulse_width" id="r_ga_fc_set_reset_pulse_width"><td class="memItemLeft"><a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_set_reset_pulse_width">fc_set_reset_pulse_width</a> (<a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> id, uint16_t width)</td></tr>
+<tr class="memitem:ga_fc_config_timing" id="r_ga_fc_config_timing"><td class="memItemLeft"><a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_config_timing">fc_config_timing</a> (<a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> id, const <a class="el" href="group__group__fc__data__structures.html#ga_fc_timing_config_t">fc_timing_config_t</a> *cfg)</td></tr>
+<tr class="memitem:ga_fc_set_fault_association" id="r_ga_fc_set_fault_association"><td class="memItemLeft"><a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_set_fault_association">fc_set_fault_association</a> (<a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> id, <a class="el" href="group__group__fc__enums.html#ga_fc_assoc_type_en">fc_assoc_type_en</a> type, uint8_t assoc_id, const <a class="el" href="group__group__fc__data__structures.html#ga_fc_fault_assoc_t">fc_fault_assoc_t</a> *assoc)</td></tr>
+<tr class="memitem:ga_fc_get_fault_association" id="r_ga_fc_get_fault_association"><td class="memItemLeft"><a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_get_fault_association">fc_get_fault_association</a> (<a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> id, <a class="el" href="group__group__fc__enums.html#ga_fc_assoc_type_en">fc_assoc_type_en</a> type, uint8_t assoc_id, <a class="el" href="group__group__fc__data__structures.html#ga_fc_fault_assoc_t">fc_fault_assoc_t</a> *assoc)</td></tr>
+<tr class="memitem:ga_fc_erase_log" id="r_ga_fc_erase_log"><td class="memItemLeft"><a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_erase_log">fc_erase_log</a> (<a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> id)</td></tr>
+<tr class="memitem:ga_fc_write_sw_log" id="r_ga_fc_write_sw_log"><td class="memItemLeft"><a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_write_sw_log">fc_write_sw_log</a> (<a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> id, uint32_t value)</td></tr>
+<tr class="memitem:ga_fc_get_log_count" id="r_ga_fc_get_log_count"><td class="memItemLeft"><a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_get_log_count">fc_get_log_count</a> (<a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> id, uint16_t *count)</td></tr>
+<tr class="memitem:ga_fc_read_log" id="r_ga_fc_read_log"><td class="memItemLeft"><a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_read_log">fc_read_log</a> (<a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> id, uint16_t index, <a class="el" href="group__group__fc__data__structures.html#ga_fc_log_entry_t">fc_log_entry_t</a> *entry)</td></tr>
+<tr class="memitem:ga_fc_read_logs" id="r_ga_fc_read_logs"><td class="memItemLeft"><a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_read_logs">fc_read_logs</a> (<a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> id, <a class="el" href="group__group__fc__data__structures.html#ga_fc_log_entry_t">fc_log_entry_t</a> *entries, uint16_t max_entries, uint16_t *read_count)</td></tr>
+<tr class="memitem:ga_fc_register_callback" id="r_ga_fc_register_callback"><td class="memItemLeft"><a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_register_callback">fc_register_callback</a> (<a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> id, <a class="el" href="group__group__fc__data__structures.html#ga_fc_event_cb_t">fc_event_cb_t</a> cb, void *user_data)</td></tr>
+<tr class="memitem:ga_fc_isr" id="r_ga_fc_isr"><td class="memItemLeft"><a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a>&#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_isr">fc_isr</a> (<a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> id)</td></tr>
+</table>
+
+<a id="ga_fc_init" name="ga_fc_init"></a><h2 class="memtitle">fc_init()</h2>
+<div class="memitem"><div class="memdoc"><p>Initialize FC driver instance and SoC-level FC hardware.</p>
+<p><b>Parameters:</b></p><ul><li><b>id</b>: <a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> instance identifier.</li></ul>
+<p><b>Return:</b> <a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a> status code.</p><p><b>Return values:</b></p><ul>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_OK">FC_OK</a>: Initialization successful.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_PARAMETER">FC_ERROR_PARAMETER</a>: Invalid FC instance identifier.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_BUSY">FC_ERROR_BUSY</a>: Instance already initialized.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR">FC_ERROR</a>: SoC-level initialization failed.</li>
+</ul></div></div>
+
+<a id="ga_fc_deinit" name="ga_fc_deinit"></a><h2 class="memtitle">fc_deinit()</h2>
+<div class="memitem"><div class="memdoc"><p>Deinitialize FC driver instance and disable FC resources.</p>
+<p><b>Parameters:</b></p><ul><li><b>id</b>: <a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> instance identifier.</li></ul>
+<p><b>Return:</b> <a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a> status code.</p><p><b>Return values:</b></p><ul>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_OK">FC_OK</a>: Deinitialization successful, or instance already deinitialized.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_PARAMETER">FC_ERROR_PARAMETER</a>: Invalid FC instance identifier.</li>
+</ul></div></div>
+
+<a id="ga_fc_config_fault" name="ga_fc_config_fault"></a><h2 class="memtitle">fc_config_fault()</h2>
+<div class="memitem"><div class="memdoc"><p>Configure one FC fault input source type and logging mask.</p>
+<p><b>Parameters:</b></p><ul>
+<li><b>id</b>: <a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> instance identifier.</li>
+<li><b>cfg</b>: Pointer to <a class="el" href="group__group__fc__data__structures.html#ga_fc_fault_config_t">fc_fault_config_t</a>.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a> status code.</p><p><b>Return values:</b></p><ul>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_OK">FC_OK</a>: Fault configuration applied successfully.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_PARAMETER">FC_ERROR_PARAMETER</a>: Invalid instance, NULL <b>cfg</b>, invalid fault ID, or invalid fault type.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_NOT_INITIALIZED">FC_ERROR_NOT_INITIALIZED</a>: Instance not initialized.</li>
+</ul></div></div>
+
+<a id="ga_fc_config_interrupt" name="ga_fc_config_interrupt"></a><h2 class="memtitle">fc_config_interrupt()</h2>
+<div class="memitem"><div class="memdoc"><p>Configure one FC interrupt output.</p>
+<p><b>Parameters:</b></p><ul>
+<li><b>id</b>: <a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> instance identifier.</li>
+<li><b>cfg</b>: Pointer to <a class="el" href="group__group__fc__data__structures.html#ga_fc_intr_config_t">fc_intr_config_t</a>.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a> status code.</p><p><b>Return values:</b></p><ul>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_OK">FC_OK</a>: Interrupt configuration applied successfully.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_PARAMETER">FC_ERROR_PARAMETER</a>: Invalid instance, NULL <b>cfg</b>, invalid interrupt ID, or invalid interrupt type.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_NOT_INITIALIZED">FC_ERROR_NOT_INITIALIZED</a>: Instance not initialized.</li>
+</ul></div></div>
+
+<a id="ga_fc_clear_interrupt" name="ga_fc_clear_interrupt"></a><h2 class="memtitle">fc_clear_interrupt()</h2>
+<div class="memitem"><div class="memdoc"><p>Clear selected FC interrupt status bits.</p>
+<p><b>Parameters:</b></p><ul>
+<li><b>id</b>: <a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> instance identifier.</li>
+<li><b>mask</b>: Interrupt status bitmask to clear.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a> status code.</p><p><b>Return values:</b></p><ul>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_OK">FC_OK</a>: Interrupt status cleared successfully.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_PARAMETER">FC_ERROR_PARAMETER</a>: Invalid instance or invalid bits in <b>mask</b>.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_NOT_INITIALIZED">FC_ERROR_NOT_INITIALIZED</a>: Instance not initialized.</li>
+</ul></div></div>
+
+<a id="ga_fc_get_interrupt_status" name="ga_fc_get_interrupt_status"></a><h2 class="memtitle">fc_get_interrupt_status()</h2>
+<div class="memitem"><div class="memdoc"><p>Read FC interrupt status register value.</p>
+<p><b>Parameters:</b></p><ul>
+<li><b>id</b>: <a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> instance identifier.</li>
+<li><b>status</b>: Pointer to receive interrupt status value.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a> status code.</p><p><b>Return values:</b></p><ul>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_OK">FC_OK</a>: Interrupt status read successfully.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_PARAMETER">FC_ERROR_PARAMETER</a>: Invalid instance or NULL <b>status</b> pointer.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_NOT_INITIALIZED">FC_ERROR_NOT_INITIALIZED</a>: Instance not initialized.</li>
+</ul></div></div>
+
+<a id="ga_fc_set_interrupt_timeout" name="ga_fc_set_interrupt_timeout"></a><h2 class="memtitle">fc_set_interrupt_timeout()</h2>
+<div class="memitem"><div class="memdoc"><p>Set FC interrupt timeout clear counter value.</p>
+<p><b>Parameters:</b></p><ul>
+<li><b>id</b>: <a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> instance identifier.</li>
+<li><b>timeout</b>: 12-bit timeout value.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a> status code.</p><p><b>Return values:</b></p><ul>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_OK">FC_OK</a>: Timeout configured successfully.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_PARAMETER">FC_ERROR_PARAMETER</a>: Invalid instance or timeout out of 12-bit range.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_NOT_INITIALIZED">FC_ERROR_NOT_INITIALIZED</a>: Instance not initialized.</li>
+</ul></div></div>
+
+<a id="ga_fc_set_trigger_pulse_width" name="ga_fc_set_trigger_pulse_width"></a><h2 class="memtitle">fc_set_trigger_pulse_width()</h2>
+<div class="memitem"><div class="memdoc"><p>Set FC trigger output pulse width value.</p>
+<p><b>Parameters:</b></p><ul>
+<li><b>id</b>: <a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> instance identifier.</li>
+<li><b>width</b>: 12-bit trigger pulse width value.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a> status code.</p><p><b>Return values:</b></p><ul>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_OK">FC_OK</a>: Trigger pulse width configured successfully.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_PARAMETER">FC_ERROR_PARAMETER</a>: Invalid instance or width out of 12-bit range.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_NOT_INITIALIZED">FC_ERROR_NOT_INITIALIZED</a>: Instance not initialized.</li>
+</ul></div></div>
+
+<a id="ga_fc_set_reset_pulse_width" name="ga_fc_set_reset_pulse_width"></a><h2 class="memtitle">fc_set_reset_pulse_width()</h2>
+<div class="memitem"><div class="memdoc"><p>Set FC reset output pulse width value.</p>
+<p><b>Parameters:</b></p><ul>
+<li><b>id</b>: <a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> instance identifier.</li>
+<li><b>width</b>: 12-bit reset pulse width value.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a> status code.</p><p><b>Return values:</b></p><ul>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_OK">FC_OK</a>: Reset pulse width configured successfully.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_PARAMETER">FC_ERROR_PARAMETER</a>: Invalid instance or width out of 12-bit range.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_NOT_INITIALIZED">FC_ERROR_NOT_INITIALIZED</a>: Instance not initialized.</li>
+</ul></div></div>
+
+<a id="ga_fc_config_timing" name="ga_fc_config_timing"></a><h2 class="memtitle">fc_config_timing()</h2>
+<div class="memitem"><div class="memdoc"><p>Configure one FC timing control field.</p>
+<p><b>Parameters:</b></p><ul>
+<li><b>id</b>: <a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> instance identifier.</li>
+<li><b>cfg</b>: Pointer to <a class="el" href="group__group__fc__data__structures.html#ga_fc_timing_config_t">fc_timing_config_t</a>.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a> status code.</p><p><b>Return values:</b></p><ul>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_OK">FC_OK</a>: Timing control configured successfully.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_PARAMETER">FC_ERROR_PARAMETER</a>: Invalid instance, NULL <b>cfg</b>, invalid timing type, or value out of 12-bit range.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_NOT_INITIALIZED">FC_ERROR_NOT_INITIALIZED</a>: Instance not initialized.</li>
+</ul></div></div>
+
+<a id="ga_fc_set_fault_association" name="ga_fc_set_fault_association"></a><h2 class="memtitle">fc_set_fault_association()</h2>
+<div class="memitem"><div class="memdoc"><p>Program fault routing table for interrupt, trigger, or reset output.</p>
+<p><b>Parameters:</b></p><ul>
+<li><b>id</b>: <a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> instance identifier.</li>
+<li><b>type</b>: <a class="el" href="group__group__fc__enums.html#ga_fc_assoc_type_en">fc_assoc_type_en</a> association table selector.</li>
+<li><b>assoc_id</b>: Selected output index in the chosen association table type.</li>
+<li><b>assoc</b>: Pointer to <a class="el" href="group__group__fc__data__structures.html#ga_fc_fault_assoc_t">fc_fault_assoc_t</a> bitmap content.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a> status code.</p><p><b>Return values:</b></p><ul>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_OK">FC_OK</a>: Association table programmed successfully.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_PARAMETER">FC_ERROR_PARAMETER</a>: Invalid instance, invalid type/index combination, or NULL <b>assoc</b>.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_NOT_INITIALIZED">FC_ERROR_NOT_INITIALIZED</a>: Instance not initialized.</li>
+</ul></div></div>
+
+<a id="ga_fc_get_fault_association" name="ga_fc_get_fault_association"></a><h2 class="memtitle">fc_get_fault_association()</h2>
+<div class="memitem"><div class="memdoc"><p>Read fault routing table for interrupt, trigger, or reset output.</p>
+<p><b>Parameters:</b></p><ul>
+<li><b>id</b>: <a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> instance identifier.</li>
+<li><b>type</b>: <a class="el" href="group__group__fc__enums.html#ga_fc_assoc_type_en">fc_assoc_type_en</a> association table selector.</li>
+<li><b>assoc_id</b>: Selected output index in the chosen association table type.</li>
+<li><b>assoc</b>: Pointer to <a class="el" href="group__group__fc__data__structures.html#ga_fc_fault_assoc_t">fc_fault_assoc_t</a> receiver buffer.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a> status code.</p><p><b>Return values:</b></p><ul>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_OK">FC_OK</a>: Association table read successfully.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_PARAMETER">FC_ERROR_PARAMETER</a>: Invalid instance, invalid type/index combination, or NULL <b>assoc</b>.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_NOT_INITIALIZED">FC_ERROR_NOT_INITIALIZED</a>: Instance not initialized.</li>
+</ul></div></div>
+
+<a id="ga_fc_erase_log" name="ga_fc_erase_log"></a><h2 class="memtitle">fc_erase_log()</h2>
+<div class="memitem"><div class="memdoc"><p>Erase FC hardware fault log array and reset write pointer.</p>
+<p><b>Parameters:</b></p><ul><li><b>id</b>: <a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> instance identifier.</li></ul>
+<p><b>Return:</b> <a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a> status code.</p><p><b>Return values:</b></p><ul>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_OK">FC_OK</a>: Logs erased successfully.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_PARAMETER">FC_ERROR_PARAMETER</a>: Invalid FC instance identifier.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_NOT_INITIALIZED">FC_ERROR_NOT_INITIALIZED</a>: Instance not initialized.</li>
+</ul></div></div>
+
+<a id="ga_fc_write_sw_log" name="ga_fc_write_sw_log"></a><h2 class="memtitle">fc_write_sw_log()</h2>
+<div class="memitem"><div class="memdoc"><p>Write one software log ID to FC software log register.</p>
+<p><b>Parameters:</b></p><ul>
+<li><b>id</b>: <a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> instance identifier.</li>
+<li><b>value</b>: Software log value in accepted FC range.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a> status code.</p><p><b>Return values:</b></p><ul>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_OK">FC_OK</a>: Software log value written successfully.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_PARAMETER">FC_ERROR_PARAMETER</a>: Invalid instance or <b>value</b> outside accepted software log range.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_NOT_INITIALIZED">FC_ERROR_NOT_INITIALIZED</a>: Instance not initialized.</li>
+</ul></div></div>
+
+<a id="ga_fc_get_log_count" name="ga_fc_get_log_count"></a><h2 class="memtitle">fc_get_log_count()</h2>
+<div class="memitem"><div class="memdoc"><p>Get number of currently retained FC fault log entries.</p>
+<p><b>Parameters:</b></p><ul>
+<li><b>id</b>: <a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> instance identifier.</li>
+<li><b>count</b>: Pointer to receive retained log count.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a> status code.</p><p><b>Return values:</b></p><ul>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_OK">FC_OK</a>: Log count read successfully.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_PARAMETER">FC_ERROR_PARAMETER</a>: Invalid instance or NULL <b>count</b> pointer.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_NOT_INITIALIZED">FC_ERROR_NOT_INITIALIZED</a>: Instance not initialized.</li>
+</ul></div></div>
+
+<a id="ga_fc_read_log" name="ga_fc_read_log"></a><h2 class="memtitle">fc_read_log()</h2>
+<div class="memitem"><div class="memdoc"><p>Read one FC log entry by index.</p>
+<p><b>Parameters:</b></p><ul>
+<li><b>id</b>: <a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> instance identifier.</li>
+<li><b>index</b>: Log index in hardware fault log array.</li>
+<li><b>entry</b>: Pointer to <a class="el" href="group__group__fc__data__structures.html#ga_fc_log_entry_t">fc_log_entry_t</a> receiver.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a> status code.</p><p><b>Return values:</b></p><ul>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_OK">FC_OK</a>: Log entry read successfully.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_PARAMETER">FC_ERROR_PARAMETER</a>: Invalid instance, NULL <b>entry</b>, or out-of-range <b>index</b>.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_NOT_INITIALIZED">FC_ERROR_NOT_INITIALIZED</a>: Instance not initialized.</li>
+</ul></div></div>
+
+<a id="ga_fc_read_logs" name="ga_fc_read_logs"></a><h2 class="memtitle">fc_read_logs()</h2>
+<div class="memitem"><div class="memdoc"><p>Read multiple FC log entries in chronological order from oldest retained log.</p>
+<p><b>Parameters:</b></p><ul>
+<li><b>id</b>: <a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> instance identifier.</li>
+<li><b>entries</b>: Output array of <a class="el" href="group__group__fc__data__structures.html#ga_fc_log_entry_t">fc_log_entry_t</a>.</li>
+<li><b>max_entries</b>: Maximum entries to read into <b>entries</b>.</li>
+<li><b>read_count</b>: Pointer to receive number of entries actually read.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a> status code.</p><p><b>Return values:</b></p><ul>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_OK">FC_OK</a>: Log entries read successfully.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_PARAMETER">FC_ERROR_PARAMETER</a>: Invalid instance, NULL <b>read_count</b>, or NULL <b>entries</b> when <b>max_entries</b> is nonzero.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_NOT_INITIALIZED">FC_ERROR_NOT_INITIALIZED</a>: Instance not initialized.</li>
+</ul></div></div>
+
+<a id="ga_fc_register_callback" name="ga_fc_register_callback"></a><h2 class="memtitle">fc_register_callback()</h2>
+<div class="memitem"><div class="memdoc"><p>Register or clear FC interrupt callback handler.</p>
+<p><b>Parameters:</b></p><ul>
+<li><b>id</b>: <a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> instance identifier.</li>
+<li><b>cb</b>: <a class="el" href="group__group__fc__data__structures.html#ga_fc_event_cb_t">fc_event_cb_t</a> callback, or NULL to disable callback notification.</li>
+<li><b>user_data</b>: User context pointer passed to callback.</li>
+</ul>
+<p><b>Return:</b> <a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a> status code.</p><p><b>Return values:</b></p><ul>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_OK">FC_OK</a>: Callback registration updated successfully.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_PARAMETER">FC_ERROR_PARAMETER</a>: Invalid FC instance identifier.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_NOT_INITIALIZED">FC_ERROR_NOT_INITIALIZED</a>: Instance not initialized.</li>
+</ul></div></div>
+
+<a id="ga_fc_isr" name="ga_fc_isr"></a><h2 class="memtitle">fc_isr()</h2>
+<div class="memitem"><div class="memdoc"><p>FC interrupt service routine helper.</p>
+<p><b>Parameters:</b></p><ul><li><b>id</b>: <a class="el" href="group__group__fc__enums.html#ga_fc_instance_en">fc_instance_en</a> instance identifier.</li></ul>
+<p><b>Return:</b> <a class="el" href="group__group__fc__enums.html#ga_fc_status_en">fc_status_en</a> status code.</p><p><b>Return values:</b></p><ul>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_OK">FC_OK</a>: ISR handled successfully.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_PARAMETER">FC_ERROR_PARAMETER</a>: Invalid FC instance identifier.</li>
+<li><a class="el" href="group__group__fc__enums.html#gga_fc_status_en_FC_ERROR_NOT_INITIALIZED">FC_ERROR_NOT_INITIALIZED</a>: Instance not initialized.</li>
+</ul></div></div>
+
+</div></div></div>
+<div id="nav-path" class="navpath"><ul><li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li></ul></div>
+</body>
+</html>

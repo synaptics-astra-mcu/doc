@@ -100,21 +100,200 @@ $(function(){initNavTree('group___d_m_i_c___e_n_u_m_s___s_l2610.html','',''); })
 </div><!--header-->
 <div class="contents">
 
-<p>DMIC enumeration types.  
+<p>DMIC enumeration types.
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:ga23fe9d3036c1708e5f0c7f3b0dd2b6bd" id="r_ga23fe9d3036c1708e5f0c7f3b0dd2b6bd"><td class="memItemLeft"><a id="ga23fe9d3036c1708e5f0c7f3b0dd2b6bd" name="ga23fe9d3036c1708e5f0c7f3b0dd2b6bd"></a>enum &#160;</td><td class="memItemRight"><a class="el" href="#ga23fe9d3036c1708e5f0c7f3b0dd2b6bd">dmic_instance_en</a> { <br />
-&#160;&#160;<b>DMIC_INSTANCE_0</b> = 0
-, <br />
-&#160;&#160;<b>DMIC_INSTANCE_COUNT</b>
-<br />
- }</td></tr>
-<tr class="memdesc:ga23fe9d3036c1708e5f0c7f3b0dd2b6bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">DMIC instances for CM52. <br /></td></tr>
+<tr class="memitem:dmic_event_en" id="r_dmic_event_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#dmic_event_en">dmic_event_en</a> { <a class="el" href="#dmic_event_en">DMIC_EVENT_NONE</a>, <a class="el" href="#dmic_event_en">DMIC_EVENT_OVERFLOW</a>, <a class="el" href="#dmic_event_en">DMIC_EVENT_FULL</a>, <a class="el" href="#dmic_event_en">DMIC_EVENT_UNDERFLOW</a>, <a class="el" href="#dmic_event_en">DMIC_EVENT_ALMOST_FULL</a>, <a class="el" href="#dmic_event_en">DMIC_EVENT_MUTE_ENABLED</a>, <a class="el" href="#dmic_event_en">DMIC_EVENT_INVALID_CONFIG</a>, <a class="el" href="#dmic_event_en">DMIC_EVENT_READ_COMPLETE</a>, <a class="el" href="#dmic_event_en">DMIC_EVENT_READ_NOT_READY</a>, <a class="el" href="#dmic_event_en">DMIC_EVENT_READ_PARTIAL_COMPLETE</a>, <a class="el" href="#dmic_event_en">DMIC_EVENT_ERROR</a> }</td></tr>
+<tr class="memdesc:dmic_event_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">DMIC driver event types. <br /></td></tr>
+<tr class="memitem:dmic_status_en" id="r_dmic_status_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#dmic_status_en">dmic_status_en</a> { <a class="el" href="#dmic_status_en">DMIC_OK</a> = 0, <a class="el" href="#dmic_status_en">DMIC_ERROR</a> = 1, <a class="el" href="#dmic_status_en">DMIC_ERROR_TIMEOUT</a> = 2, <a class="el" href="#dmic_status_en">DMIC_ERROR_DATA_STUCK</a> = 3, <a class="el" href="#dmic_status_en">DMIC_ERROR_OVERFLOW</a> = 4, ... }</td></tr>
+<tr class="memdesc:dmic_status_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">DMIC driver status / error codes. <br /></td></tr>
+<tr class="memitem:dmic_decimation_ratio_en" id="r_dmic_decimation_ratio_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#dmic_decimation_ratio_en">dmic_decimation_ratio_en</a> { <a class="el" href="#dmic_decimation_ratio_en">DMIC_DECIMATE_BY_64</a> = 64, <a class="el" href="#dmic_decimation_ratio_en">DMIC_DECIMATE_BY_32</a> = 32, <a class="el" href="#dmic_decimation_ratio_en">DMIC_DECIMATE_BY_16</a> = 16 }</td></tr>
+<tr class="memdesc:dmic_decimation_ratio_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decimation ratios for DMIC output. <br /></td></tr>
+<tr class="memitem:dmic_in_phase_en" id="r_dmic_in_phase_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#dmic_in_phase_en">dmic_in_phase_en</a> { <a class="el" href="#dmic_in_phase_en">DMIC_PHASE_POS_EDGE_ALIGN_NEG</a> = 0x0, <a class="el" href="#dmic_in_phase_en">DMIC_PHASE_NEG_EDGE_ALIGN_POS</a> = 0x1 }</td></tr>
+<tr class="memdesc:dmic_in_phase_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">DMIC input phase selection. <br /></td></tr>
+<tr class="memitem:dmic_gain_ctrl_en" id="r_dmic_gain_ctrl_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#dmic_gain_ctrl_en">dmic_gain_ctrl_en</a> { <a class="el" href="#dmic_gain_ctrl_en">DMIC_GAIN_NEG_3DB</a> = 0x0, <a class="el" href="#dmic_gain_ctrl_en">DMIC_GAIN_0DB</a> = 0x6, <a class="el" href="#dmic_gain_ctrl_en">DMIC_GAIN_POS_3DB</a> = 0xC, ... }</td></tr>
+<tr class="memdesc:dmic_gain_ctrl_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">Microphone gain control levels. <br /></td></tr>
+<tr class="memitem:dmic_boost_en" id="r_dmic_boost_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#dmic_boost_en">dmic_boost_en</a> { <a class="el" href="#dmic_boost_en">DMIC_BOOST_0DB</a> = 0x0, <a class="el" href="#dmic_boost_en">DMIC_BOOST_6DB</a> = 0x1, <a class="el" href="#dmic_boost_en">DMIC_BOOST_12DB</a> = 0x2, <a class="el" href="#dmic_boost_en">DMIC_BOOST_18DB</a> = 0x3, <a class="el" href="#dmic_boost_en">DMIC_BOOST_24DB</a> = 0x4 }</td></tr>
+<tr class="memdesc:dmic_boost_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">Input boost levels. <br /></td></tr>
+<tr class="memitem:dmic_int_en" id="r_dmic_int_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#dmic_int_en">dmic_int_en</a> { <a class="el" href="#dmic_int_en">DMIC_INT_AFULL</a> = 0x1, <a class="el" href="#dmic_int_en">DMIC_INT_FULL</a> = 0x2, <a class="el" href="#dmic_int_en">DMIC_INT_OVER</a> = 0x4 }</td></tr>
+<tr class="memdesc:dmic_int_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">FIFO interrupt mask configuration. <br /></td></tr>
+<tr class="memitem:dmic_transfer_mode_en" id="r_dmic_transfer_mode_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#dmic_transfer_mode_en">dmic_transfer_mode_en</a> { <a class="el" href="#dmic_transfer_mode_en">DMIC_TRANSFER_MODE_NONE</a> = 0x0, <a class="el" href="#dmic_transfer_mode_en">DMIC_TRANSFER_MODE_FIFO</a> = 0x1, <a class="el" href="#dmic_transfer_mode_en">DMIC_TRANSFER_MODE_DMA</a> = 0x2 }</td></tr>
+<tr class="memdesc:dmic_transfer_mode_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">DMIC transfer mode capability bitmask. <br /></td></tr>
+<tr class="memitem:dmic_buffer_mode_en" id="r_dmic_buffer_mode_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#dmic_buffer_mode_en">dmic_buffer_mode_en</a> { <a class="el" href="#dmic_buffer_mode_en">DMIC_BUFFER_MODE_NONE</a> = 0x0, <a class="el" href="#dmic_buffer_mode_en">DMIC_BUFFER_MODE_PER_CHANNEL</a> = 0x1, <a class="el" href="#dmic_buffer_mode_en">DMIC_BUFFER_MODE_INTERLEAVED</a> = 0x2 }</td></tr>
+<tr class="memdesc:dmic_buffer_mode_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">DMIC buffer mode capability bitmask. <br /></td></tr>
+<tr class="memitem:dmic_sample_size_en" id="r_dmic_sample_size_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#dmic_sample_size_en">dmic_sample_size_en</a> { <a class="el" href="#dmic_sample_size_en">DMIC_SAMPLE_16BIT</a> = 2, <a class="el" href="#dmic_sample_size_en">DMIC_SAMPLE_24BIT</a> = 3, <a class="el" href="#dmic_sample_size_en">DMIC_SAMPLE_32BIT</a> = 4 }</td></tr>
+<tr class="memdesc:dmic_sample_size_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">DMIC sample size selector. <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>DMIC enumeration types. </p>
+</div>
+<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Enumeration Type Documentation</h2>
+
+<a id="dmic_event_en" name="dmic_event_en"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#dmic_event_en">&#9670;&#160;</a></span>dmic_event_en</h2>
+<div class="memitem">
+<div class="memproto"><table class="memname"><tr><td class="memname">enum <a class="el" href="#dmic_event_en">dmic_event_en</a></td></tr></table></div>
+<div class="memdoc"><p>DMIC driver event types.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="DMIC_EVENT_NONE" name="DMIC_EVENT_NONE"></a>DMIC_EVENT_NONE&#160;</td><td class="fielddoc"><p>No event.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_EVENT_OVERFLOW" name="DMIC_EVENT_OVERFLOW"></a>DMIC_EVENT_OVERFLOW&#160;</td><td class="fielddoc"><p>Hardware/driver overflow indication.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_EVENT_FULL" name="DMIC_EVENT_FULL"></a>DMIC_EVENT_FULL&#160;</td><td class="fielddoc"><p>Optional FIFO full indication; reported only when enabled by FIFO interrupt configuration.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_EVENT_UNDERFLOW" name="DMIC_EVENT_UNDERFLOW"></a>DMIC_EVENT_UNDERFLOW&#160;</td><td class="fielddoc"><p>Reserved for future playback/sink-style paths; not generated by current DMIC capture backend.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_EVENT_ALMOST_FULL" name="DMIC_EVENT_ALMOST_FULL"></a>DMIC_EVENT_ALMOST_FULL&#160;</td><td class="fielddoc"><p>Optional FIFO almost-full indication; reported only when enabled by FIFO interrupt configuration.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_EVENT_MUTE_ENABLED" name="DMIC_EVENT_MUTE_ENABLED"></a>DMIC_EVENT_MUTE_ENABLED&#160;</td><td class="fielddoc"><p>Mute enabled state changed.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_EVENT_INVALID_CONFIG" name="DMIC_EVENT_INVALID_CONFIG"></a>DMIC_EVENT_INVALID_CONFIG&#160;</td><td class="fielddoc"><p>Configuration issue notification.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_EVENT_READ_COMPLETE" name="DMIC_EVENT_READ_COMPLETE"></a>DMIC_EVENT_READ_COMPLETE&#160;</td><td class="fielddoc"><p>Primary transfer-ready event (DMA period/FIFO threshold complete).</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_EVENT_READ_NOT_READY" name="DMIC_EVENT_READ_NOT_READY"></a>DMIC_EVENT_READ_NOT_READY&#160;</td><td class="fielddoc"><p>Non-blocking read attempted with no ready data.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_EVENT_READ_PARTIAL_COMPLETE" name="DMIC_EVENT_READ_PARTIAL_COMPLETE"></a>DMIC_EVENT_READ_PARTIAL_COMPLETE&#160;</td><td class="fielddoc"><p>Transfer-ready with less data than requested (primarily FIFO mode/backpressure).</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_EVENT_ERROR" name="DMIC_EVENT_ERROR"></a>DMIC_EVENT_ERROR&#160;</td><td class="fielddoc"><p>Generic runtime error event.</p></td></tr>
+</table>
+</div></div>
+
+<a id="dmic_status_en" name="dmic_status_en"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#dmic_status_en">&#9670;&#160;</a></span>dmic_status_en</h2>
+<div class="memitem">
+<div class="memproto"><table class="memname"><tr><td class="memname">enum <a class="el" href="#dmic_status_en">dmic_status_en</a></td></tr></table></div>
+<div class="memdoc"><p>DMIC driver status / error codes.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="DMIC_OK" name="DMIC_OK"></a>DMIC_OK&#160;</td><td class="fielddoc"><p>Operation completed successfully.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_ERROR" name="DMIC_ERROR"></a>DMIC_ERROR&#160;</td><td class="fielddoc"><p>General error.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_ERROR_TIMEOUT" name="DMIC_ERROR_TIMEOUT"></a>DMIC_ERROR_TIMEOUT&#160;</td><td class="fielddoc"><p>Operation timed out.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_ERROR_DATA_STUCK" name="DMIC_ERROR_DATA_STUCK"></a>DMIC_ERROR_DATA_STUCK&#160;</td><td class="fielddoc"><p>Data stuck error.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_ERROR_OVERFLOW" name="DMIC_ERROR_OVERFLOW"></a>DMIC_ERROR_OVERFLOW&#160;</td><td class="fielddoc"><p>Overflow error.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_ERROR_INVALID_GAIN" name="DMIC_ERROR_INVALID_GAIN"></a>DMIC_ERROR_INVALID_GAIN&#160;</td><td class="fielddoc"><p>Invalid gain value.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_ERROR_INVALID_BOOST" name="DMIC_ERROR_INVALID_BOOST"></a>DMIC_ERROR_INVALID_BOOST&#160;</td><td class="fielddoc"><p>Invalid boost value.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_ERROR_INVALID_CLK_DIV" name="DMIC_ERROR_INVALID_CLK_DIV"></a>DMIC_ERROR_INVALID_CLK_DIV&#160;</td><td class="fielddoc"><p>Invalid clock divider.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_ERROR_INVALID_PHASE" name="DMIC_ERROR_INVALID_PHASE"></a>DMIC_ERROR_INVALID_PHASE&#160;</td><td class="fielddoc"><p>Invalid phase value.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_ERROR_MUTE_STATE" name="DMIC_ERROR_MUTE_STATE"></a>DMIC_ERROR_MUTE_STATE&#160;</td><td class="fielddoc"><p>Invalid mute state.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_ERROR_NOT_CLEARED" name="DMIC_ERROR_NOT_CLEARED"></a>DMIC_ERROR_NOT_CLEARED&#160;</td><td class="fielddoc"><p>Not cleared.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_ERROR_INVALID_CONTEXT" name="DMIC_ERROR_INVALID_CONTEXT"></a>DMIC_ERROR_INVALID_CONTEXT&#160;</td><td class="fielddoc"><p>Invalid DMIC instance.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_ERROR_INVALID_PARAM" name="DMIC_ERROR_INVALID_PARAM"></a>DMIC_ERROR_INVALID_PARAM&#160;</td><td class="fielddoc"><p>Invalid parameter.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_ERROR_DMA_FAILED" name="DMIC_ERROR_DMA_FAILED"></a>DMIC_ERROR_DMA_FAILED&#160;</td><td class="fielddoc"><p>DMA transfer failed.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_ERROR_UNKNOWN" name="DMIC_ERROR_UNKNOWN"></a>DMIC_ERROR_UNKNOWN&#160;</td><td class="fielddoc"><p>Unknown error.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_ERROR_NOT_SUPPORTED" name="DMIC_ERROR_NOT_SUPPORTED"></a>DMIC_ERROR_NOT_SUPPORTED&#160;</td><td class="fielddoc"><p>Operation or configuration not supported.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_ERROR_INVALID_CONFIG" name="DMIC_ERROR_INVALID_CONFIG"></a>DMIC_ERROR_INVALID_CONFIG&#160;</td><td class="fielddoc"><p>Invalid runtime/configuration state.</p></td></tr>
+</table>
+</div></div>
+
+<a id="dmic_decimation_ratio_en" name="dmic_decimation_ratio_en"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#dmic_decimation_ratio_en">&#9670;&#160;</a></span>dmic_decimation_ratio_en</h2>
+<div class="memitem">
+<div class="memproto"><table class="memname"><tr><td class="memname">enum <a class="el" href="#dmic_decimation_ratio_en">dmic_decimation_ratio_en</a></td></tr></table></div>
+<div class="memdoc"><p>Decimation ratios for DMIC output.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="DMIC_DECIMATE_BY_64" name="DMIC_DECIMATE_BY_64"></a>DMIC_DECIMATE_BY_64&#160;</td><td class="fielddoc"><p>64x decimation.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_DECIMATE_BY_32" name="DMIC_DECIMATE_BY_32"></a>DMIC_DECIMATE_BY_32&#160;</td><td class="fielddoc"><p>32x decimation.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_DECIMATE_BY_16" name="DMIC_DECIMATE_BY_16"></a>DMIC_DECIMATE_BY_16&#160;</td><td class="fielddoc"><p>16x decimation.</p></td></tr>
+</table>
+</div></div>
+
+<a id="dmic_in_phase_en" name="dmic_in_phase_en"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#dmic_in_phase_en">&#9670;&#160;</a></span>dmic_in_phase_en</h2>
+<div class="memitem">
+<div class="memproto"><table class="memname"><tr><td class="memname">enum <a class="el" href="#dmic_in_phase_en">dmic_in_phase_en</a></td></tr></table></div>
+<div class="memdoc"><p>DMIC input phase selection.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="DMIC_PHASE_POS_EDGE_ALIGN_NEG" name="DMIC_PHASE_POS_EDGE_ALIGN_NEG"></a>DMIC_PHASE_POS_EDGE_ALIGN_NEG&#160;</td><td class="fielddoc"><p>Positive edge aligned negative.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_PHASE_NEG_EDGE_ALIGN_POS" name="DMIC_PHASE_NEG_EDGE_ALIGN_POS"></a>DMIC_PHASE_NEG_EDGE_ALIGN_POS&#160;</td><td class="fielddoc"><p>Negative edge aligned positive.</p></td></tr>
+</table>
+</div></div>
+
+<a id="dmic_gain_ctrl_en" name="dmic_gain_ctrl_en"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#dmic_gain_ctrl_en">&#9670;&#160;</a></span>dmic_gain_ctrl_en</h2>
+<div class="memitem">
+<div class="memproto"><table class="memname"><tr><td class="memname">enum <a class="el" href="#dmic_gain_ctrl_en">dmic_gain_ctrl_en</a></td></tr></table></div>
+<div class="memdoc"><p>Microphone gain control levels.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="DMIC_GAIN_NEG_3DB" name="DMIC_GAIN_NEG_3DB"></a>DMIC_GAIN_NEG_3DB&#160;</td><td class="fielddoc"><p>-3 dB gain.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_GAIN_NEG_2_5DB" name="DMIC_GAIN_NEG_2_5DB"></a>DMIC_GAIN_NEG_2_5DB&#160;</td><td class="fielddoc"><p>-2.5 dB gain.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_GAIN_NEG_2DB" name="DMIC_GAIN_NEG_2DB"></a>DMIC_GAIN_NEG_2DB&#160;</td><td class="fielddoc"><p>-2 dB gain.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_GAIN_NEG_1_5DB" name="DMIC_GAIN_NEG_1_5DB"></a>DMIC_GAIN_NEG_1_5DB&#160;</td><td class="fielddoc"><p>-1.5 dB gain.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_GAIN_NEG_1DB" name="DMIC_GAIN_NEG_1DB"></a>DMIC_GAIN_NEG_1DB&#160;</td><td class="fielddoc"><p>-1 dB gain.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_GAIN_NEG_0_5DB" name="DMIC_GAIN_NEG_0_5DB"></a>DMIC_GAIN_NEG_0_5DB&#160;</td><td class="fielddoc"><p>-0.5 dB gain.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_GAIN_0DB" name="DMIC_GAIN_0DB"></a>DMIC_GAIN_0DB&#160;</td><td class="fielddoc"><p>0 dB gain.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_GAIN_POS_0_5DB" name="DMIC_GAIN_POS_0_5DB"></a>DMIC_GAIN_POS_0_5DB&#160;</td><td class="fielddoc"><p>+0.5 dB gain.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_GAIN_POS_1DB" name="DMIC_GAIN_POS_1DB"></a>DMIC_GAIN_POS_1DB&#160;</td><td class="fielddoc"><p>+1 dB gain.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_GAIN_POS_1_5DB" name="DMIC_GAIN_POS_1_5DB"></a>DMIC_GAIN_POS_1_5DB&#160;</td><td class="fielddoc"><p>+1.5 dB gain.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_GAIN_POS_2DB" name="DMIC_GAIN_POS_2DB"></a>DMIC_GAIN_POS_2DB&#160;</td><td class="fielddoc"><p>+2 dB gain.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_GAIN_POS_2_5DB" name="DMIC_GAIN_POS_2_5DB"></a>DMIC_GAIN_POS_2_5DB&#160;</td><td class="fielddoc"><p>+2.5 dB gain.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_GAIN_POS_3DB" name="DMIC_GAIN_POS_3DB"></a>DMIC_GAIN_POS_3DB&#160;</td><td class="fielddoc"><p>+3 dB gain.</p></td></tr>
+</table>
+</div></div>
+
+<a id="dmic_boost_en" name="dmic_boost_en"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#dmic_boost_en">&#9670;&#160;</a></span>dmic_boost_en</h2>
+<div class="memitem">
+<div class="memproto"><table class="memname"><tr><td class="memname">enum <a class="el" href="#dmic_boost_en">dmic_boost_en</a></td></tr></table></div>
+<div class="memdoc"><p>Input boost levels.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="DMIC_BOOST_0DB" name="DMIC_BOOST_0DB"></a>DMIC_BOOST_0DB&#160;</td><td class="fielddoc"><p>0 dB boost.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_BOOST_6DB" name="DMIC_BOOST_6DB"></a>DMIC_BOOST_6DB&#160;</td><td class="fielddoc"><p>6 dB boost.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_BOOST_12DB" name="DMIC_BOOST_12DB"></a>DMIC_BOOST_12DB&#160;</td><td class="fielddoc"><p>12 dB boost.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_BOOST_18DB" name="DMIC_BOOST_18DB"></a>DMIC_BOOST_18DB&#160;</td><td class="fielddoc"><p>18 dB boost.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_BOOST_24DB" name="DMIC_BOOST_24DB"></a>DMIC_BOOST_24DB&#160;</td><td class="fielddoc"><p>24 dB boost.</p></td></tr>
+</table>
+</div></div>
+
+<a id="dmic_int_en" name="dmic_int_en"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#dmic_int_en">&#9670;&#160;</a></span>dmic_int_en</h2>
+<div class="memitem">
+<div class="memproto"><table class="memname"><tr><td class="memname">enum <a class="el" href="#dmic_int_en">dmic_int_en</a></td></tr></table></div>
+<div class="memdoc"><p>FIFO interrupt mask configuration.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="DMIC_INT_AFULL" name="DMIC_INT_AFULL"></a>DMIC_INT_AFULL&#160;</td><td class="fielddoc"><p>Almost full interrupt.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_INT_FULL" name="DMIC_INT_FULL"></a>DMIC_INT_FULL&#160;</td><td class="fielddoc"><p>Full interrupt.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_INT_OVER" name="DMIC_INT_OVER"></a>DMIC_INT_OVER&#160;</td><td class="fielddoc"><p>Overflow interrupt.</p></td></tr>
+</table>
+</div></div>
+
+<a id="dmic_transfer_mode_en" name="dmic_transfer_mode_en"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#dmic_transfer_mode_en">&#9670;&#160;</a></span>dmic_transfer_mode_en</h2>
+<div class="memitem">
+<div class="memproto"><table class="memname"><tr><td class="memname">enum <a class="el" href="#dmic_transfer_mode_en">dmic_transfer_mode_en</a></td></tr></table></div>
+<div class="memdoc"><p>DMIC transfer mode capability bitmask.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="DMIC_TRANSFER_MODE_NONE" name="DMIC_TRANSFER_MODE_NONE"></a>DMIC_TRANSFER_MODE_NONE&#160;</td><td class="fielddoc"><p>No transfer mode available.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_TRANSFER_MODE_FIFO" name="DMIC_TRANSFER_MODE_FIFO"></a>DMIC_TRANSFER_MODE_FIFO&#160;</td><td class="fielddoc"><p>Supports FIFO data path.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_TRANSFER_MODE_DMA" name="DMIC_TRANSFER_MODE_DMA"></a>DMIC_TRANSFER_MODE_DMA&#160;</td><td class="fielddoc"><p>Supports DMA data path.</p></td></tr>
+</table>
+</div></div>
+
+<a id="dmic_buffer_mode_en" name="dmic_buffer_mode_en"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#dmic_buffer_mode_en">&#9670;&#160;</a></span>dmic_buffer_mode_en</h2>
+<div class="memitem">
+<div class="memproto"><table class="memname"><tr><td class="memname">enum <a class="el" href="#dmic_buffer_mode_en">dmic_buffer_mode_en</a></td></tr></table></div>
+<div class="memdoc"><p>DMIC buffer mode capability bitmask.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="DMIC_BUFFER_MODE_NONE" name="DMIC_BUFFER_MODE_NONE"></a>DMIC_BUFFER_MODE_NONE&#160;</td><td class="fielddoc"><p>No buffer mode available.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_BUFFER_MODE_PER_CHANNEL" name="DMIC_BUFFER_MODE_PER_CHANNEL"></a>DMIC_BUFFER_MODE_PER_CHANNEL&#160;</td><td class="fielddoc"><p>Separate per-channel buffers.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_BUFFER_MODE_INTERLEAVED" name="DMIC_BUFFER_MODE_INTERLEAVED"></a>DMIC_BUFFER_MODE_INTERLEAVED&#160;</td><td class="fielddoc"><p>Interleaved multi-channel buffer.</p></td></tr>
+</table>
+</div></div>
+
+<a id="dmic_sample_size_en" name="dmic_sample_size_en"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#dmic_sample_size_en">&#9670;&#160;</a></span>dmic_sample_size_en</h2>
+<div class="memitem">
+<div class="memproto"><table class="memname"><tr><td class="memname">enum <a class="el" href="#dmic_sample_size_en">dmic_sample_size_en</a></td></tr></table></div>
+<div class="memdoc"><p>DMIC sample size selector. Samples are stored in 32-bit memory containers.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="DMIC_SAMPLE_16BIT" name="DMIC_SAMPLE_16BIT"></a>DMIC_SAMPLE_16BIT&#160;</td><td class="fielddoc"><p>16-bit sample.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_SAMPLE_24BIT" name="DMIC_SAMPLE_24BIT"></a>DMIC_SAMPLE_24BIT&#160;</td><td class="fielddoc"><p>24-bit sample.</p></td></tr>
+<tr><td class="fieldname"><a id="DMIC_SAMPLE_32BIT" name="DMIC_SAMPLE_32BIT"></a>DMIC_SAMPLE_32BIT&#160;</td><td class="fielddoc"><p>32-bit sample.</p></td></tr>
+</table>
+</div></div>
+
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">

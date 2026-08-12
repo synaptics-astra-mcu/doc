@@ -100,49 +100,170 @@ $(function(){initNavTree('group___c_a_n___e_n_u_m_s___s_l2610.html','',''); });
 </div><!--header-->
 <div class="contents">
 
-<p>CAN enumeration types.  
+<p>CAN enumeration types.
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:gad8d4deefb8852daa7ab6ee9ee76654b5" id="r_gad8d4deefb8852daa7ab6ee9ee76654b5"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#gad8d4deefb8852daa7ab6ee9ee76654b5">can_instance_en</a> { <br />
-&#160;&#160;<a class="el" href="#ggad8d4deefb8852daa7ab6ee9ee76654b5a2e064aeac52cb6df1f5e208ac6224992">CAN0</a> = 0
-, <br />
-&#160;&#160;<a class="el" href="#ggad8d4deefb8852daa7ab6ee9ee76654b5ad864ccd8347a3f6e35bef295d7cf9de1">CAN1</a>
-, <br />
-&#160;&#160;<a class="el" href="#ggad8d4deefb8852daa7ab6ee9ee76654b5aa4ee63e98d678a05525283ba74d27eb3">CAN_INSTANCE_COUNT</a>
-<br />
- }</td></tr>
-<tr class="memdesc:gad8d4deefb8852daa7ab6ee9ee76654b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">CAN instances for CM52.  <a href="#gad8d4deefb8852daa7ab6ee9ee76654b5">More...</a><br /></td></tr>
+<tr class="memitem:can_status_en" id="r_can_status_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#can_status_en">can_status_en</a> { <a class="el" href="#can_status_en">CAN_OK</a> = 0, <a class="el" href="#can_status_en">CAN_ERROR</a>, <a class="el" href="#can_status_en">CAN_ERROR_PARAMETER</a>, <a class="el" href="#can_status_en">CAN_ERROR_BUSY</a>, <a class="el" href="#can_status_en">CAN_ERROR_TIMEOUT</a>, <a class="el" href="#can_status_en">CAN_ERROR_UNSUPPORTED</a>, <a class="el" href="#can_status_en">CAN_ERROR_NOT_INITIALIZED</a>, <a class="el" href="#can_status_en">CAN_ERROR_NOT_RUNNING</a>, <a class="el" href="#can_status_en">CAN_ERROR_NO_RESOURCE</a>, <a class="el" href="#can_status_en">CAN_ERROR_TX_FAILED</a>, <a class="el" href="#can_status_en">CAN_ERROR_RX_FAILED</a>, <a class="el" href="#can_status_en">CAN_ERROR_DMA_FAILED</a>, <a class="el" href="#can_status_en">CAN_ERROR_BUS_OFF</a>, <a class="el" href="#can_status_en">CAN_ERROR_ECC</a> }</td></tr>
+<tr class="memdesc:can_status_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">CAN driver status / error codes. <br /></td></tr>
+<tr class="memitem:can_transfer_status_en" id="r_can_transfer_status_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#can_transfer_status_en">can_transfer_status_en</a> { <a class="el" href="#can_transfer_status_en">CAN_TRANSFER_IN_PROGRESS</a>, <a class="el" href="#can_transfer_status_en">CAN_TRANSFER_TIMEOUT</a>, <a class="el" href="#can_transfer_status_en">CAN_TRANSFER_ERROR</a>, <a class="el" href="#can_transfer_status_en">CAN_TRANSFER_DONE</a>, <a class="el" href="#can_transfer_status_en">CAN_TRANSFER_ABORTED</a> }</td></tr>
+<tr class="memdesc:can_transfer_status_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">CAN transfer status. <br /></td></tr>
+<tr class="memitem:can_frame_format_en" id="r_can_frame_format_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#can_frame_format_en">can_frame_format_en</a> { <a class="el" href="#can_frame_format_en">CAN_FRAME_CLASSIC</a> = 0U, <a class="el" href="#can_frame_format_en">CAN_FRAME_FD</a> = 1U }</td></tr>
+<tr class="memdesc:can_frame_format_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">CAN frame format (Classical CAN or CAN FD). <br /></td></tr>
+<tr class="memitem:can_rx_frame_type_en" id="r_can_rx_frame_type_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#can_rx_frame_type_en">can_rx_frame_type_en</a> { <a class="el" href="#can_rx_frame_type_en">CAN_RX_FRAME_TYPE_CLASSIC</a> = 1U, <a class="el" href="#can_rx_frame_type_en">CAN_RX_FRAME_TYPE_FD</a> = 2U }</td></tr>
+<tr class="memdesc:can_rx_frame_type_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encoded frame type values reported in received CAN headers. <br /></td></tr>
+<tr class="memitem:can_id_type_en" id="r_can_id_type_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#can_id_type_en">can_id_type_en</a> { <a class="el" href="#can_id_type_en">CAN_ID_STANDARD</a> = 0U, <a class="el" href="#can_id_type_en">CAN_ID_EXTENDED</a> = 1U }</td></tr>
+<tr class="memdesc:can_id_type_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">CAN identifier type (standard 11-bit or extended 29-bit). <br /></td></tr>
+<tr class="memitem:can_rtr_type_en" id="r_can_rtr_type_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#can_rtr_type_en">can_rtr_type_en</a> { <a class="el" href="#can_rtr_type_en">CAN_FRAME_DATA</a> = 0U, <a class="el" href="#can_rtr_type_en">CAN_FRAME_REMOTE</a> = 1U }</td></tr>
+<tr class="memdesc:can_rtr_type_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">CAN remote frame type (data or remote frame). <br /></td></tr>
+<tr class="memitem:can_operating_mode_en" id="r_can_operating_mode_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#can_operating_mode_en">can_operating_mode_en</a> { <a class="el" href="#can_operating_mode_en">CAN_MODE_NORMAL</a> = 0U, <a class="el" href="#can_operating_mode_en">CAN_MODE_LOOPBACK</a> = 1U }</td></tr>
+<tr class="memdesc:can_operating_mode_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">CAN controller operating mode. <br /></td></tr>
+<tr class="memitem:can_bus_state_en" id="r_can_bus_state_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#can_bus_state_en">can_bus_state_en</a> { <a class="el" href="#can_bus_state_en">CAN_BUS_ERROR_ACTIVE</a> = 0U, <a class="el" href="#can_bus_state_en">CAN_BUS_ERROR_PASSIVE</a> = 1U, <a class="el" href="#can_bus_state_en">CAN_BUS_BUS_OFF</a> = 2U }</td></tr>
+<tr class="memdesc:can_bus_state_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">CAN bus error state. <br /></td></tr>
+<tr class="memitem:can_interrupt_en" id="r_can_interrupt_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#can_interrupt_en">can_interrupt_en</a> { ... }</td></tr>
+<tr class="memdesc:can_interrupt_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hardware interrupt mask bits for CAN interrupt control APIs. <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>CAN enumeration types. </p>
-</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Enumeration Type Documentation</h2>
-<a id="gad8d4deefb8852daa7ab6ee9ee76654b5" name="gad8d4deefb8852daa7ab6ee9ee76654b5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad8d4deefb8852daa7ab6ee9ee76654b5">&#9670;&#160;</a></span>can_instance_en</h2>
+</div>
+<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Enumeration Type Documentation</h2>
 
+<a id="can_status_en" name="can_status_en"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#can_status_en">&#9670;&#160;</a></span>can_status_en</h2>
 <div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="#gad8d4deefb8852daa7ab6ee9ee76654b5">can_instance_en</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>CAN instances for CM52. </p>
+<div class="memproto"><table class="memname"><tr><td class="memname">enum <a class="el" href="#can_status_en">can_status_en</a></td></tr></table></div>
+<div class="memdoc"><p>CAN driver status / error codes.</p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggad8d4deefb8852daa7ab6ee9ee76654b5a2e064aeac52cb6df1f5e208ac6224992" name="ggad8d4deefb8852daa7ab6ee9ee76654b5a2e064aeac52cb6df1f5e208ac6224992"></a>CAN0&#160;</td><td class="fielddoc"><p>CAN instance 0 </p>
-</td></tr>
-<tr><td class="fieldname"><a id="ggad8d4deefb8852daa7ab6ee9ee76654b5ad864ccd8347a3f6e35bef295d7cf9de1" name="ggad8d4deefb8852daa7ab6ee9ee76654b5ad864ccd8347a3f6e35bef295d7cf9de1"></a>CAN1&#160;</td><td class="fielddoc"><p>CAN instance 1 </p>
-</td></tr>
-<tr><td class="fieldname"><a id="ggad8d4deefb8852daa7ab6ee9ee76654b5aa4ee63e98d678a05525283ba74d27eb3" name="ggad8d4deefb8852daa7ab6ee9ee76654b5aa4ee63e98d678a05525283ba74d27eb3"></a>CAN_INSTANCE_COUNT&#160;</td><td class="fielddoc"><p>Total CAN instances on CM52: 2 </p>
-</td></tr>
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="CAN_OK" name="CAN_OK"></a>CAN_OK&#160;</td><td class="fielddoc"><p>Operation succeeded.</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_ERROR" name="CAN_ERROR"></a>CAN_ERROR&#160;</td><td class="fielddoc"><p>Internal or unspecified driver error.</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_ERROR_PARAMETER" name="CAN_ERROR_PARAMETER"></a>CAN_ERROR_PARAMETER&#160;</td><td class="fielddoc"><p>Invalid parameter.</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_ERROR_BUSY" name="CAN_ERROR_BUSY"></a>CAN_ERROR_BUSY&#160;</td><td class="fielddoc"><p>Driver is busy.</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_ERROR_TIMEOUT" name="CAN_ERROR_TIMEOUT"></a>CAN_ERROR_TIMEOUT&#160;</td><td class="fielddoc"><p>Timeout occurred.</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_ERROR_UNSUPPORTED" name="CAN_ERROR_UNSUPPORTED"></a>CAN_ERROR_UNSUPPORTED&#160;</td><td class="fielddoc"><p>Operation not supported.</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_ERROR_NOT_INITIALIZED" name="CAN_ERROR_NOT_INITIALIZED"></a>CAN_ERROR_NOT_INITIALIZED&#160;</td><td class="fielddoc"><p>Instance is not initialized or configured.</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_ERROR_NOT_RUNNING" name="CAN_ERROR_NOT_RUNNING"></a>CAN_ERROR_NOT_RUNNING&#160;</td><td class="fielddoc"><p>CAN controller not running.</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_ERROR_NO_RESOURCE" name="CAN_ERROR_NO_RESOURCE"></a>CAN_ERROR_NO_RESOURCE&#160;</td><td class="fielddoc"><p>No TX buffer / RX filter available.</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_ERROR_TX_FAILED" name="CAN_ERROR_TX_FAILED"></a>CAN_ERROR_TX_FAILED&#160;</td><td class="fielddoc"><p>Transmission failed.</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_ERROR_RX_FAILED" name="CAN_ERROR_RX_FAILED"></a>CAN_ERROR_RX_FAILED&#160;</td><td class="fielddoc"><p>Reception failed.</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_ERROR_DMA_FAILED" name="CAN_ERROR_DMA_FAILED"></a>CAN_ERROR_DMA_FAILED&#160;</td><td class="fielddoc"><p>DMA transfer failed (if applicable).</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_ERROR_BUS_OFF" name="CAN_ERROR_BUS_OFF"></a>CAN_ERROR_BUS_OFF&#160;</td><td class="fielddoc"><p>CAN bus-off state.</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_ERROR_ECC" name="CAN_ERROR_ECC"></a>CAN_ERROR_ECC&#160;</td><td class="fielddoc"><p>ECC / parity error.</p></td></tr>
 </table>
+</div></div>
 
-</div>
-</div>
-</div><!-- contents -->
+<a id="can_transfer_status_en" name="can_transfer_status_en"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#can_transfer_status_en">&#9670;&#160;</a></span>can_transfer_status_en</h2>
+<div class="memitem">
+<div class="memproto"><table class="memname"><tr><td class="memname">enum <a class="el" href="#can_transfer_status_en">can_transfer_status_en</a></td></tr></table></div>
+<div class="memdoc"><p>CAN transfer status.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="CAN_TRANSFER_IN_PROGRESS" name="CAN_TRANSFER_IN_PROGRESS"></a>CAN_TRANSFER_IN_PROGRESS&#160;</td><td class="fielddoc"><p>Transfer in progress.</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_TRANSFER_TIMEOUT" name="CAN_TRANSFER_TIMEOUT"></a>CAN_TRANSFER_TIMEOUT&#160;</td><td class="fielddoc"><p>Transfer timeout.</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_TRANSFER_ERROR" name="CAN_TRANSFER_ERROR"></a>CAN_TRANSFER_ERROR&#160;</td><td class="fielddoc"><p>Transfer error.</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_TRANSFER_DONE" name="CAN_TRANSFER_DONE"></a>CAN_TRANSFER_DONE&#160;</td><td class="fielddoc"><p>Transfer completed successfully.</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_TRANSFER_ABORTED" name="CAN_TRANSFER_ABORTED"></a>CAN_TRANSFER_ABORTED&#160;</td><td class="fielddoc"><p>Transfer aborted.</p></td></tr>
+</table>
+</div></div>
+
+<a id="can_frame_format_en" name="can_frame_format_en"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#can_frame_format_en">&#9670;&#160;</a></span>can_frame_format_en</h2>
+<div class="memitem">
+<div class="memproto"><table class="memname"><tr><td class="memname">enum <a class="el" href="#can_frame_format_en">can_frame_format_en</a></td></tr></table></div>
+<div class="memdoc"><p>CAN frame format.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="CAN_FRAME_CLASSIC" name="CAN_FRAME_CLASSIC"></a>CAN_FRAME_CLASSIC&#160;</td><td class="fielddoc"><p>Classical CAN frame.</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_FRAME_FD" name="CAN_FRAME_FD"></a>CAN_FRAME_FD&#160;</td><td class="fielddoc"><p>CAN FD frame.</p></td></tr>
+</table>
+</div></div>
+
+<a id="can_rx_frame_type_en" name="can_rx_frame_type_en"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#can_rx_frame_type_en">&#9670;&#160;</a></span>can_rx_frame_type_en</h2>
+<div class="memitem">
+<div class="memproto"><table class="memname"><tr><td class="memname">enum <a class="el" href="#can_rx_frame_type_en">can_rx_frame_type_en</a></td></tr></table></div>
+<div class="memdoc"><p>Encoded frame type values reported in received CAN headers.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="CAN_RX_FRAME_TYPE_CLASSIC" name="CAN_RX_FRAME_TYPE_CLASSIC"></a>CAN_RX_FRAME_TYPE_CLASSIC&#160;</td><td class="fielddoc"><p>Classical CAN RX descriptor.</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_RX_FRAME_TYPE_FD" name="CAN_RX_FRAME_TYPE_FD"></a>CAN_RX_FRAME_TYPE_FD&#160;</td><td class="fielddoc"><p>CAN FD RX descriptor.</p></td></tr>
+</table>
+</div></div>
+
+<a id="can_id_type_en" name="can_id_type_en"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#can_id_type_en">&#9670;&#160;</a></span>can_id_type_en</h2>
+<div class="memitem">
+<div class="memproto"><table class="memname"><tr><td class="memname">enum <a class="el" href="#can_id_type_en">can_id_type_en</a></td></tr></table></div>
+<div class="memdoc"><p>CAN identifier type.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="CAN_ID_STANDARD" name="CAN_ID_STANDARD"></a>CAN_ID_STANDARD&#160;</td><td class="fielddoc"><p>11-bit standard identifier.</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_ID_EXTENDED" name="CAN_ID_EXTENDED"></a>CAN_ID_EXTENDED&#160;</td><td class="fielddoc"><p>29-bit extended identifier.</p></td></tr>
+</table>
+</div></div>
+
+<a id="can_rtr_type_en" name="can_rtr_type_en"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#can_rtr_type_en">&#9670;&#160;</a></span>can_rtr_type_en</h2>
+<div class="memitem">
+<div class="memproto"><table class="memname"><tr><td class="memname">enum <a class="el" href="#can_rtr_type_en">can_rtr_type_en</a></td></tr></table></div>
+<div class="memdoc"><p>CAN remote frame type.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="CAN_FRAME_DATA" name="CAN_FRAME_DATA"></a>CAN_FRAME_DATA&#160;</td><td class="fielddoc"><p>Data frame.</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_FRAME_REMOTE" name="CAN_FRAME_REMOTE"></a>CAN_FRAME_REMOTE&#160;</td><td class="fielddoc"><p>Remote (RTR) frame.</p></td></tr>
+</table>
+</div></div>
+
+<a id="can_operating_mode_en" name="can_operating_mode_en"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#can_operating_mode_en">&#9670;&#160;</a></span>can_operating_mode_en</h2>
+<div class="memitem">
+<div class="memproto"><table class="memname"><tr><td class="memname">enum <a class="el" href="#can_operating_mode_en">can_operating_mode_en</a></td></tr></table></div>
+<div class="memdoc"><p>CAN controller operating mode.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="CAN_MODE_NORMAL" name="CAN_MODE_NORMAL"></a>CAN_MODE_NORMAL&#160;</td><td class="fielddoc"><p>Normal operation.</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_MODE_LOOPBACK" name="CAN_MODE_LOOPBACK"></a>CAN_MODE_LOOPBACK&#160;</td><td class="fielddoc"><p>Internal loopback mode.</p></td></tr>
+</table>
+</div></div>
+
+<a id="can_bus_state_en" name="can_bus_state_en"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#can_bus_state_en">&#9670;&#160;</a></span>can_bus_state_en</h2>
+<div class="memitem">
+<div class="memproto"><table class="memname"><tr><td class="memname">enum <a class="el" href="#can_bus_state_en">can_bus_state_en</a></td></tr></table></div>
+<div class="memdoc"><p>CAN bus error state.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="CAN_BUS_ERROR_ACTIVE" name="CAN_BUS_ERROR_ACTIVE"></a>CAN_BUS_ERROR_ACTIVE&#160;</td><td class="fielddoc"><p>Error-active state.</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_BUS_ERROR_PASSIVE" name="CAN_BUS_ERROR_PASSIVE"></a>CAN_BUS_ERROR_PASSIVE&#160;</td><td class="fielddoc"><p>Error-passive but still operational.</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_BUS_BUS_OFF" name="CAN_BUS_BUS_OFF"></a>CAN_BUS_BUS_OFF&#160;</td><td class="fielddoc"><p>Bus-off; controller is no longer operational.</p></td></tr>
+</table>
+</div></div>
+
+<a id="can_interrupt_en" name="can_interrupt_en"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#can_interrupt_en">&#9670;&#160;</a></span>can_interrupt_en</h2>
+<div class="memitem">
+<div class="memproto"><table class="memname"><tr><td class="memname">enum <a class="el" href="#can_interrupt_en">can_interrupt_en</a></td></tr></table></div>
+<div class="memdoc"><p>Hardware interrupt mask bits for CAN interrupt control APIs.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="CAN_INTERRUPT_OVERLOAD_DETECTED" name="CAN_INTERRUPT_OVERLOAD_DETECTED"></a>CAN_INTERRUPT_OVERLOAD_DETECTED&#160;</td><td class="fielddoc"><p>(1UL &lt;&lt; 0)</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_INTERRUPT_CLOSING_GOOD_RX_FRAME" name="CAN_INTERRUPT_CLOSING_GOOD_RX_FRAME"></a>CAN_INTERRUPT_CLOSING_GOOD_RX_FRAME&#160;</td><td class="fielddoc"><p>(1UL &lt;&lt; 1)</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_INTERRUPT_TX_RETRANSMIT_REQUEST" name="CAN_INTERRUPT_TX_RETRANSMIT_REQUEST"></a>CAN_INTERRUPT_TX_RETRANSMIT_REQUEST&#160;</td><td class="fielddoc"><p>(1UL &lt;&lt; 2)</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_INTERRUPT_TX_FIFO_EMPTY" name="CAN_INTERRUPT_TX_FIFO_EMPTY"></a>CAN_INTERRUPT_TX_FIFO_EMPTY&#160;</td><td class="fielddoc"><p>(1UL &lt;&lt; 8)</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_INTERRUPT_RX_PTR_BUFS_FIFO_ALMOST_EMPTY" name="CAN_INTERRUPT_RX_PTR_BUFS_FIFO_ALMOST_EMPTY"></a>CAN_INTERRUPT_RX_PTR_BUFS_FIFO_ALMOST_EMPTY&#160;</td><td class="fielddoc"><p>(1UL &lt;&lt; 9)</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_INTERRUPT_RX_PTR_BUFS_FIFO_EMPTY" name="CAN_INTERRUPT_RX_PTR_BUFS_FIFO_EMPTY"></a>CAN_INTERRUPT_RX_PTR_BUFS_FIFO_EMPTY&#160;</td><td class="fielddoc"><p>(1UL &lt;&lt; 10)</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_INTERRUPT_CLTX_GOOD" name="CAN_INTERRUPT_CLTX_GOOD"></a>CAN_INTERRUPT_CLTX_GOOD&#160;</td><td class="fielddoc"><p>(1UL &lt;&lt; 14)</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_INTERRUPT_FDTX_GOOD" name="CAN_INTERRUPT_FDTX_GOOD"></a>CAN_INTERRUPT_FDTX_GOOD&#160;</td><td class="fielddoc"><p>(1UL &lt;&lt; 15)</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_INTERRUPT_BUS_STATE1" name="CAN_INTERRUPT_BUS_STATE1"></a>CAN_INTERRUPT_BUS_STATE1&#160;</td><td class="fielddoc"><p>(1UL &lt;&lt; 16)</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_INTERRUPT_BUS_STATE2" name="CAN_INTERRUPT_BUS_STATE2"></a>CAN_INTERRUPT_BUS_STATE2&#160;</td><td class="fielddoc"><p>(1UL &lt;&lt; 17)</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_INTERRUPT_WATCHDOG" name="CAN_INTERRUPT_WATCHDOG"></a>CAN_INTERRUPT_WATCHDOG&#160;</td><td class="fielddoc"><p>(1UL &lt;&lt; 18)</p></td></tr>
+<tr><td class="fieldname"><a id="CAN_INTERRUPT_NEW_SAMPLE_TIMESTAMP" name="CAN_INTERRUPT_NEW_SAMPLE_TIMESTAMP"></a>CAN_INTERRUPT_NEW_SAMPLE_TIMESTAMP&#160;</td><td class="fielddoc"><p>(1UL &lt;&lt; 31)</p></td></tr>
+</table>
+</div></div>
+
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>
