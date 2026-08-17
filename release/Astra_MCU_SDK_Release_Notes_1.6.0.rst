@@ -294,30 +294,21 @@ Known Issues
 +-------------+---------------------------+--------------+----------+
 | Issue       | Summary                   | Components   | Severity |
 +=============+===========================+==============+==========+
-| SRSDKI-1508 |    Watchdog sample        | Watchdog     | Medium   |
-|             |    application fails to   |              |          |
-|             |    execute following a    |              |          |
-|             |    power cycle            |              |          |
-+-------------+---------------------------+--------------+----------+
-| SRSDKI-1511 |    LRCLK distortion       | I2S          | Medium   |
-|             |    detected during signal |              |          |
-|             |    capture in             |              |          |
-|             |    non-loopback I2S/TDM   |              |          |
-|             |    setup                  |              |          |
-+-------------+---------------------------+--------------+----------+
 | SRSDKI-1514 |    SDIO sample app        | SDIO         | High     |
 |             |    failure is observed    |              |          |
+|             |    (SR110)                |              |          |
 +-------------+---------------------------+--------------+----------+
-| SRSDKI-1516 |    BT sample app is not   | BT           | High     |
-|             |    working                |              |          |
+| SRSDKI-1835 |    SPI sample app is not  | SPI          | High     |
+|             |    working - no logs      |              |          |
+|             |    printed on the logger  |              |          |
+|             |    (SR110)                |              |          |
 +-------------+---------------------------+--------------+----------+
-| SRSDKI-1515 |    WiFi sample app is not | WiFi         | High     |
-|             |    working                |              |          |
+| SRSDKI-1884 |    USB CDC connection     | Jpeg preroll | High     |
+|             |    error observed for     |              |          |
+|             |    Doorbell use case      |              |          |
 +-------------+---------------------------+--------------+----------+
-| SRSDKI-1525 | Image frames captured     | MIPI CSI     | High     |
-|             | during VGA person         |              |          |
-|             | detection use case        |              |          |
-|             | exhibit distortion        |              |          |
+| SRSDKI-1834 | FID HDG use case fails    | Vision       | High     |
+|             | due to Model init failure |              |          |
 +-------------+---------------------------+--------------+----------+
 | SRSDKI-1524 | I3C failure due to        | I3C          | High     |
 |             | incorrect DAA             |              |          |
@@ -419,6 +410,6 @@ you.
 
    |image0|
 
-.. |image0| image:: ./media/image3.jpg
+.. |image0| image:: ./media/image4.jpg
    :width: 2.5in
    :height: 0.57292in

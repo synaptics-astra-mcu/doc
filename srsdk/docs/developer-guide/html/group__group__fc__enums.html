@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Astra MCU SDK Peripheral Driver Library: Enumerated Types</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><div id="titlearea"><table cellspacing="0" cellpadding="0"><tbody><tr id="projectrow"><td id="projectlogo"><img alt="Logo" src="syna_logo.png"/></td><td id="projectalign"><div id="projectname">Astra MCU SDK Peripheral Driver Library</div></td></tr></tbody></table></div></div>
+<div id="container"><div id="doc-content">
+<div class="header"><div class="headertitle"><div class="title">Enumerated Types <div class="ingroups"><a class="el" href="group__peripherals.html">Peripherals</a> &raquo; <a class="el" href="group__api__ref.html">Driver API Reference</a> &raquo; <a class="el" href="group__group__fc__driver.html">FC</a></div></div></div></div>
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader">FC enums</h2></td></tr>
+<tr class="memitem:ga_fc_instance_en" id="r_ga_fc_instance_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_instance_en">fc_instance_en</a> { <a class="el" href="#gga_fc_instance_en_FC0">FC0</a> = 0, <a class="el" href="#gga_fc_instance_en_FC_INSTANCE_COUNT">FC_INSTANCE_COUNT</a> }</td></tr>
+<tr class="memdesc:ga_fc_instance_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">FC hardware instance identifiers. <br /></td></tr>
+<tr class="memitem:ga_fc_status_en" id="r_ga_fc_status_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_status_en">fc_status_en</a> { <a class="el" href="#gga_fc_status_en_FC_OK">FC_OK</a> = 0, <a class="el" href="#gga_fc_status_en_FC_ERROR">FC_ERROR</a> = 1, <a class="el" href="#gga_fc_status_en_FC_ERROR_PARAMETER">FC_ERROR_PARAMETER</a> = 2, <a class="el" href="#gga_fc_status_en_FC_ERROR_BUSY">FC_ERROR_BUSY</a> = 3, <a class="el" href="#gga_fc_status_en_FC_ERROR_TIMEOUT">FC_ERROR_TIMEOUT</a> = 4, <a class="el" href="#gga_fc_status_en_FC_ERROR_NOT_INITIALIZED">FC_ERROR_NOT_INITIALIZED</a> = 5 }</td></tr>
+<tr class="memdesc:ga_fc_status_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">FC driver return status codes. <br /></td></tr>
+<tr class="memitem:ga_fc_fault_type_en" id="r_ga_fc_fault_type_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_fault_type_en">fc_fault_type_en</a> { <a class="el" href="#gga_fc_fault_type_en_FC_FAULT_LEVEL">FC_FAULT_LEVEL</a> = 0, <a class="el" href="#gga_fc_fault_type_en_FC_FAULT_PULSE">FC_FAULT_PULSE</a> = 1 }</td></tr>
+<tr class="memdesc:ga_fc_fault_type_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fault input signal type. <br /></td></tr>
+<tr class="memitem:ga_fc_intr_type_en" id="r_ga_fc_intr_type_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_intr_type_en">fc_intr_type_en</a> { <a class="el" href="#gga_fc_intr_type_en_FC_INTR_LEVEL">FC_INTR_LEVEL</a> = 0, <a class="el" href="#gga_fc_intr_type_en_FC_INTR_EDGE">FC_INTR_EDGE</a> = 1 }</td></tr>
+<tr class="memdesc:ga_fc_intr_type_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interrupt output type. <br /></td></tr>
+<tr class="memitem:ga_fc_assoc_type_en" id="r_ga_fc_assoc_type_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_assoc_type_en">fc_assoc_type_en</a> { <a class="el" href="#gga_fc_assoc_type_en_FC_ASSOC_INTERRUPT">FC_ASSOC_INTERRUPT</a> = 0, <a class="el" href="#gga_fc_assoc_type_en_FC_ASSOC_TRIGGER">FC_ASSOC_TRIGGER</a> = 1, <a class="el" href="#gga_fc_assoc_type_en_FC_ASSOC_RESET">FC_ASSOC_RESET</a> = 2 }</td></tr>
+<tr class="memdesc:ga_fc_assoc_type_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fault routing table selection type. <br /></td></tr>
+<tr class="memitem:ga_fc_timing_type_en" id="r_ga_fc_timing_type_en"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#ga_fc_timing_type_en">fc_timing_type_en</a> { <a class="el" href="#gga_fc_timing_type_en_FC_TIMING_INTERRUPT_TIMEOUT">FC_TIMING_INTERRUPT_TIMEOUT</a> = 0, <a class="el" href="#gga_fc_timing_type_en_FC_TIMING_TRIGGER_WIDTH">FC_TIMING_TRIGGER_WIDTH</a> = 1, <a class="el" href="#gga_fc_timing_type_en_FC_TIMING_RESET_WIDTH">FC_TIMING_RESET_WIDTH</a> = 2 }</td></tr>
+<tr class="memdesc:ga_fc_timing_type_en"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timing control selector for FC timing APIs. <br /></td></tr>
+</table>
+<a id="ga_fc_instance_en" name="ga_fc_instance_en"></a><h2 class="memtitle">fc_instance_en</h2>
+<div class="memitem"><div class="memdoc"><p>FC instance identifier type defined by SoC integration headers.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="gga_fc_instance_en_FC0" name="gga_fc_instance_en_FC0"></a>FC0&#160;</td><td class="fielddoc"><p>FC instance 0.</p></td></tr>
+<tr><td class="fieldname"><a id="gga_fc_instance_en_FC_INSTANCE_COUNT" name="gga_fc_instance_en_FC_INSTANCE_COUNT"></a>FC_INSTANCE_COUNT&#160;</td><td class="fielddoc"><p>Number of FC instances.</p></td></tr>
+</table>
+</div></div>
+<a id="ga_fc_status_en" name="ga_fc_status_en"></a><h2 class="memtitle">fc_status_en</h2>
+<div class="memitem"><div class="memdoc"><p>FC API return status codes.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="gga_fc_status_en_FC_OK" name="gga_fc_status_en_FC_OK"></a>FC_OK&#160;</td><td class="fielddoc"><p>Operation completed successfully.</p></td></tr>
+<tr><td class="fieldname"><a id="gga_fc_status_en_FC_ERROR" name="gga_fc_status_en_FC_ERROR"></a>FC_ERROR&#160;</td><td class="fielddoc"><p>General or unspecified error.</p></td></tr>
+<tr><td class="fieldname"><a id="gga_fc_status_en_FC_ERROR_PARAMETER" name="gga_fc_status_en_FC_ERROR_PARAMETER"></a>FC_ERROR_PARAMETER&#160;</td><td class="fielddoc"><p>Invalid parameter provided.</p></td></tr>
+<tr><td class="fieldname"><a id="gga_fc_status_en_FC_ERROR_BUSY" name="gga_fc_status_en_FC_ERROR_BUSY"></a>FC_ERROR_BUSY&#160;</td><td class="fielddoc"><p>Instance already initialized or busy.</p></td></tr>
+<tr><td class="fieldname"><a id="gga_fc_status_en_FC_ERROR_TIMEOUT" name="gga_fc_status_en_FC_ERROR_TIMEOUT"></a>FC_ERROR_TIMEOUT&#160;</td><td class="fielddoc"><p>Operation timeout status code.</p></td></tr>
+<tr><td class="fieldname"><a id="gga_fc_status_en_FC_ERROR_NOT_INITIALIZED" name="gga_fc_status_en_FC_ERROR_NOT_INITIALIZED"></a>FC_ERROR_NOT_INITIALIZED&#160;</td><td class="fielddoc"><p>Instance is not initialized.</p></td></tr>
+</table>
+</div></div>
+<a id="ga_fc_fault_type_en" name="ga_fc_fault_type_en"></a><h2 class="memtitle">fc_fault_type_en</h2>
+<div class="memitem"><div class="memdoc"><p>FC fault input type encoding.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="gga_fc_fault_type_en_FC_FAULT_LEVEL" name="gga_fc_fault_type_en_FC_FAULT_LEVEL"></a>FC_FAULT_LEVEL&#160;</td><td class="fielddoc"><p>Fault input is interpreted as level-sensitive.</p></td></tr>
+<tr><td class="fieldname"><a id="gga_fc_fault_type_en_FC_FAULT_PULSE" name="gga_fc_fault_type_en_FC_FAULT_PULSE"></a>FC_FAULT_PULSE&#160;</td><td class="fielddoc"><p>Fault input is interpreted as pulse-sensitive.</p></td></tr>
+</table>
+</div></div>
+<a id="ga_fc_intr_type_en" name="ga_fc_intr_type_en"></a><h2 class="memtitle">fc_intr_type_en</h2>
+<div class="memitem"><div class="memdoc"><p>FC interrupt output type encoding.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="gga_fc_intr_type_en_FC_INTR_LEVEL" name="gga_fc_intr_type_en_FC_INTR_LEVEL"></a>FC_INTR_LEVEL&#160;</td><td class="fielddoc"><p>Interrupt output is level-sensitive.</p></td></tr>
+<tr><td class="fieldname"><a id="gga_fc_intr_type_en_FC_INTR_EDGE" name="gga_fc_intr_type_en_FC_INTR_EDGE"></a>FC_INTR_EDGE&#160;</td><td class="fielddoc"><p>Interrupt output is edge-sensitive.</p></td></tr>
+</table>
+</div></div>
+<a id="ga_fc_assoc_type_en" name="ga_fc_assoc_type_en"></a><h2 class="memtitle">fc_assoc_type_en</h2>
+<div class="memitem"><div class="memdoc"><p>FC fault routing table selector.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="gga_fc_assoc_type_en_FC_ASSOC_INTERRUPT" name="gga_fc_assoc_type_en_FC_ASSOC_INTERRUPT"></a>FC_ASSOC_INTERRUPT&#160;</td><td class="fielddoc"><p>Interrupt association table.</p></td></tr>
+<tr><td class="fieldname"><a id="gga_fc_assoc_type_en_FC_ASSOC_TRIGGER" name="gga_fc_assoc_type_en_FC_ASSOC_TRIGGER"></a>FC_ASSOC_TRIGGER&#160;</td><td class="fielddoc"><p>Trigger association table.</p></td></tr>
+<tr><td class="fieldname"><a id="gga_fc_assoc_type_en_FC_ASSOC_RESET" name="gga_fc_assoc_type_en_FC_ASSOC_RESET"></a>FC_ASSOC_RESET&#160;</td><td class="fielddoc"><p>Reset association table.</p></td></tr>
+</table>
+</div></div>
+<a id="ga_fc_timing_type_en" name="ga_fc_timing_type_en"></a><h2 class="memtitle">fc_timing_type_en</h2>
+<div class="memitem"><div class="memdoc"><p>FC timing field selector.</p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr>
+<tr><td class="fieldname"><a id="gga_fc_timing_type_en_FC_TIMING_INTERRUPT_TIMEOUT" name="gga_fc_timing_type_en_FC_TIMING_INTERRUPT_TIMEOUT"></a>FC_TIMING_INTERRUPT_TIMEOUT&#160;</td><td class="fielddoc"><p>Interrupt timeout clear counter field.</p></td></tr>
+<tr><td class="fieldname"><a id="gga_fc_timing_type_en_FC_TIMING_TRIGGER_WIDTH" name="gga_fc_timing_type_en_FC_TIMING_TRIGGER_WIDTH"></a>FC_TIMING_TRIGGER_WIDTH&#160;</td><td class="fielddoc"><p>Trigger pulse width field.</p></td></tr>
+<tr><td class="fieldname"><a id="gga_fc_timing_type_en_FC_TIMING_RESET_WIDTH" name="gga_fc_timing_type_en_FC_TIMING_RESET_WIDTH"></a>FC_TIMING_RESET_WIDTH&#160;</td><td class="fielddoc"><p>Reset pulse width field.</p></td></tr>
+</table>
+</div></div>
+</div></div></div>
+<div id="nav-path" class="navpath"><ul><li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li></ul></div>
+</body>
+</html>
