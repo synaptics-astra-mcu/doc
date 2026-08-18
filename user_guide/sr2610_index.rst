@@ -52,9 +52,6 @@ This section provides comprehensive user guides and demo applications for the SL
 :doc:`../srsdk/examples/driver_examples/i3c_sample_app/README`
    **I3C Sample App Demo** - A complete guide for the I3C Driver sample application, demonstrate I3C controller and target operation with dynamic address assignment, CCC handling, blocking and non-blocking transfers, IBI/MR/Hot-Join events, I2C compatibility mode, and speed-test validation.
 
-:doc:`../srsdk/examples/driver_examples/iim423xx_sample_app/README`
-   **IIM423XX Sample App Demo** - A complete guide for the IIM423XX sample application, validate I3C controller communication with the IIM423XX sensor through bus bring-up, dynamic address assignment, and sensor feature testing including accelerometer, FIFO, tilt, tap, and wake-on-motion validation.
-
 :doc:`../srsdk/examples/driver_examples/nand_sample_app/README`
    **Nand Sample App Demo** - Demonstrates initialization, JEDEC ID detection, erase, read, and write operations on an external SPI-NAND flash device.
 

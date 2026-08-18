@@ -19,7 +19,7 @@ This section provides comprehensive user guides and demo applications for the SR
    ../srsdk/examples/vision_examples/uc_hand_gesture_detection/README
    ../srsdk/examples/vision_examples/uc_hand_gesture_hid_mouse/README
    ../srsdk/examples/vision_examples/uc_fid_hgd/README
-   ../srsdk/examples/vision_examples/jpeg_sample_app/README
+   ../srsdk/examples/vision_examples/jpeg_sample_app/readme
    ../srsdk/examples/vision_examples/uc_jpeg_preroll/README
    ../srsdk/examples/audio_examples/uc_audio_mic/README
    ../srsdk/examples/driver_examples/clk_sample_app/README
@@ -73,7 +73,7 @@ This section provides comprehensive user guides and demo applications for the SR
 :doc:`../srsdk/examples/vision_examples/uc_fid_hgd/README`
    **Face Identification with Hand Gesture Detection Demo** - A complete guide for face identification + hand gesture detection applications, perform real-time face identification + gesture recognition with hand detection, single hand tracking and hand-key point estimation.
 
-:doc:`../srsdk/examples/vision_examples/jpeg_sample_app`
+:doc:`../srsdk/examples/vision_examples/jpeg_sample_app/readme`
    **JPEG Sample Demo** - A complete guide for the JPEG Camera sample application, capture 648 × 368 RAW Bayer images and JPEG pre-roll frames using the PS5416, and stream the latest JPEG image every 3 seconds with output saved in the video_stream_output/overlayed_frames directory.
 
 **Audio Example:**
