@@ -307,9 +307,6 @@ Known Issues
 |             |    error observed for     |              |          |
 |             |    Doorbell use case      |              |          |
 +-------------+---------------------------+--------------+----------+
-| SRSDKI-1834 | FID HDG use case fails    | Vision       | High     |
-|             | due to Model init failure |              |          |
-+-------------+---------------------------+--------------+----------+
 | SRSDKI-1524 | I3C failure due to        | I3C          | High     |
 |             | incorrect DAA             |              |          |
 |             | configuration in          |              |          |
