@@ -22,6 +22,7 @@ This section provides comprehensive user guides and demo applications for the SR
    ../srsdk/examples/vision_examples/jpeg_sample_app/readme
    ../srsdk/examples/vision_examples/uc_jpeg_preroll/README
    ../srsdk/examples/audio_examples/uc_audio_mic/README
+   ../srsdk/examples/driver_examples/bt_sample_app/README
    ../srsdk/examples/driver_examples/clk_sample_app/README
    ../srsdk/examples/driver_examples/timer_sample_app/README
    ../srsdk/examples/driver_examples/dma_sample_app/README
@@ -32,6 +33,7 @@ This section provides comprehensive user guides and demo applications for the SR
    ../srsdk/examples/driver_examples/sdio_sample_app/README
    ../srsdk/examples/driver_examples/spi_sample_app/README
    ../srsdk/examples/driver_examples/uart_sample_app/README
+   ../srsdk/examples/driver_examples/wifi_sample_app/README
    ../srsdk/examples/driver_examples/xspi_sample_app/README
    ../srsdk/examples/inference_examples/inference_basic_sample_app/README
    ../srsdk/examples/inference_examples/inference_basic_flash_sample_app/README
@@ -88,6 +90,9 @@ This section provides comprehensive user guides and demo applications for the SR
 
 **Driver Examples:**
 
+:doc:`../srsdk/examples/driver_examples/bt_sample_app/README`
+   **Bluetooth Demo** - Demonstrates BLE stack initialization, GATT server setup, advertising, and smartphone client interaction through shell commands.
+
 :doc:`../srsdk/examples/driver_examples/clk_sample_app/README`
    **Clock Demo** - Shows clock source configuration and peripheral clock setup for SR110 driver applications.
 
@@ -114,6 +119,9 @@ This section provides comprehensive user guides and demo applications for the SR
 
 :doc:`../srsdk/examples/driver_examples/uart_sample_app/README`
    **UART Demo** - Demonstrates serial communication setup, transmit/receive operations, and console interaction.
+
+:doc:`../srsdk/examples/driver_examples/wifi_sample_app/README`
+   **WiFi Demo** - Demonstrates SDIO-based WiFi module bring-up, shell-based control, and network connectivity validation on SR110.
 
 :doc:`../srsdk/examples/driver_examples/xspi_sample_app/README`
    **XSPI Demo** - Explains extended SPI usage for external flash/peripheral access with high-speed transactions.
@@ -154,4 +162,3 @@ This section provides comprehensive user guides and demo applications for the SR
 
 :doc:`../srsdk/examples/usb_examples/usb_hid_mouse_sample_app/README`
    **USB HID Mouse Demo** - Provides a simple USB HID mouse example for host-side pointer interaction.
-

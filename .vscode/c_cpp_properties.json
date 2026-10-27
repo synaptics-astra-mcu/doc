@@ -1,0 +1,17 @@
+{
+    "version": 4,
+    "configurations": [
+        {
+            "name": "SRSDK",
+            "compilerPath": "/home/syna/SRSDK_Build_tools/Arm_GNU_Toolchain_arm-none-eabi/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "compileCommands": "${workspaceFolder}/build/sr110_cm55_fw/GCC/compile_commands.json",
+            "dotConfig": "${workspaceFolder}/.config",
+            "forcedInclude": [
+                "${workspaceFolder}/build/config.h"
+            ],
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ]
+}

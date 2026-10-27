@@ -128,7 +128,7 @@ Use the CLI flow described in the respective build guide:
 0391468933:[0][WRN][LOGR]:Changing logger interface to LOGGER_IF_UART_1
 0000000023:[0][INF][SYS ]:Application drivers initialization complete without errors.
 0000004203:[0][INF][SYS ]:sr110 SDK version 1.3.0
-0000006678:[0][INF][EMMC]:Starting EMMC Sample App! 
-0000019167:[0][INF][EMMC]:EMMC Read/Write successfull 
+0000006678:[0][INF][EMMC]:Starting EMMC Sample App!
+0000019167:[0][INF][EMMC]:EMMC Read/Write successfull
 0000021674:[0][INF][UART]:EMMC Sample App Completed!
 ```

@@ -47,7 +47,7 @@ You can:
 - `sl2610_rdk_system_manager_ddr4_1x16_defconfig`
 - `sl2610_rdk_system_manager_defconfig`
 - `sl2610_rdk_system_manager_lpddr4_defconfig`
-
+- `sl2610_rdk_low_power_disp_defconfig`
 
 For this app, the default defconfig is:
    - `sl2610_rdk_system_manager_defconfig`
@@ -316,3 +316,52 @@ The logs show:
 - `new channel: 0x400 -> 0x1e!` - RPMSG channel established between A55 and M52
 - `get <value> (src: 0x1e)` - Ping-pong messages being exchanged between cores (odd numbers from M52, even numbers from A55)
 - `goodbye!` - Ping-pong sequence completed successfully
+
+## Low Power Display (SL2610_RDK)
+
+Low Power Display enables display operation during system suspend and resume by switching display control between the A55 and the M52. During suspend, the MCU display is enabled in low-power mode, allowing display functionality to continue with reduced power consumption. During resume, display control is transferred back to the A55, which resumes full display operation.
+
+### Enable and Build
+
+From SDK root:
+
+```bash
+cd <sdk-root>/examples/system_manager
+make sl2610_rdk_low_power_disp_defconfig BOARD=SL2610_RDK BUILD=SRSDK
+```
+
+Build bootloader and SDK:
+
+```bash
+cd <sdk-root>
+make sl2610_bootloader_rdk_defconfig BOARD=SL2610_RDK
+make astrasdk
+```
+
+Generate sm image:
+
+```bash
+cd <sdk-root>/examples/system_manager
+make imagegen
+```
+
+Replace sysmgr.subimg.gz in eMMCimg with the newly generated sub-image file before flashing.
+
+### Expected Logs
+
+Upon successful enablement and initialization of the `lp_disp` module in the MCU, the following logs are expected:
+
+```
+rpmsg_client_disp virtio0.rpmsg-disp.-1.31: MCU: display config applied successfully (1920x1080)
+[avio] Low-power display: enabled
+```
+
+The logs indicate:
+- `MCU: display config applied successfully (1920x1080)` - The MCU successfully received and applied the display configuration.
+- `[avio] Low-power display: enabled` - Low Power Display feature is enabled and active.
+
+### Before first build
+
+```bash
+git submodule update --init --recursive
+```

@@ -11,12 +11,14 @@ This section provides comprehensive user guides and demo applications for the SL
 .. toctree::
    :maxdepth: 1
 
+   ../srsdk/examples/driver_examples/adc_sample_app/README
    ../srsdk/examples/driver_examples/can_sample_app/README
    ../srsdk/examples/driver_examples/dma_sample_app/README
    ../srsdk/examples/driver_examples/dmic_sample_app/README
    ../srsdk/examples/driver_examples/eMMC_sample_app/README
    ../srsdk/examples/driver_examples/fc_sample_app/README
    ../srsdk/examples/driver_examples/i2c_exp_app/README
+   ../srsdk/examples/driver_examples/i2c_scan_sample_app/README
    ../srsdk/examples/driver_examples/i2s_sample_app/README
    ../srsdk/examples/driver_examples/i3c_sample_app/README
    ../srsdk/examples/driver_examples/nand_sample_app/README
@@ -27,6 +29,9 @@ This section provides comprehensive user guides and demo applications for the SL
    ../srsdk/examples/system_manager/README
 
 **Sample Application Demos:**
+
+:doc:`../srsdk/examples/driver_examples/adc_sample_app/README`
+   **ADC Sample App Demo** - Demonstrates the SL2610 SAR ADC driver with single-shot polling, interrupt-driven conversions, continuous sampling, and window tests.
 
 :doc:`../srsdk/examples/driver_examples/can_sample_app/README`
    **CAN Sample App Demo** - A complete guide for the CAN Driver sample application, demonstrate Classical CAN and CAN FD communication with controller initialization, loopback testing, acceptance-filter validation, scheduled transmission, timestamp verification, and CAN FD payload/DLC validation.
@@ -45,6 +50,9 @@ This section provides comprehensive user guides and demo applications for the SL
 
 :doc:`../srsdk/examples/driver_examples/i2c_exp_app/README`
    **I2C Expander Sample App Demo** - Demonstrates GPIO output control using an external FXL6408 I2C-based GPIO expander with periodic toggling and status logging.
+
+:doc:`../srsdk/examples/driver_examples/i2c_scan_sample_app/README`
+   **I2C Bus Scanner Sample App Demo** - Demonstrates I2C controller initialization, scanning 7-bit addresses from 0x08 to 0x77, and reporting detected devices and scan statistics.
 
 :doc:`../srsdk/examples/driver_examples/i2s_sample_app/README`
    **I2S Sample App Demo** - Demonstrates I2S interface setup and audio data transfer flow for peripheral communication.
@@ -69,5 +77,3 @@ This section provides comprehensive user guides and demo applications for the SL
 
 :doc:`../srsdk/examples/system_manager/README`
    **System Manager Application** - Guide for SL2610 system manager boot flow handling, supported boot paths, and bring-up/runtime logging.
-
-
