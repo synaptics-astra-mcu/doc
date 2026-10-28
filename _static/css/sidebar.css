@@ -1,0 +1,8 @@
+.wy-nav-side {
+    padding-bottom: var(--sidebar-versions-height, 2em);
+}
+
+.wy-side-scroll {
+    width: 100%;
+    overflow-y: scroll;
+}

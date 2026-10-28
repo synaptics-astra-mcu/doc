@@ -49,6 +49,9 @@ html_logo = "images/logo_full_white.png"
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
 
+html_css_files = ['css/sidebar.css']
+html_js_files = ['js/sidebar.js']
+
 html_logo = "_static/images/logo_full_white.png"
 
 html_theme_options = {
