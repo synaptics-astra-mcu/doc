@@ -11,6 +11,7 @@ Astra MCU SDK Release Notes
    SDK_Release_1.4.0
    SDK_Release_1.5.0
    SDK_Release_1.6.0
+   SDK_Release_1.7.0
 
 This section contains detailed release notes for all versions of the Synaptics Asta MCU SDK, including new features, improvements, bug fixes, known issues, and upgrade instructions.
 
@@ -28,3 +29,4 @@ This section contains detailed release notes for all versions of the Synaptics A
 
 - :doc:`SDK_Release_1.6.0` - **SDK Release 1.6.0** - Latest release notes featuring new capabilities, enhancements, and important updates for the Astra MCU SDK platform.
 
+- :doc:`SDK_Release_1.7.0` - **SDK Release 1.7.0** - Latest release notes featuring new capabilities, enhancements, and important updates for the Astra MCU SDK platform.

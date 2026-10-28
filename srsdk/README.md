@@ -8,13 +8,13 @@ It combines optimized libraries, a production-grade build system, and integrated
 - Kconfig + CMake + Ninja build system with reproducible defconfigs and fast incremental builds.
 - Cross-platform toolchain support for GCC, Arm Compiler 6, and LLVM Clang on Windows, Linux, and macOS.
 - Rich examples and out-of-tree workflows to keep applications cleanly separated from the SDK.
-- Integrated tooling for image conversion, flashing, logging, and memory analysis.
+- Integrated tooling for .bin file generation, flashing, logging, and memory analysis.
 - Optional VS Code development environment.
 
 ## Getting Started
 
 ### Step 1: Obtain the SDK
-Extract or clone the SDK to a local directory (for example, `/path/to/Astra_MCU_SDK`). This folder is your SDK root, in the rest of this document it will be referred to as <sdk-root>.
+Extract or clone the SDK to a local directory (for example, `/path/to/Astra_MCU_SDK`). This folder is your SDK root, in the rest of this document it will be referred to as `sdk-root`.
 - On Windows keep the path short (less than 100 characters) to avoid path length issues.
 - **Note:** In order to clone the Astra MCU SDK repository you must first install Git LFS. For more details, see [https://git-lfs.com/](https://git-lfs.com/).
 
@@ -43,4 +43,3 @@ Extract or clone the SDK to a local directory (for example, `/path/to/Astra_MCU_
 ## Driver User Guide
 - [Astra MCU SDK Driver Guide (HTML)](../api_doc/index.rst)
 
-> *Note: To view the guide, open `index.html` in a web browser.*
