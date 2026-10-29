@@ -1,8 +1,14 @@
 .wy-nav-side {
-    padding-bottom: var(--sidebar-versions-height, 2em);
+    padding-bottom: 0;
 }
 
 .wy-side-scroll {
     width: 100%;
+    height: calc(100% - var(--sidebar-versions-height, 2em));
     overflow-y: scroll;
+}
+
+.wy-side-scroll .wy-side-nav-search,
+.wy-side-scroll .wy-menu-vertical {
+    width: 100%;
 }
